@@ -358,14 +358,15 @@
 
     </div>
 
-    <!-- TIKLAMA İLE KAYDIRMA YAPMASI İÇİN EKLENEN JAVASCRIPT KODU -->
+  <!-- TIKLAMA İLE KAYDIRMA YAPMASI İÇİN EKLENEN JAVASCRIPT KODU -->
     <script>
         function kaydir(yon) {
             const kutu = document.getElementById('yetenekKutusu');
-            // 205px = Bir kutunun genişliği (180px) + aradaki boşluk (25px)
-            kutu.scrollBy({ left: yon * 205, behavior: 'smooth' }); 
+            // Bir kutunun gerçek genişliğini otomatik hesaplar
+            const kutuGenisligi = document.querySelector('.skill-box').offsetWidth;
+            const bosluk = 25; // Kutular arasındaki gap boşluğu
+            
+            // Tam bir kutu + aradaki boşluk kadar kaydır
+            kutu.scrollBy({ left: yon * (kutuGenisligi + bosluk), behavior: 'smooth' }); 
         }
     </script>
-
-</body>
-</html>
