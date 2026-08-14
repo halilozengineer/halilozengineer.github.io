@@ -165,12 +165,12 @@
             border-radius: 4px;
         }
 
-       .skill-box {
-            flex: 0 0 180px;
+      .skill-box {
+            flex: 0 0 210px; /* Gri kutuları 180px'den 210px'e genişlettik */
             background-color: #f8f9fa;
             border: 1px solid #e9ecef;
             border-radius: 8px;
-            padding: 20px 10px; /* İçi boşlukları azalttık ki ikonlara yer açılsın */
+            padding: 20px 5px; /* Yan boşlukları iyice kıstık ki logoya yer açılsın */
             text-align: center;
             transition: transform 0.2s, box-shadow 0.2s;
             display: flex;
@@ -184,16 +184,18 @@
             border-color: #ff6b6b;
         }
         .skill-box img {
-            width: 150px;  /* Genişliği 100'den 150'ye çıkardık (Kutunun neredeyse tamamı) */
-            height: 90px;  /* Yatay logoların formunu koruması için yüksekliği dengeledik */
+            width: 190px;  /* İkon genişliğini 150px'den 190px'e çıkardık */
+            height: 120px; /* İkon yüksekliğini 90px'den 120px'e çıkardık */
             object-fit: contain;
             margin-bottom: 15px;
+            transform: scale(1.1); /* Hile: Logoyu CSS ile kendi sınırlarının %10 dışına doğru büyüterek içindeki şeffaf boşlukları yokediyoruz */
         }
         .skill-box span {
             display: block;
             font-weight: 600;
-            font-size: 1.1rem; /* Metni kutuyla daha uyumlu olması için hafif revize ettik */
+            font-size: 1.2rem;
             color: #2c3e50;
+        }
         }
         ul {
             list-style-type: none;
