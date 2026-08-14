@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Halil Öz | Makine Mühendisi</title>
+    <title>Halil Öz | Makine Mühendisi Portfolyosu</title>
     <style>
         /* TEMEL AYARLAR */
         body {
@@ -11,123 +11,253 @@
             line-height: 1.6;
             margin: 0;
             padding: 0;
-            background-color: #e9ecef; /* Açık gri endüstriyel arka plan */
+            background-color: #f4f6f9; /* Daha ferah, endüstriyel bir arka plan */
             color: #333;
         }
         
         /* BAŞLIK (HEADER) BÖLÜMÜ */
         header {
-            background-color: #212529; /* Koyu antrasit */
+            background-color: #1a1e24; /* Derin antrasit */
             color: #ffffff;
-            padding: 4rem 1rem;
+            padding: 5rem 1rem;
             text-align: center;
-            border-bottom: 5px solid #20c997; /* Endüstriyel yeşil detay */
+            border-bottom: 5px solid #ff6b6b; /* Enerjik, dikkat çekici bir vurgu rengi */
         }
         header h1 {
             margin: 0;
-            font-size: 3rem;
+            font-size: 3.5rem;
             letter-spacing: 2px;
+            text-transform: uppercase;
         }
         header h2 {
-            margin: 10px 0 15px;
+            margin: 15px 0 20px;
             font-weight: 300;
-            color: #20c997;
-            font-size: 1.5rem;
+            color: #ff6b6b;
+            font-size: 1.8rem;
         }
         header p {
-            max-width: 600px;
+            max-width: 700px;
             margin: 0 auto;
-            color: #adb5bd;
+            color: #a0aab5;
+            font-size: 1.1rem;
         }
 
         /* İÇERİK ALANI (CONTAINER) */
         .container {
-            max-width: 900px;
-            margin: 30px auto;
+            max-width: 1000px; /* İçerik alanını biraz genişlettik */
+            margin: 40px auto;
             padding: 0 20px;
         }
 
         /* BÖLÜM KUTULARI (KARTLAR) */
         section {
             background: #ffffff;
-            margin-bottom: 25px;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease;
+            margin-bottom: 30px;
+            padding: 35px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         section:hover {
-            transform: translateY(-5px); /* Üzerine gelince hafifçe yukarı kalkma efekti */
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
         }
 
         /* ALT BAŞLIKLAR */
         h3 {
-            color: #212529;
-            border-bottom: 2px solid #20c997;
-            padding-bottom: 8px;
+            color: #1a1e24;
+            border-bottom: 2px solid #ff6b6b;
+            padding-bottom: 10px;
             margin-top: 0;
+            font-size: 1.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        /* LİSTELER VE LİNKLER */
+        /* DENEYİM VE PROJE BÖLÜMLERİ İÇİN DÜZEN */
+        .item-baslik {
+            font-weight: bold;
+            color: #2c3e50;
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .item-tarih {
+            font-size: 0.9rem;
+            color: #7f8c8d;
+            font-weight: normal;
+        }
+        .item-kurum {
+            color: #ff6b6b;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        /* LİSTELER */
         ul {
-            list-style-type: square;
-            padding-left: 20px;
+            list-style-type: none;
+            padding-left: 0;
         }
-        li {
-            margin-bottom: 10px;
+        ul li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 12px;
+            line-height: 1.5;
         }
+        ul li::before {
+            content: '■'; /* Kare madde imi (endüstriyel his) */
+            color: #ff6b6b;
+            position: absolute;
+            left: 0;
+            top: 2px;
+            font-size: 0.8rem;
+        }
+
+        /* YETENEKLER İÇİN ETİKET (TAG) TASARIMI */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        .skill-tag {
+            background-color: #ecf0f1;
+            color: #2c3e50;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            border: 1px solid #bdc3c7;
+        }
+
+        /* LİNKLER VE BUTONLAR */
         a {
-            color: #20c997;
+            color: #ff6b6b;
             text-decoration: none;
             font-weight: bold;
+            transition: color 0.3s;
         }
         a:hover {
+            color: #c0392b;
             text-decoration: underline;
+        }
+        .btn {
+            display: inline-block;
+            background-color: #1a1e24;
+            color: white !important;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none !important;
+            margin-top: 15px;
+            transition: background-color 0.3s;
+        }
+        .btn:hover {
+            background-color: #ff6b6b;
         }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>HALİL ÖZ</h1>
-        <h2>Makine Mühendisi | Tasarım ve Analiz Uzmanı</h2>
-        <p>Mekanik tasarım, 3D modelleme ve yapısal analiz konularında yenilikçi ve verimli çözümler üretiyorum.</p>
+        <h1>Halil Öz</h1>
+        <h2>Makine Mühendisi</h2>
+        <p>Bilgisayar destekli tasarım (CAD) ve sonlu elemanlar analizi (FEA) alanlarında uzmanlaşmış; teorik altyapısını güncel mühendislik yazılımlarıyla harmanlayarak endüstriyel problemlere optimize edilmiş çözümler üreten bir mühendisim.</p>
     </header>
 
     <div class="container">
         
+        <!-- HAKKIMDA BÖLÜMÜ -->
         <section id="hakkimda">
             <h3>Hakkımda</h3>
-            <p>KTO Karatay Üniversitesi Makine Mühendisliği bölümü mezunuyum. Mekanik sistemlerin tasarımı, termodinamik süreçler ve bilgisayar destekli mühendislik (CAE) alanlarında tutkuyla çalışıyorum. Sürekli gelişime ve profesyonel teknik İngilizce iletişim becerilerimi ilerletmeye önem veriyorum.</p>
+            <p>KTO Karatay Üniversitesi Makine Mühendisliği bölümünden mezun oldum. Yapısal analiz, mekanik tasarım ve üretim süreçleri konularında derinleşmeyi hedefliyorum. Uzun dönem sanayi tecrübelerim boyunca, ürünün prototipten seri üretime kadar olan tüm süreçlerinde aktif rol aldım.</p>
+            <p>Mühendislik disiplininin yanı sıra çok yönlü gelişime inanıyorum. Düzenli olarak voleybol ve masa tenisi oynuyor, hobi olarak bağlama çalıyor ve aktif bir motosiklet kullanıcısı olarak seyahat arşivleri oluşturuyorum.</p>
         </section>
 
+        <!-- YETKİNLİKLER BÖLÜMÜ -->
         <section id="yetenekler">
-            <h3>Teknik Yetenekler</h3>
-            <ul>
-                <li><strong>CAD / CAM / CAE:</strong> SolidWorks 2024, AutoCAD, ANSYS</li>
-                <li><strong>Programlama ve Veri Analizi:</strong> Python, MATLAB</li>
-            </ul>
+            <h3>Teknik Yetkinlikler</h3>
+            <div class="skills-container">
+                <span class="skill-tag">SolidWorks 2024</span>
+                <span class="skill-tag">AutoCAD</span>
+                <span class="skill-tag">ANSYS</span>
+                <span class="skill-tag">MSC ADAMS</span>
+                <span class="skill-tag">Abaqus</span>
+                <span class="skill-tag">Python / MATLAB</span>
+            </div>
+            <p style="margin-top: 20px; font-size: 0.95rem;"><strong>Yabancı Dil:</strong> İngilizce (Orta Seviye - B1), aktif mesleki pratik.</p>
         </section>
 
-        <section id="deneyim">
-            <h3>Deneyim</h3>
-            <ul>
-                <li><strong>ARMCO Elektrik Elektronik Mühendisliği:</strong> Demiryolu sinyalizasyon subrack'leri, kabin içi kablolama, yerleşim planlamaları ve laboratuvar test kurulumları üzerine uzun dönem stajyer mühendis (Şubat 2026 - Mayıs 2026).</li>
-            </ul>
-        </section>
-
+        <!-- PROJELER BÖLÜMÜ -->
         <section id="projeler">
             <h3>Öne Çıkan Projeler</h3>
-            <ul>
-                <li><strong>Etil Asetat Geri Kazanım Sistemi:</strong> Kondensasyon ve distilasyon süreçlerini kullanan endüstriyel sistem tasarımı, ısı değiştirici boyutlandırması ve distilasyon kolonu mühendislik hesaplamaları.</li>
-                <li><strong>TEKNOFEST Göz Dibi Masaj Cihazı:</strong> Prototip geliştirme, mekanik tahrik mekanizmaları, motor spesifikasyonları ve sensör entegrasyonları.</li>
-            </ul>
+            
+            <div style="margin-bottom: 25px;">
+                <div class="item-baslik">Otomatik Zincir Bakım Mekanizması Tasarımı</div>
+                <p>Motosikletlerde bakım maliyetini azaltmak amacıyla, zincir gerginliğini otomatik ayarlayan ve yağlama yapan elektromekanik bir sistemin tasarımı ve 3D modellenmesi.</p>
+            </div>
+
+            <div style="margin-bottom: 25px;">
+                <div class="item-baslik">Endüstriyel Solvent Geri Kazanım Sistemi Tasarımı <span class="item-tarih">TÜBİTAK 2209-A / Bitirme Projesi</span></div>
+                <p>Endüstriyel atık yönetimini sağlamak amacıyla bir solvent geri dönüşüm sisteminin proses tasarımı. Distilasyon kulesinin termodinamik hesaplamaları ve soğutma kanatçığı kullanılarak optimize edilmiş ısı eşanjörünün mekanik tasarımı.</p>
+            </div>
+
+            <div style="margin-bottom: 25px;">
+                <div class="item-baslik">Tavan Vinci Sonlu Elemanlar Analizi (FEA)</div>
+                <p>Endüstriyel tip bir tavan vincinin ANSYS kullanılarak statik mukavemet, dinamik yük ve modal (titreşim) analizlerinin gerçekleştirilmesi; kritik gerilme bölgelerinin tespiti.</p>
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <div class="item-baslik">Bina Dengeleme Sistemi Tasarımı <span class="item-tarih">Disiplinler Arası Proje</span></div>
+                <p>Yapılarda sismik yükler kaynaklı çökmeleri dengelemek ve rüzgar etkisiyle oluşan titreşimleri sönümlemek amacıyla mekanik bir dengeleme sisteminin tasarlanması.</p>
+            </div>
         </section>
 
+        <!-- DENEYİM BÖLÜMÜ -->
+        <section id="deneyim">
+            <h3>İş ve Staj Deneyimi</h3>
+            
+            <div style="margin-bottom: 30px;">
+                <div class="item-baslik">Uzun Dönem Stajyer Mühendis <span class="item-tarih">Şubat 2026 - Mayıs 2026</span></div>
+                <span class="item-kurum">ARMCO Elektrik Elektronik Mühendisliği</span>
+                <ul>
+                    <li>Elektronik kartlar (PCB) için mekanik koruma (subrack) ve ürün tasarımları geliştirme sürecinde görev aldım.</li>
+                    <li>Prototip ürün çalışmasından seri üretime kadar, giriş, üretim ve final kalite kontrolleri dahil tüm proseslerde aktif olarak yer aldım.</li>
+                    <li>Depo kurulumu ve laboratuvar proseslerinde cihaz kurulumundan işletilmesine kadar fiziki destek verdim.</li>
+                </ul>
+            </div>
+
+            <div style="margin-bottom: 30px;">
+                <div class="item-baslik">Mekanik Tasarım (Proje Bazlı)</div>
+                <span class="item-kurum">SNN Tactical</span>
+                <ul>
+                    <li>Taktik ekipman üretimi yapan firma için vakum termoform kalıbı tasarımı gerçekleştirdim.</li>
+                    <li>Ürünün teknik resimlerinin oluşturulması ve kalıplama sürecine uygunluğunu analiz edip, üretim sürecini takip ettim.</li>
+                </ul>
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <div class="item-baslik">Stajyer Mühendis <span class="item-tarih">Temmuz 2024 – Eylül 2024</span></div>
+                <span class="item-kurum">M Kalıp Plastik Enjeksiyon</span>
+                <ul>
+                    <li>Plastik enjeksiyon üretim süreçlerini ve kalıp bakım-onarım operasyonlarını yerinde inceledim.</li>
+                    <li>İmalat sonrası kalite kontrol testlerini yaparak, problemli çıkan ürünlerle ilgili kök neden analizi gerçekleştirdim.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- İLETİŞİM BÖLÜMÜ -->
         <section id="iletisim">
-            <h3>İletişim</h3>
-            <p>E-posta: <a href="mailto:ornek@email.com">ornek@email.com</a></p>
-            <p>LinkedIn: <a href="#">linkedin.com/in/profilin</a></p>
+            <h3>İletişim & Bağlantılar</h3>
+            <p>Projelerim, analiz detaylarım veya işbirlikleri hakkında benimle iletişime geçebilirsiniz.</p>
+            <p><strong>E-posta:</strong> <a href="mailto:halilo.hz42@gmail.com">halilo.hz42@gmail.com</a></p>
+            <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/halil-öz" target="_blank">linkedin.com/in/halil-öz</a></p>
+            
+            <!-- İstediğin zaman CV'ni PDF olarak sitene yükleyip buraya link verebilirsin -->
+            <a href="#" class="btn">Özgeçmişimi İndir (Yakında)</a>
         </section>
 
     </div>
