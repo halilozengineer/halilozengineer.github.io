@@ -11,17 +11,17 @@
             line-height: 1.6;
             margin: 0;
             padding: 0;
-            background-color: #f4f6f9; /* Daha ferah, endüstriyel bir arka plan */
+            background-color: #f4f6f9; 
             color: #333;
         }
         
         /* BAŞLIK (HEADER) BÖLÜMÜ */
         header {
-            background-color: #1a1e24; /* Derin antrasit */
+            background-color: #1a1e24; 
             color: #ffffff;
             padding: 5rem 1rem;
             text-align: center;
-            border-bottom: 5px solid #ff6b6b; /* Enerjik, dikkat çekici bir vurgu rengi */
+            border-bottom: 5px solid #ff6b6b; 
         }
         header h1 {
             margin: 0;
@@ -44,7 +44,7 @@
 
         /* İÇERİK ALANI (CONTAINER) */
         .container {
-            max-width: 1000px; /* İçerik alanını biraz genişlettik */
+            max-width: 1000px; 
             margin: 40px auto;
             padding: 0 20px;
         }
@@ -97,6 +97,54 @@
             display: block;
         }
 
+        /* PROJE GÖRSELLERİ İÇİN CSS */
+        .project-image {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-top: 15px;
+            border: 1px solid #e0e0e0;
+        }
+        .proje-kutusu {
+            margin-bottom: 35px;
+            border-bottom: 1px solid #f0f0f0;
+            padding-bottom: 20px;
+        }
+
+        /* İKONLU YETENEKLER BÖLÜMÜ İÇİN CSS */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .skill-box {
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 15px 10px;
+            text-align: center;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .skill-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            border-color: #ff6b6b;
+        }
+        .skill-box img {
+            width: 45px;
+            height: 45px;
+            object-fit: contain;
+            margin-bottom: 10px;
+        }
+        .skill-box span {
+            display: block;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: #2c3e50;
+        }
+
         /* LİSTELER */
         ul {
             list-style-type: none;
@@ -109,29 +157,12 @@
             line-height: 1.5;
         }
         ul li::before {
-            content: '■'; /* Kare madde imi (endüstriyel his) */
+            content: '■'; 
             color: #ff6b6b;
             position: absolute;
             left: 0;
             top: 2px;
             font-size: 0.8rem;
-        }
-
-        /* YETENEKLER İÇİN ETİKET (TAG) TASARIMI */
-        .skills-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 15px;
-        }
-        .skill-tag {
-            background-color: #ecf0f1;
-            color: #2c3e50;
-            padding: 8px 15px;
-            border-radius: 5px;
-            font-weight: 600;
-            font-size: 0.95rem;
-            border: 1px solid #bdc3c7;
         }
 
         /* LİNKLER VE BUTONLAR */
@@ -145,19 +176,6 @@
             color: #c0392b;
             text-decoration: underline;
         }
-        .btn {
-            display: inline-block;
-            background-color: #1a1e24;
-            color: white !important;
-            padding: 10px 20px;
-            border-radius: 5px;
-            text-decoration: none !important;
-            margin-top: 15px;
-            transition: background-color 0.3s;
-        }
-        .btn:hover {
-            background-color: #ff6b6b;
-        }
     </style>
 </head>
 <body>
@@ -170,49 +188,78 @@
 
     <div class="container">
         
-        <!-- HAKKIMDA BÖLÜMÜ -->
         <section id="hakkimda">
             <h3>Hakkımda</h3>
             <p>KTO Karatay Üniversitesi Makine Mühendisliği bölümünden mezun oldum. Yapısal analiz, mekanik tasarım ve üretim süreçleri konularında derinleşmeyi hedefliyorum. Uzun dönem sanayi tecrübelerim boyunca, ürünün prototipten seri üretime kadar olan tüm süreçlerinde aktif rol aldım.</p>
             <p>Mühendislik disiplininin yanı sıra çok yönlü gelişime inanıyorum. Düzenli olarak voleybol ve masa tenisi oynuyor, hobi olarak bağlama çalıyor ve aktif bir motosiklet kullanıcısı olarak seyahat arşivleri oluşturuyorum.</p>
         </section>
 
-        <!-- YETKİNLİKLER BÖLÜMÜ -->
+        <!-- İKONLU YETKİNLİKLER BÖLÜMÜ -->
         <section id="yetenekler">
             <h3>Teknik Yetkinlikler</h3>
             <div class="skills-container">
-                <span class="skill-tag">SolidWorks 2024</span>
-                <span class="skill-tag">AutoCAD</span>
-                <span class="skill-tag">ANSYS</span>
-                <span class="skill-tag">MSC ADAMS</span>
-                <span class="skill-tag">Abaqus</span>
-                <span class="skill-tag">Python / MATLAB</span>
+                <div class="skill-box">
+                    <img src="solidworks.png" alt="SolidWorks">
+                    <span>ikonlar/SolidWorks 2024</span>
+                </div>
+                <div class="skill-box">
+                    <img src="ikonlar/autocad.png" alt="AutoCAD">
+                    <span>AutoCAD</span>
+                </div>
+                <div class="skill-box">
+                    <img src="ikonlar/ansys.png" alt="ANSYS">
+                    <span>ANSYS</span>
+                </div>
+                <div class="skill-box">
+                    <img src="ikonlar/adams.png" alt="MSC ADAMS">
+                    <span>MSC ADAMS</span>
+                </div>
+                <div class="skill-box">
+                    <img src="ikonlar/abaqus.png" alt="Abaqus">
+                    <span>Abaqus</span>
+                </div>
+                <div class="skill-box">
+                    <img src="python.png" alt="Python">
+                    <span>Python</span>
+                </div>
+                <div class="skill-box">
+                    <img src="matlab.png" alt="MATLAB">
+                    <span>MATLAB</span>
+                </div>
             </div>
-            <p style="margin-top: 20px; font-size: 0.95rem;"><strong>Yabancı Dil:</strong> İngilizce (Orta Seviye - B1), aktif mesleki pratik.</p>
+            <p style="margin-top: 25px; font-size: 0.95rem;"><strong>Yabancı Dil:</strong> İngilizce (Orta Seviye - B1), aktif mesleki pratik.</p>
         </section>
 
-        <!-- PROJELER BÖLÜMÜ -->
+        <!-- GÖRSELLİ PROJELER BÖLÜMÜ -->
         <section id="projeler">
             <h3>Öne Çıkan Projeler</h3>
             
-            <div style="margin-bottom: 25px;">
+            <div class="proje-kutusu">
                 <div class="item-baslik">Otomatik Zincir Bakım Mekanizması Tasarımı</div>
                 <p>Motosikletlerde bakım maliyetini azaltmak amacıyla, zincir gerginliğini otomatik ayarlayan ve yağlama yapan elektromekanik bir sistemin tasarımı ve 3D modellenmesi.</p>
+                <!-- Proje 1 Görseli -->
+                <img src="zincir.jpg" alt="Zincir Bakım Mekanizması" class="project-image">
             </div>
 
-            <div style="margin-bottom: 25px;">
+            <div class="proje-kutusu">
                 <div class="item-baslik">Endüstriyel Solvent Geri Kazanım Sistemi Tasarımı <span class="item-tarih">TÜBİTAK 2209-A / Bitirme Projesi</span></div>
                 <p>Endüstriyel atık yönetimini sağlamak amacıyla bir solvent geri dönüşüm sisteminin proses tasarımı. Distilasyon kulesinin termodinamik hesaplamaları ve soğutma kanatçığı kullanılarak optimize edilmiş ısı eşanjörünün mekanik tasarımı.</p>
+                <!-- Proje 2 Görseli -->
+                <img src="solvent.jpg" alt="Solvent Geri Kazanım Sistemi" class="project-image">
             </div>
 
-            <div style="margin-bottom: 25px;">
+            <div class="proje-kutusu">
                 <div class="item-baslik">Tavan Vinci Sonlu Elemanlar Analizi (FEA)</div>
                 <p>Endüstriyel tip bir tavan vincinin ANSYS kullanılarak statik mukavemet, dinamik yük ve modal (titreşim) analizlerinin gerçekleştirilmesi; kritik gerilme bölgelerinin tespiti.</p>
+                <!-- Proje 3 Görseli -->
+                <img src="vinc.jpg" alt="Tavan Vinci FEA Analizi" class="project-image">
             </div>
 
-            <div style="margin-bottom: 15px;">
+            <div class="proje-kutusu" style="border-bottom: none; margin-bottom: 10px;">
                 <div class="item-baslik">Bina Dengeleme Sistemi Tasarımı <span class="item-tarih">Disiplinler Arası Proje</span></div>
                 <p>Yapılarda sismik yükler kaynaklı çökmeleri dengelemek ve rüzgar etkisiyle oluşan titreşimleri sönümlemek amacıyla mekanik bir dengeleme sisteminin tasarlanması.</p>
+                <!-- Proje 4 Görseli -->
+                <img src="bina.jpg" alt="Bina Dengeleme Sistemi" class="project-image">
             </div>
         </section>
 
@@ -255,9 +302,6 @@
             <p>Projelerim, analiz detaylarım veya işbirlikleri hakkında benimle iletişime geçebilirsiniz.</p>
             <p><strong>E-posta:</strong> <a href="mailto:halilo.hz42@gmail.com">halilo.hz42@gmail.com</a></p>
             <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/halil-öz" target="_blank">linkedin.com/in/halil-öz</a></p>
-            
-            <!-- İstediğin zaman CV'ni PDF olarak sitene yükleyip buraya link verebilirsin -->
-            <a href="#" class="btn">Özgeçmişimi İndir (Yakında)</a>
         </section>
 
     </div>
