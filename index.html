@@ -15,7 +15,6 @@
             color: #333;
         }
         
-        /* BAŞLIK (HEADER) BÖLÜMÜ */
         header {
             background-color: #1a1e24; 
             color: #ffffff;
@@ -42,14 +41,12 @@
             font-size: 1.1rem;
         }
 
-        /* İÇERİK ALANI (CONTAINER) */
         .container {
             max-width: 1000px; 
             margin: 40px auto;
             padding: 0 20px;
         }
 
-        /* BÖLÜM KUTULARI (KARTLAR) */
         section {
             background: #ffffff;
             margin-bottom: 30px;
@@ -63,7 +60,6 @@
             box-shadow: 0 8px 25px rgba(0,0,0,0.1);
         }
 
-        /* ALT BAŞLIKLAR */
         h3 {
             color: #1a1e24;
             border-bottom: 2px solid #ff6b6b;
@@ -74,7 +70,6 @@
             letter-spacing: 1px;
         }
 
-        /* DENEYİM VE PROJE BÖLÜMLERİ İÇİN DÜZEN */
         .item-baslik {
             font-weight: bold;
             color: #2c3e50;
@@ -97,7 +92,6 @@
             display: block;
         }
 
-        /* PROJE GÖRSELLERİ İÇİN CSS */
         .project-image {
             width: 100%;
             max-height: 400px;
@@ -112,19 +106,53 @@
             padding-bottom: 20px;
         }
 
-        /* İKONLU YETENEKLER BÖLÜMÜ İÇİN CSS - YENİ (KAYDIRMALI VE BÜYÜK) */
-        .skills-container {
+        /* YENİ: OKLAR VE KAYDIRMA BÖLÜMÜ (BÜYÜTÜLMÜŞ İKONLAR) */
+        .skills-wrapper {
+            position: relative;
             display: flex;
-            overflow-x: auto; /* Sağa sola kaydırma özelliği */
-            gap: 20px;
+            align-items: center;
             margin-top: 20px;
-            padding-bottom: 15px; /* Alt kısımdaki kaydırma çubuğu için boşluk */
-            /* Firefox için kaydırma çubuğu renkleri */
-            scrollbar-width: thin;
-            scrollbar-color: #ff6b6b #f0f0f0;
         }
         
-        /* Chrome, Safari ve Edge için özel kaydırma çubuğu tasarımı */
+        .scroll-btn {
+            background-color: #ff6b6b;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            position: absolute;
+            z-index: 10;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        .scroll-btn:hover {
+            background-color: #c0392b;
+            transform: scale(1.1);
+        }
+        .left-arrow {
+            left: -20px; /* Oku kutunun biraz dışına taşırdık */
+        }
+        .right-arrow {
+            right: -20px;
+        }
+
+        .skills-container {
+            display: flex;
+            overflow-x: auto; 
+            gap: 25px;
+            padding: 10px 0 25px 0;
+            scroll-behavior: smooth; /* Tıklayınca yumuşak kaysın */
+            scrollbar-width: thin;
+            scrollbar-color: #ff6b6b #f0f0f0;
+            width: 100%;
+        }
+        
         .skills-container::-webkit-scrollbar {
             height: 8px;
         }
@@ -138,11 +166,11 @@
         }
 
         .skill-box {
-            flex: 0 0 160px; /* Kutuların küçülmesini engeller, genişliği sabitler */
+            flex: 0 0 180px; /* Kutuları genişlettik (eski: 160px) */
             background-color: #f8f9fa;
             border: 1px solid #e9ecef;
             border-radius: 8px;
-            padding: 25px 15px; /* İçi daha ferah görünmesi için boşlukları artırdık */
+            padding: 30px 15px;
             text-align: center;
             transition: transform 0.2s, box-shadow 0.2s;
         }
@@ -152,19 +180,18 @@
             border-color: #ff6b6b;
         }
         .skill-box img {
-            width: 80px;  /* İkonları belirgin şekilde büyüttük */
-            height: 80px; 
+            width: 100px;  /* İKONLARI BÜYÜTTÜK (eski: 80px) */
+            height: 100px; 
             object-fit: contain;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
         .skill-box span {
             display: block;
             font-weight: 600;
-            font-size: 1.1rem; /* Yazıyı da bir tık büyüttük */
+            font-size: 1.2rem;
             color: #2c3e50;
         }
 
-        /* LİSTELER */
         ul {
             list-style-type: none;
             padding-left: 0;
@@ -184,7 +211,6 @@
             font-size: 0.8rem;
         }
 
-        /* LİNKLER VE BUTONLAR */
         a {
             color: #ff6b6b;
             text-decoration: none;
@@ -195,6 +221,12 @@
             color: #c0392b;
             text-decoration: underline;
         }
+        
+        /* Mobilde oklar çok dışarı taşmasın diye ufak bir ayar */
+        @media (max-width: 768px) {
+            .left-arrow { left: 0px; }
+            .right-arrow { right: 0px; }
+        }
     </style>
 </head>
 <body>
@@ -202,7 +234,7 @@
     <header>
         <h1>Halil Öz</h1>
         <h2>Makine Mühendisi</h2>
-        <p>Bilgisayar destekli tasarım (CAD) ve sonlu elemanlar analizi (FEA) alanlarına ilgili; teorik altyapısını güncel mühendislik yazılımlarıyla harmanlayarak endüstriyel problemlere optimize edilmiş çözümler üreten bir mühendisim.</p>
+        <p>Bilgisayar destekli tasarım (CAD) ve sonlu elemanlar analizi (FEA) alanlarında uzmanlaşmış; teorik altyapısını güncel mühendislik yazılımlarıyla harmanlayarak endüstriyel problemlere optimize edilmiş çözümler üreten bir mühendisim.</p>
     </header>
 
     <div class="container">
@@ -213,39 +245,49 @@
             <p>Mühendislik disiplininin yanı sıra çok yönlü gelişime inanıyorum. Düzenli olarak voleybol ve masa tenisi oynuyor, hobi olarak bağlama çalıyor ve aktif bir motosiklet kullanıcısı olarak seyahat arşivleri oluşturuyorum.</p>
         </section>
 
-        <!-- İKONLU YETKİNLİKLER BÖLÜMÜ -->
+        <!-- OKLU VE BÜYÜTÜLMÜŞ YETKİNLİKLER BÖLÜMÜ -->
         <section id="yetenekler">
             <h3>Teknik Yetkinlikler</h3>
-            <div class="skills-container">
-                <div class="skill-box">
-                    <img src="ikonlar/solidworks.png" alt="SolidWorks">
-                    <span>SolidWorks 2024</span>
+            
+            <div class="skills-wrapper">
+                <!-- Sol Ok Butonu -->
+                <button class="scroll-btn left-arrow" onclick="kaydir(-1)">&#10094;</button>
+                
+                <div class="skills-container" id="yetenekKutusu">
+                    <div class="skill-box">
+                        <img src="images/solidworks.png" alt="SolidWorks">
+                        <span>SolidWorks 2024</span>
+                    </div>
+                    <div class="skill-box">
+                        <img src="images/autocad.png" alt="AutoCAD">
+                        <span>AutoCAD</span>
+                    </div>
+                    <div class="skill-box">
+                        <img src="images/ansys.png" alt="ANSYS">
+                        <span>ANSYS</span>
+                    </div>
+                    <div class="skill-box">
+                        <img src="images/adams.png" alt="MSC ADAMS">
+                        <span>MSC ADAMS</span>
+                    </div>
+                    <div class="skill-box">
+                        <img src="images/abaqus.png" alt="Abaqus">
+                        <span>Abaqus</span>
+                    </div>
+                    <div class="skill-box">
+                        <img src="images/python.png" alt="Python">
+                        <span>Python</span>
+                    </div>
+                    <div class="skill-box">
+                        <img src="images/matlab.png" alt="MATLAB">
+                        <span>MATLAB</span>
+                    </div>
                 </div>
-                <div class="skill-box">
-                    <img src="ikonlar/autocad.png" alt="AutoCAD">
-                    <span>AutoCAD</span>
-                </div>
-                <div class="skill-box">
-                    <img src="ikonlar/ansys.png" alt="ANSYS">
-                    <span>ANSYS</span>
-                </div>
-                <div class="skill-box">
-                    <img src="ikonlar/adams.png" alt="MSC ADAMS">
-                    <span>MSC ADAMS</span>
-                </div>
-                <div class="skill-box">
-                    <img src="ikonlar/abaqus.png" alt="Abaqus">
-                    <span>Abaqus</span>
-                </div>
-                <div class="skill-box">
-                    <img src="python.png" alt="Python">
-                    <span>Python</span>
-                </div>
-                <div class="skill-box">
-                    <img src="matlab.png" alt="MATLAB">
-                    <span>MATLAB</span>
-                </div>
+
+                <!-- Sağ Ok Butonu -->
+                <button class="scroll-btn right-arrow" onclick="kaydir(1)">&#10095;</button>
             </div>
+            
             <p style="margin-top: 25px; font-size: 0.95rem;"><strong>Yabancı Dil:</strong> İngilizce (Orta Seviye - B1), aktif mesleki pratik.</p>
         </section>
 
@@ -256,33 +298,28 @@
             <div class="proje-kutusu">
                 <div class="item-baslik">Otomatik Zincir Bakım Mekanizması Tasarımı</div>
                 <p>Motosikletlerde bakım maliyetini azaltmak amacıyla, zincir gerginliğini otomatik ayarlayan ve yağlama yapan elektromekanik bir sistemin tasarımı ve 3D modellenmesi.</p>
-                <!-- Proje 1 Görseli -->
-                <img src="zincir.jpg" alt="Zincir Bakım Mekanizması" class="project-image">
+                <img src="images/zincir.jpg" alt="Zincir Bakım Mekanizması" class="project-image">
             </div>
 
             <div class="proje-kutusu">
                 <div class="item-baslik">Endüstriyel Solvent Geri Kazanım Sistemi Tasarımı <span class="item-tarih">TÜBİTAK 2209-A / Bitirme Projesi</span></div>
                 <p>Endüstriyel atık yönetimini sağlamak amacıyla bir solvent geri dönüşüm sisteminin proses tasarımı. Distilasyon kulesinin termodinamik hesaplamaları ve soğutma kanatçığı kullanılarak optimize edilmiş ısı eşanjörünün mekanik tasarımı.</p>
-                <!-- Proje 2 Görseli -->
-                <img src="solvent.jpg" alt="Solvent Geri Kazanım Sistemi" class="project-image">
+                <img src="images/solvent.jpg" alt="Solvent Geri Kazanım Sistemi" class="project-image">
             </div>
 
             <div class="proje-kutusu">
                 <div class="item-baslik">Tavan Vinci Sonlu Elemanlar Analizi (FEA)</div>
                 <p>Endüstriyel tip bir tavan vincinin ANSYS kullanılarak statik mukavemet, dinamik yük ve modal (titreşim) analizlerinin gerçekleştirilmesi; kritik gerilme bölgelerinin tespiti.</p>
-                <!-- Proje 3 Görseli -->
-                <img src="vinc.jpg" alt="Tavan Vinci FEA Analizi" class="project-image">
+                <img src="images/vinc.jpg" alt="Tavan Vinci FEA Analizi" class="project-image">
             </div>
 
             <div class="proje-kutusu" style="border-bottom: none; margin-bottom: 10px;">
                 <div class="item-baslik">Bina Dengeleme Sistemi Tasarımı <span class="item-tarih">Disiplinler Arası Proje</span></div>
                 <p>Yapılarda sismik yükler kaynaklı çökmeleri dengelemek ve rüzgar etkisiyle oluşan titreşimleri sönümlemek amacıyla mekanik bir dengeleme sisteminin tasarlanması.</p>
-                <!-- Proje 4 Görseli -->
-                <img src="bina.jpg" alt="Bina Dengeleme Sistemi" class="project-image">
+                <img src="images/bina.jpg" alt="Bina Dengeleme Sistemi" class="project-image">
             </div>
         </section>
 
-        <!-- DENEYİM BÖLÜMÜ -->
         <section id="deneyim">
             <h3>İş ve Staj Deneyimi</h3>
             
@@ -315,7 +352,6 @@
             </div>
         </section>
 
-        <!-- İLETİŞİM BÖLÜMÜ -->
         <section id="iletisim">
             <h3>İletişim & Bağlantılar</h3>
             <p>Projelerim, analiz detaylarım veya işbirlikleri hakkında benimle iletişime geçebilirsiniz.</p>
@@ -324,6 +360,15 @@
         </section>
 
     </div>
+
+    <!-- TIKLAMA İLE KAYDIRMA YAPMASI İÇİN EKLENEN JAVASCRIPT KODU -->
+    <script>
+        function kaydir(yon) {
+            const kutu = document.getElementById('yetenekKutusu');
+            // 205px = Bir kutunun genişliği (180px) + aradaki boşluk (25px)
+            kutu.scrollBy({ left: yon * 205, behavior: 'smooth' }); 
+        }
+    </script>
 
 </body>
 </html>
