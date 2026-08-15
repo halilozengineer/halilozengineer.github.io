@@ -161,38 +161,33 @@
         
         .marquee-container {
             display: flex;
+            align-items: center;
             width: max-content;
             animation: scroll-marquee 20s linear infinite;
         }
 
-        /* Hover yapınca animasyon dursun istersen */
         .marquee-container:hover {
             animation-play-state: paused;
         }
 
+        /* YAZI YERİNE GÖRSEL LOGOLAR İÇİN YENİ AYAR */
         .software-item {
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: #cbd5e1; /* Soluk, şık bir gri */
-            text-transform: uppercase;
-            letter-spacing: 2px;
+            height: 60px; /* Logoların ekrandaki yüksekliği */
+            width: auto;
             margin: 0 4rem; /* Logolar arası boşluk */
-            transition: color 0.3s ease;
-            cursor: default;
+            cursor: pointer;
+            filter: grayscale(100%) opacity(60%); /* Başlangıçta gri ve hafif soluk */
+            transition: all 0.4s ease;
         }
 
         .software-item:hover {
-            color: #1a1e24; /* Üzerine gelince koyulaşsın */
+            filter: grayscale(0%) opacity(100%); /* Üzerine gelince renklenir */
+            transform: scale(1.1); /* Hafifçe büyür */
         }
 
-        /* Kayan yazı animasyonunun matematiği */
         @keyframes scroll-marquee {
-            0% {
-                transform: translateX(0);
-            }
-            100% {
-                transform: translateX(-50%);
-            }
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
         }
         
     </style>
@@ -212,22 +207,22 @@
         <p class="gsap-reveal">Temel hedefim, fonksiyonelliği ve endüstriyel estetiği birleştiren mekanik çözümler üretmektir.</p>
     </section>
 
-    <!-- KULLANILAN TEKNOLOJİLER (KAYAN BANT) -->
+    <!-- KULLANILAN TEKNOLOJİLER (KAYAN GÖRSEL BANDI) -->
     <div class="marquee-section">
         <div class="marquee-container">
             <!-- 1. Grup -->
-            <div class="software-item">SolidWorks 2024</div>
-            <div class="software-item">ANSYS</div>
-            <div class="software-item">AutoCAD</div>
-            <div class="software-item">MATLAB</div>
-            <div class="software-item">Python</div>
+            <img src="ikonlar/solidworks.png" alt="SolidWorks 2024" class="software-item">
+            <img src="ikonlar/ansys.png" alt="ANSYS" class="software-item">
+            <img src="ikonlar/autocad.png" alt="AutoCAD" class="software-item">
+            <img src="ikonlar/abaqus.png" alt="Abaqus" class="software-item">
+            <img src="ikonlar/adams.png" alt="MSC Adams" class="software-item">
             
-            <!-- 2. Grup (Sonsuz döngü hissi için kopyası) -->
-            <div class="software-item">SolidWorks 2024</div>
-            <div class="software-item">ANSYS</div>
-            <div class="software-item">AutoCAD</div>
-            <div class="software-item">MATLAB</div>
-            <div class="software-item">Python</div>
+            <!-- 2. Grup (Sonsuz döngü hissi için birebir kopyası) -->
+            <img src="ikonlar/solidworks.png" alt="SolidWorks 2024" class="software-item">
+            <img src="ikonlar/ansys.png" alt="ANSYS" class="software-item">
+            <img src="ikonlar/autocad.png" alt="AutoCAD" class="software-item">
+            <img src="ikonlar/abaqus.png" alt="Abaqus" class="software-item">
+            <img src="ikonlar/adams.png" alt="MSC Adams" class="software-item">
         </div>
     </div>
     
