@@ -157,12 +157,12 @@
         </div>
     </section>
 
-    <!-- GSAP ANİMASYON TETİKLEYİCİLERİ -->
+<!-- GSAP ANİMASYON TETİKLEYİCİLERİ -->
     <script>
         gsap.registerPlugin(ScrollTrigger);
 
+        // 1. Yazıların yumuşakça belirme animasyonu
         const revealElements = document.querySelectorAll('.gsap-reveal');
-
         revealElements.forEach((el) => {
             gsap.to(el, {
                 scrollTrigger: {
@@ -175,6 +175,15 @@
                 duration: 1,
                 ease: "power3.out"
             });
+        });
+
+        // 2. YENİ: ARMCO Kabin bölümünü ekrana kilitleme (Apple Style)
+        ScrollTrigger.create({
+            trigger: "#armco-projesi", 
+            start: "center center", // Kabin ekranın tam ortasına geldiğinde...
+            end: "+=1200", // ...ziyaretçi 1200 piksel kaydırana kadar sayfayı burada tut
+            pin: true, // Ekranı kilitle! (Sayfa inmez, sadece Spline animasyonu oynar)
+            anticipatePin: 1
         });
     </script>
 
