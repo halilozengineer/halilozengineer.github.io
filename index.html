@@ -147,6 +147,54 @@
             opacity: 0;
             transform: translateY(50px);
         }
+
+        /* --- SONSUZ KAYAN LOGO BANDI (MARQUEE) --- */
+        .marquee-section {
+            background-color: #ffffff;
+            padding: 4rem 0;
+            overflow: hidden;
+            border-top: 1px solid #e2e8f0;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            align-items: center;
+        }
+        
+        .marquee-container {
+            display: flex;
+            width: max-content;
+            animation: scroll-marquee 20s linear infinite;
+        }
+
+        /* Hover yapınca animasyon dursun istersen */
+        .marquee-container:hover {
+            animation-play-state: paused;
+        }
+
+        .software-item {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #cbd5e1; /* Soluk, şık bir gri */
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin: 0 4rem; /* Logolar arası boşluk */
+            transition: color 0.3s ease;
+            cursor: default;
+        }
+
+        .software-item:hover {
+            color: #1a1e24; /* Üzerine gelince koyulaşsın */
+        }
+
+        /* Kayan yazı animasyonunun matematiği */
+        @keyframes scroll-marquee {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+        
     </style>
 </head>
 <body>
