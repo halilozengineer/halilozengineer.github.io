@@ -159,10 +159,10 @@
             display: flex;
             align-items: center;
             
-        /* BANDI YUKARI ÇEKME AYARLARI */
-            margin-top: -20vh; /* Ekran yüksekliğinin %20'si kadar yukarı çeker */
+        /* SADECE GÖRSEL OLARAK YUKARI TAŞIMA (DÜZENİ BOZMAZ) */
+            transform: translateY(-20vh); /* margin-top yerine bunu kullanıyoruz */
             position: relative; 
-            z-index: 10; /* Bandın diğer ögelerin altında kalmasını engeller */
+            z-index: 10;
         }
         
         .marquee-container {
