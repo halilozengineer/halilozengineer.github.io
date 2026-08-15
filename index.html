@@ -64,6 +64,46 @@
             margin-bottom: 1.2rem;
         }
 
+        /* --- VİZYON BÖLÜMÜ İÇİN DÜZEN (FOTOĞRAF VE METİN) --- */
+        #vizyon {
+            min-height: auto; 
+            padding-bottom: 4rem; 
+        }
+        
+        .vizyon-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 4rem;
+            width: 100%;
+        }
+
+        .vizyon-text {
+            flex: 1; 
+        }
+
+        .vizyon-image {
+            flex: 0 0 35%; 
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .vizyon-image img {
+            width: 100%;
+            max-width: 380px;
+            border-radius: 16px; 
+            box-shadow: 0 20px 40px rgba(0,0,0,0.06); 
+            filter: grayscale(100%); 
+            transition: all 0.5s ease;
+        }
+
+        .vizyon-image img:hover {
+            filter: grayscale(0%); 
+            transform: translateY(-8px); 
+            box-shadow: 0 30px 50px rgba(0,0,0,0.12); 
+        }
+        /* YENİ CSS KODLARI BİTTİ */
+        
         /* --- YENİ 3D VİTRİN BÖLÜMÜ (SPLIT SCREEN) --- */
         .showcase-section {
             display: flex;
@@ -206,11 +246,21 @@
         <h2 class="gsap-reveal">SolidWorks 2024, ANSYS ve modern mühendislik vizyonu.</h2>
     </section>
 
-    <!-- HAKKIMDA / VİZYON -->
+   <!-- HAKKIMDA / VİZYON -->
     <section id="vizyon">
-        <h1 class="gsap-reveal">Mühendislik &<br>Optimizasyon.</h1>
-        <p class="gsap-reveal">KTO Karatay Üniversitesi Makine Mühendisliği mezunu olarak; teorik mühendislik altyapımı SolidWorks 2024, AutoCAD ve ANSYS kullanarak üretime hazır, optimize edilmiş tasarımlara dönüştürüyorum. Sadece CAD modellemesi ile yetinmeyip, sistemlerin termal ve yapısal analizlerini (FEA) gerçekleştiriyor; Python ve MATLAB kullanarak mühendislik hesaplamaları ve veri görselleştirme süreçlerini yönetiyorum.</p>
-        <p class="gsap-reveal">Temel hedefim, fonksiyonelliği ve endüstriyel estetiği birleştiren mekanik çözümler üretmektir.</p>
+        <div class="vizyon-content">
+            <!-- Sol Taraf: Metinler -->
+            <div class="vizyon-text">
+                <h1 class="gsap-reveal">Mühendislik &<br>Optimizasyon.</h1>
+                <p class="gsap-reveal">KTO Karatay Üniversitesi Makine Mühendisliği mezunu olarak; teorik mühendislik altyapımı SolidWorks 2024, AutoCAD ve ANSYS kullanarak üretime hazır, optimize edilmiş tasarımlara dönüştürüyorum. Sadece CAD modellemesi ile yetinmeyip, sistemlerin termal ve yapısal analizlerini (FEA) gerçekleştiriyor; Python ve MATLAB kullanarak mühendislik hesaplamaları ve veri görselleştirme süreçlerini yönetiyorum.</p>
+                <p class="gsap-reveal">Temel hedefim, fonksiyonelliği ve endüstriyel estetiği birleştiren mekanik çözümler üretmektir.</p>
+            </div>
+            
+            <!-- Sağ Taraf: Profil Fotoğrafı -->
+            <div class="vizyon-image gsap-reveal">
+                <img src="Vesikalık.jpg" alt="Halil Öz - Makine Mühendisi">
+            </div>
+        </div>
     </section>
 
     <!-- KULLANILAN TEKNOLOJİLER (KAYAN GÖRSEL BANDI) -->
