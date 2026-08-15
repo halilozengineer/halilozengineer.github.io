@@ -31,6 +31,53 @@
             font-size: 16px;
         }
 
+        /* --- YÜZEN KAPSÜL NAVİGASYON (GLASSMORPHISM) --- */
+        .floating-nav {
+            position: fixed;
+            top: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0.65); /* Yarı şeffaf beyaz */
+            backdrop-filter: blur(16px); /* Arkadan geçenleri buzlu cam gibi buğulandırır */
+            -webkit-backdrop-filter: blur(16px);
+            padding: 0.8rem 2.5rem;
+            border-radius: 50px; /* Kapsül şekli */
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            z-index: 1000; /* Her şeyin üstünde (mesh'in bile) durmasını sağlar */
+            
+            /* Sayfa açıldığında yukarıdan yumuşakça inme animasyonu */
+            animation: navDrop 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes navDrop {
+            0% { top: -5rem; opacity: 0; }
+            100% { top: 2rem; opacity: 1; }
+        }
+
+        .floating-nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .floating-nav ul li a {
+            text-decoration: none;
+            color: #1a1e24;
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: color 0.3s ease, transform 0.3s ease;
+            display: inline-block;
+        }
+
+        .floating-nav ul li a:hover {
+            color: #ff6b6b; /* Üzerine gelince kırmızı vurgu */
+            transform: translateY(-2px); /* Hafifçe yukarı zıplama efekti */
+        }
+        
         /* --- KESİN VE GARANTİLİ 3D MESH ARKA PLAN KATMANI --- */
         .mesh-bg {
             position: fixed;
@@ -414,6 +461,18 @@
    <!-- AÇILIŞ (HERO) EKRANI -->
     <!-- ETKİLEŞİMLİ ARKA PLAN (SAYFANIN EN ARKASINDA SABİT KALIR) -->
     <div class="mesh-bg"></div>
+
+    <!-- YÜZEN KAPSÜL NAVİGASYON -->
+    <nav class="floating-nav">
+        <ul>
+            <li><a href="#hero">Ana Sayfa</a></li>
+            <li><a href="#vizyon">Vizyon</a></li>
+            <li><a href="#armco-projesi">Kabin Tasarımı</a></li>
+            <li><a href="#projeler">Projeler</a></li>
+            <li><a href="#referanslar">Referanslar</a></li>
+        </ul>
+    </nav>
+    
     <section id="hero">
         <div class="hero-content">
             <!-- Sol Taraf: Yazılar ve Buton -->
