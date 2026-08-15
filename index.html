@@ -27,44 +27,18 @@
             font-size: 16px;
         }
 
-        /* 3D SPLINE MODELİNİN ARKA PLANDA DURACAĞI ALAN */
-        #spline-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: 0; 
-            pointer-events: auto;
-            opacity: 0.85; /* Modelin şeffaflığı (Yazıları boğmaması için) */
-        }
-
-        /* Spline objesini tam ekrana yaymak için */
-        spline-viewer {
-            width: 100%;
-            height: 100%;
-        }
-
-        /* İÇERİK KATMANI (YAZILAR) */
-        .content-layer {
-            position: relative;
-            z-index: 1; 
-            pointer-events: none; 
-        }
-
-        /* TAM EKRAN BÖLÜMLER (HER BÖLÜM EKRANI KAPLAR) */
+        /* TAM EKRAN BÖLÜMLER STANDART */
         section {
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             padding: 0 10vw;
-            pointer-events: auto; 
         }
 
         /* CESUR TİPOGRAFİ (BÜYÜK YAZILAR) */
         h1 {
-            font-size: 6rem;
+            font-size: 5rem;
             font-weight: 800;
             line-height: 1;
             letter-spacing: -2px;
@@ -87,6 +61,37 @@
             color: #4a4a4a; 
             max-width: 500px;
             line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        /* --- YENİ 3D VİTRİN BÖLÜMÜ (SPLIT SCREEN) --- */
+        .showcase-section {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 100vh;
+            padding: 0 10vw;
+        }
+        
+        .showcase-text {
+            width: 40%; /* Sol taraftaki yazıların kaplayacağı alan */
+        }
+        
+        .showcase-3d {
+            width: 55%; /* Sağ taraftaki 3D modelin kaplayacağı alan */
+            height: 80vh; /* Yükseklik */
+            position: relative;
+            background-color: #ffffff; /* Modelin arkasına çok hafif beyaz bir zemin atar */
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05); /* Şık bir gölge */
+            overflow: hidden;
+        }
+
+        /* Spline objesini kutuya tam oturtmak için */
+        spline-viewer {
+            width: 100%;
+            height: 100%;
         }
 
         /* YENİ NESİL PROJE KARTLARI */
@@ -94,7 +99,7 @@
             margin-top: 4rem;
         }
         .project-item {
-            font-size: 3rem;
+            font-size: 2.5rem;
             font-weight: bold;
             color: #1a1e24;
             text-decoration: none;
@@ -118,34 +123,39 @@
 </head>
 <body>
 
-    <!-- YENİ 3D SPLINE MODELİMİZ BURADA ÇALIŞACAK -->
-    <div id="spline-container">
-        <spline-viewer url="https://prod.spline.design/67YtRWBx9TH2YZ09/scene.splinecode"></spline-viewer>
+    <!-- AÇILIŞ (HERO) EKRANI -->
+    <section id="hero">
+        <h1 class="gsap-reveal">Mekanik<br><span>Tasarım.</span></h1>
+        <h2 class="gsap-reveal">SolidWorks, ANSYS ve modern mühendislik vizyonu.</h2>
+    </section>
+
+    <!-- HAKKIMDA / VİZYON -->
+    <section id="vizyon">
+        <h1 class="gsap-reveal">Limitleri<br>Zorlamak.</h1>
+        <p class="gsap-reveal">Bilgisayar destekli tasarım (CAD) ve sonlu elemanlar analizi (FEA) alanlarında uzmanlaşarak; teorik mühendislik altyapımı endüstriyel ve optimize edilmiş çözümlere dönüştürüyorum.</p>
+    </section>
+
+    <!-- YENİ 3D ETKİLEŞİMLİ VİTRİN BÖLÜMÜ -->
+    <div id="armco-projesi" class="showcase-section">
+        <div class="showcase-text">
+            <h1 class="gsap-reveal">ARMCO<br><span>Kabin.</span></h1>
+            <p class="gsap-reveal">Bu proje kapsamında özel olarak tasarlanmış subrack ve kabin mimarisi.</p>
+            <p class="gsap-reveal"><strong>Etkileşim:</strong> Kapağı açmak için farenizin tekerleğini kullanın veya sayfayı kaydırın. Modeli incelemek için sağ tıklayıp döndürebilirsiniz.</p>
+        </div>
+        <div class="showcase-3d gsap-reveal">
+            <!-- SENİN KABİN MODELİN BURADA -->
+            <spline-viewer url="https://prod.spline.design/67YtRWBx9TH2YZ09/scene.splinecode"></spline-viewer>
+        </div>
     </div>
 
-    <!-- İÇERİK BÖLÜMLERİ -->
-    <div class="content-layer">
-        
-        <section id="hero">
-            <h1 class="gsap-reveal">Mekanik<br><span>Tasarım.</span></h1>
-            <h2 class="gsap-reveal">SolidWorks, ANSYS ve modern mühendislik vizyonu.</h2>
-        </section>
-
-        <section id="vizyon">
-            <h1 class="gsap-reveal">Limitleri<br>Zorlamak.</h1>
-            <p class="gsap-reveal">Bilgisayar destekli tasarım (CAD) ve sonlu elemanlar analizi (FEA) alanlarında uzmanlaşarak; teorik mühendislik altyapımı endüstriyel ve optimize edilmiş çözümlere dönüştürüyorum.</p>
-        </section>
-
-        <section id="projeler">
-            <h1 class="gsap-reveal">Seçili<br>Projeler.</h1>
-            <div class="project-list">
-                <div class="project-item gsap-reveal">Endüstriyel Solvent Sistemi</div>
-                <div class="project-item gsap-reveal">Zincir Bakım Mekanizması</div>
-                <div class="project-item gsap-reveal">ARMCO Subrack & Kabin</div>
-            </div>
-        </section>
-
-    </div>
+    <!-- DİĞER PROJELER LİSTESİ -->
+    <section id="projeler">
+        <h1 class="gsap-reveal">Diğer<br>Projeler.</h1>
+        <div class="project-list">
+            <div class="project-item gsap-reveal">Endüstriyel Solvent Sistemi</div>
+            <div class="project-item gsap-reveal">Zincir Bakım Mekanizması</div>
+        </div>
+    </section>
 
     <!-- GSAP ANİMASYON TETİKLEYİCİLERİ -->
     <script>
