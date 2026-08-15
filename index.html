@@ -31,38 +31,34 @@
             font-size: 16px;
         }
 
-        /* --- TÜM İÇERİĞİ GRID (AĞ) KATMANININ ÖNÜNE ÇIKARAN AYAR --- */
-        section, .showcase-section, .vizyon-wrapper {
-            position: relative;
-            z-index: 5; /* Bütün içerikleri maskeleme katmanının önüne alır */
-        }
-
-        /* 1. KATMAN: Uzaktaki (Küçük ve Silik) Standart Mesh */
-        body::before {
-            content: "";
+        /* --- KESİN VE GARANTİLİ 3D MESH ARKA PLAN KATMANI --- */
+        .mesh-bg {
             position: fixed;
-            top: 0; left: 0; width: 100vw; height: 100vh;
+            top: 0; 
+            left: 0; 
+            width: 100vw; 
+            height: 100vh;
+            z-index: -999 !important; /* Sayfadaki HER ŞEYİN kesinlikle arkasına sabitler */
+            pointer-events: none; /* Tıklamaları engellemez */
+            
+            /* 1. KATMAN: Küçük noktalar */
+            background-color: #f4f6f9;
             background-image: radial-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px);
             background-size: 20px 20px;
-            z-index: -2; /* Her şeyin en arkasında */
-            pointer-events: none; /* Tıklamaları engellememesi için */
         }
 
-        /* 2. KATMAN: Farenin Olduğu Yerde Beliren, Yaklaşmış (Büyük) Mesh */
-        body::after {
+        /* 2. KATMAN: Farenin ucundaki büyük noktalar (Büyüteç) */
+        .mesh-bg::after {
             content: "";
-            position: fixed;
-            top: 0; left: 0; width: 100vw; height: 100vh;
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
             background-image: radial-gradient(rgba(0, 0, 0, 0.15) 1.5px, transparent 1.5px);
-            background-size: 35px 35px; /* Noktalar büyüdü = Yakınlaşma hissi */
-            z-index: -1;
-            pointer-events: none;
+            background-size: 35px 35px;
             
-            /* CSS Maskeleme: Farenin koordinatlarında 350px çapında bir büyüteç oluşturur */
-            mask-image: radial-gradient(350px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), black 0%, transparent 100%);
-            -webkit-mask-image: radial-gradient(350px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), black 0%, transparent 100%);
+            /* Düzeltilmiş Büyüteç Maskesi */
+            -webkit-mask-image: radial-gradient(circle at var(--mouse-x, 50vw) var(--mouse-y, 50vh), black 0%, transparent 350px);
+            mask-image: radial-gradient(circle at var(--mouse-x, 50vw) var(--mouse-y, 50vh), black 0%, transparent 350px);
         }
-
         /* TAM EKRAN BÖLÜMLER STANDART */
         section {
             min-height: 100vh;
@@ -416,6 +412,8 @@
 <body>
     
    <!-- AÇILIŞ (HERO) EKRANI -->
+    <!-- ETKİLEŞİMLİ ARKA PLAN (SAYFANIN EN ARKASINDA SABİT KALIR) -->
+    <div class="mesh-bg"></div>
     <section id="hero">
         <div class="hero-content">
             <!-- Sol Taraf: Yazılar ve Buton -->
@@ -595,12 +593,14 @@
                 ease: "power3.out"
             });
 
-            // --- ETKİLEŞİMLİ 3D MESH (BÜYÜTEÇ) TAKİP SİSTEMİ ---
-        document.addEventListener('mousemove', function(e) {
-            // Farenin X ve Y koordinatlarını anlık olarak alıp CSS değişkenlerine iletiyoruz
-            document.body.style.setProperty('--mouse-x', e.clientX + 'px');
-            document.body.style.setProperty('--mouse-y', e.clientY + 'px');
-        });
+// --- ETKİLEŞİMLİ 3D MESH (BÜYÜTEÇ) TAKİP SİSTEMİ ---
+        const meshBg = document.querySelector('.mesh-bg');
+        if (meshBg) {
+            document.addEventListener('mousemove', function(e) {
+                meshBg.style.setProperty('--mouse-x', e.clientX + 'px');
+                meshBg.style.setProperty('--mouse-y', e.clientY + 'px');
+            });
+        }
             
     </script>
 
