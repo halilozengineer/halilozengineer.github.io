@@ -157,11 +157,11 @@
         </div>
     </section>
 
-<!-- GSAP ANİMASYON TETİKLEYİCİLERİ VE ETKİLEŞİM KONTROLLERİ -->
+<!-- GSAP ANİMASYON TETİKLEYİCİLERİ -->
     <script>
         gsap.registerPlugin(ScrollTrigger);
 
-        // 1. Yazıların yumuşakça belirme animasyonu
+        // Yazıların yumuşakça belirme animasyonu
         const revealElements = document.querySelectorAll('.gsap-reveal');
         revealElements.forEach((el) => {
             gsap.to(el, {
@@ -176,19 +176,6 @@
                 ease: "power3.out"
             });
         });
-
-        // 2. Fare 3D modelin üzerindeyken sayfa kaymasını (scroll) engelle
-        const showcase3D = document.querySelector('.showcase-3d');
-        
-        // Bilgisayar faresi tekerleği (wheel) için
-        showcase3D.addEventListener('wheel', (e) => {
-            e.preventDefault(); // Sayfanın aşağı/yukarı kaymasını durdurur
-        }, { passive: false });
-
-        // Dokunmatik ekranlar (telefon/tablet parmak kaydırması) için
-        showcase3D.addEventListener('touchmove', (e) => {
-            e.preventDefault();
-        }, { passive: false });
     </script>
 
 </body>
