@@ -13,6 +13,18 @@
     <script type="module" src="https://unpkg.com/@splinetool/viewer@1.12.98/build/spline-viewer.js"></script>
     
     <style>
+
+         /* --- PREMIUM SAYFA KAYDIRMA (SCROLL SNAPPING) AYARLARI --- */
+        html {
+            scroll-snap-type: y mandatory;
+            scroll-behavior: smooth;
+        }
+
+        section, .showcase-section {
+            scroll-snap-align: start;
+            scroll-snap-stop: always; 
+        }
+        
         /* SİNEMATİK VE MODERN RESET (AYDINLIK TEMA) */
         * {
             margin: 0;
@@ -240,17 +252,6 @@
     </style>
 </head>
 <body>
-
-    /* --- PREMIUM SAYFA KAYDIRMA (SCROLL SNAPPING) AYARLARI --- */
-        html {
-            scroll-snap-type: y mandatory;
-            scroll-behavior: smooth;
-        }
-
-        section, .showcase-section {
-            scroll-snap-align: start;
-            scroll-snap-stop: always; 
-        }
     
     <!-- AÇILIŞ (HERO) EKRANI -->
     <section id="hero">
