@@ -129,28 +129,30 @@
             padding: 0 10vw; /* Sağdan soldan hizalamayı standartlaştırdık */
         }
         
-        .hero-content {
+       .hero-content {
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            justify-content: center; /* Uçlara itmeyi iptal edip merkeze topluyoruz */
+            gap: 6rem; /* Yazı ve devasa model arasındaki nefes payı */
             width: 100%;
+            max-width: 1400px; /* İçeriğin dağılmasını engeller (Büyük model için geniş tuttuk) */
+            margin: 0 auto; /* Tam ortaya hizalar */
         }
 
         .hero-text {
-            flex: 1;
+            flex: 1; /* Yazı kısmı standart alanını korur */
         }
 
         .hero-image {
-            flex: 1;
+            flex: 1.5; /* DİKKAT: Sağ tarafa metinden 1.5 kat daha fazla alan veriyoruz */
             display: flex;
-            justify-content: flex-end;
+            justify-content: flex-end; /* Modeli sağa yaslar */
         }
 
         .hero-image img {
             width: 100%;
-            max-width: 550px; /* Görselin maksimum büyüklüğü */
-            /* Havada süzülme animasyonu ekliyoruz */
-            animation: float 6s ease-in-out infinite;
+            max-width: 900px; /* 550px olan sınırı 900px'e çıkararak devasa hale getirdik */
+            animation: float 6s ease-in-out infinite; /* Süzülme efekti kalıyor */
         }
 
         /* Havada Süzülme (Floating) Efekti */
