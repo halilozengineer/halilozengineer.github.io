@@ -33,7 +33,7 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            padding: 0 10vw;
+            padding: 10vh 10vw;
         }
 
         /* CESUR TİPOGRAFİ (BÜYÜK YAZILAR) */
@@ -42,7 +42,7 @@
             font-weight: 800;
             line-height: 1;
             letter-spacing: -2px;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
             text-transform: uppercase;
             color: #1a1e24;
         }
@@ -59,9 +59,9 @@
         p {
             font-size: 1.2rem;
             color: #4a4a4a; 
-            max-width: 500px;
-            line-height: 1.6;
-            margin-bottom: 1rem;
+            max-width: 650px;
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
         }
 
         /* --- YENİ 3D VİTRİN BÖLÜMÜ (SPLIT SCREEN) --- */
@@ -75,20 +75,19 @@
         }
         
         .showcase-text {
-            width: 40%; /* Sol taraftaki yazıların kaplayacağı alan */
+            width: 40%;
         }
         
         .showcase-3d {
-            width: 55%; /* Sağ taraftaki 3D modelin kaplayacağı alan */
-            height: 80vh; /* Yükseklik */
+            width: 55%; 
+            height: 80vh; 
             position: relative;
-            background-color: #ffffff; /* Modelin arkasına çok hafif beyaz bir zemin atar */
+            background-color: #ffffff; 
             border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.05); /* Şık bir gölge */
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05); 
             overflow: hidden;
         }
 
-        /* Spline objesini kutuya tam oturtmak için */
         spline-viewer {
             width: 100%;
             height: 100%;
@@ -96,22 +95,51 @@
 
         /* YENİ NESİL PROJE KARTLARI */
         .project-list {
-            margin-top: 4rem;
+            margin-top: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
         }
-        .project-item {
-            font-size: 2.5rem;
-            font-weight: bold;
+        .project-card {
+            border-left: 4px solid #ff6b6b;
+            padding-left: 2rem;
+            transition: transform 0.3s ease;
+        }
+        .project-card:hover {
+            transform: translateX(10px);
+        }
+        .project-card h3 {
+            font-size: 2rem;
+            font-weight: 700;
             color: #1a1e24;
-            text-decoration: none;
-            display: block;
-            border-bottom: 1px solid #d1d5db; 
-            padding: 2rem 0;
-            transition: color 0.3s, padding-left 0.3s;
-            cursor: pointer;
+            margin-bottom: 1rem;
         }
-        .project-item:hover {
-            color: #ff6b6b;
-            padding-left: 2rem; 
+        .project-card p {
+            max-width: 800px;
+            font-size: 1.1rem;
+            margin-bottom: 0;
+        }
+
+        /* REFERANSLAR LİSTESİ */
+        .reference-list {
+            list-style: none;
+            margin-top: 2rem;
+        }
+        .reference-list li {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #1a1e24;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #e2e8f0;
+            max-width: 600px;
+        }
+        .reference-list li span {
+            display: block;
+            font-weight: 400;
+            color: #718096;
+            font-size: 1.1rem;
+            margin-top: 0.3rem;
         }
 
         /* ANİMASYON İÇİN GİZLEME SINIFLARI */
@@ -126,21 +154,23 @@
     <!-- AÇILIŞ (HERO) EKRANI -->
     <section id="hero">
         <h1 class="gsap-reveal">Mekanik<br><span>Tasarım.</span></h1>
-        <h2 class="gsap-reveal">SolidWorks, ANSYS ve modern mühendislik vizyonu.</h2>
+        <h2 class="gsap-reveal">SolidWorks 2024, ANSYS ve modern mühendislik vizyonu.</h2>
     </section>
 
     <!-- HAKKIMDA / VİZYON -->
     <section id="vizyon">
-        <h1 class="gsap-reveal">Limitleri<br>Zorlamak.</h1>
-        <p class="gsap-reveal">Bilgisayar destekli tasarım (CAD) ve sonlu elemanlar analizi (FEA) alanlarında uzmanlaşarak; teorik mühendislik altyapımı endüstriyel ve optimize edilmiş çözümlere dönüştürüyorum.</p>
+        <h1 class="gsap-reveal">Mühendislik &<br>Optimizasyon.</h1>
+        <p class="gsap-reveal">KTO Karatay Üniversitesi Makine Mühendisliği mezunu olarak; teorik mühendislik altyapımı SolidWorks 2024, AutoCAD ve ANSYS kullanarak üretime hazır, optimize edilmiş tasarımlara dönüştürüyorum. Sadece CAD modellemesi ile yetinmeyip, sistemlerin termal ve yapısal analizlerini (FEA) gerçekleştiriyor; Python ve MATLAB kullanarak mühendislik hesaplamaları ve veri görselleştirme süreçlerini yönetiyorum.</p>
+        <p class="gsap-reveal">Temel hedefim, fonksiyonelliği ve endüstriyel estetiği birleştiren mekanik çözümler üretmektir.</p>
     </section>
 
     <!-- YENİ 3D ETKİLEŞİMLİ VİTRİN BÖLÜMÜ -->
     <div id="armco-projesi" class="showcase-section">
         <div class="showcase-text">
             <h1 class="gsap-reveal">ARMCO<br><span>Kabin.</span></h1>
-            <p class="gsap-reveal">Bu proje kapsamında özel olarak tasarlanmış subrack ve kabin mimarisi.</p>
-            <p class="gsap-reveal"><strong>Etkileşim:</strong> Kapağı açmak için farenizin tekerleğini kullanın veya sayfayı kaydırın. Modeli incelemek için sağ tıklayıp döndürebilirsiniz.</p>
+            <p class="gsap-reveal">ARMCO Elektrik Elektronik Mühendisliği'ndeki uzun dönem stajım kapsamında, raylı sistem sinyalizasyon altyapıları için geliştirilen endüstriyel kabin projesi.</p>
+            <p class="gsap-reveal">Bu süreçte subrack yerleşim planlamaları, kabin içi kablolama rotasyonları ve laboratuvar test düzeneklerinin mekanik tasarımları üzerine çalıştım. Ergonomi, ısı dağılımı ve montaj kolaylığı kriterleri gözetilerek optimize edilen bu tasarım, konseptten üretime hazırlık aşamasına kadar detaylandırılmıştır.</p>
+            <p class="gsap-reveal" style="font-size: 0.95rem; color: #718096; margin-top: 2rem;"><strong>Etkileşim:</strong> Kapağı açmak için farenizle modelin üzerine gelin. Modeli incelemek için sağ tıklayıp sürükleyebilirsiniz.</p>
         </div>
         <div class="showcase-3d gsap-reveal">
             <!-- SENİN KABİN MODELİN BURADA -->
@@ -152,17 +182,35 @@
     <section id="projeler">
         <h1 class="gsap-reveal">Diğer<br>Projeler.</h1>
         <div class="project-list">
-            <div class="project-item gsap-reveal">Endüstriyel Solvent Sistemi</div>
-            <div class="project-item gsap-reveal">Zincir Bakım Mekanizması</div>
+            <div class="project-card gsap-reveal">
+                <h3>Endüstriyel Solvent Geri Kazanım Sistemi</h3>
+                <p>Mezuniyet projesi olarak yoğuşma ve distilasyon süreçlerini kullanarak endüstriyel etil asetatın geri kazanımını sağlayan sistem tasarımı. Proje kapsamında detaylı termodinamik mühendislik hesaplamaları, ısı eşanjörü boyutlandırması ve distilasyon kolonu tasarımı gerçekleştirilmiş; sistem verimliliği teorik olarak maksimize edilmiştir.</p>
+            </div>
+            <div class="project-card gsap-reveal">
+                <h3>TEKNOFEST Fundus Masaj Cihazı Prototipi</h3>
+                <p>TEKNOFEST yarışması takımı için tasarlanan medikal cihaz prototipi. Mekanik tahrik sistemlerinin tasarımı, motor spesifikasyonlarının belirlenmesi ve hassas sensör entegrasyonları için gerekli mekanik altyapının 3D modellenmesi süreçleri başarıyla tamamlanmıştır.</p>
+            </div>
         </div>
     </section>
 
-<!-- GSAP ANİMASYON TETİKLEYİCİLERİ -->
+    <!-- REFERANSLAR LİSTESİ -->
+    <section id="referanslar">
+        <h1 class="gsap-reveal">Referanslar.</h1>
+        <p class="gsap-reveal">Projeler ve endüstriyel tasarımlar sürecinde birlikte çalıştığım profesyonel referanslarım:</p>
+        <ul class="reference-list">
+            <li class="gsap-reveal">Kutlu Küpeli <span>ARMCO Elektrik Elektronik Mühendisliği</span></li>
+            <li class="gsap-reveal">Hicabi Bal <span>ARMCO Elektrik Elektronik Mühendisliği</span></li>
+            <li class="gsap-reveal">Volkan Karakılınç <span>ARMCO Elektrik Elektronik Mühendisliği</span></li>
+        </ul>
+    </section>
+
+    <!-- GSAP ANİMASYON TETİKLEYİCİLERİ -->
     <script>
         gsap.registerPlugin(ScrollTrigger);
 
-        // Yazıların yumuşakça belirme animasyonu
+        // Yazıların ve kutuların yumuşakça belirme animasyonu
         const revealElements = document.querySelectorAll('.gsap-reveal');
+
         revealElements.forEach((el) => {
             gsap.to(el, {
                 scrollTrigger: {
