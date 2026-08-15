@@ -14,15 +14,18 @@
     
     <style>
 
-         /* --- PREMIUM SAYFA KAYDIRMA (SCROLL SNAPPING) AYARLARI --- */
+       /* --- PREMIUM SAYFA KAYDIRMA (SCROLL SNAPPING) AYARLARI --- */
         html {
-            scroll-snap-type: y mandatory;
+            /* 'mandatory' (zorunlu) yerine 'proximity' (yakınlık) kullanıyoruz. 
+               Bu sayede sayfa zorla değil, sadece sınıra yaklaştığında yumuşakça oturur. */
+            scroll-snap-type: y proximity; 
             scroll-behavior: smooth;
         }
 
         section, .showcase-section {
             scroll-snap-align: start;
-            scroll-snap-stop: always; 
+            /* scroll-snap-stop: always; satırını SİLDİK. 
+               Böylece hızlı kaydırmalarda takılma yapmadan doğal bir akış sağlar. */
         }
         
         /* SİNEMATİK VE MODERN RESET (AYDINLIK TEMA) */
