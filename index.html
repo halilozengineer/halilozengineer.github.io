@@ -61,10 +61,11 @@
             max-width: 600px;
         }
         p {
-            font-size: 1.2rem;
+            /* 1.2rem ile başlar, ekranın %1.5'i oranında büyür, en fazla 1.5rem olur */
+            font-size: clamp(1.2rem, 1.5vw, 1.5rem); 
             color: #4a4a4a; 
-            max-width: 650px;
-            line-height: 1.7;
+            max-width: 800px; /* Dev ekranlarda okuma alanını genişlettik */
+            line-height: 1.8; /* Yazıların nefes almasını sağladık */
             margin-bottom: 1.2rem;
         }
 
