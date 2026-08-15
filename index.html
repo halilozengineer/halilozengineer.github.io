@@ -64,10 +64,18 @@
             margin-bottom: 1.2rem;
         }
 
-        /* --- VİZYON BÖLÜMÜ İÇİN DÜZEN (FOTOĞRAF VE METİN) --- */
+       /* --- VİZYON BÖLÜMÜ İÇİN DÜZEN (FOTOĞRAF VE METİN) --- */
+        .vizyon-wrapper {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0;
+        }
+
         #vizyon {
             min-height: auto; 
-            padding-bottom: 4rem; 
+            padding: 0 10vw; 
         }
         
         .vizyon-content {
@@ -88,21 +96,18 @@
             justify-content: flex-end;
         }
 
-      .vizyon-image img {
+        .vizyon-image img {
             width: 100%;
             max-width: 380px;
             border-radius: 16px; 
             box-shadow: 0 20px 40px rgba(0,0,0,0.06); 
-            /* filter: grayscale(100%); SATIRINI BURADAN SİLDİK */
             transition: all 0.5s ease;
         }
 
         .vizyon-image img:hover {
-            /* filter: grayscale(0%); SATIRINI BURADAN SİLDİK */
-            transform: translateY(-8px); /* Üzerine gelince hafifçe yukarı kalkma efekti şık durduğu için koruyoruz */
-            box-shadow: 0 30px 50px rgba(0,0,0,0.12); /* Gölgenin belirginleşmesi efekti kalsın */
+            transform: translateY(-8px); 
+            box-shadow: 0 30px 50px rgba(0,0,0,0.12); 
         }
-        /* YENİ CSS KODLARI BİTTİ */
         
         /* --- YENİ 3D VİTRİN BÖLÜMÜ (SPLIT SCREEN) --- */
         .showcase-section {
@@ -191,14 +196,14 @@
        /* --- SONSUZ KAYAN LOGO BANDI (MARQUEE) --- */
         .marquee-section {
             background-color: #ffffff;
-            padding: 0; /* Ekstra boşluğu tamamen sildik */
-            height: 150px; /* Bandın kalınlığını şık ve ince bir ölçüye kilitledik */
-            overflow: hidden; /* Dışarı taşan devasa şeffaf alanları kestik */
+            padding: 0; 
+            height: 150px; 
+            overflow: hidden; 
             border-top: 1px solid #e2e8f0;
             border-bottom: 1px solid #e2e8f0;
             display: flex;
             align-items: center;
-            
+            margin-top: 4rem; /* Vizyon ile arasına nefes payı eklendi */
         }
         
         .marquee-container {
@@ -236,47 +241,63 @@
 </head>
 <body>
 
+    /* --- PREMIUM SAYFA KAYDIRMA (SCROLL SNAPPING) AYARLARI --- */
+        html {
+            scroll-snap-type: y mandatory;
+            scroll-behavior: smooth;
+        }
+
+        section, .showcase-section {
+            scroll-snap-align: start;
+            scroll-snap-stop: always; 
+        }
+    
     <!-- AÇILIŞ (HERO) EKRANI -->
     <section id="hero">
         <h1 class="gsap-reveal">Mekanik<br><span>Tasarım.</span></h1>
         <h2 class="gsap-reveal">SolidWorks 2024, ANSYS ve modern mühendislik vizyonu.</h2>
     </section>
 
-   <!-- HAKKIMDA / VİZYON -->
-    <section id="vizyon">
-        <div class="vizyon-content">
-            <!-- Sol Taraf: Metinler -->
-            <div class="vizyon-text">
-                <h1 class="gsap-reveal">Mühendislik &<br>Optimizasyon.</h1>
-                <p class="gsap-reveal">KTO Karatay Üniversitesi Makine Mühendisliği mezunu olarak; teorik mühendislik altyapımı SolidWorks 2024, AutoCAD ve ANSYS kullanarak üretime hazır, optimize edilmiş tasarımlara dönüştürüyorum. Sadece CAD modellemesi ile yetinmeyip, sistemlerin termal ve yapısal analizlerini (FEA) gerçekleştiriyor; Python ve MATLAB kullanarak mühendislik hesaplamaları ve veri görselleştirme süreçlerini yönetiyorum.</p>
-                <p class="gsap-reveal">Temel hedefim, fonksiyonelliği ve endüstriyel estetiği birleştiren mekanik çözümler üretmektir.</p>
-            </div>
-            
-            <!-- Sağ Taraf: Profil Fotoğrafı -->
-            <div class="vizyon-image gsap-reveal">
-                <img src="ikonlar/Vesikalık.png" alt="Halil Öz - Makine Mühendisi">
+  <!-- 2. SLAYT EKRANI: VİZYON VE TEKNOLOJİ BİR ARADA -->
+    <section class="vizyon-wrapper">
+        
+        <!-- ÜST KISIM: Hakkımda / Vizyon -->
+        <div id="vizyon">
+            <div class="vizyon-content">
+                <!-- Sol Taraf: Metinler -->
+                <div class="vizyon-text">
+                    <h1 class="gsap-reveal">Mühendislik &<br>Optimizasyon.</h1>
+                    <p class="gsap-reveal">KTO Karatay Üniversitesi Makine Mühendisliği mezunu olarak; teorik mühendislik altyapımı SolidWorks 2024, AutoCAD ve ANSYS kullanarak üretime hazır, optimize edilmiş tasarımlara dönüştürüyorum. Sadece CAD modellemesi ile yetinmeyip, sistemlerin termal ve yapısal analizlerini (FEA) gerçekleştiriyor; Python ve MATLAB kullanarak mühendislik hesaplamaları ve veri görselleştirme süreçlerini yönetiyorum.</p>
+                    <p class="gsap-reveal">Temel hedefim, fonksiyonelliği ve endüstriyel estetiği birleştiren mekanik çözümler üretmektir.</p>
+                </div>
+                
+                <!-- Sağ Taraf: Profil Fotoğrafı -->
+                <div class="vizyon-image gsap-reveal">
+                    <img src="ikonlar/Vesikalık.png" alt="Halil Öz - Makine Mühendisi">
+                </div>
             </div>
         </div>
-    </section>
 
-    <!-- KULLANILAN TEKNOLOJİLER (KAYAN GÖRSEL BANDI) -->
-    <div class="marquee-section">
-        <div class="marquee-container">
-            <!-- 1. Grup -->
-            <img src="ikonlar/solidworks.png" alt="SolidWorks 2024" class="software-item" style="height: 140px;">
-            <img src="ikonlar/ansys.png" alt="ANSYS" class="software-item">
-            <img src="ikonlar/autocad.png" alt="AutoCAD" class="software-item" style="height: 270px;">
-            <img src="ikonlar/abaqus.png" alt="Abaqus" class="software-item" style="height: 150px;">
-            <img src="ikonlar/adams.png" alt="MSC Adams" class="software-item" style="height: 280px;">
-            
-            <!-- 2. Grup (Sonsuz döngü hissi için birebir kopyası) -->
-            <img src="ikonlar/solidworks.png" alt="SolidWorks 2024" class="software-item" style="height: 140px;">
-            <img src="ikonlar/ansys.png" alt="ANSYS" class="software-item">
-            <img src="ikonlar/autocad.png" alt="AutoCAD" class="software-item" style="height: 270px;">
-            <img src="ikonlar/abaqus.png" alt="Abaqus" class="software-item" style="height: 150px;">
-            <img src="ikonlar/adams.png" alt="MSC Adams" class="software-item" style="height: 280px;">
+        <!-- ALT KISIM: Kullanılan Teknolojiler (Kayan Bant) -->
+        <div class="marquee-section">
+            <div class="marquee-container">
+                <!-- 1. Grup -->
+                <img src="ikonlar/solidworks.png" alt="SolidWorks 2024" class="software-item" style="height: 140px;">
+                <img src="ikonlar/ansys.png" alt="ANSYS" class="software-item">
+                <img src="ikonlar/autocad.png" alt="AutoCAD" class="software-item" style="height: 270px;">
+                <img src="ikonlar/abaqus.png" alt="Abaqus" class="software-item" style="height: 150px;">
+                <img src="ikonlar/adams.png" alt="MSC Adams" class="software-item" style="height: 280px;">
+                
+                <!-- 2. Grup (Sonsuz döngü hissi için birebir kopyası) -->
+                <img src="ikonlar/solidworks.png" alt="SolidWorks 2024" class="software-item" style="height: 140px;">
+                <img src="ikonlar/ansys.png" alt="ANSYS" class="software-item">
+                <img src="ikonlar/autocad.png" alt="AutoCAD" class="software-item" style="height: 270px;">
+                <img src="ikonlar/abaqus.png" alt="Abaqus" class="software-item" style="height: 150px;">
+                <img src="ikonlar/adams.png" alt="MSC Adams" class="software-item" style="height: 280px;">
+            </div>
         </div>
-    </div>
+
+    </section>
     
     <!-- YENİ 3D ETKİLEŞİMLİ VİTRİN BÖLÜMÜ -->
     <div id="armco-projesi" class="showcase-section">
