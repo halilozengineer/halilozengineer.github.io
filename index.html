@@ -83,12 +83,22 @@
             padding: 0 10vw; 
         }
         
-        .vizyon-content {
+       .vizyon-content {
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            gap: 4rem;
+            
+            /* Uçlara itmek yerine, merkeze doğru topluyoruz */
+            justify-content: center; 
+            
+            /* Fotoğraf ve yazı arasındaki o ideal boşluğu (nefes payını) sabitliyoruz */
+            gap: 8rem; 
+            
             width: 100%;
+            /* Ekran ne kadar büyürse büyüsün, içerik bu sınırın ötesine geçip dağılmaz */
+            max-width: 1200px; 
+            
+            /* Sınırlandırdığımız bu bloğu ekranın tam ortasına oturtur */
+            margin: 0 auto; 
         }
 
         .vizyon-text {
