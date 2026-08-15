@@ -23,12 +23,38 @@
             padding: 0;
             box-sizing: border-box;
         }
-        body {
+       body {
             font-family: 'Helvetica Neue', Arial, sans-serif;
             background-color: #f4f6f9; 
             color: #1a1e24; 
             overflow-x: hidden;
             font-size: 16px;
+        }
+
+        /* 1. KATMAN: Uzaktaki (Küçük ve Silik) Standart Mesh */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background-image: radial-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+            background-size: 20px 20px;
+            z-index: -2; /* Her şeyin en arkasında */
+            pointer-events: none; /* Tıklamaları engellememesi için */
+        }
+
+        /* 2. KATMAN: Farenin Olduğu Yerde Beliren, Yaklaşmış (Büyük) Mesh */
+        body::after {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background-image: radial-gradient(rgba(0, 0, 0, 0.15) 1.5px, transparent 1.5px);
+            background-size: 35px 35px; /* Noktalar büyüdü = Yakınlaşma hissi */
+            z-index: -1;
+            pointer-events: none;
+            
+            /* CSS Maskeleme: Farenin koordinatlarında 350px çapında bir büyüteç oluşturur */
+            mask-image: radial-gradient(350px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), black 0%, transparent 100%);
+            -webkit-mask-image: radial-gradient(350px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), black 0%, transparent 100%);
         }
 
         /* TAM EKRAN BÖLÜMLER STANDART */
@@ -562,7 +588,14 @@
                 duration: 1,
                 ease: "power3.out"
             });
+
+            // --- ETKİLEŞİMLİ 3D MESH (BÜYÜTEÇ) TAKİP SİSTEMİ ---
+        document.addEventListener('mousemove', function(e) {
+            // Farenin X ve Y koordinatlarını anlık olarak alıp CSS değişkenlerine iletiyoruz
+            document.body.style.setProperty('--mouse-x', e.clientX + 'px');
+            document.body.style.setProperty('--mouse-y', e.clientY + 'px');
         });
+            
     </script>
 
 </body>
