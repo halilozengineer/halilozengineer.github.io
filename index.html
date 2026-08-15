@@ -157,7 +157,7 @@
         </div>
     </section>
 
-<!-- GSAP ANİMASYON TETİKLEYİCİLERİ -->
+<!-- GSAP ANİMASYON TETİKLEYİCİLERİ VE ETKİLEŞİM KONTROLLERİ -->
     <script>
         gsap.registerPlugin(ScrollTrigger);
 
@@ -177,14 +177,18 @@
             });
         });
 
-        // 2. YENİ: ARMCO Kabin bölümünü ekrana kilitleme (Apple Style)
-        ScrollTrigger.create({
-            trigger: "#armco-projesi", 
-            start: "center center", // Kabin ekranın tam ortasına geldiğinde...
-            end: "+=1200", // ...ziyaretçi 1200 piksel kaydırana kadar sayfayı burada tut
-            pin: true, // Ekranı kilitle! (Sayfa inmez, sadece Spline animasyonu oynar)
-            anticipatePin: 1
-        });
+        // 2. Fare 3D modelin üzerindeyken sayfa kaymasını (scroll) engelle
+        const showcase3D = document.querySelector('.showcase-3d');
+        
+        // Bilgisayar faresi tekerleği (wheel) için
+        showcase3D.addEventListener('wheel', (e) => {
+            e.preventDefault(); // Sayfanın aşağı/yukarı kaymasını durdurur
+        }, { passive: false });
+
+        // Dokunmatik ekranlar (telefon/tablet parmak kaydırması) için
+        showcase3D.addEventListener('touchmove', (e) => {
+            e.preventDefault();
+        }, { passive: false });
     </script>
 
 </body>
