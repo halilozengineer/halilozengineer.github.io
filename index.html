@@ -539,6 +539,83 @@
             background-color: #e2e8f0;
             transform: translateY(-4px);
         }
+
+        /* =========================================
+           MOBİL UYUMLULUK (TELEFON VE TABLETLER İÇİN)
+           ========================================= */
+        @media (max-width: 768px) {
+            
+            /* Genel Boşluklar ve Yazı Boyutları */
+            section {
+                padding: 12vh 5vw; /* Yanlardan boşluğu azaltıyoruz */
+            }
+            
+            h1 {
+                font-size: 3rem; /* 5rem olan dev yazıları telefona sığdırıyoruz */
+                letter-spacing: -1px;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            /* 1. HERO BÖLÜMÜ (Yan yana duran yazı ve modeli alt alta alıyoruz) */
+            .hero-content {
+                flex-direction: column-reverse; /* Model üstte, yazı altta dursun */
+                text-align: center;
+                gap: 2rem;
+            }
+            
+            .hero-image img {
+                max-width: 100%;
+                height: auto;
+            }
+
+            /* 2. VİZYON BÖLÜMÜ */
+            .vizyon-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 3rem;
+            }
+            
+            .vizyon-image {
+                justify-content: center;
+            }
+
+            /* 3. 3D VİTRİN (KABİN) BÖLÜMÜ */
+            .showcase-section {
+                flex-direction: column;
+                text-align: center;
+                gap: 2rem;
+            }
+            
+            .showcase-text, .showcase-3d {
+                width: 100%;
+            }
+            
+            .showcase-3d {
+                height: 50vh; /* Telefonda 3D alanın boyunu biraz kısaltıyoruz */
+            }
+
+            /* 4. NAVİGASYON (Telefonda sığması için küçültüyoruz) */
+            .floating-nav {
+                width: 90%; /* Ekranın %90'ını kaplasın */
+                padding: 0.6rem 1rem;
+                overflow-x: auto; /* Çok link varsa sağa sola kaydırılabilsin */
+                white-space: nowrap;
+                -webkit-overflow-scrolling: touch;
+            }
+            
+            .floating-nav ul {
+                gap: 1.2rem; /* Linkler arası boşluğu daraltıyoruz */
+            }
+            
+            /* 5. CTA (BİRLİKTE ÇALIŞALIM) */
+            .cta-buttons {
+                flex-direction: column; /* Butonları alt alta diziyoruz */
+                width: 100%;
+            }
+        }
         
     </style>
 </head>
