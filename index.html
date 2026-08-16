@@ -540,18 +540,28 @@
             transform: translateY(-4px);
         }
 
-        /* =========================================
+      /* =========================================
            MOBİL UYUMLULUK (TELEFON VE TABLETLER İÇİN)
            ========================================= */
         @media (max-width: 768px) {
             
+            /* --- 1. DONMA/KASMA ÇÖZÜMÜ --- */
+            /* Telefonda fare olmadığı için ağır büyüteç maskesini kapatıp GPU'yu rahatlatıyoruz */
+            .mesh-bg::after {
+                display: none !important; 
+            }
+            .mesh-bg {
+                /* Arka planda sadece yormayan sabit, hafif noktalar kalacak */
+                background-image: radial-gradient(rgba(0, 0, 0, 0.05) 1.5px, transparent 1.5px) !important;
+            }
+
             /* Genel Boşluklar ve Yazı Boyutları */
             section {
-                padding: 12vh 5vw; /* Yanlardan boşluğu azaltıyoruz */
+                padding: 12vh 5vw; 
             }
             
             h1 {
-                font-size: 3rem; /* 5rem olan dev yazıları telefona sığdırıyoruz */
+                font-size: 3rem; 
                 letter-spacing: -1px;
             }
             
@@ -559,9 +569,9 @@
                 font-size: 1.5rem;
             }
 
-            /* 1. HERO BÖLÜMÜ (Yan yana duran yazı ve modeli alt alta alıyoruz) */
+            /* HERO BÖLÜMÜ */
             .hero-content {
-                flex-direction: column-reverse; /* Model üstte, yazı altta dursun */
+                flex-direction: column-reverse; 
                 text-align: center;
                 gap: 2rem;
             }
@@ -571,7 +581,7 @@
                 height: auto;
             }
 
-            /* 2. VİZYON BÖLÜMÜ */
+            /* VİZYON BÖLÜMÜ */
             .vizyon-content {
                 flex-direction: column;
                 text-align: center;
@@ -582,7 +592,7 @@
                 justify-content: center;
             }
 
-            /* 3. 3D VİTRİN (KABİN) BÖLÜMÜ */
+            /* 3D VİTRİN BÖLÜMÜ */
             .showcase-section {
                 flex-direction: column;
                 text-align: center;
@@ -594,29 +604,39 @@
             }
             
             .showcase-3d {
-                height: 50vh; /* Telefonda 3D alanın boyunu biraz kısaltıyoruz */
+                height: 50vh; 
             }
 
-            /* 4. NAVİGASYON (Telefonda sığması için küçültüyoruz) */
+            /* NAVİGASYON */
             .floating-nav {
-                width: 90%; /* Ekranın %90'ını kaplasın */
+                width: 90%; 
                 padding: 0.6rem 1rem;
-                overflow-x: auto; /* Çok link varsa sağa sola kaydırılabilsin */
+                overflow-x: auto; 
                 white-space: nowrap;
                 -webkit-overflow-scrolling: touch;
             }
             
             .floating-nav ul {
-                gap: 1.2rem; /* Linkler arası boşluğu daraltıyoruz */
+                gap: 1.2rem; 
             }
             
-            /* 5. CTA (BİRLİKTE ÇALIŞALIM) */
+            /* --- 2. İLETİŞİM (CTA) BÖLÜMÜ ARKA PLAN DÜZELTMESİ --- */
+            .cta-section {
+                min-height: auto !important; /* Kutunun yüksekliğini içeriğe göre otomatik esnetir */
+                height: auto;
+                padding: 15vh 5vw; /* Butonların etrafındaki beyaz alanı dengeler */
+            }
+
             .cta-buttons {
-                flex-direction: column; /* Butonları alt alta diziyoruz */
+                flex-direction: column; 
                 width: 100%;
+                gap: 1rem;
+            }
+
+            .cta-btn {
+                width: 100%; /* Butonlar telefonda mobil uygulama gibi tam genişlikte dikey dursun */
             }
         }
-        
     </style>
 </head>
 <body>
