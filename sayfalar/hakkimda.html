@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Halil Öz | Hakkımda</title>
+    
+    <!-- GSAP Animasyon Kütüphanesi -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <!-- LENIS SMOOTH SCROLL KÜTÜPHANESİ -->
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.34/dist/lenis.min.js"></script>
+    
+    <style>
+        /* SİNEMATİK VE MODERN RESET (AYDINLIK TEMA) */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f4f6f9; 
+            color: #1a1e24; 
+            overflow-x: hidden;
+            font-size: 16px;
+        }
+
+        /* --- KESİN VE GARANTİLİ 3D MESH ARKA PLAN KATMANI --- */
+        .mesh-bg {
+            position: fixed;
+            top: 0; 
+            left: 0; 
+            width: 100vw; 
+            height: 100vh;
+            z-index: -999 !important; 
+            pointer-events: none; 
+            background-color: #f4f6f9;
+            background-image: radial-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        .mesh-bg::after {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: radial-gradient(rgba(0, 0, 0, 0.4) 2.5px, transparent 2.5px);
+            background-size: 35px 35px;
+            -webkit-mask-image: radial-gradient(circle at var(--mouse-x, 50vw) var(--mouse-y, 50vh), black 0%, transparent 350px);
+            mask-image: radial-gradient(circle at var(--mouse-x, 50vw) var(--mouse-y, 50vh), black 0%, transparent 350px);
+        }
+
+        /* --- YÜZEN KAPSÜL NAVİGASYON (GLASSMORPHISM) --- */
+        .floating-nav {
+            position: fixed;
+            top: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0.65);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            padding: 0.8rem 2.5rem;
+            border-radius: 50px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            z-index: 1000; 
+            animation: navDrop 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes navDrop {
+            0% { top: -5rem; opacity: 0; }
+            100% { top: 2rem; opacity: 1; }
+        }
+
+        .floating-nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .floating-nav ul li a {
+            text-decoration: none;
+            color: #1a1e24;
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: color 0.3s ease, transform 0.3s ease;
+            display: inline-block;
+        }
+
+        .floating-nav ul li a:hover {
+            color: #ff6b6b;
+            transform: translateY(-2px);
+        }
+
+        /* --- HAKKIMDA SAYFASI TASARIMI --- */
+        .about-header {
+            padding: 20vh 10vw 5vh 10vw;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 4.5rem;
+            font-weight: 800;
+            line-height: 1;
+            letter-spacing: -2px;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            color: #1a1e24;
+        }
+        h1 span {
+            color: #ff6b6b; 
+        }
+
+        .about-intro {
+            font-size: clamp(1.2rem, 1.5vw, 1.5rem); 
+            color: #4a4a4a; 
+            max-width: 800px; 
+            line-height: 1.8; 
+            margin-bottom: 2rem;
+        }
+
+        /* --- ÇOK YÖNLÜ PROFİL KARTLARI --- */
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 3rem;
+            padding: 5vh 10vw 15vh 10vw;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .about-card {
+            background-color: #ffffff;
+            border-radius: 24px;
+            padding: 3rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+            border: 1px solid #f0f0f0;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+        }
+
+        .about-card h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #1a1e24;
+            margin-bottom: 1rem;
+        }
+
+        .about-card p {
+            font-size: 1.1rem;
+            color: #555555;
+            line-height: 1.6;
+        }
+
+        /* ANİMASYON İÇİN GİZLEME SINIFLARI */
+        .gsap-reveal {
+            opacity: 0;
+            transform: translateY(50px);
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- ETKİLEŞİMLİ ARKA PLAN (BÜYÜTEÇ MESH) -->
+    <div class="mesh-bg"></div>
+
+    <!-- YÜZEN KAPSÜL NAVİGASYON (Ana sayfa linkleri güncellendi) -->
+    <nav class="floating-nav">
+        <ul>
+            <li><a href="index.html#hero">Ana Sayfa</a></li>
+            <li><a href="index.html#vizyon-ekrani">Vizyon</a></li>
+            <li><a href="index.html#armco-projesi">Kabin Tasarımı</a></li>
+            <li><a href="index.html#projeler">Projeler</a></li>
+            <li><a href="hakkimda.html" style="color: #ff6b6b;">Hakkımda</a></li>
+            <li><a href="index.html#referanslar">Referanslar</a></li>
+        </ul>
+    </nav>
+
+    <!-- HAKKIMDA BAŞLIK BÖLÜMÜ -->
+    <section class="about-header">
+        <h1 class="gsap-reveal">Halil<br><span>Öz.</span></h1>
+        <p class="about-intro gsap-reveal">Mühendislik, sadece bir ekran karşısında hesaplama yapmak değil; analitik düşünceyi yaşamın her alanına entegre edebilme sanatıdır. KTO Karatay Üniversitesi Makine Mühendisliği'nde attığım güçlü akademik temeli, pratik mekanik tutkum ve takım ruhuyla harmanlayarak modern ve optimize çözümler üretiyorum.</p>
+    </section>
+
+    <!-- ÇOK YÖNLÜ PROFİL BÖLÜMÜ -->
+    <section class="about-grid">
+        
+        <!-- Kart 1: Akademik ve Teknik -->
+        <div class="about-card gsap-reveal">
+            <span class="card-icon">⚙️</span>
+            <h3>Tasarım & Analitik Altyapı</h3>
+            <p>Tasarımlarımda <strong>SolidWorks 2024</strong> gücünü merkeze alarak, konsept aşamasından üretime hazır verilere kadar titiz bir süreç yönetiyorum. ANSYS ve AutoCAD ile bu tasarımları doğrularken; Python ve MATLAB kullanarak mühendislik verilerini analiz ediyor ve kompleks sistem hesaplamalarını optimize ediyorum. Küresel projelerde yer almak adına teknik İngilizce iletişim becerilerimi sürekli geliştiriyorum.</p>
+        </div>
+
+        <!-- Kart 2: Pratik Mekanik -->
+        <div class="about-card gsap-reveal">
+            <span class="card-icon">🏍️</span>
+            <h3>Sahadaki Mekanik: Motosiklet Tutkusu</h3>
+            <p>Mühendislik vizyonum teoride kalmıyor. A2 ehliyetine sahip aktif bir motosiklet kullanıcısı olarak, sıvı akışkan dinamiklerini ve aşınma hesaplamalarını kendi sürüş sistemimde deneyimliyorum. Periyodik zincir bakımlarından; kask aksiyon kamerası donanımları, güvenlik kilit sistemleri ve interkom montajlarına kadar mekaniğin ve elektroniğin her detayıyla bizzat ilgilenmek en büyük tutkularımdan biri.</p>
+        </div>
+
+        <!-- Kart 3: Takım Ruhu -->
+        <div class="about-card gsap-reveal">
+            <span class="card-icon">🏐</span>
+            <h3>Dinamizm ve Takım Ruhu</h3>
+            <p>Mühendisliğin getirdiği o katı sayısal dünyayı, takım sporlarının dinamiğiyle dengeliyorum. Voleybolda libero pozisyonunda kortu okumak, anlık krizleri yönetip savunmayı organize etmek takım çalışması becerilerimi besliyor. Aynı zamanda Ankara Kurtuluş'taki salonlarda arkadaşlarımla yaptığımız rekabetçi masa tenisi maçları, reflekslerimi ve odaklanma yeteneğimi sürekli zinde tutuyor.</p>
+        </div>
+
+        <!-- Kart 4: Sanat ve Simülasyon -->
+        <div class="about-card gsap-reveal">
+            <span class="card-icon">🎵</span>
+            <h3>Sanat ve Strateji</h3>
+            <p>Analitik düşünceden uzaklaşmak istediğimde bağlama tellerinde Türk halk müziği ritimlerini arıyorum. Zihinsel dinlenmeyi bir başka seviyeye taşımak için Alan Wake gibi derin hikaye örgüsü olan yapımların yanı sıra; Subnautica ve Farming Simulator 25 gibi kaynak yönetimi, hayatta kalma ve sistem inşası gerektiren simülasyonları analiz etmeyi seviyorum.</p>
+        </div>
+
+    </section>
+
+    <!-- GSAP ANİMASYONLARI VE LENIS SMOOTH SCROLL -->
+    <script>
+        const lenis = new Lenis({
+            duration: 1.2, 
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), 
+            smooth: true,
+            mouseMultiplier: 1, 
+        });
+
+        function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+        }
+        requestAnimationFrame(raf);
+
+        lenis.on('scroll', ScrollTrigger.update);
+        gsap.ticker.add((time)=>{
+          lenis.raf(time * 1000)
+        });
+        gsap.ticker.lagSmoothing(0, 0);
+
+        gsap.registerPlugin(ScrollTrigger);
+        const revealElements = document.querySelectorAll('.gsap-reveal');
+        revealElements.forEach((el) => {
+            gsap.to(el, {
+                scrollTrigger: {
+                    trigger: el,
+                    start: "top 85%", 
+                    toggleActions: "play none none reverse" 
+                },
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                ease: "power3.out"
+            });
+        });
+
+        // --- ETKİLEŞİMLİ 3D MESH (BÜYÜTEÇ) TAKİP SİSTEMİ ---
+        const meshBg = document.querySelector('.mesh-bg');
+        if (meshBg) {
+            document.addEventListener('mousemove', function(e) {
+                meshBg.style.setProperty('--mouse-x', e.clientX + 'px');
+                meshBg.style.setProperty('--mouse-y', e.clientY + 'px');
+            });
+        }
+    </script>
+</body>
+</html>
