@@ -462,6 +462,83 @@
             100% { transform: translateX(-50%); }
         }
 
+        /* --- YENİ HERO BUTONLARI (YAN YANA) --- */
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .hero-btn {
+            margin-top: 0; /* Eski üst boşluğu sıfırlıyoruz */
+            border: 2px solid transparent;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .cv-hero-btn {
+            background-color: transparent;
+            color: #1a1e24;
+            border: 2px solid #1a1e24;
+        }
+
+        .cv-hero-btn:hover {
+            background-color: #1a1e24;
+            color: #ffffff;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        /* --- FOOTER (ALT BİLGİ) BÖLÜMÜ --- */
+        .footer-section {
+            background-color: #1a1e24; /* Koyu renk, premium kapanış */
+            color: #ffffff;
+            padding: 4rem 10vw 2rem 10vw;
+            text-align: center;
+        }
+        
+        .footer-content h3 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            color: #ffffff;
+        }
+        
+        .footer-content p {
+            color: #a0aec0;
+            font-size: 1.1rem;
+            margin: 0 auto 2rem auto;
+            max-width: none;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: #ff6b6b;
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 2rem;
+            font-size: 0.9rem;
+            color: #718096;
+        }
+        
         /* --- CTA (BİRLİKTE ÇALIŞALIM) BÖLÜMÜ --- */
         .cta-section {
             min-height: 70vh;
@@ -676,12 +753,12 @@
     
     <section id="hero">
         <div class="hero-content">
-            <!-- Sol Taraf: Yazılar ve Buton -->
-            <div class="hero-text">
-                <h1 class="gsap-reveal">Mekanik<br><span>Tasarım.</span></h1>
-                <h2 class="gsap-reveal">SolidWorks 2024, ANSYS ve modern mühendislik vizyonu.</h2>
-                <a href="#armco-projesi" class="hero-btn gsap-reveal">Projeleri Keşfet</a>
-            </div>
+          <!-- Sol Taraf: Yazılar ve Buton -->
+    <div class="hero-text">
+        <h1 class="gsap-reveal">Mekanik<br><span>Tasarım.</span></h1>
+        <h2 class="gsap-reveal">SolidWorks 2024, ANSYS ve modern mühendislik vizyonu.</h2>
+        <a href="#armco-projesi" class="hero-btn gsap-reveal">Projeleri Keşfet</a>
+    </div>
             
             <!-- Sağ Taraf: Havada Süzülen CAD Görseli -->
             <div class="hero-image gsap-reveal">
@@ -868,6 +945,23 @@
         </div>
     </section>
 
+    <!-- FOOTER BÖLÜMÜ -->
+    <footer class="footer-section">
+        <div class="footer-content">
+            <h3>Halil Öz</h3>
+            <p>Mechanical Engineer | Mechanical Design & FEA</p>
+            <div class="footer-links">
+                <a href="https://www.linkedin.com/in/halil-öz" target="_blank">LinkedIn</a>
+                <a href="#">GitHub</a> <!-- GitHub hesabın varsa linkini buraya ekleyebilirsin -->
+                <a href="dosyalar/Halil_Oz-CV.pdf" download>CV İndir</a>
+                <a href="mailto:halilo.hz42@gmail.com">Email</a>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2026 Halil Öz. Tüm hakları saklıdır.
+            </div>
+        </div>
+    </footer>
+    
     <!-- GSAP ANİMASYONLARI VE LENIS SMOOTH SCROLL -->
     <script>
         // 1. LENIS AKICI KAYDIRMA MOTORU
