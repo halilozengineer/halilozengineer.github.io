@@ -286,6 +286,14 @@
             height: 100%;
         }
 
+        /* Mobilde gösterilecek yedek görseli başlangıçta gizliyoruz */
+        .mobile-3d-fallback {
+            display: none; 
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Resmi kutuya düzgünce sığdırır */
+        }
+
        /* --- YENİ NESİL PROJE KARTLARI (PREMIUM TASARIM) --- */
         .project-grid {
             display: grid;
@@ -598,6 +606,14 @@
                 text-align: center;
                 gap: 2rem;
             }
+
+            /* EKLENEN KISIM: 3D motorunu kapatıp, sabit resmi açıyoruz */
+        .desktop-3d { display: none !important; }
+        .mobile-3d-fallback { display: block !important; }
+
+        .showcase-text, .showcase-3d {
+            width: 100%;
+        }
             
             .showcase-text, .showcase-3d {
                 width: 100%;
@@ -723,9 +739,12 @@
             <p class="gsap-reveal">Bu süreçte subrack yerleşim planlamaları, kabin içi kablolama rotasyonları ve laboratuvar test düzeneklerinin mekanik tasarımları üzerine çalıştım. Ergonomi, ısı dağılımı ve montaj kolaylığı kriterleri gözetilerek optimize edilen bu tasarım, konseptten üretime hazırlık aşamasına kadar detaylandırılmıştır.</p>
             <p class="gsap-reveal" style="font-size: 0.95rem; color: #718096; margin-top: 2rem;"><strong>Etkileşim:</strong> Kapağı açmak için farenizle modelin üzerine gelin. Modeli incelemek için sağ tıklayıp sürükleyebilirsiniz.</p>
         </div>
-        <div class="showcase-3d gsap-reveal">
-            <!-- SENİN KABİN MODELİN BURADA -->
-            <spline-viewer url="https://prod.spline.design/67YtRWBx9TH2YZ09/scene.splinecode"></spline-viewer>
+      <div class="showcase-3d gsap-reveal">
+            <!-- MASAÜSTÜ İÇİN 3D MODEL -->
+            <spline-viewer class="desktop-3d" url="https://prod.spline.design/67YtRWBx9TH2YZ09/scene.splinecode"></spline-viewer>
+            
+            <!-- MOBİL İÇİN SABİT GÖRSEL (KASMA YAPMAMASI İÇİN) -->
+            <img src="subrack.png" alt="ARMCO Kabin Tasarımı" class="mobile-3d-fallback">
         </div>
     </div>
 
