@@ -426,26 +426,65 @@
             max-width: 100%;
         }
 
-        /* REFERANSLAR LİSTESİ */
-        .reference-list {
-            list-style: none;
-            margin-top: 2rem;
+        /* --- YENİ REFERANS KARTLARI --- */
+        .reference-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+            width: 100%;
         }
-        .reference-list li {
-            font-size: 1.6rem;
+
+        .reference-card {
+            background-color: #ffffff;
+            border-radius: 24px;
+            padding: 3rem 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+            border: 1px solid #f0f0f0;
+            transition: all 0.4s ease;
+            text-align: center;
+        }
+
+        .reference-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+        }
+
+        .reference-card h3 {
+            font-size: 1.5rem;
             font-weight: 700;
             color: #1a1e24;
-            margin-bottom: 1rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid #e2e8f0;
-            max-width: 600px;
+            margin-bottom: 0.5rem;
         }
-        .reference-list li span {
-            display: block;
-            font-weight: 400;
-            color: #718096;
-            font-size: 1.1rem;
-            margin-top: 0.3rem;
+
+        .ref-title {
+            font-size: 1.1rem !important;
+            font-weight: 600;
+            color: #ff6b6b !important; /* Pozisyonu kırmızı vurguyla öne çıkarıyoruz */
+            margin-bottom: 0.5rem !important;
+        }
+
+        .ref-company {
+            font-size: 0.95rem !important;
+            color: #718096 !important;
+            margin-bottom: 1.5rem !important;
+        }
+
+        .ref-linkedin {
+            display: inline-block;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #1a1e24;
+            text-decoration: none;
+            padding: 0.6rem 1.2rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+
+        .ref-linkedin:hover {
+            background-color: #f4f6f9;
+            border-color: #1a1e24;
         }
 
         /* ANİMASYON İÇİN GİZLEME SINIFLARI */
