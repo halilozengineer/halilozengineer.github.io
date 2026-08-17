@@ -1,1 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Halil Öz | English Portfolio (Under Development)</title>
+    
+    <style>
+        /* SİNEMATİK VE MODERN RESET */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f4f6f9; 
+            color: #1a1e24; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+            padding: 0 20px;
+            overflow: hidden;
+        }
 
+        /* 3D NOKTALI ARKA PLAN (Sitenin ana temasıyla uyumlu) */
+        .mesh-bg {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1;
+            background-image: radial-gradient(rgba(0, 0, 0, 0.05) 1.5px, transparent 1.5px);
+            background-size: 35px 35px;
+        }
+
+        h1 {
+            font-size: clamp(3rem, 5vw, 5rem);
+            font-weight: 800;
+            line-height: 1;
+            letter-spacing: -2px;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+        }
+
+        h1 span {
+            color: #ff6b6b; 
+        }
+
+        p {
+            font-size: clamp(1.1rem, 2vw, 1.3rem);
+            color: #555555;
+            max-width: 600px;
+            line-height: 1.6;
+            margin-bottom: 2.5rem;
+        }
+
+        /* GERİ DÖNÜŞ BUTONU */
+        .back-btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background-color: #1a1e24;
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .back-btn:hover {
+            background-color: #ff6b6b;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 107, 107, 0.2);
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="mesh-bg"></div>
+
+    <h1>Engineering<br><span>In Progress.</span></h1>
+    <p>The English version of my mechanical engineering portfolio is currently under development. Please check back soon for updates.</p>
+    
+    <!-- Bir üst klasöre (ana dizine) dönüp Türkçe siteyi açar -->
+    <a href="../index.html" class="back-btn">← Back to Turkish Version</a>
+
+</body>
+</html>
