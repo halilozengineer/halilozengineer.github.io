@@ -77,6 +77,42 @@
             color: #ff6b6b; /* Üzerine gelince kırmızı vurgu */
             transform: translateY(-2px); /* Hafifçe yukarı zıplama efekti */
         }
+
+        /* --- DİL SEÇİCİ (LANG SWITCHER) --- */
+        .lang-switch {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-left: 1rem; 
+            padding-left: 1.5rem;
+            border-left: 1px solid rgba(0, 0, 0, 0.15); /* Menüden ayıran ince şık çizgi */
+        }
+
+        .lang-switch a {
+            font-size: 0.9rem !important;
+            font-weight: 700 !important;
+            padding: 0.2rem;
+        }
+
+        .lang-switch a.active {
+            color: #ff6b6b !important; /* Aktif olan dil (TR) kırmızı */
+            pointer-events: none; /* Tıklanmasını engeller */
+        }
+
+        .lang-switch a.inactive {
+            color: #718096 !important; /* Pasif olan dil (EN) gri */
+        }
+
+        .lang-switch a.inactive:hover {
+            color: #1a1e24 !important; /* Üzerine gelince koyulaşır */
+            transform: translateY(-2px);
+        }
+
+        .lang-switch .divider {
+            color: #cbd5e0;
+            font-size: 0.9rem;
+            user-select: none;
+        }
         
         /* --- KESİN VE GARANTİLİ 3D MESH ARKA PLAN KATMANI --- */
         .mesh-bg {
