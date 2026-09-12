@@ -9,18 +9,32 @@
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
+<!-- GSAP Animasyon Kütüphanesi -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<!-- LENIS SMOOTH SCROLL KÜTÜPHANESİ -->
+<script src="https://unpkg.com/@studio-freight/lenis@1.0.34/dist/lenis.min.js"></script>
+
 <style>
-    /* Genel ve Koyu Tema Ayarları */
-    body {
+    /* =========================================
+       Genel ve Tema Ayarları
+    ========================================= */
+    * {
         margin: 0;
         padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        background-color: #f8f9fa;
+        color: #212529;
     }
 
     .kku-hero-section {
         background-color: #1a1c20; 
         color: #ffffff;
-        padding: 80px 20px;
+        padding: 100px 20px 80px 20px;
     }
     
     .kku-hero-container {
@@ -102,7 +116,7 @@
     .kku-main-img-box img {
         width: 100%;
         height: 100%;
-        object-fit: contain; /* Görsel Sığdırma Ayarı */
+        object-fit: contain; 
     }
 
     .kku-thumbnails {
@@ -133,14 +147,20 @@
         box-shadow: 0 0 8px rgba(13, 110, 253, 0.4);
     }
 
-    /* Alt Kısım: Problem Tanımı (Açık Tema) */
-    .kku-problem-section {
+    /* =========================================
+       BÖLÜM VE METİN AYARLARI
+    ========================================= */
+    .kku-problem-section, .kku-yaklasim-section {
         background-color: #ffffff;
         color: #333333;
-        padding: 80px 20px;
+        padding: 60px 20px;
     }
 
-    .kku-problem-container {
+    .kku-yaklasim-section.bg-light {
+        background-color: #f8f9fa;
+    }
+
+    .kku-problem-container, .kku-yaklasim-container {
         max-width: 1200px;
         margin: 0 auto;
     }
@@ -150,13 +170,24 @@
         font-weight: 700;
         margin-bottom: 25px;
         color: #212529;
+        border-bottom: 2px solid #eee;
+        padding-bottom: 10px;
     }
 
-    .kku-problem-container p {
-        font-size: 1.1rem;
+    .kku-list {
         line-height: 1.8;
+        font-size: 1.1rem;
+        color: #444;
         margin-bottom: 20px;
-        color: #495057;
+    }
+
+    .kku-list li {
+        margin-bottom: 15px;
+    }
+
+    .kku-sub-list {
+        margin-top: 10px;
+        list-style-type: circle;
     }
 
     .kku-problem-image {
@@ -171,40 +202,9 @@
         box-shadow: 0 4px 20px rgba(0,0,0,0.06);
     }
 
-    /* Yaklaşım ve Tasarım Süreci CSS */
-    .kku-yaklasim-section {
-        background-color: #ffffff;
-        color: #333;
-        padding: 60px 20px;
-        max-width: 1200px;
-        margin: 0 auto;
-    }
-
-    .kku-yaklasim-title {
-        font-size: 2.2rem;
-        font-weight: 700;
-        margin-bottom: 25px;
-        color: #212529;
-        border-bottom: 2px solid #eee;
-        padding-bottom: 10px;
-    }
-
-    .kku-list {
-        line-height: 1.8;
-        font-size: 1.1rem;
-        color: #444;
-    }
-
-    .kku-list li {
-        margin-bottom: 15px;
-    }
-
-    .kku-sub-list {
-        margin-top: 10px;
-        list-style-type: circle;
-    }
-
-    /* Formül Kutuları */
+    /* =========================================
+       FORMÜL KUTULARI
+    ========================================= */
     .kku-formula-container {
         display: flex;
         justify-content: center;
@@ -222,13 +222,15 @@
         box-shadow: 0 4px 6px rgba(0,0,0,0.05);
     }
 
-    /* İNTERAKTİF DİKEY ZİHİN HARİTASI (MIND MAP) CSS */
+    /* =========================================
+       DİKEY İNTERAKTİF ZİHİN HARİTASI
+    ========================================= */
     .kku-interactive-mindmap {
         background-color: #f8f9fa;
-        padding: 40px 20px;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        padding: 20px;
         display: flex;
         justify-content: center;
+        margin-bottom: 40px;
     }
 
     .kku-mindmap-wrapper {
@@ -320,14 +322,12 @@
     }
 
     .kku-children.visible {
-        /* max-height DEĞERİNİ 1500px'DEN 5000px'E YÜKSELTTİK! */
         max-height: 5000px; 
         opacity: 1;
         margin-top: 10px;
         margin-bottom: 10px;
     }
 
-    /* Dikey Bağlantı Çizgileri */
     .kku-children::before {
         content: '';
         position: absolute;
@@ -350,9 +350,65 @@
         z-index: 1;
     }
 
-    /* Kök Düğüm için Çizgiyi Gizle */
     .kku-mindmap-wrapper > .kku-node-group::before {
         display: none;
+    }
+
+    /* =========================================
+       FOOTER (ALT BİLGİ) BÖLÜMÜ
+    ========================================= */
+    .footer-section {
+        background-color: #1a1e24; 
+        color: #ffffff;
+        padding: 4rem 10vw 2rem 10vw;
+        text-align: center;
+        border-top: 1px solid #2b2e32;
+    }
+    
+    .footer-content h3 {
+        font-size: 1.8rem;
+        margin-bottom: 0.5rem;
+        color: #ffffff;
+    }
+    
+    .footer-content p {
+        color: #a0aec0;
+        font-size: 1.1rem;
+        margin: 0 auto 2rem auto;
+        max-width: none;
+    }
+    
+    .footer-links {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 2rem;
+        margin-bottom: 3rem;
+    }
+    
+    .footer-links a {
+        color: #ffffff;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 1rem;
+        transition: color 0.3s ease;
+    }
+    
+    .footer-links a:hover {
+        color: #ff6b6b;
+    }
+    
+    .footer-bottom {
+        border-top: 1px solid rgba(255,255,255,0.1);
+        padding-top: 2rem;
+        font-size: 0.9rem;
+        color: #718096;
+    }
+
+    /* Animasyon (GSAP) */
+    .gsap-reveal {
+        opacity: 0;
+        transform: translateY(50px);
     }
 </style>
 </head>
@@ -361,8 +417,7 @@
     <!-- Üst Kısım: Koyu Tema Hero -->
     <section class="kku-hero-section">
         <div class="kku-hero-container">
-            <!-- Sol Bilgi Kartları -->
-            <div class="kku-content">
+            <div class="kku-content gsap-reveal">
                 <h1 class="kku-title">Tavan Vinci Dinamik<br>Analizleri<br>ve Yapısal Optimizasyon</h1>
                 
                 <div class="kku-cards-grid">
@@ -381,8 +436,7 @@
                 </div>
             </div>
             
-            <!-- Sağ Galeri -->
-            <div class="kku-gallery">
+            <div class="kku-gallery gsap-reveal">
                 <div class="kku-main-img-box">
                     <img id="mainGalleryImage" src="../../projeler/tavan_vinci/cad.png" alt="Ana Görsel">
                 </div>
@@ -397,26 +451,28 @@
     </section>
 
     <!-- Giriş ve Proje Özeti Section -->
-    <section class="kku-yaklasim-section" style="background-color: #f8f9fa;">
-        <h2 class="kku-yaklasim-title">Giriş (Introduction)</h2>
-        <p class="kku-list">Bir tavan vincinin tasarımında sadece 14 milimetrelik fazladan bir esnemenin, tüm bir endüstriyel tesisi ve çalışanları felakete sürükleyebileceğini biliyor muydunuz?</p>
-        <p class="kku-list">Bu eğitimde, 24 ton taşıma kapasiteli ve 12 metre açıklığa sahip çift köprülü bir tavan vincinin yapısal sınırlarını ANSYS ortamında nasıl test ettiğimizi, sehim miktarını mühendislik modifikasyonlarıyla nasıl yarı yarıya düşürdüğümüzü ve kritik bileşenleri nasıl optimize ettiğimizi adım adım inceleyeceğiz.</p>
+    <section class="kku-yaklasim-section bg-light">
+        <div class="kku-yaklasim-container gsap-reveal">
+            <h2 class="kku-section-title">Giriş (Introduction)</h2>
+            <p class="kku-list">Bir tavan vincinin tasarımında sadece 14 milimetrelik fazladan bir esnemenin, tüm bir endüstriyel tesisi ve çalışanları felakete sürükleyebileceğini biliyor muydunuz?</p>
+            <p class="kku-list">Bu eğitimde, 24 ton taşıma kapasiteli ve 12 metre açıklığa sahip çift köprülü bir tavan vincinin yapısal sınırlarını ANSYS ortamında nasıl test ettiğimizi, sehim miktarını mühendislik modifikasyonlarıyla nasıl yarı yarıya düşürdüğümüzü ve kritik bileşenleri nasıl optimize ettiğimizi adım adım inceleyeceğiz.</p>
 
-        <h3 style="color:#212529; margin-top:30px; font-size: 1.5rem;">Öğrenme Hedefleri</h3>
-        <ul class="kku-list">
-            <li>Endüstriyel tavan vinçlerinde statik, modal ve transient (dinamik) FEA analiz süreçlerini kavramak.</li>
-            <li>Sehim (deformasyon) limitlerini aşan tasarımları düzeltmek için alan atalet momentini kullanan geometrik modifikasyonlar geliştirmek.</li>
-            <li>FEA gerilme çıktılarına dayanarak, endüstriyel emniyet katsayılarını (FoS) karşılayan AISI 4140 ve AISI 4340 gibi doğru malzemeleri seçebilmek.</li>
-            <li>Sonlu Elemanlar Analizlerinde mesh kalitesi parametrelerini (eleman kalitesi, aspect ratio, skewness) optimize etmeyi öğrenmek.</li>
-        </ul>
+            <h3 style="color:#212529; margin-top:30px; font-size: 1.5rem;">Öğrenme Hedefleri</h3>
+            <ul class="kku-list">
+                <li>Endüstriyel tavan vinçlerinde statik, modal ve transient (dinamik) FEA analiz süreçlerini kavramak.</li>
+                <li>Sehim (deformasyon) limitlerini aşan tasarımları düzeltmek için alan atalet momentini kullanan geometrik modifikasyonlar geliştirmek.</li>
+                <li>FEA gerilme çıktılarına dayanarak, endüstriyel emniyet katsayılarını (FoS) karşılayan AISI 4140 ve AISI 4340 gibi doğru malzemeleri seçebilmek.</li>
+                <li>Sonlu Elemanlar Analizlerinde mesh kalitesi parametrelerini optimize etmeyi öğrenmek.</li>
+            </ul>
 
-        <h3 style="color:#212529; margin-top:30px; font-size: 1.5rem;">Proje Özeti</h3>
-        <p class="kku-list">Bu proje, ağır sanayi kollarında yaygın olarak kullanılan çift köprülü bir tavan vincinin statik dayanımını, modal davranışlarını ve zaman alanındaki dinamik yük tepkilerini incelemek amacıyla ANSYS ortamında gerçekleştirilmiştir. Yapılan ilk statik analizlerde 12 metrelik açıklıkta standart dışı 26 mm sehim yapan yapı, uygulanan yenilikçi takviye kirişi modifikasyonuyla hedef sehim limiti olan 12 mm sınırına başarıyla çekilmiştir. Gerilme analizleri doğrultusunda ana kirişler için AISI 4140 alaşımlı çeliği, miller için ise AISI 4340 alaşımlı çeliği seçilerek endüstri standardı olan 7 kat emniyet katsayısı tam olarak garanti altına alınmıştır.</p>
+            <h3 style="color:#212529; margin-top:30px; font-size: 1.5rem;">Proje Özeti</h3>
+            <p class="kku-list">Bu proje, ağır sanayi kollarında yaygın olarak kullanılan çift köprülü bir tavan vincinin statik dayanımını, modal davranışlarını ve zaman alanındaki dinamik yük tepkilerini incelemek amacıyla ANSYS ortamında gerçekleştirilmiştir. Yapılan ilk statik analizlerde 12 metrelik açıklıkta standart dışı 26 mm sehim yapan yapı, uygulanan yenilikçi takviye kirişi modifikasyonuyla hedef sehim limiti olan 12 mm sınırına başarıyla çekilmiştir. Gerilme analizleri doğrultusunda ana kirişler için AISI 4140 alaşımlı çeliği, miller için ise AISI 4340 alaşımlı çeliği seçilerek endüstri standardı olan 7 kat emniyet katsayısı tam olarak garanti altına alınmıştır.</p>
+        </div>
     </section>
     
     <!-- Alt Kısım: Problem Tanımı -->
     <section class="kku-problem-section">
-        <div class="kku-problem-container">
+        <div class="kku-problem-container gsap-reveal">
             <h2 class="kku-section-title">Problem Tanımı</h2>
             <p class="kku-list">Ağır sanayi tesislerinde çalışacak köprülü vinçlerde en kritik tasarım parametresi sehim sınırıdır. Türkiye ve dünya genelindeki genel mühendislik standartlarına göre, köprülü vinçlerin köprülerinde izin verilen maksimum dikey sehim oranı köprü açıklığının 1000'de 1'idir (L / 1000) olarak belirlenmiştir.</p>
             <p class="kku-list">12 metre (12.000 mm) uzunluğundaki köprümüz için bu limit tam olarak 12 mm'dir. Ancak, tesiste tonlarca gereksiz maksimum yük miktarı göz önünde bulundurularak beklenen 24 ton (235, 440 N) nominal yük altındaki ilk tasarımımız dikeyde ~ 26.4 mm'lik kabul edilemez bir sehim sergilemiştir. Bu durum yapısal kararsızlığa, yorulma çatlaklarına ve raydan çıkma risklerine yol açabileceği için tasarımın revize edilmesi kaçınılmaz hale gelmiştir.</p>
@@ -428,8 +484,8 @@
     </section>
 
     <!-- Yaklaşım ve Tasarım Süreci -->
-    <section class="kku-yaklasim-section">
-        <div class="kku-yaklasim-container">
+    <section class="kku-yaklasim-section bg-light">
+        <div class="kku-yaklasim-container gsap-reveal">
             <h2 class="kku-section-title">Yaklaşım ve Tasarım Süreci</h2>
             <p class="kku-list">Problemi çözmek amacıyla bilgisayar destekli mühendislik (CAE) süreçleri sistematik bir şekilde işletilmiştir:</p>
             
@@ -446,7 +502,6 @@
                 <li><strong>Tasarım İyileştirme:</strong> 26 mm'lik sehim değerini 12 mm limitinin altına çekmek amacıyla, mukavemet teorisinde yer alan şu meşhur eğilme gerilmesi formülüne başvurulmuştur:</li>
             </ol>
 
-            <!-- Formül Alanı -->
             <div class="kku-formula-container">
                 <div class="kku-formula-box">
                     $$ \sigma = \frac{M \cdot c}{I} $$
@@ -459,15 +514,13 @@
         </div>
     </section>
 
-    <!-- DİKEY VE İNTERAKTİF Zihin Haritası (Mind Map) İş Akışı BAŞLIĞI -->
-    <section class="kku-yaklasim-section" style="padding-bottom: 0; padding-top:40px; background-color: #f8f9fa;">
-         <h2 class="kku-yaklasim-title" style="text-align: center; border:none; margin-bottom:0;">Tavan Vinci Analiz İş Akışı</h2>
+    <!-- DİKEY VE İNTERAKTİF Zihin Haritası -->
+    <section class="kku-yaklasim-section" style="padding-bottom: 0; padding-top:40px;">
+         <h2 class="kku-yaklasim-title gsap-reveal" style="text-align: center; border:none; margin-bottom:0;">Tavan Vinci Analiz İş Akışı</h2>
     </section>
     
-    <!-- İNTERAKTİF DİKEY ZİHİN HARİTASI İÇERİĞİ -->
-    <section class="kku-interactive-mindmap">
+    <section class="kku-interactive-mindmap gsap-reveal">
         <div class="kku-mindmap-wrapper">
-            <!-- KÖK DÜĞÜM -->
             <div class="kku-node-group">
                 <div class="kku-node root" onclick="toggleMindmap(this)">
                     <span>Tavan Vinci Analiz İş Akışı</span>
@@ -475,7 +528,6 @@
                 </div>
                 
                 <div class="kku-children">
-                    <!-- ANA DAL 1 -->
                     <div class="kku-node-group">
                         <div class="kku-node" onclick="toggleMindmap(this)">
                             Geometrik Modelleme ve Sadeleştirme
@@ -488,7 +540,6 @@
                         </div>
                     </div>
 
-                    <!-- ANA DAL 2 -->
                     <div class="kku-node-group">
                         <div class="kku-node" onclick="toggleMindmap(this)">
                             Sınır Şartlarının Uygulanması
@@ -502,7 +553,6 @@
                         </div>
                     </div>
 
-                    <!-- ANA DAL 3 -->
                     <div class="kku-node-group">
                         <div class="kku-node" onclick="toggleMindmap(this)">
                             Mesh Oluşturma Süreci
@@ -528,7 +578,6 @@
                         </div>
                     </div>
 
-                    <!-- ANA DAL 4 -->
                     <div class="kku-node-group">
                         <div class="kku-node" onclick="toggleMindmap(this)">
                             Analiz Modüllerinin Belirlenmesi
@@ -541,7 +590,6 @@
                         </div>
                     </div>
 
-                    <!-- ANA DAL 5 -->
                     <div class="kku-node-group">
                         <div class="kku-node" onclick="toggleMindmap(this)">
                             Sonuçların Değerlendirilmesi
@@ -554,67 +602,116 @@
                             <div class="kku-node-group"><div class="kku-node leaf">Topoloji İyileştirme Çalışmaları</div></div>
                         </div>
                     </div>
-                    
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Sonuçlar ve Çıktılar Section -->
+    <!-- Sonuçlar ve Çıktılar -->
+    <section class="kku-yaklasim-section bg-light">
+        <div class="kku-yaklasim-container gsap-reveal">
+            <h2 class="kku-yaklasim-title">Sonuçlar ve Çıktılar</h2>
+            <p class="kku-list" style="margin-bottom: 20px;">Yapılan geometrik iyileştirmelerin ardından gerçekleştirilen nihai analizler, tasarımın mükemmel seviyede çalıştığını kanıtlamıştır:</p>
+            
+            <ul class="kku-list">
+                <li><strong>Nihai Sehim:</strong> Ek kiriş modifikasyonuyla dikey deformasyon tam olarak 12.37 mm seviyesine düşürülmüştür. Malzeme atamasının ardından bu değer kabul edilebilir 12 mm sınırının da altına inecektir.</li>
+                <li><strong>Kiriş Gerilmesi ve Malzeme Seçimi:</strong> Kirişlerin üst bölgesinde oluşan maksimum gerilme 65 MPa olarak tespit edilmiştir. Ağır sanayi vinçlerinde istenen 7 kat emniyet katsayısı (65 MPa * 7 = 455 MPa akma mukavemeti gereksinimi) göz önünde bulundurularak, kiriş imalatı için yüksek dayanımlı AISI 4140 çeliği seçilmiştir.</li>
+                <li><strong>Miller ve Kesme Gerilmesi:</strong> Kaldırma mekanizmasının kritik taşıyıcı millerinde (şaft kısmında) burulma ve kesme etkisiyle oluşan maksimum kesme gerilmesi 160 MPa olarak bulunmuştur. 7 kat emniyet gözetilerek miller için üstün kesme ve çekme dayanımına sahip AISI 4340 ataması yapılmıştır.</li>
+                <li><strong>Modal Titreşim Davranışı:</strong> Modal analiz sonucunda tavan vincinin ilk üç doğal frekansı sırasıyla 8.11 Hz, 12.14 Hz ve 29.34 Hz olarak bulunmuştur. Bu sayede, motorların çalışma frekanslarıyla çakışıp rezonansa girebilecek kritik hızlar önceden haritalandırılmıştır.</li>
+                <li><strong>Transient (Dinamik) Analiz:</strong> Zaman alanında yapılan simülasyonlarda, yükün askıya alındığı ilk 5 saniyelik süreç boyunca gerilmelerin kademeli olarak yükseldiği, yük tamamen kaldırıldıktan sonraki sabit hızlı yatay hareket esnasında ise gerilmelerin statik kaldığı doğrulanmıştır.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Summary / Özet -->
     <section class="kku-yaklasim-section">
-        <h2 class="kku-yaklasim-title">Sonuçlar ve Çıktılar</h2>
-        <p class="kku-list" style="margin-bottom: 20px;">Yapılan geometrik iyileştirmelerin ardından gerçekleştirilen nihai analizler, tasarımın mükemmel seviyede çalıştığını kanıtlamıştır:</p>
-        
-        <ul class="kku-list">
-            <li><strong>Nihai Sehim:</strong> Ek kiriş modifikasyonuyla dikey deformasyon tam olarak 12.37 mm seviyesine düşürülmüştür. Malzeme atamasının ardından bu değer kabul edilebilir 12 mm sınırının da altına inecektir.</li>
-            <li><strong>Kiriş Gerilmesi ve Malzeme Seçimi:</strong> Kirişlerin üst bölgesinde oluşan maksimum gerilme 65 MPa olarak tespit edilmiştir. Ağır sanayi vinçlerinde istenen 7 kat emniyet katsayısı (65 MPa * 7 = 455 MPa akma mukavemeti gereksinimi) göz önünde bulundurularak, kiriş imalatı için yüksek dayanımlı AISI 4140 çeliği seçilmiştir.</li>
-            <li><strong>Miller ve Kesme Gerilmesi:</strong> Kaldırma mekanizmasının kritik taşıyıcı millerinde (şaft kısmında) burulma ve kesme etkisiyle oluşan maksimum kesme gerilmesi 160 MPa olarak bulunmuştur. 7 kat emniyet gözetilerek miller için üstün kesme ve çekme dayanımına sahip AISI 4340 ataması yapılmıştır.</li>
-            <li><strong>Modal Titreşim Davranışı:</strong> Modal analiz sonucunda tavan vincinin ilk üç doğal frekansı sırasıyla 8.11 Hz, 12.14 Hz ve 29.34 Hz olarak bulunmuştur. Bu sayede, motorların çalışma frekanslarıyla çakışıp rezonansa girebilecek kritik hızlar önceden haritalandırılmıştır.</li>
-            <li><strong>Transient (Dinamik) Analiz:</strong> Zaman alanında yapılan simülasyonlarda, yükün askıya alındığı ilk 5 saniyelik süreç boyunca gerilmelerin kademeli olarak yükseldiği, yük tamamen kaldırıldıktan sonraki sabit hızlı yatay hareket esnasında ise gerilmelerin statik kaldığı doğrulanmıştır.</li>
-        </ul>
+        <div class="kku-yaklasim-container gsap-reveal">
+            <h2 class="kku-yaklasim-title">Summary</h2>
+            <p class="kku-list">Bu çalışmada, son derece zorlu endüstriyel kısıtlara sahip bir tavan vincinin ANSYS Workbench ortamında tasarım ve FEA optimizasyon süreçleri başarıyla tamamlanmıştır.</p>
+            
+            <h3 style="color:#212529; margin-top:30px; font-size: 1.5rem;">Temel Kazanımlar</h3>
+            <ul class="kku-list">
+                <li><strong>Geometrik Güçlendirme:</strong> Alan atalet momentini artıran ek kiriş montajıyla, vincin dikey esneme (sehim) miktarı %50'den fazla iyileştirilmiştir.</li>
+                <li><strong>Doğru Malzeme Konumlandırması:</strong> FEA gerilme dağılımları doğrultusunda kirişlerde AISI 4140, millerde ise AISI 4340 çelikleri kullanılarak 7 kat emniyet faktörü (FoS) garanti edilmiştir.</li>
+                <li><strong>Dinamik Kararlılık:</strong> Modal ve transient dinamik analizler sayesinde yapının çalışma esnasındaki rezonans riskleri haritalandırılmış ve ani darbe yüklerine karşı davranışı öngörülmüş ve tasarımın güvenilirliği tam olarak kanıtlanmıştır.</li>
+                <li><strong>FEA Standartları:</strong> %83'lük yüksek ortalama mesh kalitesi ve ideal skewness değerleriyle analiz sonuçlarının yüksek doğruluğa sahip olduğu ispatlanmıştır.</li>
+            </ul>
+        </div>
     </section>
 
-    <!-- Summary / Özet Section -->
-    <section class="kku-yaklasim-section" style="background-color: #f8f9fa;">
-        <h2 class="kku-yaklasim-title">Summary</h2>
-        <p class="kku-list">Bu çalışmada, son derece zorlu endüstriyel kısıtlara sahip bir tavan vincinin ANSYS Workbench ortamında tasarım ve FEA optimizasyon süreçleri başarıyla tamamlanmıştır.</p>
-        
-        <h3 style="color:#212529; margin-top:30px;">Temel Kazanımlar</h3>
-        <ul class="kku-list">
-            <li><strong>Geometrik Güçlendirme:</strong> Alan atalet momentini artıran ek kiriş montajıyla, vincin dikey esneme (sehim) miktarı %50'den fazla iyileştirilmiştir.</li>
-            <li><strong>Doğru Malzeme Konumlandırması:</strong> FEA gerilme dağılımları doğrultusunda kirişlerde AISI 4140, millerde ise AISI 4340 çelikleri kullanılarak 7 kat emniyet faktörü (FoS) garanti edilmiştir.</li>
-            <li><strong>Dinamik Kararlılık:</strong> Modal ve transient dinamik analizler sayesinde yapının çalışma esnasındaki rezonans riskleri haritalandırılmış ve ani darbe yüklerine karşı davranışı öngörülmüş ve tasarımın güvenilirliği tam olarak kanıtlanmıştır.</li>
-            <li><strong>FEA Standartları:</strong> %83'lük yüksek ortalama mesh kalitesi ve ideal skewness değerleriyle analiz sonuçlarının yüksek doğruluğa sahip olduğu ispatlanmıştır.</li>
-        </ul>
-    </section>
+    <!-- FOOTER BÖLÜMÜ -->
+    <footer class="footer-section">
+        <div class="footer-content">
+            <h3>Halil Öz</h3>
+            <p>Mechanical Engineer | Mechanical Design & FEA</p>
+            <div class="footer-links">
+                <a href="https://www.linkedin.com/in/halil-öz" target="_blank">LinkedIn</a>
+                <a href="../../dosyalar/Halil_Oz-CV.pdf" download>CV İndir</a>
+                <a href="mailto:halilo.hz42@gmail.com">Email</a>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2026 Halil Öz. Tüm hakları saklıdır.
+            </div>
+        </div>
+    </footer>
 
-    <!-- Etkileşim Scriptleri -->
+    <!-- ETKİLEŞİM VE ANİMASYON (GSAP) SCRİPTLERİ -->
     <script>
         // Galeri Değiştirme Fonksiyonu
         function changeImage(element) {
-            // Ana görseli güncelle
             document.getElementById('mainGalleryImage').src = element.src;
-            
-            // Tüm küçük resimlerden aktif sınıfını kaldır
             let thumbs = document.querySelectorAll('.kku-thumbnails img');
             thumbs.forEach(thumb => thumb.classList.remove('active'));
-            
-            // Tıklanan resme aktif sınıfını ekle
             element.classList.add('active');
         }
 
         // Zihin Haritası Toggle Fonksiyonu
         function toggleMindmap(element) {
-            // "leaf" sınıfına sahip (en uçtaki) düğümlere tıklanmayı yoksay
             if(element.classList.contains('leaf')) return;
-
             element.classList.toggle('open');
             let childrenContainer = element.nextElementSibling;
-            
             if (childrenContainer && childrenContainer.classList.contains('kku-children')) {
                 childrenContainer.classList.toggle('visible');
             }
         }
+
+        // LENIS SMOOTH SCROLL VE GSAP ANİMASYONLARI
+        const lenis = new Lenis({
+            duration: 1.2, 
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), 
+            smooth: true,
+            mouseMultiplier: 1, 
+        });
+
+        function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+        }
+        requestAnimationFrame(raf);
+
+        lenis.on('scroll', ScrollTrigger.update);
+        gsap.ticker.add((time)=>{
+          lenis.raf(time * 1000)
+        });
+        gsap.ticker.lagSmoothing(0, 0);
+
+        gsap.registerPlugin(ScrollTrigger);
+
+        const revealElements = document.querySelectorAll('.gsap-reveal');
+
+        revealElements.forEach((el) => {
+            gsap.to(el, {
+                scrollTrigger: {
+                    trigger: el,
+                    start: "top 85%", 
+                    toggleActions: "play none none reverse" 
+                },
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                ease: "power3.out"
+            });
+        }); 
     </script>
 
 </body>
