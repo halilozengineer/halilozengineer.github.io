@@ -320,7 +320,8 @@
     }
 
     .kku-children.visible {
-        max-height: 1500px; 
+        /* max-height DEĞERİNİ 1500px'DEN 5000px'E YÜKSELTTİK! */
+        max-height: 5000px; 
         opacity: 1;
         margin-top: 10px;
         margin-bottom: 10px;
@@ -347,6 +348,11 @@
         height: 2px;
         background-color: #dee2e6;
         z-index: 1;
+    }
+
+    /* Kök Düğüm için Çizgiyi Gizle */
+    .kku-mindmap-wrapper > .kku-node-group::before {
+        display: none;
     }
 </style>
 </head>
@@ -548,6 +554,7 @@
                             <div class="kku-node-group"><div class="kku-node leaf">Topoloji İyileştirme Çalışmaları</div></div>
                         </div>
                     </div>
+                    
                 </div>
             </div>
         </div>
@@ -585,9 +592,14 @@
     <script>
         // Galeri Değiştirme Fonksiyonu
         function changeImage(element) {
+            // Ana görseli güncelle
             document.getElementById('mainGalleryImage').src = element.src;
+            
+            // Tüm küçük resimlerden aktif sınıfını kaldır
             let thumbs = document.querySelectorAll('.kku-thumbnails img');
             thumbs.forEach(thumb => thumb.classList.remove('active'));
+            
+            // Tıklanan resme aktif sınıfını ekle
             element.classList.add('active');
         }
 
