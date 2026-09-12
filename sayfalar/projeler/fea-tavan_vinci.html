@@ -5,214 +5,233 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tavan Vinci Optimizasyonu</title>
 <style>
-    :root {
-        --bg-dark: #1e2022;
-        --card-bg: #2b2e31;
-        --text-light: #f8f9fa;
-        --text-muted: #adb5bd;
-        --accent-blue: #0d6efd;
-        --bg-light: #ffffff;
-        --text-dark: #212529;
-    }
-
+    /* Genel ve Koyu Tema Ayarları */
     body {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         margin: 0;
         padding: 0;
-        background-color: var(--bg-light);
-        color: var(--text-dark);
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     }
 
-    /* Hero Section */
-    .hero-section {
-        background-color: var(--bg-dark);
-        color: var(--text-light);
-        padding: 60px 20px;
+    .kku-hero-section {
+        background-color: #1a1c20; /* Ekran görüntüsündeki koyu ton */
+        color: #ffffff;
+        padding: 80px 20px;
     }
-
-    .hero-container {
+    
+    .kku-hero-container {
         max-width: 1200px;
         margin: 0 auto;
         display: flex;
+        gap: 50px;
+        align-items: center;
         flex-wrap: wrap;
-        gap: 40px;
     }
 
-    .hero-content {
+    /* Sol Taraf: Metinler ve Kartlar */
+    .kku-content {
         flex: 1;
-        min-width: 300px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
+        min-width: 350px;
     }
 
-    .hero-title {
-        font-size: 3rem;
+    .kku-title {
+        font-size: 2.8rem;
         font-weight: 700;
-        margin-bottom: 30px;
-        line-height: 1.2;
+        line-height: 1.25;
+        margin-bottom: 40px;
+        color: #ffffff;
     }
 
-    .info-cards {
-        display: flex;
-        gap: 20px;
-        flex-wrap: wrap;
-    }
-
-    .info-card {
-        background-color: var(--card-bg);
-        padding: 20px;
-        border-radius: 10px;
-        flex: 1;
-        min-width: 200px;
-        border-left: 4px solid var(--text-muted);
-    }
-
-    .info-card h4 {
-        margin: 0 0 10px 0;
-        font-size: 0.9rem;
-        color: var(--text-muted);
-        text-transform: uppercase;
-    }
-
-    .info-card p {
-        margin: 0;
-        font-size: 1.1rem;
-        font-weight: 600;
-    }
-
-    /* Galeri Alanı */
-    .hero-gallery {
-        flex: 1;
-        min-width: 300px;
-        display: flex;
+    .kku-cards-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
         gap: 15px;
     }
 
-    .main-image {
-        flex: 3;
-        background-color: #000;
+    .kku-card {
+        background-color: #2b2e32;
+        padding: 20px;
+        border-radius: 8px;
+        border-left: 4px solid #ffffff;
+    }
+
+    .kku-card.full-width {
+        grid-column: span 2;
+    }
+
+    .kku-label {
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        color: #adb5bd;
+        margin-bottom: 8px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+    }
+
+    .kku-value {
+        font-size: 1.1rem;
+        font-weight: 500;
+        color: #ffffff;
+        margin: 0;
+        line-height: 1.4;
+    }
+
+    /* Sağ Taraf: Galeri */
+    .kku-gallery {
+        flex: 1;
+        display: flex;
+        gap: 15px;
+        min-width: 350px;
+    }
+
+    .kku-main-img-box {
+        flex: 1;
+        background-color: #000000;
         border-radius: 10px;
         overflow: hidden;
         display: flex;
         align-items: center;
         justify-content: center;
+        aspect-ratio: 4 / 3;
     }
 
-    .main-image img {
+    .kku-main-img-box img {
         width: 100%;
-        height: auto;
-        object-fit: contain;
+        height: 100%;
+        object-fit: cover;
     }
 
-    .thumbnails {
-        flex: 1;
+    .kku-thumbnails {
         display: flex;
         flex-direction: column;
         gap: 10px;
+        width: 80px;
     }
 
-    .thumbnails img {
+    .kku-thumbnails img {
         width: 100%;
-        border-radius: 8px;
+        height: 60px;
+        object-fit: cover;
+        border-radius: 6px;
         cursor: pointer;
-        opacity: 0.6;
-        transition: 0.3s;
+        opacity: 0.5;
         border: 2px solid transparent;
+        transition: all 0.3s ease;
     }
 
-    .thumbnails img:hover, .thumbnails img.active {
+    .kku-thumbnails img:hover {
+        opacity: 0.9;
+    }
+
+    .kku-thumbnails img.active {
         opacity: 1;
-        border-color: var(--accent-blue);
+        border-color: #0d6efd; /* Videodaki mavi aktif kenarlık */
+        box-shadow: 0 0 8px rgba(13, 110, 253, 0.4);
     }
 
-    /* Problem Tanımı Section */
-    .section-container {
+    /* Alt Kısım: Problem Tanımı (Açık Tema) */
+    .kku-problem-section {
+        background-color: #ffffff;
+        color: #333333;
+        padding: 80px 20px;
+    }
+
+    .kku-problem-container {
         max-width: 1200px;
-        margin: 60px auto;
-        padding: 0 20px;
+        margin: 0 auto;
     }
 
-    .section-title {
-        font-size: 2rem;
-        margin-bottom: 20px;
-        color: var(--text-dark);
-        border-bottom: 2px solid #eee;
-        padding-bottom: 10px;
+    .kku-section-title {
+        font-size: 2.2rem;
+        font-weight: 700;
+        margin-bottom: 25px;
+        color: #212529;
     }
 
-    .section-text {
+    .kku-problem-container p {
         font-size: 1.1rem;
         line-height: 1.8;
-        color: #444;
-        margin-bottom: 30px;
+        margin-bottom: 20px;
+        color: #495057;
     }
 
-    .comparison-image {
-        width: 100%;
-        border-radius: 10px;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    .kku-problem-image {
+        margin-top: 40px;
+        text-align: center;
+    }
+
+    .kku-problem-image img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.06);
     }
 </style>
 </head>
 <body>
 
-    <!-- Hero Section -->
-    <section class="hero-section">
-        <div class="hero-container">
-            <div class="hero-content">
-                <h1 class="hero-title">Tavan Vinci Dinamik Analizleri<br>ve Yapısal Optimizasyon</h1>
-                <div class="info-cards">
-                    <div class="info-card">
-                        <h4>Proje Yürütücüsü</h4>
-                        <p>Halil Öz</p>
+    <!-- Üst Kısım: Koyu Tema Hero -->
+    <section class="kku-hero-section">
+        <div class="kku-hero-container">
+            <!-- Sol Bilgi Kartları -->
+            <div class="kku-content">
+                <h1 class="kku-title">Tavan Vinci Dinamik<br>Analizleri<br>ve Yapısal Optimizasyon</h1>
+                
+                <div class="kku-cards-grid">
+                    <div class="kku-card">
+                        <div class="kku-label">PROJE YÜRÜTÜCÜSÜ</div>
+                        <div class="kku-value">Halil Öz</div>
                     </div>
-                    <div class="info-card">
-                        <h4>Danışman</h4>
-                        <p>Prof. Dr. Mehmet ÇELİK</p>
+                    <div class="kku-card">
+                        <div class="kku-label">DANIŞMAN</div>
+                        <div class="kku-value">Prof. Dr. Mehmet ÇELİK</div>
                     </div>
-                    <div class="info-card">
-                        <h4>Kurum</h4>
-                        <p>KTO Karatay Üniversitesi,<br>Makine Mühendisliği Bölümü</p>
+                    <div class="kku-card full-width">
+                        <div class="kku-label">KURUM</div>
+                        <div class="kku-value">KTO Karatay Üniversitesi,<br>Makine Mühendisliği Bölümü</div>
                     </div>
                 </div>
             </div>
             
-            <div class="hero-gallery">
-                <div class="main-image">
-                    <!-- Ana görsel buraya gelecek -->
-                    <img id="mainImg" src="resim1.jpg" alt="Ana Görsel">
+            <!-- Sağ Galeri -->
+            <div class="kku-gallery">
+                <div class="kku-main-img-box">
+                    <img id="mainGalleryImage" src="https://via.placeholder.com/800x600/000000/FFFFFF?text=Ana+CAD+Modeli" alt="Ana Görsel">
                 </div>
-                <div class="thumbnails">
-                    <!-- Küçük resimler buraya gelecek -->
-                    <img src="resim1.jpg" class="active" onclick="changeImage(this.src)">
-                    <img src="resim2.jpg" onclick="changeImage(this.src)">
-                    <img src="resim3.jpg" onclick="changeImage(this.src)">
-                    <img src="resim4.jpg" onclick="changeImage(this.src)">
+                <div class="kku-thumbnails">
+                    <img src="https://via.placeholder.com/800x600/000000/FFFFFF?text=Ana+CAD+Modeli" class="thumb active" onclick="changeImage(this)">
+                    <img src="https://via.placeholder.com/800x600/1a1a1a/FFFFFF?text=Mesh+Yapısı" class="thumb" onclick="changeImage(this)">
+                    <img src="https://via.placeholder.com/800x600/2a2a2a/FFFFFF?text=Gerilme+Analizi" class="thumb" onclick="changeImage(this)">
+                    <img src="https://via.placeholder.com/800x600/3a3a3a/FFFFFF?text=Dinamik+Yanıt" class="thumb" onclick="changeImage(this)">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Problem Tanımı Section -->
-    <section class="section-container">
-        <h2 class="section-title">Problem Tanımı</h2>
-        <div class="section-text">
+    <!-- Alt Kısım: Problem Tanımı -->
+    <section class="kku-problem-section">
+        <div class="kku-problem-container">
+            <h2 class="kku-section-title">Problem Tanımı</h2>
             <p>Ağır sanayi tesislerinde çalışacak köprülü vinçlerde en kritik tasarım parametresi sehim sınırıdır. Türkiye ve dünya genelindeki genel mühendislik standartlarına göre, köprülü vinçlerin köprülerinde izin verilen maksimum dikey sehim oranı köprü açıklığının 1000'de 1'idir (L / 1000) olarak belirlenmiştir.</p>
             <p>12 metre (12.000 mm) uzunluğundaki köprümüz için bu limit tam olarak 12 mm'dir. Ancak, tesiste tonlarca gereksiz maksimum yük miktarı göz önünde bulundurularak beklenen 24 ton (235, 440 N) nominal yük altındaki ilk tasarımımız dikeyde ~ 26.4 mm'lik kabul edilemez bir sehim sergilemiştir. Bu durum yapısal kararsızlığa, yorulma çatlaklarına ve raydan çıkma risklerine yol açabileceği için tasarımın revize edilmesi kaçınılmaz hale gelmiştir.</p>
+            
+            <div class="kku-problem-image">
+                 <img src="https://via.placeholder.com/1200x500/f8f9fa/333333?text=Sehim+Karşılaştırma+ve+İyileştirme+Görseli" alt="Optimizasyon Karşılaştırması">
+            </div>
         </div>
-        
-        <!-- Karşılaştırma Görseli -->
-        <img class="comparison-image" src="karsilastirma-gorseli.jpg" alt="Tavan Vinci Tasarım Optimizasyonu Karşılaştırması">
     </section>
 
-    <!-- Galeri için basit bir Javascript -->
+    <!-- Galeri Değiştirme Scripti -->
     <script>
-        function changeImage(src) {
-            document.getElementById('mainImg').src = src;
-            let thumbs = document.querySelectorAll('.thumbnails img');
+        function changeImage(element) {
+            // Ana görseli güncelle
+            document.getElementById('mainGalleryImage').src = element.src;
+            
+            // Tüm küçük resimlerden aktif sınıfını kaldır
+            let thumbs = document.querySelectorAll('.kku-thumbnails img');
             thumbs.forEach(thumb => thumb.classList.remove('active'));
-            event.target.classList.add('active');
+            
+            // Tıklanan resme aktif sınıfını ekle
+            element.classList.add('active');
         }
     </script>
 
