@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tavan Vinci Optimizasyonu</title>
+<style>
+    :root {
+        --bg-dark: #1e2022;
+        --card-bg: #2b2e31;
+        --text-light: #f8f9fa;
+        --text-muted: #adb5bd;
+        --accent-blue: #0d6efd;
+        --bg-light: #ffffff;
+        --text-dark: #212529;
+    }
+
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: var(--bg-light);
+        color: var(--text-dark);
+    }
+
+    /* Hero Section */
+    .hero-section {
+        background-color: var(--bg-dark);
+        color: var(--text-light);
+        padding: 60px 20px;
+    }
+
+    .hero-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 40px;
+    }
+
+    .hero-content {
+        flex: 1;
+        min-width: 300px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .hero-title {
+        font-size: 3rem;
+        font-weight: 700;
+        margin-bottom: 30px;
+        line-height: 1.2;
+    }
+
+    .info-cards {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+
+    .info-card {
+        background-color: var(--card-bg);
+        padding: 20px;
+        border-radius: 10px;
+        flex: 1;
+        min-width: 200px;
+        border-left: 4px solid var(--text-muted);
+    }
+
+    .info-card h4 {
+        margin: 0 0 10px 0;
+        font-size: 0.9rem;
+        color: var(--text-muted);
+        text-transform: uppercase;
+    }
+
+    .info-card p {
+        margin: 0;
+        font-size: 1.1rem;
+        font-weight: 600;
+    }
+
+    /* Galeri Alanı */
+    .hero-gallery {
+        flex: 1;
+        min-width: 300px;
+        display: flex;
+        gap: 15px;
+    }
+
+    .main-image {
+        flex: 3;
+        background-color: #000;
+        border-radius: 10px;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .main-image img {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+    }
+
+    .thumbnails {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .thumbnails img {
+        width: 100%;
+        border-radius: 8px;
+        cursor: pointer;
+        opacity: 0.6;
+        transition: 0.3s;
+        border: 2px solid transparent;
+    }
+
+    .thumbnails img:hover, .thumbnails img.active {
+        opacity: 1;
+        border-color: var(--accent-blue);
+    }
+
+    /* Problem Tanımı Section */
+    .section-container {
+        max-width: 1200px;
+        margin: 60px auto;
+        padding: 0 20px;
+    }
+
+    .section-title {
+        font-size: 2rem;
+        margin-bottom: 20px;
+        color: var(--text-dark);
+        border-bottom: 2px solid #eee;
+        padding-bottom: 10px;
+    }
+
+    .section-text {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: #444;
+        margin-bottom: 30px;
+    }
+
+    .comparison-image {
+        width: 100%;
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+</style>
+</head>
+<body>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">Tavan Vinci Dinamik Analizleri<br>ve Yapısal Optimizasyon</h1>
+                <div class="info-cards">
+                    <div class="info-card">
+                        <h4>Proje Yürütücüsü</h4>
+                        <p>Halil Öz</p>
+                    </div>
+                    <div class="info-card">
+                        <h4>Danışman</h4>
+                        <p>Prof. Dr. Mehmet ÇELİK</p>
+                    </div>
+                    <div class="info-card">
+                        <h4>Kurum</h4>
+                        <p>KTO Karatay Üniversitesi,<br>Makine Mühendisliği Bölümü</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hero-gallery">
+                <div class="main-image">
+                    <!-- Ana görsel buraya gelecek -->
+                    <img id="mainImg" src="resim1.jpg" alt="Ana Görsel">
+                </div>
+                <div class="thumbnails">
+                    <!-- Küçük resimler buraya gelecek -->
+                    <img src="resim1.jpg" class="active" onclick="changeImage(this.src)">
+                    <img src="resim2.jpg" onclick="changeImage(this.src)">
+                    <img src="resim3.jpg" onclick="changeImage(this.src)">
+                    <img src="resim4.jpg" onclick="changeImage(this.src)">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Tanımı Section -->
+    <section class="section-container">
+        <h2 class="section-title">Problem Tanımı</h2>
+        <div class="section-text">
+            <p>Ağır sanayi tesislerinde çalışacak köprülü vinçlerde en kritik tasarım parametresi sehim sınırıdır. Türkiye ve dünya genelindeki genel mühendislik standartlarına göre, köprülü vinçlerin köprülerinde izin verilen maksimum dikey sehim oranı köprü açıklığının 1000'de 1'idir (L / 1000) olarak belirlenmiştir.</p>
+            <p>12 metre (12.000 mm) uzunluğundaki köprümüz için bu limit tam olarak 12 mm'dir. Ancak, tesiste tonlarca gereksiz maksimum yük miktarı göz önünde bulundurularak beklenen 24 ton (235, 440 N) nominal yük altındaki ilk tasarımımız dikeyde ~ 26.4 mm'lik kabul edilemez bir sehim sergilemiştir. Bu durum yapısal kararsızlığa, yorulma çatlaklarına ve raydan çıkma risklerine yol açabileceği için tasarımın revize edilmesi kaçınılmaz hale gelmiştir.</p>
+        </div>
+        
+        <!-- Karşılaştırma Görseli -->
+        <img class="comparison-image" src="karsilastirma-gorseli.jpg" alt="Tavan Vinci Tasarım Optimizasyonu Karşılaştırması">
+    </section>
+
+    <!-- Galeri için basit bir Javascript -->
+    <script>
+        function changeImage(src) {
+            document.getElementById('mainImg').src = src;
+            let thumbs = document.querySelectorAll('.thumbnails img');
+            thumbs.forEach(thumb => thumb.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+    </script>
+
+</body>
+</html>
