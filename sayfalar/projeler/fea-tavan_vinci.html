@@ -222,68 +222,70 @@
         box-shadow: 0 4px 6px rgba(0,0,0,0.05);
     }
 
-    /* İnteraktif Zihin Haritası (Mind Map) CSS */
+    /* İNTERAKTİF DİKEY ZİHİN HARİTASI (MIND MAP) CSS */
     .kku-interactive-mindmap {
         background-color: #f8f9fa;
-        padding: 20px;
-        overflow-x: auto;
+        padding: 40px 20px;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         display: flex;
         justify-content: center;
-        margin-bottom: 40px;
     }
 
     .kku-mindmap-wrapper {
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-        min-width: 800px;
-        padding: 20px;
+        width: 100%;
+        max-width: 800px;
+        margin: 0 auto;
     }
 
     .kku-node-group {
-        display: flex;
-        align-items: center;
         position: relative;
+        margin-bottom: 8px;
     }
 
     .kku-node {
         background-color: #ffffff;
         border: 2px solid #e0e0e0;
         border-radius: 8px;
-        padding: 12px 20px;
-        margin: 10px;
-        font-size: 14px;
+        padding: 15px 20px;
+        font-size: 15px;
         font-weight: 600;
         color: #333;
         cursor: pointer;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        box-shadow: 0 2px 5px rgba(0,0,0,0.05);
         transition: all 0.3s ease;
-        position: relative;
-        z-index: 2;
         display: flex;
         align-items: center;
-        gap: 10px;
-        min-width: 200px;
         justify-content: space-between;
+        width: 100%;
+        box-sizing: border-box;
     }
 
     .kku-node:hover {
         border-color: #0d6efd;
-        box-shadow: 0 6px 12px rgba(13, 110, 253, 0.15);
+        box-shadow: 0 4px 10px rgba(13, 110, 253, 0.15);
     }
 
     .kku-node.root {
-        background-color: #e8f0fe;
-        border-color: #0d6efd;
-        color: #0d6efd;
-        font-size: 16px;
+        background-color: #1a1c20;
+        border-color: #1a1c20;
+        color: #ffffff;
+        font-size: 18px;
+        text-align: center;
+        justify-content: center;
+        gap: 15px;
     }
 
     .kku-node.leaf {
-        background-color: #f1f8e9;
-        border-color: #8bc34a;
+        background-color: #f8f9fa;
+        border-color: #ced4da;
         cursor: default;
+        font-weight: 500;
+        font-size: 14px;
+    }
+
+    .kku-node.leaf:hover {
+        border-color: #ced4da;
+        box-shadow: none;
     }
 
     .kku-toggle-icon {
@@ -292,10 +294,10 @@
         justify-content: center;
         width: 24px;
         height: 24px;
-        background-color: #f1f3f5;
+        background-color: #e9ecef;
         border-radius: 50%;
-        font-size: 16px;
-        color: #6c757d;
+        font-size: 14px;
+        color: #495057;
         transition: transform 0.3s ease;
     }
 
@@ -308,45 +310,43 @@
     .kku-children {
         display: flex;
         flex-direction: column;
-        padding-left: 40px;
+        padding-left: 30px;
         position: relative;
-        opacity: 0;
         max-height: 0;
         overflow: hidden;
-        transition: all 0.4s ease-in-out;
+        transition: max-height 0.4s ease-in-out, opacity 0.4s ease-in-out, margin 0.4s ease-in-out;
+        opacity: 0;
+        margin-top: 0;
     }
 
     .kku-children.visible {
+        max-height: 1500px; 
         opacity: 1;
-        max-height: 1000px; 
+        margin-top: 10px;
+        margin-bottom: 10px;
     }
 
-    /* Çizgiler */
+    /* Dikey Bağlantı Çizgileri */
     .kku-children::before {
         content: '';
         position: absolute;
-        top: 20px;
+        top: 0;
         bottom: 20px;
-        left: 0;
+        left: 15px;
         width: 2px;
-        background-color: #ccc;
+        background-color: #dee2e6;
         z-index: 1;
     }
 
-    .kku-node-group::before {
+    .kku-children .kku-node-group::before {
         content: '';
         position: absolute;
         top: 50%;
-        left: -40px;
-        width: 50px;
+        left: -15px;
+        width: 15px;
         height: 2px;
-        background-color: #ccc;
+        background-color: #dee2e6;
         z-index: 1;
-    }
-
-    /* En üst grup (Kök) için soldaki çizgiyi gizle */
-    .kku-mindmap-wrapper > .kku-node-group::before {
-        display: none;
     }
 </style>
 </head>
@@ -412,8 +412,8 @@
     <section class="kku-problem-section">
         <div class="kku-problem-container">
             <h2 class="kku-section-title">Problem Tanımı</h2>
-            <p>Ağır sanayi tesislerinde çalışacak köprülü vinçlerde en kritik tasarım parametresi sehim sınırıdır. Türkiye ve dünya genelindeki genel mühendislik standartlarına göre, köprülü vinçlerin köprülerinde izin verilen maksimum dikey sehim oranı köprü açıklığının 1000'de 1'idir (L / 1000) olarak belirlenmiştir.</p>
-            <p>12 metre (12.000 mm) uzunluğundaki köprümüz için bu limit tam olarak 12 mm'dir. Ancak, tesiste tonlarca gereksiz maksimum yük miktarı göz önünde bulundurularak beklenen 24 ton (235, 440 N) nominal yük altındaki ilk tasarımımız dikeyde ~ 26.4 mm'lik kabul edilemez bir sehim sergilemiştir. Bu durum yapısal kararsızlığa, yorulma çatlaklarına ve raydan çıkma risklerine yol açabileceği için tasarımın revize edilmesi kaçınılmaz hale gelmiştir.</p>
+            <p class="kku-list">Ağır sanayi tesislerinde çalışacak köprülü vinçlerde en kritik tasarım parametresi sehim sınırıdır. Türkiye ve dünya genelindeki genel mühendislik standartlarına göre, köprülü vinçlerin köprülerinde izin verilen maksimum dikey sehim oranı köprü açıklığının 1000'de 1'idir (L / 1000) olarak belirlenmiştir.</p>
+            <p class="kku-list">12 metre (12.000 mm) uzunluğundaki köprümüz için bu limit tam olarak 12 mm'dir. Ancak, tesiste tonlarca gereksiz maksimum yük miktarı göz önünde bulundurularak beklenen 24 ton (235, 440 N) nominal yük altındaki ilk tasarımımız dikeyde ~ 26.4 mm'lik kabul edilemez bir sehim sergilemiştir. Bu durum yapısal kararsızlığa, yorulma çatlaklarına ve raydan çıkma risklerine yol açabileceği için tasarımın revize edilmesi kaçınılmaz hale gelmiştir.</p>
             
             <div class="kku-problem-image">
                  <img src="../../projeler/tavan_vinci/karsilastirma.png" alt="Optimizasyon Karşılaştırması">
@@ -423,46 +423,48 @@
 
     <!-- Yaklaşım ve Tasarım Süreci -->
     <section class="kku-yaklasim-section">
-        <h2 class="kku-yaklasim-title">Yaklaşım ve Tasarım Süreci</h2>
-        <p class="kku-list">Problemi çözmek amacıyla bilgisayar destekli mühendislik (CAE) süreçleri sistematik bir şekilde işletilmiştir:</p>
-        
-        <ol class="kku-list">
-            <li><strong>CAD Modeli Sadeleştirme:</strong> Analizi doğrudan etkilemeyecek kablo, cıvata, zincir ve çarpışma sönümleyici gibi küçük parçalar elenerek analiz süresi ve hesaplama maliyeti optimize edilmiştir.</li>
-            <li><strong>Mesh Optimizasyonu:</strong> Tetrahedron (dört yüzlü) eleman yapısı kullanılarak ağ oluşturulmuştur. Sonuçların güvenilirliğini sağlamak adına gövde ve kritik yüzeylere özel "body sizing" ve "face sizing" verilmiştir. Alınan mesh sonucunda elde edilen değerler:
-                <ul class="kku-sub-list">
-                    <li><strong>Ortalama Eleman Kalitesi:</strong> 0.83 (Hedeflenen minimum %70 limitinin oldukça üzerinde)</li>
-                    <li><strong>Aspect Ratio (En Boy Oranı):</strong> 1.86 (İdeal olan 1 değerine son derece yakın)</li>
-                    <li><strong>Skewness (Eğiklik):</strong> 0.22 (İdeal olan 0 değerine yakın, pürüzsüz geçişli elemanlar)</li>
-                    <li><strong>Toplam Düğüm Sayısı:</strong> 457.011 | <strong>Toplam Eleman Sayısı:</strong> 236.475</li>
-                </ul>
-            </li>
-            <li><strong>Tasarım İyileştirme:</strong> 26 mm'lik sehim değerini 12 mm limitinin altına çekmek amacıyla, mukavemet teorisinde yer alan şu meşhur eğilme gerilmesi formülüne başvurulmuştur:</li>
-        </ol>
+        <div class="kku-yaklasim-container">
+            <h2 class="kku-section-title">Yaklaşım ve Tasarım Süreci</h2>
+            <p class="kku-list">Problemi çözmek amacıyla bilgisayar destekli mühendislik (CAE) süreçleri sistematik bir şekilde işletilmiştir:</p>
+            
+            <ol class="kku-list">
+                <li><strong>CAD Modeli Sadeleştirme:</strong> Analizi doğrudan etkilemeyecek kablo, cıvata, zincir ve çarpışma sönümleyici gibi küçük parçalar elenerek analiz süresi ve hesaplama maliyeti optimize edilmiştir.</li>
+                <li><strong>Mesh Optimizasyonu:</strong> Tetrahedron (dört yüzlü) eleman yapısı kullanılarak ağ oluşturulmuştur. Sonuçların güvenilirliğini sağlamak adına gövde ve kritik yüzeylere özel "body sizing" ve "face sizing" verilmiştir. Alınan mesh sonucunda elde edilen değerler:
+                    <ul class="kku-sub-list">
+                        <li><strong>Ortalama Eleman Kalitesi:</strong> 0.83 (Hedeflenen minimum %70 limitinin oldukça üzerinde)</li>
+                        <li><strong>Aspect Ratio (En Boy Oranı):</strong> 1.86 (İdeal olan 1 değerine son derece yakın)</li>
+                        <li><strong>Skewness (Eğiklik):</strong> 0.22 (İdeal olan 0 değerine yakın, pürüzsüz geçişli elemanlar)</li>
+                        <li><strong>Toplam Düğüm Sayısı:</strong> 457.011 | <strong>Toplam Eleman Sayısı:</strong> 236.475</li>
+                    </ul>
+                </li>
+                <li><strong>Tasarım İyileştirme:</strong> 26 mm'lik sehim değerini 12 mm limitinin altına çekmek amacıyla, mukavemet teorisinde yer alan şu meşhur eğilme gerilmesi formülüne başvurulmuştur:</li>
+            </ol>
 
-        <!-- Formül Alanı -->
-        <div class="kku-formula-container">
-            <div class="kku-formula-box">
-                $$ \sigma = \frac{M \cdot c}{I} $$
+            <!-- Formül Alanı -->
+            <div class="kku-formula-container">
+                <div class="kku-formula-box">
+                    $$ \sigma = \frac{M \cdot c}{I} $$
+                </div>
+                <div class="kku-formula-box">
+                    $$ I = \frac{b \cdot h^3}{12} $$
+                </div>
             </div>
-            <div class="kku-formula-box">
-                $$ I = \frac{b \cdot h^3}{12} $$
-            </div>
+            <p class="kku-list">Burada alan atalet momentini temsil eden \( I \) değeri dikdörtgen kesitler için yukarıdaki şekilde hesaplanmaktadır. Kesitin yüksekliği (\( h \)) kübik oranda etki ettiğinden dolayı, kirişlerin alt kısmına uzun kenarı dikey (Z) doğrultuda olacak şekilde 60 mm × 70 mm boy en oranına sahip ek bir mukavemet kirişi entegre edilmiştir.</p>
         </div>
-        <p class="kku-list">Burada alan atalet momentini temsil eden \( I \) değeri dikdörtgen kesitler için yukarıdaki şekilde hesaplanmaktadır. Kesitin yüksekliği (\( h \)) kübik oranda etki ettiğinden dolayı, kirişlerin alt kısmına uzun kenarı dikey (Z) doğrultuda olacak şekilde 60 mm × 70 mm boy en oranına sahip ek bir mukavemet kirişi entegre edilmiştir.</p>
     </section>
 
-    <!-- Zihin Haritası (Mind Map) İş Akışı BAŞLIĞI -->
-    <section class="kku-yaklasim-section" style="padding-bottom: 0;">
+    <!-- DİKEY VE İNTERAKTİF Zihin Haritası (Mind Map) İş Akışı BAŞLIĞI -->
+    <section class="kku-yaklasim-section" style="padding-bottom: 0; padding-top:40px; background-color: #f8f9fa;">
          <h2 class="kku-yaklasim-title" style="text-align: center; border:none; margin-bottom:0;">Tavan Vinci Analiz İş Akışı</h2>
     </section>
     
-    <!-- İNTERAKTİF ZİHİN HARİTASI İÇERİĞİ -->
+    <!-- İNTERAKTİF DİKEY ZİHİN HARİTASI İÇERİĞİ -->
     <section class="kku-interactive-mindmap">
         <div class="kku-mindmap-wrapper">
             <!-- KÖK DÜĞÜM -->
             <div class="kku-node-group">
                 <div class="kku-node root" onclick="toggleMindmap(this)">
-                    Tavan Vinci Analiz İş Akışı
+                    <span>Tavan Vinci Analiz İş Akışı</span>
                     <span class="kku-toggle-icon">▶</span>
                 </div>
                 
@@ -513,7 +515,7 @@
                                 <div class="kku-node" onclick="toggleMindmap(this)">Kalite Kriterleri <span class="kku-toggle-icon">▶</span></div>
                                 <div class="kku-children">
                                     <div class="kku-node-group"><div class="kku-node leaf">Eleman Kalitesi (Hedef > %70)</div></div>
-                                    <div class="kku-node-group"><div class="kku-node leaf">Aspect Ratio (Geniş/Yüksek Oranı)</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">Aspect Ratio (Genişlik/Yükseklik Oranı)</div></div>
                                     <div class="kku-node-group"><div class="kku-node leaf">Skewness (Eğiklik Değeri)</div></div>
                                 </div>
                             </div>
@@ -546,7 +548,6 @@
                             <div class="kku-node-group"><div class="kku-node leaf">Topoloji İyileştirme Çalışmaları</div></div>
                         </div>
                     </div>
-                    
                 </div>
             </div>
         </div>
@@ -584,14 +585,9 @@
     <script>
         // Galeri Değiştirme Fonksiyonu
         function changeImage(element) {
-            // Ana görseli güncelle
             document.getElementById('mainGalleryImage').src = element.src;
-            
-            // Tüm küçük resimlerden aktif sınıfını kaldır
             let thumbs = document.querySelectorAll('.kku-thumbnails img');
             thumbs.forEach(thumb => thumb.classList.remove('active'));
-            
-            // Tıklanan resme aktif sınıfını ekle
             element.classList.add('active');
         }
 
