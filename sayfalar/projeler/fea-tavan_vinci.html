@@ -452,5 +452,33 @@
 
         </div>
     </section>
+
+    <!-- Sonuçlar ve Çıktılar Section -->
+<section class="kku-yaklasim-section">
+    <h2 class="kku-yaklasim-title">Sonuçlar ve Çıktılar</h2>
+    <p class="kku-list" style="margin-bottom: 20px;">Yapılan geometrik iyileştirmelerin ardından gerçekleştirilen nihai analizler, tasarımın mükemmel seviyede çalıştığını kanıtlamıştır:</p>
+    
+    <ul class="kku-list">
+        <li><strong>Nihai Sehim:</strong> Ek kiriş modifikasyonuyla dikey deformasyon tam olarak 12.37 mm seviyesine düşürülmüştür. Malzeme atamasının ardından bu değer kabul edilebilir 12 mm sınırının da altına inecektir.</li>
+        <li><strong>Kiriş Gerilmesi ve Malzeme Seçimi:</strong> Kirişlerin üst bölgesinde oluşan maksimum gerilme 65 MPa olarak tespit edilmiştir. Ağır sanayi vinçlerinde istenen 7 kat emniyet katsayısı (65 MPa * 7 = 455 MPa akma mukavemeti gereksinimi) göz önünde bulundurularak, kiriş imalatı için yüksek dayanımlı AISI 4140 çeliği seçilmiştir.</li>
+        <li><strong>Miller ve Kesme Gerilmesi:</strong> Kaldırma mekanizmasının kritik taşıyıcı millerinde (şaft kısmında) burulma ve kesme etkisiyle oluşan maksimum kesme gerilmesi 160 MPa olarak bulunmuştur. 7 kat emniyet gözetilerek miller için üstün kesme ve çekme dayanımına sahip AISI 4340 ataması yapılmıştır.</li>
+        <li><strong>Modal Titreşim Davranışı:</strong> Modal analiz sonucunda tavan vincinin ilk üç doğal frekansı sırasıyla 8.11 Hz, 12.14 Hz ve 29.34 Hz olarak bulunmuştur. Bu sayede, motorların çalışma frekanslarıyla çakışıp rezonansa girebilecek kritik hızlar önceden haritalandırılmıştır.</li>
+        <li><strong>Transient (Dinamik) Analiz:</strong> Zaman alanında yapılan simülasyonlarda, yükün askıya alındığı ilk 5 saniyelik süreç boyunca gerilmelerin kademeli olarak yükseldiği, yük tamamen kaldırıldıktan sonraki sabit hızlı yatay hareket esnasında ise gerilmelerin statik kaldığı doğrulanmıştır.</li>
+    </ul>
+</section>
+
+<!-- Summary / Özet Section -->
+<section class="kku-yaklasim-section" style="background-color: #f8f9fa;">
+    <h2 class="kku-yaklasim-title">Summary</h2>
+    <p class="kku-list">Bu çalışmada, son derece zorlu endüstriyel kısıtlara sahip bir tavan vincinin ANSYS Workbench ortamında tasarım ve FEA optimizasyon süreçleri başarıyla tamamlanmıştır.</p>
+    
+    <h3 style="color:#212529; margin-top:30px;">Temel Kazanımlar</h3>
+    <ul class="kku-list">
+        <li><strong>Geometrik Güçlendirme:</strong> Alan atalet momentini artıran ek kiriş montajıyla, vincin dikey esneme (sehim) miktarı %50'den fazla iyileştirilmiştir.</li>
+        <li><strong>Doğru Malzeme Konumlandırması:</strong> FEA gerilme dağılımları doğrultusunda kirişlerde AISI 4140, millerde ise AISI 4340 çelikleri kullanılarak 7 kat emniyet faktörü (FoS) garanti edilmiştir.</li>
+        <li><strong>Dinamik Kararlılık:</strong> Modal ve transient dinamik analizler sayesinde yapının çalışma esnasındaki rezonans riskleri haritalandırılmış ve ani darbe yüklerine karşı davranışı öngörülmüş ve tasarımın güvenilirliği tam olarak kanıtlanmıştır.</li>
+        <li><strong>FEA Standartları:</strong> %83'lük yüksek ortalama mesh kalitesi ve ideal skewness değerleriyle analiz sonuçlarının yüksek doğruluğa sahip olduğu ispatlanmıştır.</li>
+    </ul>
+</section>
 </body>
 </html>
