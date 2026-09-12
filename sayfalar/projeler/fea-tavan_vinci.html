@@ -165,6 +165,147 @@
         border-radius: 8px;
         box-shadow: 0 4px 20px rgba(0,0,0,0.06);
     }
+
+    /* Yaklaşım ve Tasarım Süreci CSS */
+    .kku-yaklasim-section {
+        background-color: #ffffff;
+        color: #333;
+        padding: 60px 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .kku-yaklasim-title {
+        font-size: 2.2rem;
+        font-weight: 700;
+        margin-bottom: 25px;
+        color: #212529;
+        border-bottom: 2px solid #eee;
+        padding-bottom: 10px;
+    }
+
+    .kku-list {
+        line-height: 1.8;
+        font-size: 1.1rem;
+        color: #444;
+    }
+
+    .kku-list li {
+        margin-bottom: 15px;
+    }
+
+    .kku-sub-list {
+        margin-top: 10px;
+        list-style-type: circle;
+    }
+
+    /* Formül Kutuları */
+    .kku-formula-container {
+        display: flex;
+        justify-content: center;
+        gap: 50px;
+        margin: 30px 0;
+        flex-wrap: wrap;
+    }
+
+    .kku-formula-box {
+        background-color: #f8f9fa;
+        border-left: 4px solid #0d6efd;
+        padding: 15px 30px;
+        border-radius: 6px;
+        font-size: 1.3rem;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    }
+
+    /* Zihin Haritası (Mind Map) CSS */
+    .kku-mindmap-section {
+        background-color: #f8f9fa;
+        padding: 60px 20px;
+        overflow-x: auto; /* Ekrana sığmazsa kaydırma çubuğu çıkar */
+    }
+
+    .kku-mindmap-container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .kku-tree ul {
+        padding-top: 20px; position: relative;
+        transition: all 0.5s;
+        display: flex;
+    }
+
+    .kku-tree li {
+        float: left; text-align: center;
+        list-style-type: none;
+        position: relative;
+        padding: 20px 5px 0 5px;
+        transition: all 0.5s;
+    }
+
+    /* Çizgiler */
+    .kku-tree li::before, .kku-tree li::after {
+        content: '';
+        position: absolute; top: 0; right: 50%;
+        border-top: 2px solid #ccc;
+        width: 50%; height: 20px;
+    }
+    .kku-tree li::after {
+        right: auto; left: 50%;
+        border-left: 2px solid #ccc;
+    }
+    .kku-tree li:only-child::after, .kku-tree li:only-child::before {
+        display: none;
+    }
+    .kku-tree li:only-child { padding-top: 0;}
+    .kku-tree li:first-child::before, .kku-tree li:last-child::after {
+        border: 0 none;
+    }
+    .kku-tree li:last-child::before {
+        border-right: 2px solid #ccc;
+        border-radius: 0 5px 0 0;
+    }
+    .kku-tree li:first-child::after {
+        border-radius: 5px 0 0 0;
+    }
+    .kku-tree ul ul::before {
+        content: '';
+        position: absolute; top: 0; left: 50%;
+        border-left: 2px solid #ccc;
+        width: 0; height: 20px;
+    }
+
+    /* Kutular */
+    .kku-tree li a {
+        border: 2px solid #0d6efd;
+        padding: 10px 15px;
+        text-decoration: none;
+        color: #333;
+        font-family: arial, verdana, tahoma;
+        font-size: 14px;
+        font-weight: 600;
+        display: inline-block;
+        border-radius: 8px;
+        background-color: #fff;
+        transition: all 0.3s;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    }
+
+    .kku-tree li a:hover, .kku-tree li a:hover+ul li a {
+        background: #0d6efd; color: #fff; border: 2px solid #0b5ed7;
+    }
+    .kku-tree li a:hover+ul li::after, .kku-tree li a:hover+ul li::before, .kku-tree li a:hover+ul::before, .kku-tree li a:hover+ul ul::before {
+        border-color: #0d6efd;
+    }
+
+    /* Ana Başlık Kutusu Özel Renk */
+    .kku-tree > ul > li > a {
+        background-color: #1a1c20;
+        color: #fff;
+        border-color: #1a1c20;
+        font-size: 16px;
+        padding: 15px 25px;
+    }
 </style>
 </head>
 <body>
@@ -235,5 +376,81 @@
         }
     </script>
 
+    <!-- Yaklaşım ve Tasarım Süreci -->
+    <section class="kku-yaklasim-section">
+        <h2 class="kku-yaklasim-title">Yaklaşım ve Tasarım Süreci</h2>
+        <p class="kku-list">Problemi çözmek amacıyla bilgisayar destekli mühendislik (CAE) süreçleri sistematik bir şekilde işletilmiştir:</p>
+        
+        <ol class="kku-list">
+            <li><strong>CAD Modeli Sadeleştirme:</strong> Analizi doğrudan etkilemeyecek kablo, cıvata, zincir ve çarpışma sönümleyici gibi küçük parçalar elenerek analiz süresi ve hesaplama maliyeti optimize edilmiştir.</li>
+            <li><strong>Mesh Optimizasyonu:</strong> Tetrahedron (dört yüzlü) eleman yapısı kullanılarak ağ oluşturulmuştur. Sonuçların güvenilirliğini sağlamak adına gövde ve kritik yüzeylere özel "body sizing" ve "face sizing" verilmiştir. Alınan mesh sonucunda elde edilen değerler:
+                <ul class="kku-sub-list">
+                    <li><strong>Ortalama Eleman Kalitesi:</strong> 0.83 (Hedeflenen minimum %70 limitinin oldukça üzerinde)</li>
+                    <li><strong>Aspect Ratio (En Boy Oranı):</strong> 1.86 (İdeal olan 1 değerine son derece yakın)</li>
+                    <li><strong>Skewness (Eğiklik):</strong> 0.22 (İdeal olan 0 değerine yakın, pürüzsüz geçişli elemanlar)</li>
+                    <li><strong>Toplam Düğüm Sayısı:</strong> 457.011 | <strong>Toplam Eleman Sayısı:</strong> 236.475</li>
+                </ul>
+            </li>
+            <li><strong>Tasarım İyileştirme:</strong> 26 mm'lik sehim değerini 12 mm limitinin altına çekmek amacıyla, mukavemet teorisinde yer alan şu meşhur eğilme gerilmesi formülüne başvurulmuştur:</li>
+        </ol>
+
+        <!-- Formül Alanı -->
+        <div class="kku-formula-container">
+            <div class="kku-formula-box">
+                $$ \sigma = \frac{M \cdot c}{I} $$
+            </div>
+            <div class="kku-formula-box">
+                $$ I = \frac{b \cdot h^3}{12} $$
+            </div>
+        </div>
+        <p class="kku-list">Burada alan atalet momentini temsil eden \( I \) değeri dikdörtgen kesitler için yukarıdaki şekilde hesaplanmaktadır. Kesitin yüksekliği (\( h \)) kübik oranda etki ettiğinden dolayı, kirişlerin alt kısmına uzun kenarı dikey (Z) doğrultuda olacak şekilde 60 mm × 70 mm boy en oranına sahip ek bir mukavemet kirişi entegre edilmiştir.</p>
+    </section>
+
+    <!-- Zihin Haritası (Mind Map) İş Akışı -->
+    <section class="kku-mindmap-section">
+        <div class="kku-mindmap-container">
+            <h2 class="kku-yaklasim-title" style="text-align: center; border:none;">Tavan Vinci Analiz İş Akışı</h2>
+            
+            <div class="kku-tree">
+                <ul>
+                    <li>
+                        <a href="javascript:void(0)">Tavan Vinci Analiz İş Akışı</a>
+                        <ul>
+                            <li>
+                                <a href="javascript:void(0)">Modelleme & Sadeleştirme</a>
+                                <ul>
+                                    <li><a href="javascript:void(0)">CAD Modeli Oluşturma</a></li>
+                                    <li><a href="javascript:void(0)">Detayların Temizlenmesi</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)">Mesh Oluşturma Süreci</a>
+                                <ul>
+                                    <li><a href="javascript:void(0)">Mesh Yapılandırması</a></li>
+                                    <li><a href="javascript:void(0)">Kalite Kriterleri</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)">Analiz Modelleri</a>
+                                <ul>
+                                    <li><a href="javascript:void(0)">Statik Analiz</a></li>
+                                    <li><a href="javascript:void(0)">Modal Analiz</a></li>
+                                    <li><a href="javascript:void(0)">Transient Analiz</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)">Sonuçların Değerlendirilmesi</a>
+                                <ul>
+                                    <li><a href="javascript:void(0)">Gerilme & Deformasyon</a></li>
+                                    <li><a href="javascript:void(0)">Malzeme Seçimi</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
 </body>
 </html>
