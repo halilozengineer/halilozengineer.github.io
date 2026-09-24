@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Termoform Kalıbı Tasarımı</title>
+
+<!-- GSAP Animasyon Kütüphanesi -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<!-- LENIS SMOOTH SCROLL KÜTÜPHANESİ -->
+<script src="https://unpkg.com/@studio-freight/lenis@1.0.34/dist/lenis.min.js"></script>
+
+<style>
+    /* =========================================
+       Genel ve Tema Ayarları
+    ========================================= */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        background-color: #f8f9fa;
+        color: #212529;
+    }
+
+    /* =========================================
+       YÜZEN KAPSÜL NAVİGASYON (GLASSMORPHISM)
+    ========================================= */
+    .floating-nav {
+        position: fixed;
+        top: 2rem;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(255, 255, 255, 0.65);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        padding: 0.8rem 2.5rem;
+        border-radius: 50px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        border: 1px solid rgba(255, 255, 255, 0.8);
+        z-index: 1000; 
+        animation: navDrop 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes navDrop {
+        0% { top: -5rem; opacity: 0; }
+        100% { top: 2rem; opacity: 1; }
+    }
+
+    .floating-nav ul {
+        display: flex;
+        list-style: none;
+        gap: 2.5rem;
+        align-items: center;
+        margin: 0;
+        padding: 0;
+    }
+
+    .floating-nav ul li a {
+        text-decoration: none;
+        color: #1a1e24;
+        font-size: 0.95rem;
+        font-weight: 600;
+        transition: color 0.3s ease, transform 0.3s ease;
+        display: inline-block;
+    }
+
+    .floating-nav ul li a:hover {
+        color: #ff6b6b;
+        transform: translateY(-2px);
+    }
+
+    .lang-switch {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-left: 1rem; 
+        padding-left: 1.5rem;
+        border-left: 1px solid rgba(0, 0, 0, 0.15);
+    }
+
+    .lang-switch a {
+        font-size: 0.9rem !important;
+        font-weight: 700 !important;
+        padding: 0.2rem;
+    }
+
+    .lang-switch a.active {
+        color: #ff6b6b !important;
+        pointer-events: none;
+    }
+
+    .lang-switch a.inactive {
+        color: #718096 !important;
+    }
+
+    .lang-switch a.inactive:hover {
+        color: #1a1e24 !important;
+        transform: translateY(-2px);
+    }
+
+    .lang-switch .divider {
+        color: #cbd5e0;
+        font-size: 0.9rem;
+        user-select: none;
+    }
+
+    /* =========================================
+       HERO (ÖZET) & GALERİ
+    ========================================= */
+    .kku-hero-section {
+        background-color: #1a1c20; 
+        color: #ffffff;
+        padding: 120px 20px 80px 20px; 
+    }
+    
+    .kku-hero-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        gap: 50px;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    .kku-content {
+        flex: 1;
+        min-width: 350px;
+    }
+
+    .kku-title {
+        font-size: 2.8rem;
+        font-weight: 700;
+        line-height: 1.25;
+        margin-bottom: 40px;
+        color: #ffffff;
+    }
+
+    .kku-cards-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+    }
+
+    .kku-card {
+        background-color: #2b2e32;
+        padding: 20px;
+        border-radius: 8px;
+        border-left: 4px solid #ffffff;
+    }
+
+    .kku-card.full-width {
+        grid-column: span 2;
+    }
+
+    .kku-label {
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        color: #adb5bd;
+        margin-bottom: 8px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+    }
+
+    .kku-value {
+        font-size: 1.1rem;
+        font-weight: 500;
+        color: #ffffff;
+        margin: 0;
+        line-height: 1.4;
+    }
+
+    .kku-gallery {
+        flex: 1;
+        display: flex;
+        gap: 15px;
+        min-width: 350px;
+    }
+
+    .kku-main-img-box {
+        flex: 1;
+        background-color: #000000;
+        border-radius: 10px;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        aspect-ratio: 4 / 3;
+    }
+
+    .kku-main-img-box img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain; 
+    }
+
+    .kku-thumbnails {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: 80px;
+    }
+
+    .kku-thumbnails img {
+        width: 100%;
+        height: 60px;
+        object-fit: cover;
+        border-radius: 6px;
+        cursor: pointer;
+        opacity: 0.5;
+        border: 2px solid transparent;
+        transition: all 0.3s ease;
+    }
+
+    .kku-thumbnails img:hover {
+        opacity: 0.9;
+    }
+
+    .kku-thumbnails img.active {
+        opacity: 1;
+        border-color: #0d6efd; 
+        box-shadow: 0 0 8px rgba(13, 110, 253, 0.4);
+    }
+
+    /* =========================================
+       BÖLÜM VE METİN AYARLARI
+    ========================================= */
+    .kku-problem-section, .kku-yaklasim-section {
+        background-color: #ffffff;
+        color: #333333;
+        padding: 60px 20px;
+    }
+
+    .kku-yaklasim-section.bg-light {
+        background-color: #f8f9fa;
+    }
+
+    .kku-problem-container, .kku-yaklasim-container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .kku-section-title {
+        font-size: 2.2rem;
+        font-weight: 700;
+        margin-bottom: 25px;
+        color: #212529;
+        border-bottom: 2px solid #eee;
+        padding-bottom: 10px;
+    }
+
+    .kku-list {
+        line-height: 1.8;
+        font-size: 1.1rem;
+        color: #444;
+        margin-bottom: 20px;
+    }
+
+    .kku-list li {
+        margin-bottom: 15px;
+    }
+
+    .kku-sub-list {
+        margin-top: 10px;
+        list-style-type: circle;
+    }
+
+    .kku-problem-image {
+        margin-top: 40px;
+        text-align: center;
+    }
+
+    .kku-problem-image img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    }
+
+    /* =========================================
+       DİKEY İNTERAKTİF ZİHİN HARİTASI (MIND MAP)
+    ========================================= */
+    .kku-interactive-mindmap {
+        background-color: #f8f9fa;
+        padding: 40px 20px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        display: flex;
+        justify-content: center;
+    }
+
+    .kku-mindmap-wrapper {
+        width: 100%;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .kku-node-group {
+        position: relative;
+        margin-bottom: 8px;
+    }
+
+    .kku-node {
+        background-color: #ffffff;
+        border: 2px solid #e0e0e0;
+        border-radius: 8px;
+        padding: 15px 20px;
+        font-size: 15px;
+        font-weight: 600;
+        color: #333;
+        cursor: pointer;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .kku-node:hover {
+        border-color: #0d6efd;
+        box-shadow: 0 4px 10px rgba(13, 110, 253, 0.15);
+    }
+
+    .kku-node.root {
+        background-color: #1a1c20;
+        border-color: #1a1c20;
+        color: #ffffff;
+        font-size: 18px;
+        text-align: center;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .kku-node.leaf {
+        background-color: #f8f9fa;
+        border-color: #ced4da;
+        cursor: default;
+        font-weight: 500;
+        font-size: 14px;
+    }
+
+    .kku-node.leaf:hover {
+        border-color: #ced4da;
+        box-shadow: none;
+    }
+
+    .kku-toggle-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 24px;
+        height: 24px;
+        background-color: #e9ecef;
+        border-radius: 50%;
+        font-size: 14px;
+        color: #495057;
+        transition: transform 0.3s ease;
+    }
+
+    .kku-node.open .kku-toggle-icon {
+        transform: rotate(90deg);
+        background-color: #0d6efd;
+        color: white;
+    }
+
+    .kku-children {
+        display: flex;
+        flex-direction: column;
+        padding-left: 30px;
+        position: relative;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease-in-out, opacity 0.4s ease-in-out, margin 0.4s ease-in-out;
+        opacity: 0;
+        margin-top: 0;
+    }
+
+    .kku-children.visible {
+        max-height: 5000px; 
+        opacity: 1;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .kku-children::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 20px;
+        left: 15px;
+        width: 2px;
+        background-color: #dee2e6;
+        z-index: 1;
+    }
+
+    .kku-children .kku-node-group::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: -15px;
+        width: 15px;
+        height: 2px;
+        background-color: #dee2e6;
+        z-index: 1;
+    }
+
+    .kku-mindmap-wrapper > .kku-node-group::before {
+        display: none;
+    }
+
+    /* =========================================
+       FOOTER (ALT BİLGİ) BÖLÜMÜ
+    ========================================= */
+    .footer-section {
+        background-color: #1a1e24; 
+        color: #ffffff;
+        padding: 4rem 10vw 2rem 10vw;
+        text-align: center;
+        border-top: 1px solid #2b2e32;
+    }
+    
+    .footer-content h3 {
+        font-size: 1.8rem;
+        margin-bottom: 0.5rem;
+        color: #ffffff;
+    }
+    
+    .footer-content p {
+        color: #a0aec0;
+        font-size: 1.1rem;
+        margin: 0 auto 2rem auto;
+        max-width: none;
+    }
+    
+    .footer-links {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 2rem;
+        margin-bottom: 3rem;
+    }
+    
+    .footer-links a {
+        color: #ffffff;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 1rem;
+        transition: color 0.3s ease;
+    }
+    
+    .footer-links a:hover {
+        color: #ff6b6b;
+    }
+    
+    .footer-bottom {
+        border-top: 1px solid rgba(255,255,255,0.1);
+        padding-top: 2rem;
+        font-size: 0.9rem;
+        color: #718096;
+    }
+
+    /* Animasyon (GSAP) */
+    .gsap-reveal {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    
+    /* Navigasyon Mobil Uyumu */
+    @media (max-width: 768px) {
+        .floating-nav {
+            width: 90%; 
+            padding: 0.6rem 1rem;
+            overflow-x: auto; 
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
+        }
+        .floating-nav ul {
+            gap: 1.2rem; 
+        }
+    }
+</style>
+</head>
+<body>
+
+    <!-- YÜZEN KAPSÜL NAVİGASYON -->
+    <nav class="floating-nav">
+        <ul>
+            <li><a href="../../index.html#hero">Ana Sayfa</a></li>
+            <li><a href="../../index.html#vizyon-ekrani">Vizyon</a></li>
+            <li><a href="../../index.html#armco-projesi">Kabin Tasarımı</a></li>
+            <li><a href="../../index.html#projeler">Projeler</a></li>
+            <li><a href="../hakkimda.html">Hakkımda</a></li>
+            <li><a href="../../index.html#referanslar">Referanslar</a></li>
+            <li><a href="../../index.html#iletisim">İletişim</a></li>
+
+            <li class="lang-switch">
+                <a href="#" class="active">TR</a>
+                <span class="divider">|</span>
+                <a href="../../en/index.html" class="inactive">EN</a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Üst Kısım: Koyu Tema Hero -->
+    <section class="kku-hero-section">
+        <div class="kku-hero-container">
+            <div class="kku-content gsap-reveal">
+                <h1 class="kku-title">Endüstriyel Termoform<br>Kalıbı Tasarımı ve<br>Üretim Optimizasyonu</h1>
+                
+                <div class="kku-cards-grid">
+                    <div class="kku-card">
+                        <div class="kku-label">PROJE YÜRÜTÜCÜSÜ</div>
+                        <div class="kku-value">Halil Öz</div>
+                    </div>
+                    <div class="kku-card">
+                        <div class="kku-label">YAZILIM & YÖNTEM</div>
+                        <div class="kku-value">SolidWorks 3D CAD<br>DFM & Vakum Modelleme</div>
+                    </div>
+                    <div class="kku-card full-width">
+                        <div class="kku-label">UZMANLIK ALANI</div>
+                        <div class="kku-value">Kalıp & Model Tasarımı,<br>Plastik Şekillendirme Teknolojileri</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="kku-gallery gsap-reveal">
+                <div class="kku-main-img-box">
+                    <img id="mainGalleryImage" src="../../projeler/termoform_kalip/cad.png" alt="Termoform Kalıp 3D Görünümü">
+                </div>
+                <div class="kku-thumbnails">
+                    <img src="../../projeler/termoform_kalip/cad.png" class="thumb active" onclick="changeImage(this)">
+                    <img src="../../projeler/termoform_kalip/vakum_delikleri.png" class="thumb" onclick="changeImage(this)">
+                    <img src="../../projeler/termoform_kalip/draft_analizi.png" class="thumb" onclick="changeImage(this)">
+                    <img src="../../projeler/termoform_kalip/patlatilmis_montaj.png" class="thumb" onclick="changeImage(this)">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Giriş ve Proje Özeti Section -->
+    <section class="kku-yaklasim-section bg-light">
+        <div class="kku-yaklasim-container gsap-reveal">
+            <h2 class="kku-section-title">Giriş</h2>
+            <p class="kku-list">Yüksek hacimli plastik ambalaj ve muhafaza üretiminde, milimetrenin onda biri mertebesindeki hatalı bir çekme payının veya yetersiz bir hava tahliye kanalının kalıp döngü süresini (cycle time) uzatıp yüzlerce hatalı baskıya sebep olabileceğini biliyor muydunuz?</p>
+            <p class="kku-list">Bu projede, endüstriyel standartlara tam uyumlu plastik termoform vakum şekillendirme süreçleri için SolidWorks ortamında sıfırdan geliştirilen yüksek hassasiyetli bir kalıp tasarımının mekanik, termal ve imalat odaklı aşamalarını inceleyeceğiz.</p>
+
+            <h3 style="color:#212529; margin-top:30px; font-size: 1.5rem;">Öğrenme ve Mühendislik Hedefleri</h3>
+            <ul class="kku-list">
+                <li>Termoform plastik şekillendirme prosesinde malzeme çekme (shrinkage) ve termal genleşme toleranslarını doğru hesaplamak.</li>
+                <li>Vakum transfer verimini maksimize eden mikro hava tahliye delikleri ve alt vakum kanalı geometrilerini optimize etmek.</li>
+                <li>Kalıptan parça çıkarma kuvvetlerini minimize etmek için form yüzeylerine uygun çıkma (draft) açıları ve radyüs geçişleri kazandırmak.</li>
+                <li>CNC işleme ve DFM (Design for Manufacturing) ilkeleri doğrultusunda kalıp çekirdeği ve gövde parçalarını modüler olarak yapılandırmak.</li>
+            </ul>
+
+            <h3 style="color:#212529; margin-top:30px; font-size: 1.5rem;">Proje Özeti</h3>
+            <p class="kku-list">Bu proje; seri üretim hatlarında yüksek çevrim hızına ve boyutsal kararlılığa sahip plastik ürünlerin vakumla şekillendirilmesi amacıyla tasarlanmış bir termoform kalıp sistemidir. Isıl işlem görmüş plastik levhanın kalıp boşluğuna mükemmel oturmasını sağlamak adına hava tahliye kanalları, termal genleşme payları ve üretim toleransları SolidWorks üzerinde titizlikle detaylandırılmıştır. Tasarım, minimum fire ve yüksek yüzey kalitesiyle seri üretime doğrudan hazır hale getirilmiştir.</p>
+            
+            <!-- Kullanılan Teknolojiler & Standartlar -->
+            <div style="margin-top: 30px; padding: 20px; background-color: #f1f3f5; border-radius: 8px; border-left: 4px solid #0d6efd;">
+                <strong style="display: block; margin-bottom: 10px; color: #1a1e24;">Kullanılan Teknolojiler ve Yöntemler</strong>
+                <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                    <span style="background: #e9ecef; color: #495057; padding: 5px 12px; border-radius: 50px; font-size: 0.9rem; font-weight: 600;">SolidWorks 3D CAD</span>
+                    <span style="background: #e9ecef; color: #495057; padding: 5px 12px; border-radius: 50px; font-size: 0.9rem; font-weight: 600;">Model & Kalıp Tasarımı</span>
+                    <span style="background: #e9ecef; color: #495057; padding: 5px 12px; border-radius: 50px; font-size: 0.9rem; font-weight: 600;">DFM (Üretilebilirlik Analizi)</span>
+                    <span style="background: #e9ecef; color: #495057; padding: 5px 12px; border-radius: 50px; font-size: 0.9rem; font-weight: 600;">Termal Genleşme & Çekme</span>
+                    <span style="background: #e9ecef; color: #495057; padding: 5px 12px; border-radius: 50px; font-size: 0.9rem; font-weight: 600;">Vakum Tahliye Mimarisi</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Problem Tanımı -->
+    <section class="kku-problem-section">
+        <div class="kku-problem-container gsap-reveal">
+            <h2 class="kku-section-title">Problem Tanımı</h2>
+            <p class="kku-list">Termoform kalıpçılığında en sık karşılaşılan zorluklar, plastik malzemenin ısıtma-soğutma evresindeki boyutsal çekmesi, kalıp içerisinde sıkışan havanın oluşturduğu yüzey deformasyonları ve parçanın kalıptan ayrılırken zorlanmasıdır:</p>
+            <ul class="kku-list">
+                <li><strong>Hava Cepleri ve Detay Kaybı:</strong> Isıtılmış termoplastik levha vakum altında çekilirken, kalıp köşelerinde sıkışan hava tahliye edilemezse parça yüzeyinde kabarcıklar, eksik basılma ve köşe radyüslerinde yuvarlanma bozuklukları oluşur.</li>
+                <li><strong>Çekme Payı (Shrinkage) Yanılgıları:</strong> Plastik malzeme (ABS, PET, PS veya PP) soğurken hacimsel olarak daralır. Kalıp geometrisine malzemenin termal çekme katsayısı entegre edilmediğinde nihai parça tolerans dışı kalır.</li>
+                <li><strong>Kalıptan Çıkarma Zorluğu (Demolding):</strong> Düşük ya da sıfır derece draft açısına sahip dikey duvarlar, kalıbın parçayı sıkarak çizmesine ve üretim hattında duruşlara yol açar.</li>
+            </ul>
+            
+            <div class="kku-problem-image">
+                 <img src="../../projeler/termoform_kalip/teknik_kesit.png" alt="Termoform Kalıp Kesit ve Çalışma Prensibi">
+            </div>
+        </div>
+    </section>
+
+    <!-- Yaklaşım ve Tasarım Süreci -->
+    <section class="kku-yaklasim-section bg-light">
+        <div class="kku-yaklasim-container gsap-reveal">
+            <h2 class="kku-section-title">Yaklaşım ve Tasarım Süreci</h2>
+            <p class="kku-list">Endüstriyel seri üretime tam uyumluluk sağlamak amacıyla parametrik modelleme ve mühendislik hesaplamaları şu aşamalarla yönetilmiştir:</p>
+            
+            <ol class="kku-list">
+                <li><strong>3D Parametrik Modelleme:</strong> SolidWorks ortamında ürünün hedef formuna göre kalıp çekirdeği (core/cavity) parametrik olarak tasarlandı. Geometrik değişikliklerin montajın tamamına anında yansımasını sağlayan akıllı referans düzlemleri kuruldu.</li>
+                <li><strong>Hava Tahliye (Vakum) Deliklerinin Optimizasyonu:</strong> Plastik levhada iz bırakmayacak mikro çaplı (0.8 - 1.2 mm) vakum delikleri, parçanın en derin ve detaylı köşelerine stratejik olarak konumlandırıldı. Taban plakasına entegre edilen ana emiş kanallarıyla homojen vakum dağılımı sağlandı.</li>
+                <li><strong>Termal Çekme ve Tolerans Hesapları:</strong> Kullanılacak termoplastik malzemenin soğuma katsayısına göre %1.2 ile %1.8 arasındaki çekme payları kalıp boşluğuna eklenerek nihai ürünün nominal ölçülerde çıkması garanti altına alındı.</li>
+                <li><strong>Çıkma Açısı (Draft) ve Radyüs Optimizasyonu:</strong> Bütün dikey yüzeylere minimum 2° - 3° aralığında çıkma açıları verildi; iç ve dış köşeler akışkan malzeme akışını kolaylaştıracak optimum radyüslerle yumuşatılarak gerilme yığılmaları engellendi.</li>
+            </ol>
+        </div>
+    </section>
+
+    <!-- DİKEY VE İNTERAKTİF Zihin Haritası -->
+    <section class="kku-yaklasim-section" style="padding-bottom: 0; padding-top:40px;">
+         <h2 class="kku-yaklasim-title gsap-reveal" style="text-align: center; border:none; margin-bottom:0;">Termoform Kalıp Tasarım Kriterleri</h2>
+    </section>
+    
+    <section class="kku-interactive-mindmap gsap-reveal">
+        <div class="kku-mindmap-wrapper">
+            <div class="kku-node-group">
+                <div class="kku-node root" onclick="toggleMindmap(this)">
+                    <span>Termoform Kalıp Tasarım Kriterleri</span>
+                    <span class="kku-toggle-icon">▶</span>
+                </div>
+                
+                <div class="kku-children">
+                    <!-- ANA DAL 1: Geometri ve Draft Yönetimi -->
+                    <div class="kku-node-group">
+                        <div class="kku-node" onclick="toggleMindmap(this)">
+                            Geometri ve Draft Yönetimi
+                            <span class="kku-toggle-icon">▶</span>
+                        </div>
+                        <div class="kku-children">
+                            <div class="kku-node-group">
+                                <div class="kku-node" onclick="toggleMindmap(this)">Çıkma Açıları (Draft) <span class="kku-toggle-icon">▶</span></div>
+                                <div class="kku-children">
+                                    <div class="kku-node-group"><div class="kku-node leaf">Dikey Duvarlarda Minimum 2°-3° Açı</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">Sürtünme ve Parça Çizilmesini Önleme</div></div>
+                                </div>
+                            </div>
+                            <div class="kku-node-group">
+                                <div class="kku-node" onclick="toggleMindmap(this)">Köşe Radyüsleri <span class="kku-toggle-icon">▶</span></div>
+                                <div class="kku-children">
+                                    <div class="kku-node-group"><div class="kku-node leaf">Gerilme Yığılmalarını Önleyici Geçişler</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">Termoplastik Levha İncelmesini Engelleme</div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ANA DAL 2: Vakum ve Tahliye Mimarisi -->
+                    <div class="kku-node-group">
+                        <div class="kku-node" onclick="toggleMindmap(this)">
+                            Vakum ve Tahliye Mimarisi
+                            <span class="kku-toggle-icon">▶</span>
+                        </div>
+                        <div class="kku-children">
+                            <div class="kku-node-group">
+                                <div class="kku-node" onclick="toggleMindmap(this)">Mikro Vakum Delikleri <span class="kku-toggle-icon">▶</span></div>
+                                <div class="kku-children">
+                                    <div class="kku-node-group"><div class="kku-node leaf">Kritik Köşelerde Ø 0.8 - 1.2 mm Delikler</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">Yüzeyde Çapak/İz Oluşumunun Engellenmesi</div></div>
+                                </div>
+                            </div>
+                            <div class="kku-node-group">
+                                <div class="kku-node" onclick="toggleMindmap(this)">Alt Tahliye Menifoldu <span class="kku-toggle-icon">▶</span></div>
+                                <div class="kku-children">
+                                    <div class="kku-node-group"><div class="kku-node leaf">Homojen Emiş Basıncı Dağılımı</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">Hızlı Çevrim ve Hava Boşaltma Performansı</div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ANA DAL 3: Termal & Malzeme Davranışı -->
+                    <div class="kku-node-group">
+                        <div class="kku-node" onclick="toggleMindmap(this)">
+                            Termal ve Malzeme Davranışı
+                            <span class="kku-toggle-icon">▶</span>
+                        </div>
+                        <div class="kku-children">
+                            <div class="kku-node-group">
+                                <div class="kku-node" onclick="toggleMindmap(this)">Hacimsel Çekme Payı (Shrinkage) <span class="kku-toggle-icon">▶</span></div>
+                                <div class="kku-children">
+                                    <div class="kku-node-group"><div class="kku-node leaf">Malzeme Bazlı Genleşme/Büzülme Oranları</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">Kalıp Boşluğuna Pozitif Ölçeklendirme</div></div>
+                                </div>
+                            </div>
+                            <div class="kku-node-group">
+                                <div class="kku-node" onclick="toggleMindmap(this)">Kalıp Malzemesi Seçimi <span class="kku-toggle-icon">▶</span></div>
+                                <div class="kku-children">
+                                    <div class="kku-node-group"><div class="kku-node leaf">Alüminyum Kalıp Çeliği (Al 7075 / 6082)</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">Hızlı Isı Transferi ve Kolay İşlenebilirlik</div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ANA DAL 4: İmalat & Montaj (DFM) -->
+                    <div class="kku-node-group">
+                        <div class="kku-node" onclick="toggleMindmap(this)">
+                            İmalat ve Montaj (DFM)
+                            <span class="kku-toggle-icon">▶</span>
+                        </div>
+                        <div class="kku-children">
+                            <div class="kku-node-group">
+                                <div class="kku-node" onclick="toggleMindmap(this)">CNC İşlenebilirlik <span class="kku-toggle-icon">▶</span></div>
+                                <div class="kku-children">
+                                    <div class="kku-node-group"><div class="kku-node leaf">Standart Takım Yollarına Uygun Cepler</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">Minimum Derin/Dar Kanal Mimarisi</div></div>
+                                </div>
+                            </div>
+                            <div class="kku-node-group">
+                                <div class="kku-node" onclick="toggleMindmap(this)">Hızlı Kalıp Değişimi <span class="kku-toggle-icon">▶</span></div>
+                                <div class="kku-children">
+                                    <div class="kku-node-group"><div class="kku-node leaf">Hassas Merkezleme Pimleri ve Flanş Bağlantısı</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">Modüler ve Değiştirilebilir Form Çekirdekleri</div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sonuçlar ve Çıktılar -->
+    <section class="kku-yaklasim-section bg-light">
+        <div class="kku-yaklasim-container gsap-reveal">
+            <h2 class="kku-yaklasim-title">Sonuçlar ve Çıktılar</h2>
+            <p class="kku-list" style="margin-bottom: 20px;">Yapılan hassas modelleme ve üretim simülasyonları sonucunda elde edilen kazanımlar:</p>
+            
+            <ul class="kku-list">
+                <li><strong>Hatasız Boyutsal Doğruluk:</strong> Uygulanan çekme payı optimizasyonu ile termoplastik levhanın oda sıcaklığına soğuduktan sonraki nihai ölçüleri ISO tolerans aralıklarında korunmuştur.</li>
+                <li><strong>Düşük Çevrim Süresi (Cycle Time):</strong> Optimize edilen hava tahliye kanalları sayesinde vakum tutuş hızı artırılmış, parça başına harcanan şekillendirme süresi hissedilir derecede düşürülmüştür.</li>
+                <li><strong>Kusursuz Yüzey Kalitesi:</strong> Mikro delik çapları ve yumuşatılmış geçiş hatları sayesinde ürün yüzeyinde kılcal hava izi kalması ve et kalınlığı dengesizlikleri önlenmiştir.</li>
+                <li><strong>CNC ve Üretim Kolaylığı:</strong> Kalıp formunda derin erişilemez ceplerden kaçınılarak 3 eksenli CNC tezgahlarda standart takımlarla kolayca işlenebilir bir tasarım elde edilmiştir.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Summary / Özet -->
+    <section class="kku-yaklasim-section">
+        <div class="kku-yaklasim-container gsap-reveal">
+            <h2 class="kku-yaklasim-title">Özet</h2>
+            <p class="kku-list">Bu projede, endüstriyel seri üretim hedeflerine yönelik termoform kalıbının CAD modelleme, vakum akış kanalları ve toleranslandırma aşamaları başarıyla tamamlanmıştır.</p>
+            
+            <h3 style="color:#212529; margin-top:30px; font-size: 1.5rem;">Temel Kazanımlar</h3>
+            <ul class="kku-list">
+                <li><strong>Üretilebilirlik Odaklı Yaklaşım (DFM):</strong> Kalıp tasarımı yalnızca parça geometrisine göre değil, CNC işleme yöntemleri ve bağlama kolaylıkları dikkate alınarak geliştirilmiştir.</li>
+                <li><strong>Detaylı Termal Yönetim:</strong> Plastik malzeme büzülme karakteristikleri hesaba katılarak hassas toleranslar kalıp çekirdeğine entegre edilmiştir.</li>
+                <li><strong>Yüksek Fonksiyonel Verim:</strong> Vakum hava tahliyesinin kusursuz dengelenmesi ile fire oranı minimize edilmiş, seri üretime doğrudan hazır bir mühendislik ürünü ortaya konmuştur.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- FOOTER BÖLÜMÜ -->
+    <footer class="footer-section">
+        <div class="footer-content">
+            <h3>Halil Öz</h3>
+            <p>Mechanical Engineer | Mechanical Design & FEA</p>
+            <div class="footer-links">
+                <a href="https://www.linkedin.com/in/halil-öz" target="_blank">LinkedIn</a>
+                <a href="../../dosyalar/Halil_Oz-CV.pdf" download>CV İndir</a>
+                <a href="mailto:halilo.hz42@gmail.com">Email</a>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2026 Halil Öz. Tüm hakları saklıdır.
+            </div>
+        </div>
+    </footer>
+
+    <!-- ETKİLEŞİM VE ANİMASYON (GSAP) SCRİPTLERİ -->
+    <script>
+        // Galeri Değiştirme Fonksiyonu
+        function changeImage(element) {
+            document.getElementById('mainGalleryImage').src = element.src;
+            let thumbs = document.querySelectorAll('.kku-thumbnails img');
+            thumbs.forEach(thumb => thumb.classList.remove('active'));
+            element.classList.add('active');
+        }
+
+        // Zihin Haritası Toggle Fonksiyonu
+        function toggleMindmap(element) {
+            if(element.classList.contains('leaf')) return;
+            element.classList.toggle('open');
+            let childrenContainer = element.nextElementSibling;
+            if (childrenContainer && childrenContainer.classList.contains('kku-children')) {
+                childrenContainer.classList.toggle('visible');
+            }
+        }
+
+        // LENIS SMOOTH SCROLL VE GSAP ANİMASYONLARI
+        const lenis = new Lenis({
+            duration: 1.2, 
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), 
+            smooth: true,
+            mouseMultiplier: 1, 
+        });
+
+        function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+        }
+        requestAnimationFrame(raf);
+
+        lenis.on('scroll', ScrollTrigger.update);
+        gsap.ticker.add((time)=>{
+          lenis.raf(time * 1000)
+        });
+        gsap.ticker.lagSmoothing(0, 0);
+
+        gsap.registerPlugin(ScrollTrigger);
+
+        const revealElements = document.querySelectorAll('.gsap-reveal');
+
+        revealElements.forEach((el) => {
+            gsap.to(el, {
+                scrollTrigger: {
+                    trigger: el,
+                    start: "top 85%", 
+                    toggleActions: "play none none reverse" 
+                },
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                ease: "power3.out"
+            });
+        }); 
+    </script>
+
+</body>
+</html>
