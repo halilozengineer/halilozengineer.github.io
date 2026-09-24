@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Otomatik Motosiklet Zincir Bakım Mekanizması</title>
+
+<!-- GSAP Animasyon Kütüphanesi -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<!-- LENIS SMOOTH SCROLL KÜTÜPHANESİ -->
+<script src="https://unpkg.com/@studio-freight/lenis@1.0.34/dist/lenis.min.js"></script>
+
+<style>
+    /* =========================================
+       Genel ve Tema Ayarları
+    ========================================= */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        background-color: #f8f9fa;
+        color: #212529;
+    }
+
+    /* =========================================
+       YÜZEN KAPSÜL NAVİGASYON (GLASSMORPHISM)
+    ========================================= */
+    .floating-nav {
+        position: fixed;
+        top: 2rem;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(255, 255, 255, 0.65);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        padding: 0.8rem 2.5rem;
+        border-radius: 50px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        border: 1px solid rgba(255, 255, 255, 0.8);
+        z-index: 1000; 
+        animation: navDrop 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes navDrop {
+        0% { top: -5rem; opacity: 0; }
+        100% { top: 2rem; opacity: 1; }
+    }
+
+    .floating-nav ul {
+        display: flex;
+        list-style: none;
+        gap: 2.5rem;
+        align-items: center;
+        margin: 0;
+        padding: 0;
+    }
+
+    .floating-nav ul li a {
+        text-decoration: none;
+        color: #1a1e24;
+        font-size: 0.95rem;
+        font-weight: 600;
+        transition: color 0.3s ease, transform 0.3s ease;
+        display: inline-block;
+    }
+
+    .floating-nav ul li a:hover {
+        color: #ff6b6b;
+        transform: translateY(-2px);
+    }
+
+    .lang-switch {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-left: 1rem; 
+        padding-left: 1.5rem;
+        border-left: 1px solid rgba(0, 0, 0, 0.15);
+    }
+
+    .lang-switch a {
+        font-size: 0.9rem !important;
+        font-weight: 700 !important;
+        padding: 0.2rem;
+    }
+
+    .lang-switch a.active {
+        color: #ff6b6b !important;
+        pointer-events: none;
+    }
+
+    .lang-switch a.inactive {
+        color: #718096 !important;
+    }
+
+    .lang-switch a.inactive:hover {
+        color: #1a1e24 !important;
+        transform: translateY(-2px);
+    }
+
+    .lang-switch .divider {
+        color: #cbd5e0;
+        font-size: 0.9rem;
+        user-select: none;
+    }
+
+    /* =========================================
+       HERO (ÖZET) & GALERİ
+    ========================================= */
+    .kku-hero-section {
+        background-color: #1a1c20; 
+        color: #ffffff;
+        padding: 120px 20px 80px 20px; 
+    }
+    
+    .kku-hero-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        gap: 50px;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    .kku-content {
+        flex: 1;
+        min-width: 350px;
+    }
+
+    .kku-title {
+        font-size: 2.8rem;
+        font-weight: 700;
+        line-height: 1.25;
+        margin-bottom: 40px;
+        color: #ffffff;
+    }
+
+    .kku-cards-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+    }
+
+    .kku-card {
+        background-color: #2b2e32;
+        padding: 20px;
+        border-radius: 8px;
+        border-left: 4px solid #ffffff;
+    }
+
+    .kku-card.full-width {
+        grid-column: span 2;
+    }
+
+    .kku-label {
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        color: #adb5bd;
+        margin-bottom: 8px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+    }
+
+    .kku-value {
+        font-size: 1.1rem;
+        font-weight: 500;
+        color: #ffffff;
+        margin: 0;
+        line-height: 1.4;
+    }
+
+    .kku-gallery {
+        flex: 1;
+        display: flex;
+        gap: 15px;
+        min-width: 350px;
+    }
+
+    .kku-main-img-box {
+        flex: 1;
+        background-color: #000000;
+        border-radius: 10px;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        aspect-ratio: 4 / 3;
+    }
+
+    .kku-main-img-box img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain; 
+    }
+
+    .kku-thumbnails {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: 80px;
+    }
+
+    .kku-thumbnails img {
+        width: 100%;
+        height: 60px;
+        object-fit: cover;
+        border-radius: 6px;
+        cursor: pointer;
+        opacity: 0.5;
+        border: 2px solid transparent;
+        transition: all 0.3s ease;
+    }
+
+    .kku-thumbnails img:hover {
+        opacity: 0.9;
+    }
+
+    .kku-thumbnails img.active {
+        opacity: 1;
+        border-color: #0d6efd; 
+        box-shadow: 0 0 8px rgba(13, 110, 253, 0.4);
+    }
+
+    /* =========================================
+       BÖLÜM VE METİN AYARLARI
+    ========================================= */
+    .kku-problem-section, .kku-yaklasim-section {
+        background-color: #ffffff;
+        color: #333333;
+        padding: 60px 20px;
+    }
+
+    .kku-yaklasim-section.bg-light {
+        background-color: #f8f9fa;
+    }
+
+    .kku-problem-container, .kku-yaklasim-container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .kku-section-title {
+        font-size: 2.2rem;
+        font-weight: 700;
+        margin-bottom: 25px;
+        color: #212529;
+        border-bottom: 2px solid #eee;
+        padding-bottom: 10px;
+    }
+
+    .kku-list {
+        line-height: 1.8;
+        font-size: 1.1rem;
+        color: #444;
+        margin-bottom: 20px;
+    }
+
+    .kku-list li {
+        margin-bottom: 15px;
+    }
+
+    .kku-sub-list {
+        margin-top: 10px;
+        list-style-type: circle;
+    }
+
+    .kku-problem-image {
+        margin-top: 40px;
+        text-align: center;
+    }
+
+    .kku-problem-image img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    }
+
+    /* =========================================
+       DİKEY İNTERAKTİF ZİHİN HARİTASI (MIND MAP)
+    ========================================= */
+    .kku-interactive-mindmap {
+        background-color: #f8f9fa;
+        padding: 40px 20px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        display: flex;
+        justify-content: center;
+    }
+
+    .kku-mindmap-wrapper {
+        width: 100%;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .kku-node-group {
+        position: relative;
+        margin-bottom: 8px;
+    }
+
+    .kku-node {
+        background-color: #ffffff;
+        border: 2px solid #e0e0e0;
+        border-radius: 8px;
+        padding: 15px 20px;
+        font-size: 15px;
+        font-weight: 600;
+        color: #333;
+        cursor: pointer;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .kku-node:hover {
+        border-color: #0d6efd;
+        box-shadow: 0 4px 10px rgba(13, 110, 253, 0.15);
+    }
+
+    .kku-node.root {
+        background-color: #1a1c20;
+        border-color: #1a1c20;
+        color: #ffffff;
+        font-size: 18px;
+        text-align: center;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .kku-node.leaf {
+        background-color: #f8f9fa;
+        border-color: #ced4da;
+        cursor: default;
+        font-weight: 500;
+        font-size: 14px;
+    }
+
+    .kku-node.leaf:hover {
+        border-color: #ced4da;
+        box-shadow: none;
+    }
+
+    .kku-toggle-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 24px;
+        height: 24px;
+        background-color: #e9ecef;
+        border-radius: 50%;
+        font-size: 14px;
+        color: #495057;
+        transition: transform 0.3s ease;
+    }
+
+    .kku-node.open .kku-toggle-icon {
+        transform: rotate(90deg);
+        background-color: #0d6efd;
+        color: white;
+    }
+
+    .kku-children {
+        display: flex;
+        flex-direction: column;
+        padding-left: 30px;
+        position: relative;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease-in-out, opacity 0.4s ease-in-out, margin 0.4s ease-in-out;
+        opacity: 0;
+        margin-top: 0;
+    }
+
+    .kku-children.visible {
+        max-height: 5000px; 
+        opacity: 1;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .kku-children::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 20px;
+        left: 15px;
+        width: 2px;
+        background-color: #dee2e6;
+        z-index: 1;
+    }
+
+    .kku-children .kku-node-group::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: -15px;
+        width: 15px;
+        height: 2px;
+        background-color: #dee2e6;
+        z-index: 1;
+    }
+
+    .kku-mindmap-wrapper > .kku-node-group::before {
+        display: none;
+    }
+
+    /* =========================================
+       FOOTER (ALT BİLGİ) BÖLÜMÜ
+    ========================================= */
+    .footer-section {
+        background-color: #1a1e24; 
+        color: #ffffff;
+        padding: 4rem 10vw 2rem 10vw;
+        text-align: center;
+        border-top: 1px solid #2b2e32;
+    }
+    
+    .footer-content h3 {
+        font-size: 1.8rem;
+        margin-bottom: 0.5rem;
+        color: #ffffff;
+    }
+    
+    .footer-content p {
+        color: #a0aec0;
+        font-size: 1.1rem;
+        margin: 0 auto 2rem auto;
+        max-width: none;
+    }
+    
+    .footer-links {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 2rem;
+        margin-bottom: 3rem;
+    }
+    
+    .footer-links a {
+        color: #ffffff;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 1rem;
+        transition: color 0.3s ease;
+    }
+    
+    .footer-links a:hover {
+        color: #ff6b6b;
+    }
+    
+    .footer-bottom {
+        border-top: 1px solid rgba(255,255,255,0.1);
+        padding-top: 2rem;
+        font-size: 0.9rem;
+        color: #718096;
+    }
+
+    /* Animasyon (GSAP) */
+    .gsap-reveal {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    
+    /* Navigasyon Mobil Uyumu */
+    @media (max-width: 768px) {
+        .floating-nav {
+            width: 90%; 
+            padding: 0.6rem 1rem;
+            overflow-x: auto; 
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
+        }
+        .floating-nav ul {
+            gap: 1.2rem; 
+        }
+    }
+</style>
+</head>
+<body>
+
+    <!-- YÜZEN KAPSÜL NAVİGASYON -->
+    <nav class="floating-nav">
+        <ul>
+            <li><a href="../../index.html#hero">Ana Sayfa</a></li>
+            <li><a href="../../index.html#vizyon-ekrani">Vizyon</a></li>
+            <li><a href="../../index.html#armco-projesi">Kabin Tasarımı</a></li>
+            <li><a href="../../index.html#projeler">Projeler</a></li>
+            <li><a href="../hakkimda.html">Hakkımda</a></li>
+            <li><a href="../../index.html#referanslar">Referanslar</a></li>
+            <li><a href="../../index.html#iletisim">İletişim</a></li>
+
+            <li class="lang-switch">
+                <a href="#" class="active">TR</a>
+                <span class="divider">|</span>
+                <a href="../../en/index.html" class="inactive">EN</a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Üst Kısım: Koyu Tema Hero -->
+    <section class="kku-hero-section">
+        <div class="kku-hero-container">
+            <div class="kku-content gsap-reveal">
+                <h1 class="kku-title">Motosikletler İçin<br>Otomatik Zincir Yağlama ve<br>Gerginlik Mekanizması</h1>
+                
+                <div class="kku-cards-grid">
+                    <div class="kku-card">
+                        <div class="kku-label">PROJE YÜRÜTÜCÜSÜ & KURUCU</div>
+                        <div class="kku-value">Halil Öz</div>
+                    </div>
+                    <div class="kku-card">
+                        <div class="kku-label">DESTEK & PROGRAM</div>
+                        <div class="kku-value">TÜBİTAK TEYDEB 1812<br>BİGG Yatırım Programı</div>
+                    </div>
+                    <div class="kku-card full-width">
+                        <div class="kku-label">KURUM & MARKA</div>
+                        <div class="kku-value">KTO Karatay Üniversitesi Makine Müh.<br>Tescilli Proje / LubriTens Teknolojisi</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="kku-gallery gsap-reveal">
+                <div class="kku-main-img-box">
+                    <img id="mainGalleryImage" src="../../projeler/zincir_yaglama/cad.png" alt="Otomatik Zincir Bakım Mekanizması CAD Görünümü">
+                </div>
+                <div class="kku-thumbnails">
+                    <img src="../../projeler/zincir_yaglama/cad.png" class="thumb active" onclick="changeImage(this)">
+                    <img src="../../projeler/zincir_yaglama/montaj_sema.png" class="thumb" onclick="changeImage(this)">
+                    <img src="../../projeler/zincir_yaglama/modal_analiz.png" class="thumb" onclick="changeImage(this)">
+                    <img src="../../projeler/zincir_yaglama/yol_testi.png" class="thumb" onclick="changeImage(this)">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Giriş ve Proje Özeti Section -->
+    <section class="kku-yaklasim-section bg-light">
+        <div class="kku-yaklasim-container gsap-reveal">
+            <h2 class="kku-section-title">Giriş</h2>
+            <p class="kku-list">Motosikletlerde motor gücünü arka tekerleğe aktaran en kritik organ zincirdir. Ancak zincirler, mekanik sürtünme ve termal dalgalanmalar nedeniyle zamanla kaçınılmaz şekilde uzar ve ideal gerginliğini kaybeder. Gevşek zincir; atma, kopma ve kilitlenme gibi hayati kaza riskleri doğururken; aşırı gergin zincir şanzıman çıkış rulmanlarını ve dişlileri tahrip eder.</p>
+            <p class="kku-list">Bu projede; kullanıcıları periyodik manuel gerdirme ve yağlama zahmetinden kurtaran, sürüş sırasında gerginliği anlık denetleyip düzelten ve zinciri otomatik dozajla yağlayan elektromekanik "tak-çalıştır" (LubriTens) sisteminin tasarım, analiz ve Ar-Ge adımları ele alınmaktadır.</p>
+
+            <h3 style="color:#212529; margin-top:30px; font-size: 1.5rem;">Öğrenme ve Mühendislik Hedefleri</h3>
+            <ul class="kku-list">
+                <li>Dinamik sürüş ortamında Strain Gauge (gerinim ölçer) sensörleri ile mikron mertebesindeki zincir uzamalarını gürültüden arındırarak ölçmek.</li>
+                <li>Geleneksel sürtünmeli kızak blokları yerine enerji kaybını sıfırlayan avare dişli ve aktüatör kinematik mimarisi tasarlamak.</li>
+                <li>Motosiklet şasesine kaynak veya delme işlemi gerektirmeden rijit montaj sağlayan üniversal ayarlanabilir maşa kelepçesi geliştirmek.</li>
+                <li>Yol darbeleri, motor rezonansı ve zorlu hava koşullarına (IP67) dayanıklı gövde ve modal titreşim frekanslarını ANSYS ortamında doğrulamak.</li>
+            </ul>
+
+            <h3 style="color:#212529; margin-top:30px; font-size: 1.5rem;">Proje Özeti</h3>
+            <p class="kku-list">LubriTens, arka salıncak maşasına (swingarm) özel bir kelepçeyle sabitlenen kompakt bir sistem kutusu, gerinim ölçer (strain gauge) sensörleri, ECU kontrollü aktüatör, avare dişli ve mikro yağlama pompasından oluşan bütünleşik bir mekatronik üründür. Pazardaki Scottoiler vb. pasif vakumlu ürünlerin aksine; sadece yağlama yapmakla kalmaz, zincir gerginliğini kapalı çevrim (closed-loop) geri bildirimle anlık yönetir. Yağ israfını ve kimyasal salınımı %60 oranında azaltırken zincir-dişli setinin servis ömrünü 2 katına çıkarır.</p>
+            
+            <!-- Kullanılan Teknolojiler & Standartlar -->
+            <div style="margin-top: 30px; padding: 20px; background-color: #f1f3f5; border-radius: 8px; border-left: 4px solid #0d6efd;">
+                <strong style="display: block; margin-bottom: 10px; color: #1a1e24;">Kullanılan Teknolojiler ve Regülasyonlar</strong>
+                <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                    <span style="background: #e9ecef; color: #495057; padding: 5px 12px; border-radius: 50px; font-size: 0.9rem; font-weight: 600;">SolidWorks 3D CAD</span>
+                    <span style="background: #e9ecef; color: #495057; padding: 5px 12px; border-radius: 50px; font-size: 0.9rem; font-weight: 600;">ANSYS Modal Analiz</span>
+                    <span style="background: #e9ecef; color: #495057; padding: 5px 12px; border-radius: 50px; font-size: 0.9rem; font-weight: 600;">Strain Gauge Kalibrasyonu</span>
+                    <span style="background: #e9ecef; color: #495057; padding: 5px 12px; border-radius: 50px; font-size: 0.9rem; font-weight: 600;">ISO 10190 Standart Uyumu</span>
+                    <span style="background: #e9ecef; color: #495057; padding: 5px 12px; border-radius: 50px; font-size: 0.9rem; font-weight: 600;">IP67 & Conformal Coating</span>
+                    <span style="background: #e9ecef; color: #495057; padding: 5px 12px; border-radius: 50px; font-size: 0.9rem; font-weight: 600;">TÜBİTAK 1812 TEYDEB Ar-Ge</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    
+    <!-- Problem Tanımı -->
+    <section class="kku-problem-section">
+        <div class="kku-problem-container gsap-reveal">
+            <h2 class="kku-section-title">Problem Tanımı</h2>
+            <p class="kku-list">Motosiklet güç aktarım sistemlerinde zincir bakımı; kullanıcı konforu, filo işletme maliyetleri ve yol güvenliği açısından üç temel darboğaz yaratmaktadır:</p>
+            <ul class="kku-list">
+                <li><strong>Hayati Güvenlik Riskleri:</strong> Manuel germe işlemi mekanik hassasiyet gerektirir. Hatalı gerdirilen gevşek zincirin arka dişliden atması tekerleğin aniden kilitlenmesine, aşırı gerilmesi ise şanzıman mil rulmanlarının kırılmasına yol açar.</li>
+                <li><strong>Erken Aşınma ve Yüksek Maliyet:</strong> Düzenli aralıklarla yağlanmayan ve gerilmeyen bir zincir-dişli seti (ortalama 5.000 - 8.000 TL) sürtünme nedeniyle nominal ömrünün yarısında kullanılamaz hale gelir. Kurye filolarında araçların servis dışı kalma süresi (downtime) ciddi ticari kayıptır.</li>
+                <li><strong>Çevresel Kirlilik ve Bakım Zorluğu:</strong> Manuel sprey yağlamada yağın %40'tan fazlası yola ve janta sıçrayarak çevreye kimyasal atık bırakır. Ayrıca uzun yol veya şehir içi kullanımda sürücünün ellerini kirletmeden zincir bakımını yapması imkansızdır.</li>
+            </ul>
+            
+            <div class="kku-problem-image">
+                 <img src="../../projeler/zincir_yaglama/montaj_sema.png" alt="Sistem Bileşenleri ve Şematik Yerleşim">
+            </div>
+        </div>
+    </section>
+
+    <!-- Yaklaşım ve Tasarım Süreci -->
+    <section class="kku-yaklasim-section bg-light">
+        <div class="kku-yaklasim-container gsap-reveal">
+            <h2 class="kku-section-title">Yaklaşım ve Tasarım Süreci</h2>
+            <p class="kku-list">Geleneksel sürtünmeli takoz sistemlerinin ve pasif vakumlu yağlayıcıların yetersiz kaldığı noktalarda, aktif elektronik ve mekanik entegrasyonu sağlayan bir ürün geliştirilmiştir:</p>
+            
+            <ol class="kku-list">
+                <li><strong>Kaynaksız Üniversal Maşa Bağlantısı:</strong> Motosikletlerin arka maşa kesitlerine tam oturan, iki parçalı vidalı sıkıştırma kelepçesi geliştirilmiştir. Şasenin mukavemet bütünlüğü bozulmadan sistem güvenle sabitlenir.</li>
+                <li><strong>Avare Dişli ve Dinamik Gergi Mimarisi:</strong> Zincir akışını frenlemeyen rulmanlı bir avare dişli aktüatör miline bağlanmıştır. Zincirin alt baklasına temas eden dişli, sürtünme yaratmaksızın milimetrik düşey baskı uygulayarak zinciri gerer.</li>
+                <li><strong>Strain Gauge Tabanlı Akıllı Algılama:</strong> Zincirin uyguladığı reaksiyon kuvveti gerinim pulu ile ölçülür. ECU algoritması, motor devrinden ve yol çukurlarından gelen anlık parazitleri filtreleyerek yalnızca kalıcı gerginlik kayıplarında aktüatörü tetikler.</li>
+                <li><strong>5 Aşamalı Akıllı Çalışma Modu:</strong>
+                    <ul class="kku-sub-list">
+                        <li><strong>Mod 1 (İzleme):</strong> Sensörler zincir yükünü bekleme modunda milisaniye bazında tarar.</li>
+                        <li><strong>Mod 2 (Otomatik Ayar):</strong> Gerginlik eşik değeri aşıldığında aktüatör zinciri hedef gerginliğe iter.</li>
+                        <li><strong>Mod 3 (Periyodik Yağlama):</strong> Önceden kalibre edilmiş sürüş kilometre/zaman aralıklarında nozuldan mikro dozajda yağ püskürtülür.</li>
+                        <li><strong>Mod 4 (Manuel Yağlama):</strong> Gidon üzerindeki butonla sürücü yağışlı veya tozlu yollarda ekstra yağlama tetikleyebilir.</li>
+                        <li><strong>Mod 5 (Bakım Modu):</strong> Lastik değişimi veya zincir yenilemede piston kendini tamamen geri çekerek sistemi kilitler.</li>
+                    </ul>
+                </li>
+                <li><strong>Modal Titreşim Doğrulaması:</strong> ANSYS Workbench üzerinde gerçekleştirilen modal analizlerde; sistemin doğal frekans modları (227 Hz, 317 Hz, 373 Hz ve 487 Hz) incelenmiş ve motorun rezonans frekans bölgesi dışında kaldığı kanıtlanmıştır.</li>
+            </ol>
+        </div>
+    </section>
+
+    <!-- DİKEY VE İNTERAKTİF Zihin Haritası -->
+    <section class="kku-yaklasim-section" style="padding-bottom: 0; padding-top:40px;">
+         <h2 class="kku-yaklasim-title gsap-reveal" style="text-align: center; border:none; margin-bottom:0;">LubriTens Mekatronik Sistem Mimarisi</h2>
+    </section>
+    
+    <section class="kku-interactive-mindmap gsap-reveal">
+        <div class="kku-mindmap-wrapper">
+            <div class="kku-node-group">
+                <div class="kku-node root" onclick="toggleMindmap(this)">
+                    <span>LubriTens Akıllı Zincir Bakım Sistemi</span>
+                    <span class="kku-toggle-icon">▶</span>
+                </div>
+                
+                <div class="kku-children">
+                    <!-- ANA DAL 1: Mekanik ve Kinematik Alt Yapı -->
+                    <div class="kku-node-group">
+                        <div class="kku-node" onclick="toggleMindmap(this)">
+                            Mekanik ve Kinematik Tasarım
+                            <span class="kku-toggle-icon">▶</span>
+                        </div>
+                        <div class="kku-children">
+                            <div class="kku-node-group">
+                                <div class="kku-node" onclick="toggleMindmap(this)">Montaj Kelepçesi <span class="kku-toggle-icon">▶</span></div>
+                                <div class="kku-children">
+                                    <div class="kku-node-group"><div class="kku-node leaf">Arka Maşa Profiliyle Üniversal Uyum</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">Kaynaksız ve Delmesiz İki Parçalı Vidalı Montaj</div></div>
+                                </div>
+                            </div>
+                            <div class="kku-node-group">
+                                <div class="kku-node" onclick="toggleMindmap(this)">Avare Dişli Mekanizması <span class="kku-toggle-icon">▶</span></div>
+                                <div class="kku-children">
+                                    <div class="kku-node-group"><div class="kku-node leaf">Düşük Sürtünmeli Rulmanlı Yataklama</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">Doğrusal Kızaklı Düşey Gergi Yolu</div></div>
+                                </div>
+                            </div>
+                            <div class="kku-node-group">
+                                <div class="kku-node" onclick="toggleMindmap(this)">Gövde İmalatı (DFM) <span class="kku-toggle-icon">▶</span></div>
+                                <div class="kku-children">
+                                    <div class="kku-node-group"><div class="kku-node leaf">Prototip: CNC Talaşlı İmalat</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">Seri Üretim: Alüminyum Enjeksiyon Döküm</div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ANA DAL 2: Elektronik & Kontrol Ünitesi (ECU) -->
+                    <div class="kku-node-group">
+                        <div class="kku-node" onclick="toggleMindmap(this)">
+                            Algılama ve Kontrol Mimarisi
+                            <span class="kku-toggle-icon">▶</span>
+                        </div>
+                        <div class="kku-children">
+                            <div class="kku-node-group">
+                                <div class="kku-node" onclick="toggleMindmap(this)">Strain Gauge Sensör Grubu <span class="kku-toggle-icon">▶</span></div>
+                                <div class="kku-children">
+                                    <div class="kku-node-group"><div class="kku-node leaf">Gerinim ve Zincir Çekme Kuvveti Okuma</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">Parazit ve Titreşim Filtreleme Algoritması</div></div>
+                                </div>
+                            </div>
+                            <div class="kku-node-group">
+                                <div class="kku-node" onclick="toggleMindmap(this)">Gömülü ECU & Aktüatör <span class="kku-toggle-icon">▶</span></div>
+                                <div class="kku-children">
+                                    <div class="kku-node-group"><div class="kku-node leaf">Milimetrik Piston Konumlandırma</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">12V Motosiklet Şebekesi Entegrasyonu</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">Gidon Butonu ve Bakım Kilidi Sinyali</div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ANA DAL 3: Yağlama ve Akışkan Yönetimi -->
+                    <div class="kku-node-group">
+                        <div class="kku-node" onclick="toggleMindmap(this)">
+                            Akışkan ve Dozajlama Modülü
+                            <span class="kku-toggle-icon">▶</span>
+                        </div>
+                        <div class="kku-children">
+                            <div class="kku-node-group">
+                                <div class="kku-node" onclick="toggleMindmap(this)">Dozaj Pompası ve Hazne <span class="kku-toggle-icon">▶</span></div>
+                                <div class="kku-children">
+                                    <div class="kku-node-group"><div class="kku-node leaf">Kimyasal Dayanımlı Polimer Rezervuar</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">Düşük Güç Tüketimli Mikro Pompa</div></div>
+                                </div>
+                            </div>
+                            <div class="kku-node-group">
+                                <div class="kku-node" onclick="toggleMindmap(this)">Püskürtme Hattı <span class="kku-toggle-icon">▶</span></div>
+                                <div class="kku-children">
+                                    <div class="kku-node-group"><div class="kku-node leaf">Tıkanmaya Dirençli Nozul Yapısı</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">%60 Yağ Tasarrufu Sağlayan Noktasal Atım</div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ANA DAL 4: Güvenlik, Dayanım ve Standartlar -->
+                    <div class="kku-node-group">
+                        <div class="kku-node" onclick="toggleMindmap(this)">
+                            Çevresel Dayanım ve Standartlar
+                            <span class="kku-toggle-icon">▶</span>
+                        </div>
+                        <div class="kku-children">
+                            <div class="kku-node-group">
+                                <div class="kku-node" onclick="toggleMindmap(this)">Çevresel Yalıtım <span class="kku-toggle-icon">▶</span></div>
+                                <div class="kku-children">
+                                    <div class="kku-node-group"><div class="kku-node leaf">IP67 Su ve Toz Geçirmezlik Sınıfı</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">Elektronikte Conformal Coating Koruması</div></div>
+                                </div>
+                            </div>
+                            <div class="kku-node-group">
+                                <div class="kku-node" onclick="toggleMindmap(this)">Normlar ve Güvenilirlik <span class="kku-toggle-icon">▶</span></div>
+                                <div class="kku-children">
+                                    <div class="kku-node-group"><div class="kku-node leaf">ISO 10190 Motosiklet Zincir Standardı</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">EMC / LVD Direktiflerine Uyumlu Devre</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">ANSYS Modal Analiz Rezonans Kontrolü</div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sonuçlar ve Çıktılar -->
+    <section class="kku-yaklasim-section bg-light">
+        <div class="kku-yaklasim-container gsap-reveal">
+            <h2 class="kku-yaklasim-title">Sonuçlar ve Çıktılar</h2>
+            <p class="kku-list" style="margin-bottom: 20px;">TÜBİTAK 1812 iş planı ve laboratuvar testleri doğrultusunda sistemin ulaştığı teknik ve ticari başarım göstergeleri:</p>
+            
+            <ul class="kku-list">
+                <li><strong>2 Kat Uzatılmış Zincir Ömrü:</strong> Sürekli ideal gerginlikte tutulan ve mikro dozajla yağlanan zincir-dişli setlerinin aşınma süresi yarı yarıya düşürülmüş, dişli sıyırma riskleri önlenmiştir.</li>
+                <li><strong>%60 Yağ Tasarrufu ve Çevre Koruması:</strong> Manuel spreylemenin yarattığı kontrolsüz yağ sıçraması yerine noktasal enjeksiyon yapılarak çevre kirliliği ve sarfiyat minimize edilmiştir.</li>
+                <li><strong>Yüksek Rekabet Avantajı:</strong> Yalnızca yağlama yapan ithal rakiplere (Scottoiler vb.) kıyasla hem germe hem yağlama fonksiyonunu bir arada sunarak %30-40 maliyet avantajı sağlanmıştır.</li>
+                <li><strong>Hızlı Başa Baş (Break-Even) Noktası:</strong> Finansal modelleme kapsamında yapılan hesaplamalarda; 400.000 TL toplam sabit maliyet ve 4.300 TL birim kâr marjı ile sistemin 93 adetlik satışta başa baş noktasına ulaştığı kanıtlanmıştır.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Summary / Özet -->
+    <section class="kku-yaklasim-section">
+        <div class="kku-yaklasim-container gsap-reveal">
+            <h2 class="kku-yaklasim-title">Özet</h2>
+            <p class="kku-list">Bu çalışma; motosiklet sektöründe sürüş güvenliğini doğrudan tehdit eden zincir gevşemesi ve yağsızlık problemine yönelik, ulusal patent potansiyeli yüksek ve yerli Ar-Ge destekli bir mekatronik çözüm ortaya koymuştur.</p>
+            
+            <h3 style="color:#212529; margin-top:30px; font-size: 1.5rem;">Temel Kazanımlar</h3>
+            <ul class="kku-list">
+                <li><strong>Hibrit Mühendislik Çözümü:</strong> Mekanik avare dişli kinetiği, gömülü ECU yazılımı ve piezoelektrik gerinim algılama disiplinleri başarıyla harmanlanmıştır.</li>
+                <li><strong>Yüksek Sürüş Güvenliği:</strong> Sürücünün teknik müdahalesine gerek kalmaksızın zincir atması ve tekerlek kilitlenmesi riskleri sıfıra indirilmiştir.</li>
+                <li><strong>Ölçeklenebilir Seri Üretim Altyapısı:</strong> Prototip fazındaki talaşlı imalat yönteminden, enjeksiyon döküm ve özgün PCB mimarisine uzanan maliyet düşürme yol haritası kurgulanmıştır.</li>
+            </ul>
+            
+            <!-- Gelecek Vizyonu -->
+            <div style="margin-top: 40px; padding: 25px; background-color: #f8f9fa; border-radius: 10px; border: 1px solid #e9ecef; box-shadow: 0 4px 15px rgba(0,0,0,0.03);">
+                <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
+                    <span style="font-size: 2rem;">🏍️</span>
+                    <h4 style="margin: 0; font-size: 1.3rem; color: #1a1e24; font-weight: 700;">Gelecek Vizyonu ve IoT Entegrasyonu</h4>
+                </div>
+                <p style="margin: 0; font-size: 1.05rem; color: #495057; line-height: 1.6;">
+                    Projenin 2. ve 3. fazlarında; sisteme <strong style="color: #0d6efd;">Bluetooth & Mobil Uygulama Entegrasyonu</strong> eklenerek kullanıcıların akıllı telefonları veya gidon ekranı üzerinden zincir gerginlik yüzdesini, kalan yağ rezervuar seviyesini ve tahmini parça ömrünü anlık olarak takip edebilecekleri yeni bir IoT sürümü planlanmaktadır.
+                </p>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- FOOTER BÖLÜMÜ -->
+    <footer class="footer-section">
+        <div class="footer-content">
+            <h3>Halil Öz</h3>
+            <p>Mechanical Engineer | Mechanical Design & FEA</p>
+            <div class="footer-links">
+                <a href="https://www.linkedin.com/in/halil-öz" target="_blank">LinkedIn</a>
+                <a href="../../dosyalar/Halil_Oz-CV.pdf" download>CV İndir</a>
+                <a href="mailto:halilo.hz42@gmail.com">Email</a>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2026 Halil Öz. Tüm hakları saklıdır.
+            </div>
+        </div>
+    </footer>
+
+    <!-- ETKİLEŞİM VE ANİMASYON (GSAP) SCRİPTLERİ -->
+    <script>
+        // Galeri Değiştirme Fonksiyonu
+        function changeImage(element) {
+            document.getElementById('mainGalleryImage').src = element.src;
+            let thumbs = document.querySelectorAll('.kku-thumbnails img');
+            thumbs.forEach(thumb => thumb.classList.remove('active'));
+            element.classList.add('active');
+        }
+
+        // Zihin Haritası Toggle Fonksiyonu
+        function toggleMindmap(element) {
+            if(element.classList.contains('leaf')) return;
+            element.classList.toggle('open');
+            let childrenContainer = element.nextElementSibling;
+            if (childrenContainer && childrenContainer.classList.contains('kku-children')) {
+                childrenContainer.classList.toggle('visible');
+            }
+        }
+
+        // LENIS SMOOTH SCROLL VE GSAP ANİMASYONLARI
+        const lenis = new Lenis({
+            duration: 1.2, 
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), 
+            smooth: true,
+            mouseMultiplier: 1, 
+        });
+
+        function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+        }
+        requestAnimationFrame(raf);
+
+        lenis.on('scroll', ScrollTrigger.update);
+        gsap.ticker.add((time)=>{
+          lenis.raf(time * 1000)
+        });
+        gsap.ticker.lagSmoothing(0, 0);
+
+        gsap.registerPlugin(ScrollTrigger);
+
+        const revealElements = document.querySelectorAll('.gsap-reveal');
+
+        revealElements.forEach((el) => {
+            gsap.to(el, {
+                scrollTrigger: {
+                    trigger: el,
+                    start: "top 85%", 
+                    toggleActions: "play none none reverse" 
+                },
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                ease: "power3.out"
+            });
+        }); 
+    </script>
+
+</body>
+</html>
