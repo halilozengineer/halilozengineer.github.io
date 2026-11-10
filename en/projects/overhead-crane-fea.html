@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Overhead Crane Dynamic Analysis &amp; Structural Optimization | Halil Öz</title>
+    <meta name="description" content="Static, modal, and transient Finite Element Analysis (FEA) and structural deflection optimization of a 24-ton capacity, 12-meter span double-girder industrial overhead crane in ANSYS.">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Overhead Crane Dynamic Analysis &amp; Structural Optimization | Halil Öz">
+    <meta property="og:description" content="L/1000 deflection optimization, modal frequency mapping, and AISI 4140 / 4340 material selection in ANSYS Workbench.">
+    <meta property="og:image" content="https://halilozengineer.github.io/assets/img/projects/tavan-vinci/karsilastirma.webp">
+
+    <link rel="icon" type="image/svg+xml" href="../../assets/img/favicon.svg">
+    <link rel="icon" type="image/png" sizes="64x64" href="../../assets/img/favicon.png">
+    <link rel="apple-touch-icon" href="../../assets/img/favicon.png">
+    <link rel="stylesheet" href="../../assets/css/main.css">
+    <link rel="stylesheet" href="../../assets/css/project-detail.css">
+
+    <!-- MathJax 3 for Engineering Formulas -->
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <!-- GSAP Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.34/dist/lenis.min.js" defer></script>
+    <script src="../../assets/js/app.js" defer></script>
+</head>
+<body>
+
+    <!-- FLOATING CAPSULE NAVIGATION -->
+    <nav class="floating-nav" aria-label="Main Navigation">
+        <ul>
+            <li><a href="../index.html#hero">Home</a></li>
+            <li><a href="../index.html#vision-screen">Vision</a></li>
+            <li><a href="../index.html#armco-project">Cabinet Design</a></li>
+            <li><a href="../index.html#experience">Experience</a></li>
+            <li><a href="../index.html#projects" class="nav-active">Projects</a></li>
+            <li><a href="../about.html">About Me</a></li>
+            <li><a href="../index.html#references">References</a></li>
+            <li><a href="../index.html#contact">Contact</a></li>
+
+            <li class="lang-switch">
+                <a href="../../projeler/tavan-vinci-fea.html" class="inactive">TR</a>
+                <span class="divider">|</span>
+                <a href="overhead-crane-fea.html" class="active">EN</a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- HERO & INTERACTIVE GALLERY -->
+    <section class="kku-hero-section">
+        <div class="kku-hero-container">
+            <div class="kku-content gsap-reveal">
+                <h1 class="kku-title">Overhead Crane Dynamic<br>Analysis &amp; Structural<br>Optimization</h1>
+
+                <div class="kku-cards-grid">
+                    <div class="kku-card">
+                        <div class="kku-label">PROJECT LEAD</div>
+                        <div class="kku-value">Halil Öz</div>
+                    </div>
+                    <div class="kku-card">
+                        <div class="kku-label">ADVISOR</div>
+                        <div class="kku-value">Prof. Dr. Mehmet Çelik</div>
+                    </div>
+                    <div class="kku-card full-width">
+                        <div class="kku-label">INSTITUTION</div>
+                        <div class="kku-value">KTO Karatay University, Department of Mechanical Engineering</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="kku-gallery gsap-reveal">
+                <div class="kku-main-img-box">
+                    <img id="mainGalleryImage" src="../../assets/img/projects/tavan-vinci/cad.webp" alt="Double-Girder Overhead Crane 3D CAD Model">
+                    <span class="kku-zoom-hint">🔍 Click to enlarge</span>
+                </div>
+                <div class="kku-thumbnails">
+                    <img src="../../assets/img/projects/tavan-vinci/cad.webp" alt="Double-Girder Overhead Crane 3D CAD Model" class="thumb active" onclick="changeImage(this)">
+                    <img src="../../assets/img/projects/tavan-vinci/mesh.webp" alt="ANSYS Tetrahedron Mesh Structure (457,011 Nodes, 236,475 Elements)" class="thumb" onclick="changeImage(this)">
+                    <img src="../../assets/img/projects/tavan-vinci/mesh-kalitesi.webp" alt="Mesh Element Quality Metrics (Average Quality: 0.835)" class="thumb" onclick="changeImage(this)">
+                    <img src="../../assets/img/projects/tavan-vinci/stress.webp" alt="Girder and Support Structure Von-Mises Equivalent Stress Distribution" class="thumb" onclick="changeImage(this)">
+                    <img src="../../assets/img/projects/tavan-vinci/mil-kesme.webp" alt="Hoist Shaft Maximum Shear Stress Analysis (145.8 - 160 MPa)" class="thumb" onclick="changeImage(this)">
+                    <img src="../../assets/img/projects/tavan-vinci/karsilastirma.webp" alt="L/1000 Deflection Constraint and Structural Optimization Comparison" class="thumb" onclick="changeImage(this)">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INTRODUCTION & PROJECT SUMMARY -->
+    <section class="kku-yaklasim-section bg-light">
+        <div class="kku-yaklasim-container gsap-reveal">
+            <h2 class="kku-section-title">Introduction</h2>
+            <p class="kku-list">Did you know that just 14 millimeters of excessive vertical deflection in an overhead crane can jeopardize an entire industrial facility and put operators at severe risk?</p>
+            <p class="kku-list">In this case study, we examine step by step how we tested the structural limits of a 24-ton capacity, 12-meter span double-girder overhead crane in ANSYS Workbench, reduced vertical deflection by more than half through geometric modifications, and optimized critical load-bearing components.</p>
+
+            <h3 class="kku-subsection-title">Engineering &amp; Learning Objectives</h3>
+            <ul class="kku-list">
+                <li>Master static, modal, and transient (time-domain dynamic) FEA workflows for heavy industrial overhead cranes.</li>
+                <li>Develop geometric modifications leveraging area moment of inertia to bring excessive deflection within permissible limits.</li>
+                <li>Select alloy steels such as AISI 4140 and AISI 4340 based on FEA stress outputs to satisfy a 7x Factor of Safety (FoS).</li>
+                <li>Optimize finite element mesh quality parameters (Element Quality, Aspect Ratio, Skewness) for high numerical accuracy.</li>
+            </ul>
+
+            <h3 class="kku-subsection-title">Project Summary</h3>
+            <p class="kku-list">This project investigates the static strength, modal vibration characteristics, and transient dynamic load responses of a double-girder overhead crane in ANSYS Workbench. In initial static analyses under full load, the 12-meter span exhibited an unacceptable 26.4 mm vertical deflection. By integrating a reinforcement girder beneath the main beams, deflection was successfully brought down to the <strong>12 mm (L/1000)</strong> standard limit. Based on stress distributions, AISI 4140 alloy steel was assigned to the main girders and AISI 4340 to the hoist shafts, guaranteeing an industrial 7x safety factor.</p>
+
+            <div class="kku-tech-box">
+                <strong>Technologies &amp; Engineering Criteria</strong>
+                <div class="kku-tech-pills">
+                    <span class="kku-tech-pill">ANSYS Workbench FEA</span>
+                    <span class="kku-tech-pill">Static, Modal &amp; Transient Analysis</span>
+                    <span class="kku-tech-pill">L/1000 Deflection Standard</span>
+                    <span class="kku-tech-pill">AISI 4140 &amp; AISI 4340</span>
+                    <span class="kku-tech-pill">Factor of Safety (FoS = 7)</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROBLEM DEFINITION -->
+    <section class="kku-problem-section">
+        <div class="kku-problem-container gsap-reveal">
+            <h2 class="kku-section-title">Problem Definition</h2>
+            <p class="kku-list">In heavy-duty bridge cranes, the most critical design parameter is vertical deflection. According to national and international crane engineering standards, the maximum permissible vertical deflection of bridge girders is one-thousandth of the span length (<strong>L / 1000</strong>).</p>
+            <p class="kku-list">For our 12-meter (12,000 mm) bridge span, this limit is strictly <strong>12 mm</strong>. However, under a nominal payload of 24 tons (<strong>235,440 N</strong>), our baseline design exhibited <strong>~26.4 mm</strong> of vertical deflection. Because excessive flexing can induce structural instability, fatigue cracking, and trolley derailment, structural revision was mandatory.</p>
+
+            <div class="kku-problem-image">
+                <img src="../../assets/img/projects/tavan-vinci/karsilastirma.webp" alt="Overhead Crane Design Optimization: L/1000 Deflection Constraint and Strength Comparison" loading="lazy">
+                <p class="kku-img-caption">Figure 1: Comparative summary of the baseline design (26 mm deflection) vs. optimized design (12 mm deflection) (Click image to enlarge).</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- APPROACH & DESIGN PROCESS -->
+    <section class="kku-yaklasim-section bg-light">
+        <div class="kku-yaklasim-container gsap-reveal">
+            <h2 class="kku-section-title">Approach &amp; Design Process</h2>
+            <p class="kku-list">Computer-Aided Engineering (CAE) processes were systematically applied to resolve the deflection bottleneck:</p>
+
+            <ol class="kku-list">
+                <li><strong>CAD Defeaturing:</strong> Small components that do not influence global structural stiffness—such as cables, bolts, chains, and buffers—were removed to optimize mesh generation and solver runtime.</li>
+                <li><strong>Mesh Optimization:</strong> A tetrahedral mesh was generated with dedicated <em>Body Sizing</em> and <em>Face Sizing</em> on critical load zones, achieving high mesh quality metrics:
+                    <ul class="kku-sub-list">
+                        <li><strong>Average Element Quality:</strong> 0.835 (Well above the minimum 0.70 target)</li>
+                        <li><strong>Aspect Ratio:</strong> 1.86 (Close to the ideal value of 1.0)</li>
+                        <li><strong>Skewness:</strong> 0.22 (Close to the ideal value of 0, ensuring smooth element transitions)</li>
+                        <li><strong>Total Nodes:</strong> 457,011 | <strong>Total Elements:</strong> 236,475</li>
+                    </ul>
+                </li>
+                <li><strong>Structural Modification:</strong> To reduce deflection from 26.4 mm to under 12 mm, classical bending stress and area moment of inertia equations were utilized:</li>
+            </ol>
+
+            <div class="kku-formula-container">
+                <div class="kku-formula-box">
+                    $$ \sigma = \frac{M \cdot c}{I} $$
+                </div>
+                <div class="kku-formula-box">
+                    $$ I = \frac{b \cdot h^3}{12} $$
+                </div>
+            </div>
+            <p class="kku-list">Because the area moment of inertia (\( I \)) for a rectangular cross-section scales cubically with height (\( h^3 \)), an additional reinforcement beam oriented vertically along the Z-axis was integrated beneath the main girders, and critical hoist shaft diameters were doubled.</p>
+        </div>
+    </section>
+
+    <!-- INTERACTIVE MIND MAP -->
+    <section class="kku-yaklasim-section" style="padding-bottom: 0; padding-top: 40px;">
+        <div class="kku-yaklasim-container">
+            <h2 class="kku-section-title gsap-reveal" style="text-align: center; border: none; margin-bottom: 0;">Overhead Crane FEA Workflow</h2>
+        </div>
+    </section>
+
+    <section class="kku-interactive-mindmap gsap-reveal">
+        <div class="kku-mindmap-wrapper">
+            <div class="kku-node-group">
+                <div class="kku-node root open" onclick="toggleMindmap(this)">
+                    <span>Overhead Crane FEA Workflow (Click Branches to Expand)</span>
+                    <span class="kku-toggle-icon">▶</span>
+                </div>
+
+                <div class="kku-children visible">
+                    <div class="kku-node-group">
+                        <div class="kku-node" onclick="toggleMindmap(this)">
+                            Geometric Modeling &amp; Defeaturing
+                            <span class="kku-toggle-icon">▶</span>
+                        </div>
+                        <div class="kku-children">
+                            <div class="kku-node-group"><div class="kku-node leaf">3D CAD Assembly Creation</div></div>
+                            <div class="kku-node-group"><div class="kku-node leaf">Removal of Non-Structural Details (Defeaturing)</div></div>
+                            <div class="kku-node-group"><div class="kku-node leaf">Girder Cross-Section Reinforcement (Deflection Control)</div></div>
+                        </div>
+                    </div>
+
+                    <div class="kku-node-group">
+                        <div class="kku-node" onclick="toggleMindmap(this)">
+                            Boundary Conditions Setup
+                            <span class="kku-toggle-icon">▶</span>
+                        </div>
+                        <div class="kku-children">
+                            <div class="kku-node-group"><div class="kku-node leaf">Fixed Supports at Column Bases</div></div>
+                            <div class="kku-node-group"><div class="kku-node leaf">Payload Definition (235,440 N Vertical Load)</div></div>
+                            <div class="kku-node-group"><div class="kku-node leaf">Standard Earth Gravity Acceleration</div></div>
+                            <div class="kku-node-group"><div class="kku-node leaf">Contact Region Definitions</div></div>
+                        </div>
+                    </div>
+
+                    <div class="kku-node-group">
+                        <div class="kku-node" onclick="toggleMindmap(this)">
+                            Meshing Strategy
+                            <span class="kku-toggle-icon">▶</span>
+                        </div>
+                        <div class="kku-children">
+                            <div class="kku-node-group">
+                                <div class="kku-node" onclick="toggleMindmap(this)">Mesh Configuration <span class="kku-toggle-icon">▶</span></div>
+                                <div class="kku-children">
+                                    <div class="kku-node-group"><div class="kku-node leaf">Tetrahedron Element Topology</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">Localized Body Sizing</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">Critical Face Sizing Refinement</div></div>
+                                </div>
+                            </div>
+                            <div class="kku-node-group">
+                                <div class="kku-node" onclick="toggleMindmap(this)">Quality Metrics <span class="kku-toggle-icon">▶</span></div>
+                                <div class="kku-children">
+                                    <div class="kku-node-group"><div class="kku-node leaf">Average Element Quality: 0.835 (&gt; 0.70)</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">Aspect Ratio: 1.86</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">Skewness: 0.22</div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="kku-node-group">
+                        <div class="kku-node" onclick="toggleMindmap(this)">
+                            Simulation Modules
+                            <span class="kku-toggle-icon">▶</span>
+                        </div>
+                        <div class="kku-children">
+                            <div class="kku-node-group"><div class="kku-node leaf">Static Structural (Deflection &amp; Von-Mises Stress)</div></div>
+                            <div class="kku-node-group"><div class="kku-node leaf">Modal Analysis (Natural Frequencies: 8.11 / 12.14 / 29.34 Hz)</div></div>
+                            <div class="kku-node-group"><div class="kku-node leaf">Transient Structural (Time-Dependent Dynamic Response)</div></div>
+                        </div>
+                    </div>
+
+                    <div class="kku-node-group">
+                        <div class="kku-node" onclick="toggleMindmap(this)">
+                            Evaluation &amp; Material Selection
+                            <span class="kku-toggle-icon">▶</span>
+                        </div>
+                        <div class="kku-children">
+                            <div class="kku-node-group"><div class="kku-node leaf">Stress &amp; Deformation Contour Verification</div></div>
+                            <div class="kku-node-group"><div class="kku-node leaf">7x Factor of Safety (FoS) Verification</div></div>
+                            <div class="kku-node-group"><div class="kku-node leaf">Alloy Assignment (Girders: AISI 4140 / Shafts: AISI 4340)</div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RESULTS & OUTPUTS -->
+    <section class="kku-yaklasim-section bg-light">
+        <div class="kku-yaklasim-container gsap-reveal">
+            <h2 class="kku-section-title">Results &amp; Outputs</h2>
+            <p class="kku-list">Final FEA simulations following the geometric reinforcements confirmed that all structural targets were met:</p>
+
+            <ul class="kku-list">
+                <li><strong>Final Deflection (54% Improvement):</strong> With the reinforcement beam and alloy steel assignment, vertical deformation was reduced from 26.4 mm down to the <strong>12 mm</strong> permissible limit.</li>
+                <li><strong>Girder Stress &amp; Material Selection:</strong> Maximum bending stress on the upper girder flange was recorded at 65 MPa. To satisfy the 7x safety factor required for heavy industrial cranes (\( 65\text{ MPa} \times 7 = 455\text{ MPa} \) minimum yield strength), high-strength <strong>AISI 4140</strong> alloy steel was selected.</li>
+                <li><strong>Hoist Shafts &amp; Shear Stress:</strong> Maximum combined torsional and shear stress on the critical hoist shafts reached 145.8–160 MPa. To maintain a 7x safety factor, <strong>AISI 4340</strong> alloy steel was assigned to the shafts.</li>
+                <li><strong>Modal Vibration Behavior:</strong> The first three natural frequencies were mapped at <strong>8.11 Hz, 12.14 Hz, and 29.34 Hz</strong>, preventing resonance overlap with motor operating speeds.</li>
+                <li><strong>Transient (Dynamic) Analysis:</strong> Time-domain simulations verified that stresses ramp smoothly during the initial 5-second lifting phase and remain steady during constant-velocity horizontal trolley travel.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- SUMMARY -->
+    <section class="kku-yaklasim-section">
+        <div class="kku-yaklasim-container gsap-reveal">
+            <h2 class="kku-section-title">Summary</h2>
+            <p class="kku-list">In this study, structural verification and FEA optimization of a double-girder industrial overhead crane operating under demanding heavy-industry constraints were successfully completed in ANSYS Workbench.</p>
+
+            <h3 class="kku-subsection-title">Key Takeaways</h3>
+            <ul class="kku-list">
+                <li><strong>Geometric Reinforcement:</strong> By increasing the area moment of inertia via an auxiliary bottom girder, vertical deflection was improved by 54%.</li>
+                <li><strong>Targeted Alloy Selection:</strong> Guided by FEA stress contours, AISI 4140 on girders and AISI 4340 on shafts guaranteed a 7x Factor of Safety (FoS).</li>
+                <li><strong>Dynamic Stability &amp; Mesh Accuracy:</strong> Modal and transient analyses combined with an 83.5% average element quality confirmed structural reliability against resonance and impact loading.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- PROJECT PAGINATION -->
+    <div class="project-pagination">
+        <div class="project-pagination-container">
+            <a href="ethyl-acetate-recovery.html" class="proj-nav-btn prev">
+                <span class="nav-dir">← Previous Project</span>
+                <span class="nav-title">Ethyl Acetate Recovery System</span>
+            </a>
+            <a href="../index.html#projects" class="proj-nav-all">Back to All Projects</a>
+            <a href="thermoforming-mold.html" class="proj-nav-btn next">
+                <span class="nav-dir">Next Project →</span>
+                <span class="nav-title">Industrial Thermoforming Mold</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer-section">
+        <div class="footer-content">
+            <h3>Halil Öz</h3>
+            <p>Mechanical Engineer | Mechanical Design &amp; FEA</p>
+            <div class="footer-links">
+                <a href="https://www.linkedin.com/in/halil-öz" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a href="../../assets/docs/Halil_Oz-CV.pdf" download>Download CV</a>
+                <a href="mailto:halilo.hz42@gmail.com">halilo.hz42@gmail.com</a>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2026 Halil Öz. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

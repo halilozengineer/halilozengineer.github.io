@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LubriTens: Automatic Motorcycle Chain Lubrication &amp; Tensioning | Halil Öz</title>
+    <meta name="description" content="TÜBİTAK 1812 BİGG supported LubriTens: Automatic motorcycle chain tensioning and micro-dosing lubrication system featuring Strain Gauge sensors and an idler sprocket actuator.">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="LubriTens: Automatic Chain Lubrication &amp; Tensioning | Halil Öz">
+    <meta property="og:description" content="TÜBİTAK TEYDEB 1812 BİGG R&D Project — Closed-loop motorcycle chain tension control and automatic lubrication.">
+    <meta property="og:image" content="https://halilozengineer.github.io/assets/img/projects/lubritens/nihai.webp">
+
+    <link rel="icon" type="image/svg+xml" href="../../assets/img/favicon.svg">
+    <link rel="icon" type="image/png" sizes="64x64" href="../../assets/img/favicon.png">
+    <link rel="apple-touch-icon" href="../../assets/img/favicon.png">
+    <link rel="stylesheet" href="../../assets/css/main.css">
+    <link rel="stylesheet" href="../../assets/css/project-detail.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.34/dist/lenis.min.js" defer></script>
+    <script src="../../assets/js/app.js" defer></script>
+</head>
+<body>
+
+    <!-- FLOATING CAPSULE NAVIGATION -->
+    <nav class="floating-nav" aria-label="Main Navigation">
+        <ul>
+            <li><a href="../index.html#hero">Home</a></li>
+            <li><a href="../index.html#vision-screen">Vision</a></li>
+            <li><a href="../index.html#armco-project">Cabinet Design</a></li>
+            <li><a href="../index.html#experience">Experience</a></li>
+            <li><a href="../index.html#projects" class="nav-active">Projects</a></li>
+            <li><a href="../about.html">About Me</a></li>
+            <li><a href="../index.html#references">References</a></li>
+            <li><a href="../index.html#contact">Contact</a></li>
+
+            <li class="lang-switch">
+                <a href="../../projeler/lubritens-zincir-bakim.html" class="inactive">TR</a>
+                <span class="divider">|</span>
+                <a href="lubritens-chain-maintenance.html" class="active">EN</a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- HERO & INTERACTIVE GALLERY -->
+    <section class="kku-hero-section">
+        <div class="kku-hero-container">
+            <div class="kku-content gsap-reveal">
+                <h1 class="kku-title">Automatic Chain Lubrication<br>&amp; Tensioning Mechanism<br>for Motorcycles</h1>
+
+                <div class="kku-cards-grid">
+                    <div class="kku-card">
+                        <div class="kku-label">PROJECT LEAD &amp; FOUNDER</div>
+                        <div class="kku-value">Halil Öz</div>
+                    </div>
+                    <div class="kku-card">
+                        <div class="kku-label">GRANT &amp; PROGRAM</div>
+                        <div class="kku-value">TÜBİTAK TEYDEB 1812<br>BİGG Investment Program</div>
+                    </div>
+                    <div class="kku-card full-width">
+                        <div class="kku-label">INSTITUTION &amp; BRAND</div>
+                        <div class="kku-value">KTO Karatay University Mechanical Eng. / LubriTens Technology</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="kku-gallery gsap-reveal">
+                <div class="kku-main-img-box">
+                    <img id="mainGalleryImage" src="../../assets/img/projects/lubritens/nihai.webp" alt="LubriTens Automatic Chain Maintenance Mechanism 3D Product Render">
+                    <span class="kku-zoom-hint">🔍 Click to enlarge</span>
+                </div>
+                <div class="kku-thumbnails">
+                    <img src="../../assets/img/projects/lubritens/nihai.webp" alt="LubriTens Automatic Chain Maintenance Mechanism 3D Product Render" class="thumb active" onclick="changeImage(this)">
+                    <img src="../../assets/img/projects/lubritens/modal.webp" alt="ANSYS Workbench Modal Vibration Analysis (227 Hz, 218 Hz, 337 Hz, and 418 Hz Modes)" class="thumb" onclick="changeImage(this)">
+                    <img src="../../assets/img/projects/lubritens/sistem.webp" alt="LubriTens System Components and Mechatronic Internal Layout" class="thumb" onclick="changeImage(this)">
+                    <img src="../../assets/img/projects/lubritens/uygulama.webp" alt="Swingarm Mounting Comparison and Product Packaging Design" class="thumb" onclick="changeImage(this)">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INTRODUCTION & PROJECT SUMMARY -->
+    <section class="kku-yaklasim-section bg-light">
+        <div class="kku-yaklasim-container gsap-reveal">
+            <h2 class="kku-section-title">Introduction</h2>
+            <p class="kku-list">In motorcycles, the drive chain is the most critical transmission element delivering engine power to the rear wheel. Yet due to mechanical friction and thermal cycling, chains inevitably elongate over time and lose optimal tension. A slack chain creates life-threatening risks of derailment, snapping, and rear-wheel lockup, whereas an over-tightened chain destroys transmission output bearings and sprockets.</p>
+            <p class="kku-list">This project covers the design, FEA verification, and R&amp;D workflow of <strong>LubriTens</strong>—an electromechanical plug-and-play system that eliminates periodic manual chain adjustment and lubrication by monitoring tension in real time while riding and applying precision micro-dosed lubrication.</p>
+
+            <h3 class="kku-subsection-title">Engineering &amp; Learning Objectives</h3>
+            <ul class="kku-list">
+                <li>Measure micron-level chain elongation in dynamic riding environments using Strain Gauge sensors while filtering out road vibration noise.</li>
+                <li>Design a low-friction bearing-mounted idler sprocket and actuator kinematic architecture instead of conventional friction slider blocks.</li>
+                <li>Develop a universal adjustable swingarm clamp that provides rigid mounting without welding or drilling into the motorcycle chassis.</li>
+                <li>Validate housing durability and modal natural frequencies in ANSYS Workbench against road impacts, engine resonance, and harsh weather (IP67).</li>
+            </ul>
+
+            <h3 class="kku-subsection-title">Project Summary</h3>
+            <p class="kku-list">LubriTens is an integrated mechatronic product consisting of a compact control housing clamped onto the rear swingarm, strain gauge load sensors, an ECU-controlled linear actuator, a bearing-mounted idler sprocket, and a micro-dosing oil pump. Unlike passive vacuum oilers on the market (such as Scottoiler), LubriTens not only lubricates the chain but actively regulates chain tension via closed-loop feedback—reducing oil waste and chemical runoff by <strong>60%</strong> while <strong>doubling (2x)</strong> the service life of the chain and sprocket set.</p>
+
+            <div class="kku-tech-box">
+                <strong>Technologies &amp; Regulations</strong>
+                <div class="kku-tech-pills">
+                    <span class="kku-tech-pill">TÜBİTAK 1812 TEYDEB BİGG</span>
+                    <span class="kku-tech-pill">SolidWorks 3D CAD</span>
+                    <span class="kku-tech-pill">ANSYS Modal Analysis</span>
+                    <span class="kku-tech-pill">Strain Gauge Calibration</span>
+                    <span class="kku-tech-pill">ISO 10190 Chain Standard</span>
+                    <span class="kku-tech-pill">IP67 &amp; Conformal Coating</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROBLEM DEFINITION -->
+    <section class="kku-problem-section">
+        <div class="kku-problem-container gsap-reveal">
+            <h2 class="kku-section-title">Problem Definition</h2>
+            <p class="kku-list">Motorcycle drive chain maintenance presents three major bottlenecks across rider safety, fleet operating costs, and environmental impact:</p>
+            <ul class="kku-list">
+                <li><strong>Critical Safety Hazards:</strong> Manual chain tensioning requires mechanical precision. A loose chain jumping off the rear sprocket can instantly lock the rear wheel, while over-tensioning fractures countershaft bearings.</li>
+                <li><strong>Premature Wear &amp; High Maintenance Cost:</strong> A chain-and-sprocket set that is not regularly lubricated and tensioned wears out in half its nominal lifespan. For commercial courier fleets, vehicle downtime represents a substantial financial loss.</li>
+                <li><strong>Environmental Contamination:</strong> During manual aerosol spray lubrication, more than 40% of the lubricant flings off onto the tire rim and road surface.</li>
+            </ul>
+
+            <div class="kku-problem-image">
+                <img src="../../assets/img/projects/lubritens/sistem.webp" alt="LubriTens System Components and Schematic Layout" loading="lazy">
+                <p class="kku-img-caption">Figure 1: LubriTens electronic control unit, oil reservoir &amp; pump chamber, lubrication nozzle line, active tensioning mechanism, and contact sprocket (Click to enlarge).</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- APPROACH & DESIGN PROCESS -->
+    <section class="kku-yaklasim-section bg-light">
+        <div class="kku-yaklasim-container gsap-reveal">
+            <h2 class="kku-section-title">Approach &amp; Design Process</h2>
+            <p class="kku-list">To overcome the limitations of passive friction blocks and vacuum drippers, an active mechatronic architecture was engineered:</p>
+
+            <ol class="kku-list">
+                <li><strong>Weld-Free Universal Swingarm Clamp:</strong> A two-piece bolted compression clamp was designed to fit standard rear swingarm profiles without compromising chassis structural integrity.</li>
+                <li><strong>Idler Sprocket &amp; Dynamic Tensioning Kinematics:</strong> A ball-bearing idler sprocket mounted on the actuator shaft engages the lower chain run, applying millimeter-precise vertical tension without inducing parasitic drag.</li>
+                <li><strong>Strain Gauge Smart Sensing:</strong> Reaction forces exerted by the chain are measured via strain gauges. An embedded ECU filtering algorithm distinguishes transient road bumps from permanent chain slack before triggering the actuator.</li>
+                <li><strong>5-Stage Smart Operating Modes:</strong>
+                    <ul class="kku-sub-list">
+                        <li><strong>Mode 1 (Monitoring):</strong> Sensors scan chain load in standby at millisecond intervals.</li>
+                        <li><strong>Mode 2 (Auto-Tensioning):</strong> When slack exceeds the threshold, the actuator advances the idler sprocket to restore target tension.</li>
+                        <li><strong>Mode 3 (Periodic Lubrication):</strong> At calibrated distance/time intervals, the micro-pump delivers a precise oil pulse onto the chain rollers.</li>
+                        <li><strong>Mode 4 (Manual Boost):</strong> A handlebar button allows the rider to trigger extra lubrication in heavy rain or dusty off-road conditions.</li>
+                        <li><strong>Mode 5 (Service Mode):</strong> During tire or chain replacement, the actuator fully retracts and locks the piston.</li>
+                    </ul>
+                </li>
+                <li><strong>Modal Vibration Verification:</strong> Modal analyses in ANSYS Workbench verified that the natural frequency modes of the assembly remain safely above engine excitation frequencies, preventing resonance fatigue.</li>
+            </ol>
+        </div>
+    </section>
+
+    <!-- INTERACTIVE MIND MAP -->
+    <section class="kku-yaklasim-section" style="padding-bottom: 0; padding-top: 40px;">
+        <div class="kku-yaklasim-container">
+            <h2 class="kku-section-title gsap-reveal" style="text-align: center; border: none; margin-bottom: 0;">LubriTens Mechatronic System Architecture</h2>
+        </div>
+    </section>
+
+    <section class="kku-interactive-mindmap gsap-reveal">
+        <div class="kku-mindmap-wrapper">
+            <div class="kku-node-group">
+                <div class="kku-node root open" onclick="toggleMindmap(this)">
+                    <span>LubriTens Smart Chain Maintenance System (Click Branches to Expand)</span>
+                    <span class="kku-toggle-icon">▶</span>
+                </div>
+
+                <div class="kku-children visible">
+                    <!-- BRANCH 1 -->
+                    <div class="kku-node-group">
+                        <div class="kku-node" onclick="toggleMindmap(this)">
+                            Mechanical &amp; Kinematic Design
+                            <span class="kku-toggle-icon">▶</span>
+                        </div>
+                        <div class="kku-children">
+                            <div class="kku-node-group">
+                                <div class="kku-node" onclick="toggleMindmap(this)">Mounting Clamp <span class="kku-toggle-icon">▶</span></div>
+                                <div class="kku-children">
+                                    <div class="kku-node-group"><div class="kku-node leaf">Universal Fit for Rear Swingarm Profiles</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">Non-Destructive Two-Piece Bolted Assembly</div></div>
+                                </div>
+                            </div>
+                            <div class="kku-node-group">
+                                <div class="kku-node" onclick="toggleMindmap(this)">Idler Sprocket Mechanism <span class="kku-toggle-icon">▶</span></div>
+                                <div class="kku-children">
+                                    <div class="kku-node-group"><div class="kku-node leaf">Low-Friction Ball-Bearing Hub</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">Linear Guided Vertical Tensioning Stroke</div></div>
+                                </div>
+                            </div>
+                            <div class="kku-node-group">
+                                <div class="kku-node" onclick="toggleMindmap(this)">Housing Manufacturing (DFM) <span class="kku-toggle-icon">▶</span></div>
+                                <div class="kku-children">
+                                    <div class="kku-node-group"><div class="kku-node leaf">Prototype: CNC Machining</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">Mass Production: Aluminum Die Casting &amp; Injection</div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- BRANCH 2 -->
+                    <div class="kku-node-group">
+                        <div class="kku-node" onclick="toggleMindmap(this)">
+                            Sensing &amp; Control Architecture (ECU)
+                            <span class="kku-toggle-icon">▶</span>
+                        </div>
+                        <div class="kku-children">
+                            <div class="kku-node-group">
+                                <div class="kku-node" onclick="toggleMindmap(this)">Strain Gauge Sensor Array <span class="kku-toggle-icon">▶</span></div>
+                                <div class="kku-children">
+                                    <div class="kku-node-group"><div class="kku-node leaf">Real-Time Chain Reaction Force Reading</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">Road Shock &amp; Vibration Filtering Algorithm</div></div>
+                                </div>
+                            </div>
+                            <div class="kku-node-group">
+                                <div class="kku-node" onclick="toggleMindmap(this)">Embedded ECU &amp; Actuator <span class="kku-toggle-icon">▶</span></div>
+                                <div class="kku-children">
+                                    <div class="kku-node-group"><div class="kku-node leaf">Millimeter-Precision Piston Positioning</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">12V Motorcycle Battery Integration</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">Handlebar Override &amp; Service Retraction Lock</div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- BRANCH 3 -->
+                    <div class="kku-node-group">
+                        <div class="kku-node" onclick="toggleMindmap(this)">
+                            Fluid &amp; Micro-Dosing Module
+                            <span class="kku-toggle-icon">▶</span>
+                        </div>
+                        <div class="kku-children">
+                            <div class="kku-node-group">
+                                <div class="kku-node" onclick="toggleMindmap(this)">Dosing Pump &amp; Reservoir <span class="kku-toggle-icon">▶</span></div>
+                                <div class="kku-children">
+                                    <div class="kku-node-group"><div class="kku-node leaf">Chemical-Resistant Polymer Reservoir</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">Low-Power Micro Solenoid Pump</div></div>
+                                </div>
+                            </div>
+                            <div class="kku-node-group">
+                                <div class="kku-node" onclick="toggleMindmap(this)">Nozzle Delivery Line <span class="kku-toggle-icon">▶</span></div>
+                                <div class="kku-children">
+                                    <div class="kku-node-group"><div class="kku-node leaf">Clog-Resistant Precision Nozzle</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">60% Lubricant Savings via Targeted Pulse</div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- BRANCH 4 -->
+                    <div class="kku-node-group">
+                        <div class="kku-node" onclick="toggleMindmap(this)">
+                            Environmental Durability &amp; Standards
+                            <span class="kku-toggle-icon">▶</span>
+                        </div>
+                        <div class="kku-children">
+                            <div class="kku-node-group">
+                                <div class="kku-node" onclick="toggleMindmap(this)">Environmental Sealing <span class="kku-toggle-icon">▶</span></div>
+                                <div class="kku-children">
+                                    <div class="kku-node-group"><div class="kku-node leaf">IP67 Water &amp; Dust Ingress Protection</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">Conformal Coating on PCB Electronics</div></div>
+                                </div>
+                            </div>
+                            <div class="kku-node-group">
+                                <div class="kku-node" onclick="toggleMindmap(this)">Standards &amp; Reliability <span class="kku-toggle-icon">▶</span></div>
+                                <div class="kku-children">
+                                    <div class="kku-node-group"><div class="kku-node leaf">ISO 10190 Motorcycle Chain Compliance</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">EMC / LVD Compliant Circuitry</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">ANSYS Modal Resonance Verification</div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RESULTS & OUTPUTS -->
+    <section class="kku-yaklasim-section bg-light">
+        <div class="kku-yaklasim-container gsap-reveal">
+            <h2 class="kku-section-title">Results &amp; Outputs</h2>
+            <p class="kku-list">Technical and commercial performance indicators validated under the TÜBİTAK 1812 business plan and engineering simulations:</p>
+
+            <ul class="kku-list">
+                <li><strong>2x Extended Chain Lifespan:</strong> Keeping the chain continuously at optimal tension and micro-lubricated cuts wear rates in half and prevents sprocket tooth stripping.</li>
+                <li><strong>60% Lubricant Savings &amp; Eco-Protection:</strong> Targeted pulse dosing eliminates the uncontrolled fling-off of manual aerosol sprays.</li>
+                <li><strong>Strong Competitive Edge:</strong> Unlike imported passive oilers that only lubricate, LubriTens combines active tensioning and lubrication in a single unit with a 30%–40% cost advantage.</li>
+                <li><strong>Rapid Break-Even Point:</strong> Financial modeling confirms a break-even threshold at just 93 units sold.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- SUMMARY -->
+    <section class="kku-yaklasim-section">
+        <div class="kku-yaklasim-container gsap-reveal">
+            <h2 class="kku-section-title">Summary</h2>
+            <p class="kku-list">This study delivers a domestically developed, patent-worthy mechatronic solution supported by TÜBİTAK 1812 BİGG R&amp;D that directly addresses motorcycle chain slack and dry-running hazards.</p>
+
+            <h3 class="kku-subsection-title">Key Takeaways</h3>
+            <ul class="kku-list">
+                <li><strong>Hybrid Mechatronic Engineering:</strong> Idler sprocket kinematics, embedded ECU filtering, and strain gauge force sensing were seamlessly integrated.</li>
+                <li><strong>Enhanced Riding Safety:</strong> Chain derailment and rear-wheel lockup risks are eliminated without requiring manual rider intervention.</li>
+                <li><strong>Scalable Manufacturing Roadmap:</strong> A clear transition from CNC-machined prototypes to die-cast aluminum housings and custom PCBs was established.</li>
+            </ul>
+
+            <div class="kku-vision-box">
+                <div class="kku-vision-header">
+                    <span>🏍️</span>
+                    <h4>Future Vision &amp; IoT Integration</h4>
+                </div>
+                <p>In Phases 2 and 3, <strong style="color: #0d6efd;">Bluetooth &amp; Mobile App Integration</strong> will enable riders to monitor real-time chain tension percentage, remaining oil reservoir level, and estimated chain-sprocket service life directly on their smartphones.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECT PAGINATION -->
+    <div class="project-pagination">
+        <div class="project-pagination-container">
+            <a href="thermoforming-mold.html" class="proj-nav-btn prev">
+                <span class="nav-dir">← Previous Project</span>
+                <span class="nav-title">Industrial Thermoforming Mold</span>
+            </a>
+            <a href="../index.html#projects" class="proj-nav-all">Back to All Projects</a>
+            <a href="seismic-isolator.html" class="proj-nav-btn next">
+                <span class="nav-dir">Next Project →</span>
+                <span class="nav-title">Level-Regulating Seismic Isolator</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer-section">
+        <div class="footer-content">
+            <h3>Halil Öz</h3>
+            <p>Mechanical Engineer | Mechanical Design &amp; FEA</p>
+            <div class="footer-links">
+                <a href="https://www.linkedin.com/in/halil-öz" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a href="../../assets/docs/Halil_Oz-CV.pdf" download>Download CV</a>
+                <a href="mailto:halilo.hz42@gmail.com">halilo.hz42@gmail.com</a>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2026 Halil Öz. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

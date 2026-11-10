@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LubriTens: Otomatik Motosiklet Zincir Yağlama ve Gerginlik Mekanizması | Halil Öz</title>
+    <meta name="description" content="TÜBİTAK 1812 BİGG destekli LubriTens: Motosikletler için Strain Gauge sensörlü, avare dişli aktüatörlü otomatik zincir gerdirme ve mikro dozaj yağlama sistemi.">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="LubriTens: Otomatik Zincir Yağlama ve Gerginlik Mekanizması | Halil Öz">
+    <meta property="og:description" content="TÜBİTAK TEYDEB 1812 BİGG Ar-Ge Projesi — Motosikletlerde kapalı çevrim zincir gerginliği kontrolü ve otomatik yağlama.">
+    <meta property="og:image" content="https://halilozengineer.github.io/assets/img/projects/lubritens/nihai.webp">
+
+    <link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg">
+    <link rel="icon" type="image/png" sizes="64x64" href="../assets/img/favicon.png">
+    <link rel="apple-touch-icon" href="../assets/img/favicon.png">
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/project-detail.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.34/dist/lenis.min.js" defer></script>
+    <script src="../assets/js/app.js" defer></script>
+</head>
+<body>
+
+    <!-- YÜZEN KAPSÜL NAVİGASYON -->
+    <nav class="floating-nav" aria-label="Ana Navigasyon">
+        <ul>
+            <li><a href="../index.html#hero">Ana Sayfa</a></li>
+            <li><a href="../index.html#vizyon-ekrani">Vizyon</a></li>
+            <li><a href="../index.html#armco-projesi">Kabin Tasarımı</a></li>
+            <li><a href="../index.html#deneyim">Deneyim</a></li>
+            <li><a href="../index.html#projeler" class="nav-active">Projeler</a></li>
+            <li><a href="../hakkimda.html">Hakkımda</a></li>
+            <li><a href="../index.html#referanslar">Referanslar</a></li>
+            <li><a href="../index.html#iletisim">İletişim</a></li>
+
+            <li class="lang-switch">
+                <a href="#" class="active">TR</a>
+                <span class="divider">|</span>
+                <a href="../en/projects/lubritens-chain-maintenance.html" class="inactive">EN</a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- ÜST KISIM: HERO & İNTERAKTİF GALERİ -->
+    <section class="kku-hero-section">
+        <div class="kku-hero-container">
+            <div class="kku-content gsap-reveal">
+                <h1 class="kku-title">Motosikletler İçin<br>Otomatik Zincir Yağlama ve<br>Gerginlik Mekanizması</h1>
+
+                <div class="kku-cards-grid">
+                    <div class="kku-card">
+                        <div class="kku-label">PROJE YÜRÜTÜCÜSÜ &amp; KURUCU</div>
+                        <div class="kku-value">Halil Öz</div>
+                    </div>
+                    <div class="kku-card">
+                        <div class="kku-label">DESTEK &amp; PROGRAM</div>
+                        <div class="kku-value">TÜBİTAK TEYDEB 1812<br>BİGG Yatırım Programı</div>
+                    </div>
+                    <div class="kku-card full-width">
+                        <div class="kku-label">KURUM &amp; MARKA</div>
+                        <div class="kku-value">KTO Karatay Üniversitesi Makine Müh. / LubriTens Teknolojisi</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="kku-gallery gsap-reveal">
+                <div class="kku-main-img-box">
+                    <img id="mainGalleryImage" src="../assets/img/projects/lubritens/nihai.webp" alt="LubriTens Otomatik Zincir Bakım Mekanizması 3D Ürün Render Görünümü">
+                    <span class="kku-zoom-hint">🔍 Büyütmek için tıklayın</span>
+                </div>
+                <div class="kku-thumbnails">
+                    <img src="../assets/img/projects/lubritens/nihai.webp" alt="LubriTens Otomatik Zincir Bakım Mekanizması 3D Ürün Render Görünümü" class="thumb active" onclick="changeImage(this)">
+                    <img src="../assets/img/projects/lubritens/modal.webp" alt="ANSYS Workbench Modal Titreşim Analizi (227 Hz, 218 Hz, 337 Hz ve 418 Hz Modları)" class="thumb" onclick="changeImage(this)">
+                    <img src="../assets/img/projects/lubritens/sistem.webp" alt="LubriTens Sistem Bileşenleri ve Mekatronik İç Yerleşim Şeması" class="thumb" onclick="changeImage(this)">
+                    <img src="../assets/img/projects/lubritens/uygulama.webp" alt="Arka Salıncak Maşası (Swingarm) Üzerinde Montaj ve Kutu Tasarımı" class="thumb" onclick="changeImage(this)">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GİRİŞ VE PROJE ÖZETİ -->
+    <section class="kku-yaklasim-section bg-light">
+        <div class="kku-yaklasim-container gsap-reveal">
+            <h2 class="kku-section-title">Giriş</h2>
+            <p class="kku-list">Motosikletlerde motor gücünü arka tekerleğe aktaran en kritik organ zincirdir. Ancak zincirler, mekanik sürtünme ve termal dalgalanmalar nedeniyle zamanla kaçınılmaz şekilde uzar ve ideal gerginliğini kaybeder. Gevşek zincir; dişliden atma, kopma ve arka tekerlek kilitlenmesi gibi hayati kaza riskleri doğururken; aşırı gergin zincir şanzıman çıkış rulmanlarını ve dişlileri tahrip eder.</p>
+            <p class="kku-list">Bu projede; kullanıcıları periyodik manuel gerdirme ve yağlama zahmetinden kurtaran, sürüş sırasında gerginliği anlık denetleyip düzelten ve zinciri otomatik dozajla yağlayan elektromekanik "tak-çalıştır" (<strong>LubriTens</strong>) sisteminin tasarım, analiz ve Ar-Ge adımları ele alınmaktadır.</p>
+
+            <h3 class="kku-subsection-title">Mühendislik ve Öğrenme Hedefleri</h3>
+            <ul class="kku-list">
+                <li>Dinamik sürüş ortamında Strain Gauge (gerinim ölçer) sensörleri ile mikron mertebesindeki zincir uzamalarını yol gürültüsünden arındırarak ölçmek.</li>
+                <li>Geleneksel sürtünmeli kızak blokları yerine enerji kaybını minimize eden rulmanlı avare dişli ve aktüatör kinematik mimarisi tasarlamak.</li>
+                <li>Motosiklet şasesine kaynak veya delme işlemi gerektirmeden rijit montaj sağlayan üniversal ayarlanabilir maşa kelepçesi geliştirmek.</li>
+                <li>Yol darbeleri, motor rezonansı ve zorlu hava koşullarına (IP67) dayanıklı gövdeyi ve modal titreşim frekanslarını ANSYS ortamında doğrulamak.</li>
+            </ul>
+
+            <h3 class="kku-subsection-title">Proje Özeti</h3>
+            <p class="kku-list">LubriTens; arka salıncak maşasına (swingarm) özel bir kelepçeyle sabitlenen kompakt bir sistem kutusu, gerinim ölçer (strain gauge) sensörleri, ECU kontrollü aktüatör, avare dişli ve mikro yağlama pompasından oluşan bütünleşik bir mekatronik üründür. Pazardaki pasif vakumlu yağlayıcıların aksine; sadece yağlama yapmakla kalmaz, zincir gerginliğini kapalı çevrim (closed-loop) geri bildirimle anlık yönetir. Yağ israfını ve kimyasal salınımı <strong>%60 oranında azaltırken</strong> zincir-dişli setinin servis ömrünü <strong>2 katına</strong> çıkarır.</p>
+
+            <div class="kku-tech-box">
+                <strong>Kullanılan Teknolojiler ve Regülasyonlar</strong>
+                <div class="kku-tech-pills">
+                    <span class="kku-tech-pill">TÜBİTAK 1812 TEYDEB BİGG</span>
+                    <span class="kku-tech-pill">SolidWorks 3D CAD</span>
+                    <span class="kku-tech-pill">ANSYS Modal Analiz</span>
+                    <span class="kku-tech-pill">Strain Gauge Kalibrasyonu</span>
+                    <span class="kku-tech-pill">ISO 10190 Standart Uyumu</span>
+                    <span class="kku-tech-pill">IP67 &amp; Conformal Coating</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROBLEM TANIMI -->
+    <section class="kku-problem-section">
+        <div class="kku-problem-container gsap-reveal">
+            <h2 class="kku-section-title">Problem Tanımı</h2>
+            <p class="kku-list">Motosiklet güç aktarım sistemlerinde zincir bakımı; kullanıcı konforu, filo işletme maliyetleri ve yol güvenliği açısından üç temel darboğaz yaratmaktadır:</p>
+            <ul class="kku-list">
+                <li><strong>Hayati Güvenlik Riskleri:</strong> Manuel germe işlemi mekanik hassasiyet gerektirir. Hatalı gerdirilen gevşek zincirin arka dişliden atması tekerleğin aniden kilitlenmesine, aşırı gerilmesi ise şanzıman mil rulmanlarının kırılmasına yol açar.</li>
+                <li><strong>Erken Aşınma ve Yüksek Maliyet:</strong> Düzenli aralıklarla yağlanmayan ve gerilmeyen bir zincir-dişli seti sürtünme nedeniyle nominal ömrünün yarısında kullanılamaz hale gelir. Kurye filolarında araçların servis dışı kalma süresi (downtime) ciddi ticari kayıptır.</li>
+                <li><strong>Çevresel Kirlilik ve Bakım Zorluğu:</strong> Manuel sprey yağlamada yağın %40'tan fazlası yola ve janta sıçrayarak çevreye kimyasal atık bırakır.</li>
+            </ul>
+
+            <div class="kku-problem-image">
+                <img src="../assets/img/projects/lubritens/sistem.webp" alt="LubriTens Sistem Bileşenleri ve Şematik Yerleşim" loading="lazy">
+                <p class="kku-img-caption">Şekil 1: LubriTens elektronik kontrol ünitesi, yağ haznesi, yağlama boru hattı, hareketli gergi mekanizması ve avare dişli yerleşimi (Büyütmek için tıklayın).</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- YAKLAŞIM VE TASARIM SÜRECİ -->
+    <section class="kku-yaklasim-section bg-light">
+        <div class="kku-yaklasim-container gsap-reveal">
+            <h2 class="kku-section-title">Yaklaşım ve Tasarım Süreci</h2>
+            <p class="kku-list">Geleneksel sürtünmeli takoz sistemlerinin ve pasif vakumlu yağlayıcıların yetersiz kaldığı noktalarda, aktif elektronik ve mekanik entegrasyonu sağlayan bir ürün geliştirilmiştir:</p>
+
+            <ol class="kku-list">
+                <li><strong>Kaynaksız Üniversal Maşa Bağlantısı:</strong> Motosikletlerin arka maşa kesitlerine tam oturan, iki parçalı vidalı sıkıştırma kelepçesi geliştirilmiştir. Şasenin mukavemet bütünlüğü bozulmadan sistem güvenle sabitlenir.</li>
+                <li><strong>Avare Dişli ve Dinamik Gergi Mimarisi:</strong> Zincir akışını frenlemeyen rulmanlı bir avare dişli aktüatör miline bağlanmıştır. Zincirin alt baklasına temas eden dişli, sürtünme yaratmaksızın milimetrik düşey baskı uygulayarak zinciri gerer.</li>
+                <li><strong>Strain Gauge Tabanlı Akıllı Algılama:</strong> Zincirin uyguladığı reaksiyon kuvveti gerinim pulu ile ölçülür. ECU algoritması, motor devrinden ve yol çukurlarından gelen anlık parazitleri filtreleyerek yalnızca kalıcı gerginlik kayıplarında aktüatörü tetikler.</li>
+                <li><strong>5 Aşamalı Akıllı Çalışma Modu:</strong>
+                    <ul class="kku-sub-list">
+                        <li><strong>Mod 1 (İzleme):</strong> Sensörler zincir yükünü bekleme modunda milisaniye bazında tarar.</li>
+                        <li><strong>Mod 2 (Otomatik Ayar):</strong> Gerginlik eşik değeri aşıldığında aktüatör zinciri hedef gerginliğe iter.</li>
+                        <li><strong>Mod 3 (Periyodik Yağlama):</strong> Önceden kalibre edilmiş sürüş kilometre/zaman aralıklarında nozuldan mikro dozajda yağ püskürtülür.</li>
+                        <li><strong>Mod 4 (Manuel Yağlama):</strong> Gidon üzerindeki butonla sürücü yağışlı veya tozlu yollarda ekstra yağlama tetikleyebilir.</li>
+                        <li><strong>Mod 5 (Bakım Modu):</strong> Lastik değişimi veya zincir yenilemede piston kendini tamamen geri çekerek sistemi kilitler.</li>
+                    </ul>
+                </li>
+                <li><strong>Modal Titreşim Doğrulaması:</strong> ANSYS Workbench üzerinde gerçekleştirilen modal analizlerde; sistemin doğal frekans modları incelenmiş ve motorun rezonans frekans bölgesi dışında kaldığı kanıtlanmıştır.</li>
+            </ol>
+        </div>
+    </section>
+
+    <!-- İNTERAKTİF ZİHİN HARİTASI -->
+    <section class="kku-yaklasim-section" style="padding-bottom: 0; padding-top: 40px;">
+        <div class="kku-yaklasim-container">
+            <h2 class="kku-section-title gsap-reveal" style="text-align: center; border: none; margin-bottom: 0;">LubriTens Mekatronik Sistem Mimarisi</h2>
+        </div>
+    </section>
+
+    <section class="kku-interactive-mindmap gsap-reveal">
+        <div class="kku-mindmap-wrapper">
+            <div class="kku-node-group">
+                <div class="kku-node root open" onclick="toggleMindmap(this)">
+                    <span>LubriTens Akıllı Zincir Bakım Sistemi (Dalları Açmak İçin Tıklayın)</span>
+                    <span class="kku-toggle-icon">▶</span>
+                </div>
+
+                <div class="kku-children visible">
+                    <!-- ANA DAL 1 -->
+                    <div class="kku-node-group">
+                        <div class="kku-node" onclick="toggleMindmap(this)">
+                            Mekanik ve Kinematik Tasarım
+                            <span class="kku-toggle-icon">▶</span>
+                        </div>
+                        <div class="kku-children">
+                            <div class="kku-node-group">
+                                <div class="kku-node" onclick="toggleMindmap(this)">Montaj Kelepçesi <span class="kku-toggle-icon">▶</span></div>
+                                <div class="kku-children">
+                                    <div class="kku-node-group"><div class="kku-node leaf">Arka Maşa Profiliyle Üniversal Uyum</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">Kaynaksız ve Delmesiz İki Parçalı Vidalı Montaj</div></div>
+                                </div>
+                            </div>
+                            <div class="kku-node-group">
+                                <div class="kku-node" onclick="toggleMindmap(this)">Avare Dişli Mekanizması <span class="kku-toggle-icon">▶</span></div>
+                                <div class="kku-children">
+                                    <div class="kku-node-group"><div class="kku-node leaf">Düşük Sürtünmeli Rulmanlı Yataklama</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">Doğrusal Kızaklı Düşey Gergi Yolu</div></div>
+                                </div>
+                            </div>
+                            <div class="kku-node-group">
+                                <div class="kku-node" onclick="toggleMindmap(this)">Gövde İmalatı (DFM) <span class="kku-toggle-icon">▶</span></div>
+                                <div class="kku-children">
+                                    <div class="kku-node-group"><div class="kku-node leaf">Prototip: CNC Talaşlı İmalat</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">Seri Üretim: Alüminyum Enjeksiyon Döküm</div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ANA DAL 2 -->
+                    <div class="kku-node-group">
+                        <div class="kku-node" onclick="toggleMindmap(this)">
+                            Algılama ve Kontrol Mimarisi (ECU)
+                            <span class="kku-toggle-icon">▶</span>
+                        </div>
+                        <div class="kku-children">
+                            <div class="kku-node-group">
+                                <div class="kku-node" onclick="toggleMindmap(this)">Strain Gauge Sensör Grubu <span class="kku-toggle-icon">▶</span></div>
+                                <div class="kku-children">
+                                    <div class="kku-node-group"><div class="kku-node leaf">Gerinim ve Zincir Çekme Kuvveti Okuma</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">Parazit ve Titreşim Filtreleme Algoritması</div></div>
+                                </div>
+                            </div>
+                            <div class="kku-node-group">
+                                <div class="kku-node" onclick="toggleMindmap(this)">Gömülü ECU &amp; Aktüatör <span class="kku-toggle-icon">▶</span></div>
+                                <div class="kku-children">
+                                    <div class="kku-node-group"><div class="kku-node leaf">Milimetrik Piston Konumlandırma</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">12V Motosiklet Şebekesi Entegrasyonu</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">Gidon Butonu ve Bakım Kilidi Sinyali</div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ANA DAL 3 -->
+                    <div class="kku-node-group">
+                        <div class="kku-node" onclick="toggleMindmap(this)">
+                            Akışkan ve Dozajlama Modülü
+                            <span class="kku-toggle-icon">▶</span>
+                        </div>
+                        <div class="kku-children">
+                            <div class="kku-node-group">
+                                <div class="kku-node" onclick="toggleMindmap(this)">Dozaj Pompası ve Hazne <span class="kku-toggle-icon">▶</span></div>
+                                <div class="kku-children">
+                                    <div class="kku-node-group"><div class="kku-node leaf">Kimyasal Dayanımlı Polimer Rezervuar</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">Düşük Güç Tüketimli Mikro Pompa</div></div>
+                                </div>
+                            </div>
+                            <div class="kku-node-group">
+                                <div class="kku-node" onclick="toggleMindmap(this)">Püskürtme Hattı <span class="kku-toggle-icon">▶</span></div>
+                                <div class="kku-children">
+                                    <div class="kku-node-group"><div class="kku-node leaf">Tıkanmaya Dirençli Nozul Yapısı</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">%60 Yağ Tasarrufu Sağlayan Noktasal Atım</div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ANA DAL 4 -->
+                    <div class="kku-node-group">
+                        <div class="kku-node" onclick="toggleMindmap(this)">
+                            Çevresel Dayanım ve Standartlar
+                            <span class="kku-toggle-icon">▶</span>
+                        </div>
+                        <div class="kku-children">
+                            <div class="kku-node-group">
+                                <div class="kku-node" onclick="toggleMindmap(this)">Çevresel Yalıtım <span class="kku-toggle-icon">▶</span></div>
+                                <div class="kku-children">
+                                    <div class="kku-node-group"><div class="kku-node leaf">IP67 Su ve Toz Geçirmezlik Sınıfı</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">Elektronikte Conformal Coating Koruması</div></div>
+                                </div>
+                            </div>
+                            <div class="kku-node-group">
+                                <div class="kku-node" onclick="toggleMindmap(this)">Normlar ve Güvenilirlik <span class="kku-toggle-icon">▶</span></div>
+                                <div class="kku-children">
+                                    <div class="kku-node-group"><div class="kku-node leaf">ISO 10190 Motosiklet Zincir Standardı</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">EMC / LVD Direktiflerine Uyumlu Devre</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">ANSYS Modal Analiz Rezonans Kontrolü</div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SONUÇLAR VE ÇIKTILAR -->
+    <section class="kku-yaklasim-section bg-light">
+        <div class="kku-yaklasim-container gsap-reveal">
+            <h2 class="kku-section-title">Sonuçlar ve Çıktılar</h2>
+            <p class="kku-list">TÜBİTAK 1812 iş planı ve mühendislik doğrulamaları doğrultusunda sistemin ulaştığı teknik ve ticari başarım göstergeleri:</p>
+
+            <ul class="kku-list">
+                <li><strong>2 Kat Uzatılmış Zincir Ömrü:</strong> Sürekli ideal gerginlikte tutulan ve mikro dozajla yağlanan zincir-dişli setlerinin aşınma hızı yarı yarıya düşürülmüş, dişli sıyırma riskleri önlenmiştir.</li>
+                <li><strong>%60 Yağ Tasarrufu ve Çevre Koruması:</strong> Manuel spreylemenin yarattığı kontrolsüz yağ sıçraması yerine noktasal dozajlama yapılarak çevre kirliliği ve sarfiyat minimize edilmiştir.</li>
+                <li><strong>Yüksek Rekabet Avantajı:</strong> Yalnızca yağlama yapan ithal rakiplere (Scottoiler vb.) kıyasla hem aktif germe hem yağlama fonksiyonunu bir arada sunarak %30–40 maliyet avantajı sağlanmıştır.</li>
+                <li><strong>Hızlı Başabaş (Break-Even) Noktası:</strong> Finansal modelleme kapsamında 93 adetlik satışta başabaş noktasına ulaşıldığı doğrulanmıştır.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- ÖZET -->
+    <section class="kku-yaklasim-section">
+        <div class="kku-yaklasim-container gsap-reveal">
+            <h2 class="kku-section-title">Özet</h2>
+            <p class="kku-list">Bu çalışma; motosiklet sektöründe sürüş güvenliğini doğrudan tehdit eden zincir gevşemesi ve yağsızlık problemine yönelik, patent potansiyeli yüksek ve TÜBİTAK 1812 BİGG Ar-Ge odaklı bir mekatronik çözüm ortaya koymuştur.</p>
+
+            <h3 class="kku-subsection-title">Temel Kazanımlar</h3>
+            <ul class="kku-list">
+                <li><strong>Hibrit Mühendislik Çözümü:</strong> Mekanik avare dişli kinematiği, gömülü ECU yazılımı ve gerinim algılama disiplinleri tek gövdede birleştirilmiştir.</li>
+                <li><strong>Yüksek Sürüş Güvenliği:</strong> Sürücünün manuel müdahalesine gerek kalmaksızın zincir atması ve tekerlek kilitlenmesi riskleri ortadan kaldırılmıştır.</li>
+                <li><strong>Ölçeklenebilir Seri Üretim Altyapısı:</strong> Prototip fazındaki CNC talaşlı imalat yönteminden alüminyum enjeksiyon döküm ve özgün PCB mimarisine uzanan üretim yol haritası kurgulanmıştır.</li>
+            </ul>
+
+            <div class="kku-vision-box">
+                <div class="kku-vision-header">
+                    <span>🏍️</span>
+                    <h4>Gelecek Vizyonu ve IoT Entegrasyonu</h4>
+                </div>
+                <p>Projenin 2. ve 3. fazlarında; sisteme <strong style="color: #0d6efd;">Bluetooth &amp; Mobil Uygulama Entegrasyonu</strong> eklenerek kullanıcıların akıllı telefonları üzerinden zincir gerginlik yüzdesini, kalan yağ rezervuar seviyesini ve tahmini zincir-dişli ömrünü anlık olarak takip edebilecekleri yeni bir IoT sürümü planlanmaktadır.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJELER ARASI GEÇİŞ NAVİGASYONU -->
+    <div class="project-pagination">
+        <div class="project-pagination-container">
+            <a href="termoform-kalibi.html" class="proj-nav-btn prev">
+                <span class="nav-dir">← Önceki Proje</span>
+                <span class="nav-title">Endüstriyel Termoform Kalıbı</span>
+            </a>
+            <a href="../index.html#projeler" class="proj-nav-all">Tüm Projelere Dön</a>
+            <a href="sismik-izolator.html" class="proj-nav-btn next">
+                <span class="nav-dir">Sonraki Proje →</span>
+                <span class="nav-title">Kot Düzenleyici Sismik İzolatör</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer-section">
+        <div class="footer-content">
+            <h3>Halil Öz</h3>
+            <p>Mechanical Engineer | Mechanical Design &amp; FEA</p>
+            <div class="footer-links">
+                <a href="https://www.linkedin.com/in/halil-öz" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a href="../assets/docs/Halil_Oz-CV.pdf" download>CV İndir</a>
+                <a href="mailto:halilo.hz42@gmail.com">halilo.hz42@gmail.com</a>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2026 Halil Öz. Tüm hakları saklıdır.
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

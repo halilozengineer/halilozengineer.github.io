@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Endüstriyel Etil Asetat Geri Kazanım Sistemi | Halil Öz</title>
+    <meta name="description" content="TÜBİTAK 2209-A destekli Endüstriyel Etil Asetat Geri Kazanım Sistemi tasarımı: ATEX uyumlu yoğuşma, 73 kanatçıklı borulu eşanjör, distilasyon kolonu ve Zeolit 3A dehidrasyon ünitesi.">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Endüstriyel Etil Asetat Geri Kazanım Sistemi Tasarımı | Halil Öz">
+    <meta property="og:description" content="Tifdruk baskı hatlarında %90,79 verimle etil asetat geri kazanımı sağlayan ATEX uyumlu proses makinesi tasarımı.">
+    <meta property="og:image" content="https://halilozengineer.github.io/assets/img/projects/etil-asetat/cover.webp">
+
+    <link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg">
+    <link rel="icon" type="image/png" sizes="64x64" href="../assets/img/favicon.png">
+    <link rel="apple-touch-icon" href="../assets/img/favicon.png">
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/project-detail.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.34/dist/lenis.min.js" defer></script>
+    <script src="../assets/js/app.js" defer></script>
+</head>
+<body>
+
+    <!-- YÜZEN KAPSÜL NAVİGASYON -->
+    <nav class="floating-nav" aria-label="Ana Navigasyon">
+        <ul>
+            <li><a href="../index.html#hero">Ana Sayfa</a></li>
+            <li><a href="../index.html#vizyon-ekrani">Vizyon</a></li>
+            <li><a href="../index.html#armco-projesi">Kabin Tasarımı</a></li>
+            <li><a href="../index.html#deneyim">Deneyim</a></li>
+            <li><a href="../index.html#projeler" class="nav-active">Projeler</a></li>
+            <li><a href="../hakkimda.html">Hakkımda</a></li>
+            <li><a href="../index.html#referanslar">Referanslar</a></li>
+            <li><a href="../index.html#iletisim">İletişim</a></li>
+
+            <li class="lang-switch">
+                <a href="#" class="active">TR</a>
+                <span class="divider">|</span>
+                <a href="../en/projects/ethyl-acetate-recovery.html" class="inactive">EN</a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- ÜST KISIM: HERO & İNTERAKTİF GALERİ -->
+    <section class="kku-hero-section">
+        <div class="kku-hero-container">
+            <div class="kku-content gsap-reveal">
+                <h1 class="kku-title">Endüstriyel Etil Asetat<br>Geri Kazanım Sistemi<br>Tasarımı</h1>
+
+                <div class="kku-cards-grid">
+                    <div class="kku-card">
+                        <div class="kku-label">PROJE YÜRÜTÜCÜLERİ</div>
+                        <div class="kku-value">Halil Öz<br>Mustafa Özer</div>
+                    </div>
+                    <div class="kku-card">
+                        <div class="kku-label">DANIŞMAN &amp; DESTEK</div>
+                        <div class="kku-value">Musa Demirci<br>TÜBİTAK 2209-A / Bitirme Projesi</div>
+                    </div>
+                    <div class="kku-card full-width">
+                        <div class="kku-label">KURUM</div>
+                        <div class="kku-value">KTO Karatay Üniversitesi, Makine Mühendisliği Bölümü</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="kku-gallery gsap-reveal">
+                <div class="kku-main-img-box">
+                    <img id="mainGalleryImage" src="../assets/img/projects/etil-asetat/cad.webp" alt="Endüstriyel Etil Asetat Geri Kazanım Sistemi 3D CAD Genel Görünümü">
+                    <span class="kku-zoom-hint">🔍 Büyütmek için tıklayın</span>
+                </div>
+                <div class="kku-thumbnails">
+                    <img src="../assets/img/projects/etil-asetat/cad.webp" alt="Endüstriyel Etil Asetat Geri Kazanım Sistemi 3D CAD Genel Görünümü" class="thumb active" onclick="changeImage(this)">
+                    <img src="../assets/img/projects/etil-asetat/pid.webp" alt="Patlamaya Dayanıklı (ATEX) PID Sensör ve Aspirasyon Boru Hattı" class="thumb" onclick="changeImage(this)">
+                    <img src="../assets/img/projects/etil-asetat/kolon.webp" alt="AISI 316L Distilasyon Kolonu ve Gözetleme/Besleme Bağlantıları" class="thumb" onclick="changeImage(this)">
+                    <img src="../assets/img/projects/etil-asetat/finned.webp" alt="73 Adet Kanatçıklı Borulu Tepe Kondenseri İç Kesiti (DFM Optimizasyonu)" class="thumb" onclick="changeImage(this)">
+                    <img src="../assets/img/projects/etil-asetat/fan.webp" alt="ATEX Uyumlu Santrifüj Fan Görseli" class="thumb" onclick="changeImage(this)">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GİRİŞ VE PROJE ÖZETİ -->
+    <section class="kku-yaklasim-section bg-light">
+        <div class="kku-yaklasim-container gsap-reveal">
+            <h2 class="kku-section-title">Giriş</h2>
+            <p class="kku-list">Endüstriyel bir atık olarak havaya karışan yüzlerce kilogram pahalı solventi her gün doğaya salmanın, işletme bütçesinde devasa bir kayıp yaratırken ağır çevresel emisyon yükü oluşturduğunu biliyor muydunuz?</p>
+            <p class="kku-list">Bu projede, ambalaj sektöründe yaygın olarak kullanılan uçucu ve yanıcı etil asetat solventini atık buhar fazından saf sıvı faza geri kazandıran, bütçelendirilebilir ve ATEX standartlarında güvenli bir proses makinesi tasarımının tüm mühendislik detayları ele alınmaktadır.</p>
+
+            <h3 class="kku-subsection-title">Mühendislik ve Öğrenme Hedefleri</h3>
+            <ul class="kku-list">
+                <li>Tifdruk baskı hatlarında uçucu organik bileşiklerin (VOC) kapalı devre geri kazanımını kavramak.</li>
+                <li>Isı transferi, kütle transferi ve akış kontrol temellerini enstrümantasyon ekipman seçimleriyle ilişkilendirmek.</li>
+                <li>Patlayıcı atmosferlerde (ATEX, LEL) güvenlik sinyalizasyon yönetimi ve kimyasal sızdırmazlık uyumluluğunu analiz etmek.</li>
+                <li>Teorik ısı değiştirici tasarımlarını üretilebilirlik kısıtlarına (DFM) göre optimize etmek.</li>
+            </ul>
+
+            <h3 class="kku-subsection-title">Proje Özeti</h3>
+            <p class="kku-list">Bu proje, solvent bazlı mürekkep kullanan endüstriyel tifdruk baskı hatlarında buharlaşarak kaybolan etil asetatı geri kazanmak amacıyla geliştirilmiş bütünleşik bir proses makinesi tasarımıdır. Sistem; buhar toplama hattı, kanatçıklı borulu yoğuşturucu, distilasyon kolonu, tek kuleli Zeolit 3A kurutma yatağı ve akıllı sensör yönetiminden oluşan modüler bir gövde birleşimidir. 200 litrelik (180,4 kg) tek bir kirli solvent şarjından <strong>164,11 kg saf etil asetatı (%90,79 verim)</strong> başarıyla geri kazanarak hem VOC emisyonlarını sıfıra yaklaştırır hem de solvent tüketim döngüsünü proses içi bir girdiye dönüştürür.</p>
+
+            <div class="kku-tech-box">
+                <strong>Kullanılan Teknolojiler ve Standartlar</strong>
+                <div class="kku-tech-pills">
+                    <span class="kku-tech-pill">TÜBİTAK 2209-A</span>
+                    <span class="kku-tech-pill">Termodinamik Modelleme</span>
+                    <span class="kku-tech-pill">ATEX Güvenlik Normları</span>
+                    <span class="kku-tech-pill">PID &amp; LEL Sensör Yönetimi</span>
+                    <span class="kku-tech-pill">AISI 316L / AISI 304</span>
+                    <span class="kku-tech-pill">DFM (Üretilebilirlik)</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROBLEM TANIMI -->
+    <section class="kku-problem-section">
+        <div class="kku-problem-container gsap-reveal">
+            <h2 class="kku-section-title">Problem Tanımı</h2>
+            <p class="kku-list">Tifdruk ambalaj baskı süreçlerinde, hızlı kuruma sağlamak amacıyla yüksek uçuculuğa sahip etil asetat solventi tercih edilir. Ancak bu avantaj kurutma fırınlarında üç kritik mühendislik sorununa yol açar:</p>
+            <ul class="kku-list">
+                <li><strong>Ekonomik ve Çevresel Kayıp:</strong> Geri kazanım yapılmadığında tonlarca solvent atmosfere salınarak ciddi bir hammadde israfı yaratır ve VOC emisyon limitlerini aşar.</li>
+                <li><strong>Patlama ve Güvenlik Riski (LEL):</strong> Etil asetat yanıcı bir karakter taşır. Fırın çıkışındaki hava-buhar karışımının Alt Patlama Sınırı (LEL) kontrol altında tutulmalı ve tüm sistem ATEX standartlarına göre tasarlanmalıdır.</li>
+                <li><strong>Korozyon ve Malzeme Dayanımı:</strong> Etil asetat, su varlığında ve yüksek sıcaklıkta hidrolize uğrayarak asetik asit üretir. Bu durum standart karbon çeliğinde ve NBR/Viton contalarda şiddetli tahribata, hat sızıntılarına ve ürün sararmasına neden olur.</li>
+            </ul>
+
+            <div class="kku-problem-image">
+                <img src="../assets/img/projects/etil-asetat/akim-semasi.webp" alt="Endüstriyel Etil Asetat Kapalı Devre Geri Kazanım Proses Akış ve Güvenlik Şeması" loading="lazy">
+                <p class="kku-img-caption">Şekil 1: Kapalı devre etil asetat geri kazanım proses akışı, ATEX/LEL güvenlik bypass hattı ve malzeme kısıtları (Büyütmek için görsele tıklayın).</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- YAKLAŞIM VE TASARIM SÜRECİ -->
+    <section class="kku-yaklasim-section bg-light">
+        <div class="kku-yaklasim-container gsap-reveal">
+            <h2 class="kku-section-title">Yaklaşım ve Tasarım Süreci</h2>
+            <p class="kku-list">Problemin çözümü için tasarlanan ünitelerde sistematik bir termodinamik ve mekanik tasarım süreci işletilmiştir:</p>
+
+            <ol class="kku-list">
+                <li><strong>Sensör Tabanlı Akıllı Yönlendirme:</strong> Egzoz hattına yerleştirilen PID (Photoionization Detector) sensörü solvent konsantrasyonunu anlık izler. Limit değerlerin altında akım bypass edilirken, geri kazanım aktif olduğunda sistem devreye girer. LEL aşımında ise otomatik olarak güvenli acil tahliye moduna geçilir.</li>
+                <li><strong>Kondenser Tasarımında Üretilebilirlik Devrimi (DFM):</strong> İlk teorik modelde hesaplanan 1.417 adet 4 mm'lik ince borulu eşanjör yaklaşımı, imalat zorluğu ve sızdırmazlık riskleri nedeniyle elenmiştir. Bunun yerine <strong>73 adet kanatçıklı boruya</strong> sahip, bakımı kolay ve kompakt bir tepe kondenseri tasarlanmıştır. Bu revizyonla 8 kW ısıl yükün atımı elde edilerek 9,3 kW ısıl yoğuşma gücü güvenle karşılanmıştır.</li>
+                <li><strong>Kütle Transferi ve Dehidrasyon:</strong> Distilasyon kolonu, asetik asit ve su karışımını saflaştırmak için 5 adet elek tepsi ve 2 metre aktif yükseklikle boyutlandırılmıştır. Distilasyon sonrasında kalan eser miktardaki su, 120 kg kapasiteli tek kuleli Zeolit 3A moleküler elek yatağında fiziksel adsorpsiyon yöntemiyle seçici olarak tutulur (%15 kapasite emniyet payı).</li>
+                <li><strong>Malzeme ve Sızdırmazlık Seçimi:</strong> Korozyon dinamikleri analiz edilerek, yüksek sıcaklık ve asit riski taşıyan kaynatıcı (reboiler) ve kolon gövdelerinde AISI 316L paslanmaz çelik kullanılmıştır. Solventin aşındırıcı etkisine karşı tüm elastomer contalar elenmiş; statik hatlarda saf PTFE, kolon katmanlarında PTFE zarflı esnek contalar, termal genleşmeye maruz kalan reboiler flanşlarında ise PTFE Spiral Sarımlı çelik contalar tercih edilmiştir.</li>
+            </ol>
+        </div>
+    </section>
+
+    <!-- İNTERAKTİF ZİHİN HARİTASI -->
+    <section class="kku-yaklasim-section" style="padding-bottom: 0; padding-top: 40px;">
+        <div class="kku-yaklasim-container">
+            <h2 class="kku-section-title gsap-reveal" style="text-align: center; border: none; margin-bottom: 0;">Etil Asetat Geri Kazanım Sistemi Tasarım Kısıtları</h2>
+        </div>
+    </section>
+
+    <section class="kku-interactive-mindmap gsap-reveal">
+        <div class="kku-mindmap-wrapper">
+            <div class="kku-node-group">
+                <div class="kku-node root open" onclick="toggleMindmap(this)">
+                    <span>Etil Asetat Geri Kazanım Sistemi Tasarım Kısıtları (Dalları Açmak İçin Tıklayın)</span>
+                    <span class="kku-toggle-icon">▶</span>
+                </div>
+
+                <div class="kku-children visible">
+                    <!-- ANA DAL 1 -->
+                    <div class="kku-node-group">
+                        <div class="kku-node" onclick="toggleMindmap(this)">
+                            Malzeme Uyumluluğu
+                            <span class="kku-toggle-icon">▶</span>
+                        </div>
+                        <div class="kku-children">
+                            <div class="kku-node-group">
+                                <div class="kku-node" onclick="toggleMindmap(this)">AISI 316L Paslanmaz Çelik <span class="kku-toggle-icon">▶</span></div>
+                                <div class="kku-children">
+                                    <div class="kku-node-group"><div class="kku-node leaf">Sıcak ve Islak Yüzeyler</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">Asidik Hidroliz Direnci (Reboiler/Kolon)</div></div>
+                                </div>
+                            </div>
+                            <div class="kku-node-group">
+                                <div class="kku-node" onclick="toggleMindmap(this)">AISI 304 Paslanmaz Çelik <span class="kku-toggle-icon">▶</span></div>
+                                <div class="kku-children">
+                                    <div class="kku-node-group"><div class="kku-node leaf">Düşük Sıcaklık Bölgeleri</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">Kondenser ve Zeolit Kuleleri</div></div>
+                                </div>
+                            </div>
+                            <div class="kku-node-group">
+                                <div class="kku-node" onclick="toggleMindmap(this)">Sızdırmazlık (Conta Seçimi) <span class="kku-toggle-icon">▶</span></div>
+                                <div class="kku-children">
+                                    <div class="kku-node-group"><div class="kku-node leaf">PTFE (Teflon) Kimyasal İnertlik</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">Spiral Sarımlı (Yüksek Termal Stres)</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">Elastomer (NBR/Viton) Yasağı</div></div>
+                                </div>
+                            </div>
+                            <div class="kku-node-group">
+                                <div class="kku-node" onclick="toggleMindmap(this)">Karbon Çelik <span class="kku-toggle-icon">▶</span></div>
+                                <div class="kku-children">
+                                    <div class="kku-node-group"><div class="kku-node leaf">Proses Dışı Taşıyıcı Şase Elemanları</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">Endüstriyel Epoksi Boya Koruması</div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ANA DAL 2 -->
+                    <div class="kku-node-group">
+                        <div class="kku-node" onclick="toggleMindmap(this)">
+                            Bütçe ve Ekonomik Kısıtlar
+                            <span class="kku-toggle-icon">▶</span>
+                        </div>
+                        <div class="kku-children">
+                            <div class="kku-node-group">
+                                <div class="kku-node" onclick="toggleMindmap(this)">Hibrit Malzeme Yaklaşımı <span class="kku-toggle-icon">▶</span></div>
+                                <div class="kku-children">
+                                    <div class="kku-node-group"><div class="kku-node leaf">Maliyet ve Dayanım Dengesi</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">Riskli Bölgelerde Seçici Malzeme Kullanımı</div></div>
+                                </div>
+                            </div>
+                            <div class="kku-node-group">
+                                <div class="kku-node" onclick="toggleMindmap(this)">Enerji Verimliliği <span class="kku-toggle-icon">▶</span></div>
+                                <div class="kku-children">
+                                    <div class="kku-node-group"><div class="kku-node leaf">Taşyünü Termal İzolasyon</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">Alüminyum Sac Kaplama (Cladding)</div></div>
+                                </div>
+                            </div>
+                            <div class="kku-node-group">
+                                <div class="kku-node" onclick="toggleMindmap(this)">İşletme Fizibilitesi <span class="kku-toggle-icon">▶</span></div>
+                                <div class="kku-children">
+                                    <div class="kku-node-group"><div class="kku-node leaf">3,23 TL/kg Başabaş (Break-Even) Maliyeti</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">Zeolit 3A Kullanım Ömrü (10.000 Çevrim)</div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ANA DAL 3 -->
+                    <div class="kku-node-group">
+                        <div class="kku-node" onclick="toggleMindmap(this)">
+                            Üretilebilirlik Gereksinimleri (DFM)
+                            <span class="kku-toggle-icon">▶</span>
+                        </div>
+                        <div class="kku-children">
+                            <div class="kku-node-group">
+                                <div class="kku-node" onclick="toggleMindmap(this)">Eşanjör Tasarım Revizyonu <span class="kku-toggle-icon">▶</span></div>
+                                <div class="kku-children">
+                                    <div class="kku-node-group"><div class="kku-node leaf">73 Kanatçıklı Boru Uygulaması</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">İmalat ve Temizlik Kolaylığı</div></div>
+                                </div>
+                            </div>
+                            <div class="kku-node-group">
+                                <div class="kku-node" onclick="toggleMindmap(this)">Sistem Sadeleştirme <span class="kku-toggle-icon">▶</span></div>
+                                <div class="kku-children">
+                                    <div class="kku-node-group"><div class="kku-node leaf">Sızdırmazlık Güvenilirliği</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">Tek Kuleli Zeolit Yapısı</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">Düşük Otomasyon Karmaşıklığı</div></div>
+                                </div>
+                            </div>
+                            <div class="kku-node-group">
+                                <div class="kku-node" onclick="toggleMindmap(this)">Bakım ve Montaj <span class="kku-toggle-icon">▶</span></div>
+                                <div class="kku-children">
+                                    <div class="kku-node-group"><div class="kku-node leaf">Gözetleme Pencereleri ve Bakım Kapakları</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">Flanş ve Pompa Erişim Mesafeleri</div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ANA DAL 4 -->
+                    <div class="kku-node-group">
+                        <div class="kku-node" onclick="toggleMindmap(this)">
+                            ATEX ve Güvenlik Standartları
+                            <span class="kku-toggle-icon">▶</span>
+                        </div>
+                        <div class="kku-children">
+                            <div class="kku-node-group">
+                                <div class="kku-node" onclick="toggleMindmap(this)">Patlayıcı Atmosfer Yönetimi <span class="kku-toggle-icon">▶</span></div>
+                                <div class="kku-children">
+                                    <div class="kku-node-group"><div class="kku-node leaf">Otomatik Bypass ve Acil Tahliye</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">LEL (Alt Patlama Limiti) Kontrolü</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">PID Sensörlü Buhar Algılama</div></div>
+                                </div>
+                            </div>
+                            <div class="kku-node-group">
+                                <div class="kku-node" onclick="toggleMindmap(this)">ATEX Sertifikalı Donanım <span class="kku-toggle-icon">▶</span></div>
+                                <div class="kku-children">
+                                    <div class="kku-node-group"><div class="kku-node leaf">ATEX Uyumlu Santrifüj Fan ve Pompalar</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">Manyetik Kaplinli Sızdırmazlık</div></div>
+                                </div>
+                            </div>
+                            <div class="kku-node-group">
+                                <div class="kku-node" onclick="toggleMindmap(this)">Yangın Güvenliği <span class="kku-toggle-icon">▶</span></div>
+                                <div class="kku-children">
+                                    <div class="kku-node-group"><div class="kku-node leaf">A1 Sınıfı Yanmaz Yalıtım (Taşyünü)</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">1000°C Yapısal Bütünlük Koruması</div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SONUÇLAR VE ÇIKTILAR -->
+    <section class="kku-yaklasim-section bg-light">
+        <div class="kku-yaklasim-container gsap-reveal">
+            <h2 class="kku-section-title">Sonuçlar ve Çıktılar</h2>
+            <p class="kku-list">Geliştirilen entegre geri kazanım sisteminin performans çıktıları, tasarımın teknik ve finansal açıdan yüksek verimliliğe ulaştığını kanıtlamıştır:</p>
+
+            <ul class="kku-list">
+                <li><strong>Yüksek Geri Kazanım Verimi:</strong> 200 litrelik (180,4 kg) kirli solvent şarjından çevrim başına ortalama 164,11 kg saf etil asetat geri kazanılarak <strong>%90,79</strong>'luk bir başarıya ulaşılmıştır.</li>
+                <li><strong>Uzun Ekipman Ömrü:</strong> Seçilen Zeolit 3A yatağının 10.000 çevrimlik servis ömrü boyunca toplamda 246,2 ton saf etil asetat geri kazanılarak işletmeye kazandırılacaktır.</li>
+                <li><strong>Enerji ve Maliyet Verimliliği:</strong> Çevrim başına toplam enerji tüketimi (ısıtma, soğutma, fanlar ve pompalar dahil) 109,7 kWh olarak hesaplanmıştır. Enerji ve amortisman maliyetleri düşüldüğünde sistemin başabaş noktası (break-even) <strong>3,23 TL/kg</strong> solvent değerindedir.</li>
+                <li><strong>Aktif ATEX Güvenliği:</strong> Proses; basınç, sıcaklık, seviye ve PID sensörleri ile tam otomatize edilmiş; aşırı basınç veya LEL artışı gibi geçişli riskler dinamik olarak kontrol altına alınmıştır.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- ÖZET -->
+    <section class="kku-yaklasim-section">
+        <div class="kku-yaklasim-container gsap-reveal">
+            <h2 class="kku-section-title">Özet</h2>
+            <p class="kku-list">Bu çalışmada, zorlu endüstriyel kısıtlara sahip bir etil asetat geri kazanım makinesinin tasarım ve optimizasyon süreçleri başarıyla tamamlanmıştır.</p>
+
+            <h3 class="kku-subsection-title">Temel Kazanımlar</h3>
+            <ul class="kku-list">
+                <li><strong>Bütünleşik Mühendislik Çözümü:</strong> Mekanik tasarım, termodinamik entegrasyon, akış kontrolü ve malzeme bilimi tek bir proses makinesinde birleştirilmiştir.</li>
+                <li><strong>Üretilebilirlik Odaklı Yaklaşım (DFM):</strong> Teorik ısı transferi formüllerinin ötesine geçilerek, endüstriyel olarak üretilebilir, bakımı kolay ve maliyet etkin 73 kanatçıklı boru tasarımı hayata geçirilmiştir.</li>
+                <li><strong>Yüksek Güvenlik ve Uyumluluk:</strong> ATEX uyumlu ekipman seçimi, LEL takibi ve PTFE / AISI 316L malzeme tercihleriyle kimyasal ve patlayıcı riskler yönetilmiştir.</li>
+            </ul>
+
+            <div class="kku-vision-box">
+                <div class="kku-vision-header">
+                    <span>🚀</span>
+                    <h4>Gelecek Vizyonu ve Sürekli İyileştirme</h4>
+                </div>
+                <p>Bu proje üzerinde yürütülecek ileri faz çalışmalarında, sistemin termal ve yapısal bütünlüğünü koruyarak şase/gövde ağırlığını ve üretim maliyetlerini daha da düşürmek amacıyla <strong style="color: #0d6efd;">Topoloji Optimizasyonu</strong> teknikleri üzerine Ar-Ge çalışmaları yapılması planlanmaktadır.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJELER ARASI GEÇİŞ NAVİGASYONU -->
+    <div class="project-pagination">
+        <div class="project-pagination-container">
+            <a href="sismik-izolator.html" class="proj-nav-btn prev">
+                <span class="nav-dir">← Önceki Proje</span>
+                <span class="nav-title">Kot Düzenleyici Sismik İzolatör</span>
+            </a>
+            <a href="../index.html#projeler" class="proj-nav-all">Tüm Projelere Dön</a>
+            <a href="tavan-vinci-fea.html" class="proj-nav-btn next">
+                <span class="nav-dir">Sonraki Proje →</span>
+                <span class="nav-title">Tavan Vinci FEA Optimizasyonu</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer-section">
+        <div class="footer-content">
+            <h3>Halil Öz</h3>
+            <p>Mechanical Engineer | Mechanical Design &amp; FEA</p>
+            <div class="footer-links">
+                <a href="https://www.linkedin.com/in/halil-öz" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a href="../assets/docs/Halil_Oz-CV.pdf" download>CV İndir</a>
+                <a href="mailto:halilo.hz42@gmail.com">halilo.hz42@gmail.com</a>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2026 Halil Öz. Tüm hakları saklıdır.
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

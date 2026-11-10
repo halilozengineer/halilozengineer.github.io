@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Industrial Ethyl Acetate Recovery System Design | Halil Öz</title>
+    <meta name="description" content="TÜBİTAK 2209-A supported Industrial Ethyl Acetate Recovery System design: ATEX-compliant condensation, 73-finned-tube heat exchanger, distillation column, and Zeolite 3A dehydration unit.">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Industrial Ethyl Acetate Recovery System Design | Halil Öz">
+    <meta property="og:description" content="ATEX-compliant process machine design achieving 90.79% ethyl acetate recovery efficiency in rotogravure printing lines.">
+    <meta property="og:image" content="https://halilozengineer.github.io/assets/img/projects/etil-asetat/cover.webp">
+
+    <link rel="icon" type="image/svg+xml" href="../../assets/img/favicon.svg">
+    <link rel="icon" type="image/png" sizes="64x64" href="../../assets/img/favicon.png">
+    <link rel="apple-touch-icon" href="../../assets/img/favicon.png">
+    <link rel="stylesheet" href="../../assets/css/main.css">
+    <link rel="stylesheet" href="../../assets/css/project-detail.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.34/dist/lenis.min.js" defer></script>
+    <script src="../../assets/js/app.js" defer></script>
+</head>
+<body>
+
+    <!-- FLOATING CAPSULE NAVIGATION -->
+    <nav class="floating-nav" aria-label="Main Navigation">
+        <ul>
+            <li><a href="../index.html#hero">Home</a></li>
+            <li><a href="../index.html#vision-screen">Vision</a></li>
+            <li><a href="../index.html#armco-project">Cabinet Design</a></li>
+            <li><a href="../index.html#experience">Experience</a></li>
+            <li><a href="../index.html#projects" class="nav-active">Projects</a></li>
+            <li><a href="../about.html">About Me</a></li>
+            <li><a href="../index.html#references">References</a></li>
+            <li><a href="../index.html#contact">Contact</a></li>
+
+            <li class="lang-switch">
+                <a href="../../projeler/etil-asetat-geri-kazanim.html" class="inactive">TR</a>
+                <span class="divider">|</span>
+                <a href="ethyl-acetate-recovery.html" class="active">EN</a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- HERO & INTERACTIVE GALLERY -->
+    <section class="kku-hero-section">
+        <div class="kku-hero-container">
+            <div class="kku-content gsap-reveal">
+                <h1 class="kku-title">Industrial Ethyl Acetate<br>Solvent Recovery System<br>Design</h1>
+
+                <div class="kku-cards-grid">
+                    <div class="kku-card">
+                        <div class="kku-label">PROJECT LEADS</div>
+                        <div class="kku-value">Halil Öz<br>Mustafa Özer</div>
+                    </div>
+                    <div class="kku-card">
+                        <div class="kku-label">ADVISOR &amp; GRANT</div>
+                        <div class="kku-value">Musa Demirci<br>TÜBİTAK 2209-A / Capstone Project</div>
+                    </div>
+                    <div class="kku-card full-width">
+                        <div class="kku-label">INSTITUTION</div>
+                        <div class="kku-value">KTO Karatay University, Department of Mechanical Engineering</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="kku-gallery gsap-reveal">
+                <div class="kku-main-img-box">
+                    <img id="mainGalleryImage" src="../../assets/img/projects/etil-asetat/cad.webp" alt="Industrial Ethyl Acetate Recovery System 3D CAD Overview">
+                    <span class="kku-zoom-hint">🔍 Click to enlarge</span>
+                </div>
+                <div class="kku-thumbnails">
+                    <img src="../../assets/img/projects/etil-asetat/cad.webp" alt="Industrial Ethyl Acetate Recovery System 3D CAD Overview" class="thumb active" onclick="changeImage(this)">
+                    <img src="../../assets/img/projects/etil-asetat/pid.webp" alt="Explosion-Proof (ATEX) PID Sensor and Aspiration Pipeline" class="thumb" onclick="changeImage(this)">
+                    <img src="../../assets/img/projects/etil-asetat/kolon.webp" alt="AISI 316L Distillation Column with Sight Glass and Feed Ports" class="thumb" onclick="changeImage(this)">
+                    <img src="../../assets/img/projects/etil-asetat/finned.webp" alt="73-Finned-Tube Overhead Condenser Cross-Section (DFM Optimization)" class="thumb" onclick="changeImage(this)">
+                    <img src="../../assets/img/projects/etil-asetat/fan.webp" alt="ATEX-Compliant Centrifugal Exhaust Fan" class="thumb" onclick="changeImage(this)">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INTRODUCTION & PROJECT SUMMARY -->
+    <section class="kku-yaklasim-section bg-light">
+        <div class="kku-yaklasim-container gsap-reveal">
+            <h2 class="kku-section-title">Introduction</h2>
+            <p class="kku-list">Did you know that releasing hundreds of kilograms of expensive industrial solvent into the atmosphere every day not only creates a massive drain on operating budgets but also imposes a severe environmental emission burden?</p>
+            <p class="kku-list">In this engineering study, we examine the complete thermodynamic and mechanical design of a cost-effective, ATEX-compliant process machine that recovers volatile and flammable ethyl acetate solvent—widely used in the flexible packaging industry—from waste vapor back into a pure liquid phase.</p>
+
+            <h3 class="kku-subsection-title">Engineering &amp; Learning Objectives</h3>
+            <ul class="kku-list">
+                <li>Master closed-loop recovery of Volatile Organic Compounds (VOCs) in industrial rotogravure printing lines.</li>
+                <li>Link heat transfer, mass transfer, and flow control fundamentals with industrial instrumentation selection.</li>
+                <li>Analyze safety signaling management in explosive atmospheres (ATEX, LEL) and chemical sealing compatibility.</li>
+                <li>Optimize theoretical heat exchanger designs according to Design for Manufacturing (DFM) constraints.</li>
+            </ul>
+
+            <h3 class="kku-subsection-title">Project Summary</h3>
+            <p class="kku-list">This project presents an integrated process machine designed to recover ethyl acetate evaporated during solvent-based rotogravure printing operations. The system combines a vapor collection line, finned-tube overhead condenser, sieve-tray distillation column, single-tower Zeolite 3A molecular sieve dehydration bed, and smart PID/LEL sensor management. From a single 200-liter (180.4 kg) contaminated batch, the system successfully recovers <strong>164.11 kg of pure ethyl acetate (90.79% efficiency)</strong>, reducing VOC emissions to near zero and turning solvent consumption into a closed-loop internal resource.</p>
+
+            <div class="kku-tech-box">
+                <strong>Technologies &amp; Standards Used</strong>
+                <div class="kku-tech-pills">
+                    <span class="kku-tech-pill">TÜBİTAK 2209-A</span>
+                    <span class="kku-tech-pill">Thermodynamic Modeling</span>
+                    <span class="kku-tech-pill">ATEX Safety Directives</span>
+                    <span class="kku-tech-pill">PID &amp; LEL Sensor Control</span>
+                    <span class="kku-tech-pill">AISI 316L / AISI 304</span>
+                    <span class="kku-tech-pill">DFM (Design for Manufacturing)</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROBLEM DEFINITION -->
+    <section class="kku-problem-section">
+        <div class="kku-problem-container gsap-reveal">
+            <h2 class="kku-section-title">Problem Definition</h2>
+            <p class="kku-list">In rotogravure packaging printing, highly volatile ethyl acetate is favored for rapid ink drying. However, this volatility introduces three critical engineering challenges in drying ovens:</p>
+            <ul class="kku-list">
+                <li><strong>Economic &amp; Environmental Loss:</strong> Without recovery, tons of solvent are vented into the atmosphere, causing severe raw material waste and exceeding legal VOC emission thresholds.</li>
+                <li><strong>Explosion &amp; Safety Risk (LEL):</strong> Ethyl acetate is highly flammable. The air-vapor mixture leaving the drying oven must be strictly kept below the Lower Explosive Limit (LEL), requiring full ATEX compliance.</li>
+                <li><strong>Corrosion &amp; Material Degradation:</strong> In the presence of moisture and elevated temperatures, ethyl acetate hydrolyzes into acetic acid, which rapidly corrodes carbon steel and destroys standard NBR/Viton elastomer seals, leading to leaks and product yellowing.</li>
+            </ul>
+
+            <div class="kku-problem-image">
+                <img src="../../assets/img/projects/etil-asetat/akim-semasi.webp" alt="Industrial Ethyl Acetate Closed-Loop Recovery Process Flow and Safety Diagram" loading="lazy">
+                <p class="kku-img-caption">Figure 1: Closed-loop ethyl acetate recovery process flow, ATEX/LEL safety bypass line, and material constraints (Click image to enlarge).</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- APPROACH & DESIGN PROCESS -->
+    <section class="kku-yaklasim-section bg-light">
+        <div class="kku-yaklasim-container gsap-reveal">
+            <h2 class="kku-section-title">Approach &amp; Design Process</h2>
+            <p class="kku-list">A systematic thermodynamic and mechanical design methodology was executed across all process units:</p>
+
+            <ol class="kku-list">
+                <li><strong>Sensor-Driven Smart Routing:</strong> A Photoionization Detector (PID) sensor installed on the exhaust duct monitors solvent concentration in real time. Below threshold PPM levels, airflow is bypassed; once concentration rises, recovery engages. If LEL limits are approached, the system automatically switches to emergency safe purge mode.</li>
+                <li><strong>DFM Revolution in Condenser Design:</strong> An initial theoretical shell-and-tube model requiring 1,417 micro-tubes (4 mm diameter) was rejected due to extreme manufacturing difficulty and leakage risks. Instead, a compact, easy-to-maintain overhead condenser featuring <strong>73 finned tubes</strong> was engineered, safely delivering 9.3 kW of condensation capacity to reject the 8 kW thermal load.</li>
+                <li><strong>Mass Transfer &amp; Dehydration:</strong> The distillation column was sized with 5 sieve trays and a 2-meter active height to separate acetic acid and water. Trace moisture remaining after distillation is selectively adsorbed in a 120 kg single-tower Zeolite 3A molecular sieve bed with a 15% safety capacity margin.</li>
+                <li><strong>Material &amp; Sealing Selection:</strong> Based on corrosion kinetics, AISI 316L stainless steel was selected for the high-temperature acidic reboiler and column shells, while AISI 304 was used in cooler zones. All elastomer gaskets were eliminated in favor of pure PTFE on static lines, PTFE-envelope gaskets on column flanges, and spiral-wound PTFE/steel gaskets on thermally stressed reboiler joints.</li>
+            </ol>
+        </div>
+    </section>
+
+    <!-- INTERACTIVE MIND MAP -->
+    <section class="kku-yaklasim-section" style="padding-bottom: 0; padding-top: 40px;">
+        <div class="kku-yaklasim-container">
+            <h2 class="kku-section-title gsap-reveal" style="text-align: center; border: none; margin-bottom: 0;">Ethyl Acetate Recovery System Design Constraints</h2>
+        </div>
+    </section>
+
+    <section class="kku-interactive-mindmap gsap-reveal">
+        <div class="kku-mindmap-wrapper">
+            <div class="kku-node-group">
+                <div class="kku-node root open" onclick="toggleMindmap(this)">
+                    <span>Ethyl Acetate Recovery System Design Constraints (Click Branches to Expand)</span>
+                    <span class="kku-toggle-icon">▶</span>
+                </div>
+
+                <div class="kku-children visible">
+                    <!-- BRANCH 1 -->
+                    <div class="kku-node-group">
+                        <div class="kku-node" onclick="toggleMindmap(this)">
+                            Material Compatibility
+                            <span class="kku-toggle-icon">▶</span>
+                        </div>
+                        <div class="kku-children">
+                            <div class="kku-node-group">
+                                <div class="kku-node" onclick="toggleMindmap(this)">AISI 316L Stainless Steel <span class="kku-toggle-icon">▶</span></div>
+                                <div class="kku-children">
+                                    <div class="kku-node-group"><div class="kku-node leaf">High-Temperature Wetted Surfaces</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">Acidic Hydrolysis Resistance (Reboiler/Column)</div></div>
+                                </div>
+                            </div>
+                            <div class="kku-node-group">
+                                <div class="kku-node" onclick="toggleMindmap(this)">AISI 304 Stainless Steel <span class="kku-toggle-icon">▶</span></div>
+                                <div class="kku-children">
+                                    <div class="kku-node-group"><div class="kku-node leaf">Low-Temperature Process Zones</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">Condenser &amp; Zeolite Towers</div></div>
+                                </div>
+                            </div>
+                            <div class="kku-node-group">
+                                <div class="kku-node" onclick="toggleMindmap(this)">Sealing &amp; Gasket Selection <span class="kku-toggle-icon">▶</span></div>
+                                <div class="kku-children">
+                                    <div class="kku-node-group"><div class="kku-node leaf">PTFE (Teflon) Chemical Inertness</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">Spiral-Wound PTFE (High Thermal Stress)</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">Strict Elimination of Elastomers (NBR/Viton)</div></div>
+                                </div>
+                            </div>
+                            <div class="kku-node-group">
+                                <div class="kku-node" onclick="toggleMindmap(this)">Carbon Steel Chassis <span class="kku-toggle-icon">▶</span></div>
+                                <div class="kku-children">
+                                    <div class="kku-node-group"><div class="kku-node leaf">Non-Process Structural Frame Elements</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">Industrial Epoxy Coating Protection</div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- BRANCH 2 -->
+                    <div class="kku-node-group">
+                        <div class="kku-node" onclick="toggleMindmap(this)">
+                            Budget &amp; Economic Constraints
+                            <span class="kku-toggle-icon">▶</span>
+                        </div>
+                        <div class="kku-children">
+                            <div class="kku-node-group">
+                                <div class="kku-node" onclick="toggleMindmap(this)">Hybrid Material Strategy <span class="kku-toggle-icon">▶</span></div>
+                                <div class="kku-children">
+                                    <div class="kku-node-group"><div class="kku-node leaf">CAPEX vs. Corrosion Resistance Balance</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">Selective Alloy Deployment in Critical Zones</div></div>
+                                </div>
+                            </div>
+                            <div class="kku-node-group">
+                                <div class="kku-node" onclick="toggleMindmap(this)">Energy Efficiency <span class="kku-toggle-icon">▶</span></div>
+                                <div class="kku-children">
+                                    <div class="kku-node-group"><div class="kku-node leaf">Rockwool Thermal Insulation</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">Aluminum Sheet Cladding</div></div>
+                                </div>
+                            </div>
+                            <div class="kku-node-group">
+                                <div class="kku-node" onclick="toggleMindmap(this)">Operational Feasibility <span class="kku-toggle-icon">▶</span></div>
+                                <div class="kku-children">
+                                    <div class="kku-node-group"><div class="kku-node leaf">3.23 TL/kg Break-Even Recovery Cost</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">Zeolite 3A Service Life (10,000 Cycles)</div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- BRANCH 3 -->
+                    <div class="kku-node-group">
+                        <div class="kku-node" onclick="toggleMindmap(this)">
+                            Design for Manufacturing (DFM)
+                            <span class="kku-toggle-icon">▶</span>
+                        </div>
+                        <div class="kku-children">
+                            <div class="kku-node-group">
+                                <div class="kku-node" onclick="toggleMindmap(this)">Heat Exchanger Revision <span class="kku-toggle-icon">▶</span></div>
+                                <div class="kku-children">
+                                    <div class="kku-node-group"><div class="kku-node leaf">73-Finned-Tube Implementation</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">Simplified Fabrication &amp; Tube Cleaning</div></div>
+                                </div>
+                            </div>
+                            <div class="kku-node-group">
+                                <div class="kku-node" onclick="toggleMindmap(this)">System Simplification <span class="kku-toggle-icon">▶</span></div>
+                                <div class="kku-children">
+                                    <div class="kku-node-group"><div class="kku-node leaf">Enhanced Sealing Reliability</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">Single-Tower Batch Zeolite Architecture</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">Reduced Valve &amp; Automation Complexity</div></div>
+                                </div>
+                            </div>
+                            <div class="kku-node-group">
+                                <div class="kku-node" onclick="toggleMindmap(this)">Maintenance &amp; Assembly <span class="kku-toggle-icon">▶</span></div>
+                                <div class="kku-children">
+                                    <div class="kku-node-group"><div class="kku-node leaf">Sight Glasses &amp; Manhole Access Covers</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">Ergonomic Flange &amp; Pump Clearances</div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- BRANCH 4 -->
+                    <div class="kku-node-group">
+                        <div class="kku-node" onclick="toggleMindmap(this)">
+                            ATEX &amp; Safety Standards
+                            <span class="kku-toggle-icon">▶</span>
+                        </div>
+                        <div class="kku-children">
+                            <div class="kku-node-group">
+                                <div class="kku-node" onclick="toggleMindmap(this)">Explosive Atmosphere Control <span class="kku-toggle-icon">▶</span></div>
+                                <div class="kku-children">
+                                    <div class="kku-node-group"><div class="kku-node leaf">Automatic Bypass &amp; Emergency Purge</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">Continuous LEL Monitoring</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">PID Vapor Concentration Sensing</div></div>
+                                </div>
+                            </div>
+                            <div class="kku-node-group">
+                                <div class="kku-node" onclick="toggleMindmap(this)">ATEX-Certified Hardware <span class="kku-toggle-icon">▶</span></div>
+                                <div class="kku-children">
+                                    <div class="kku-node-group"><div class="kku-node leaf">ATEX Centrifugal Fan &amp; Transfer Pumps</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">Hermetic Magnetic-Coupled Seals</div></div>
+                                </div>
+                            </div>
+                            <div class="kku-node-group">
+                                <div class="kku-node" onclick="toggleMindmap(this)">Fire Safety <span class="kku-toggle-icon">▶</span></div>
+                                <div class="kku-children">
+                                    <div class="kku-node-group"><div class="kku-node leaf">Class A1 Non-Combustible Rockwool Insulation</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">1000°C Structural Integrity Protection</div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RESULTS & OUTPUTS -->
+    <section class="kku-yaklasim-section bg-light">
+        <div class="kku-yaklasim-container gsap-reveal">
+            <h2 class="kku-section-title">Results &amp; Outputs</h2>
+            <p class="kku-list">Performance metrics of the integrated recovery system confirm both technical and financial viability:</p>
+
+            <ul class="kku-list">
+                <li><strong>High Recovery Efficiency:</strong> From a 200-liter (180.4 kg) contaminated solvent charge, an average of 164.11 kg of pure ethyl acetate is recovered per cycle, achieving a <strong>90.79%</strong> recovery rate.</li>
+                <li><strong>Extended Equipment Lifespan:</strong> Over the 10,000-cycle service life of the Zeolite 3A bed, a total of 246.2 tons of pure ethyl acetate is reclaimed for the facility.</li>
+                <li><strong>Energy &amp; Cost Efficiency:</strong> Total energy consumption per cycle (heating, cooling, fans, and pumps) is calculated at 109.7 kWh. Factoring in energy and depreciation, the break-even cost is <strong>3.23 TL/kg</strong> of solvent—offering a rapid return on investment.</li>
+                <li><strong>Active ATEX Safety:</strong> Full automation via pressure, temperature, level, and PID sensors dynamically mitigates transient overpressure or LEL spikes.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- SUMMARY -->
+    <section class="kku-yaklasim-section">
+        <div class="kku-yaklasim-container gsap-reveal">
+            <h2 class="kku-section-title">Summary</h2>
+            <p class="kku-list">In this study, the complete thermodynamic sizing, mechanical design, and DFM optimization of an industrial ethyl acetate solvent recovery machine operating under strict chemical and explosive constraints were successfully completed.</p>
+
+            <h3 class="kku-subsection-title">Key Takeaways</h3>
+            <ul class="kku-list">
+                <li><strong>Integrated Engineering Solution:</strong> Mechanical design, thermodynamic integration, flow control, and materials science were unified in a single modular machine.</li>
+                <li><strong>DFM-Driven Heat Exchanger:</strong> Moving beyond theoretical micro-tube equations, a manufacturable, easy-to-clean 73-finned-tube overhead condenser was engineered.</li>
+                <li><strong>High Safety &amp; Compliance:</strong> ATEX-certified hardware, continuous LEL tracking, and PTFE / AISI 316L material selection effectively manage chemical and explosive hazards.</li>
+            </ul>
+
+            <div class="kku-vision-box">
+                <div class="kku-vision-header">
+                    <span>🚀</span>
+                    <h4>Future Vision &amp; Continuous Improvement</h4>
+                </div>
+                <p>In future development phases, R&amp;D studies on <strong style="color: #0d6efd;">Topology Optimization</strong> are planned to further reduce structural chassis weight and manufacturing costs while preserving full thermal and structural integrity.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECT PAGINATION -->
+    <div class="project-pagination">
+        <div class="project-pagination-container">
+            <a href="seismic-isolator.html" class="proj-nav-btn prev">
+                <span class="nav-dir">← Previous Project</span>
+                <span class="nav-title">Level-Regulating Seismic Isolator</span>
+            </a>
+            <a href="../index.html#projects" class="proj-nav-all">Back to All Projects</a>
+            <a href="overhead-crane-fea.html" class="proj-nav-btn next">
+                <span class="nav-dir">Next Project →</span>
+                <span class="nav-title">Overhead Crane FEA Optimization</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer-section">
+        <div class="footer-content">
+            <h3>Halil Öz</h3>
+            <p>Mechanical Engineer | Mechanical Design &amp; FEA</p>
+            <div class="footer-links">
+                <a href="https://www.linkedin.com/in/halil-öz" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a href="../../assets/docs/Halil_Oz-CV.pdf" download>Download CV</a>
+                <a href="mailto:halilo.hz42@gmail.com">halilo.hz42@gmail.com</a>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2026 Halil Öz. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Industrial Thermoforming Mold Design &amp; Production Optimization | Halil Öz</title>
+    <meta name="description" content="Thermoforming mold design developed in SolidWorks for serial plastic vacuum forming processes: thermal shrinkage compensation, draft angle, and vacuum channel optimization.">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Industrial Thermoforming Mold Design | Halil Öz">
+    <meta property="og:description" content="SolidWorks 3D CAD, DFM analysis, 2°–3° draft angles, and micro vacuum venting architecture.">
+    <meta property="og:image" content="https://halilozengineer.github.io/assets/img/projects/termoform-kalibi/cover.webp">
+
+    <link rel="icon" type="image/svg+xml" href="../../assets/img/favicon.svg">
+    <link rel="icon" type="image/png" sizes="64x64" href="../../assets/img/favicon.png">
+    <link rel="apple-touch-icon" href="../../assets/img/favicon.png">
+    <link rel="stylesheet" href="../../assets/css/main.css">
+    <link rel="stylesheet" href="../../assets/css/project-detail.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.34/dist/lenis.min.js" defer></script>
+    <script src="../../assets/js/app.js" defer></script>
+</head>
+<body>
+
+    <!-- FLOATING CAPSULE NAVIGATION -->
+    <nav class="floating-nav" aria-label="Main Navigation">
+        <ul>
+            <li><a href="../index.html#hero">Home</a></li>
+            <li><a href="../index.html#vision-screen">Vision</a></li>
+            <li><a href="../index.html#armco-project">Cabinet Design</a></li>
+            <li><a href="../index.html#experience">Experience</a></li>
+            <li><a href="../index.html#projects" class="nav-active">Projects</a></li>
+            <li><a href="../about.html">About Me</a></li>
+            <li><a href="../index.html#references">References</a></li>
+            <li><a href="../index.html#contact">Contact</a></li>
+
+            <li class="lang-switch">
+                <a href="../../projeler/termoform-kalibi.html" class="inactive">TR</a>
+                <span class="divider">|</span>
+                <a href="thermoforming-mold.html" class="active">EN</a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- HERO & INTERACTIVE GALLERY -->
+    <section class="kku-hero-section">
+        <div class="kku-hero-container">
+            <div class="kku-content gsap-reveal">
+                <h1 class="kku-title">Industrial Thermoforming<br>Mold Design &amp; Production<br>Optimization</h1>
+
+                <div class="kku-cards-grid">
+                    <div class="kku-card">
+                        <div class="kku-label">PROJECT LEAD</div>
+                        <div class="kku-value">Halil Öz</div>
+                    </div>
+                    <div class="kku-card">
+                        <div class="kku-label">SOFTWARE &amp; METHOD</div>
+                        <div class="kku-value">SolidWorks 3D CAD<br>DFM &amp; Vacuum Modeling</div>
+                    </div>
+                    <div class="kku-card full-width">
+                        <div class="kku-label">INDUSTRIAL APPLICATION &amp; SPECIALIZATION</div>
+                        <div class="kku-value">SNN Tactical — Tooling &amp; Mold Design, Plastic Vacuum Forming Technologies</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="kku-gallery gsap-reveal">
+                <div class="kku-main-img-box">
+                    <img id="mainGalleryImage" src="../../assets/img/projects/termoform-kalibi/cad.webp" alt="Industrial Thermoforming Mold 3D SolidWorks CAD Model">
+                    <span class="kku-zoom-hint">🔍 Click to enlarge</span>
+                </div>
+                <div class="kku-thumbnails">
+                    <img src="../../assets/img/projects/termoform-kalibi/cad.webp" alt="Industrial Thermoforming Mold 3D SolidWorks CAD Model" class="thumb active" onclick="changeImage(this)">
+                    <img src="../../assets/img/projects/termoform-kalibi/vakum-delikleri.webp" alt="Critical Corner and Deep Pocket Micro Vacuum Evacuation Holes (Ø 0.8 – 1.2 mm)" class="thumb" onclick="changeImage(this)">
+                    <img src="../../assets/img/projects/termoform-kalibi/draft-analizi.webp" alt="Thermoplastic Shrinkage Allowance and Draft Angle Optimization Analysis" class="thumb" onclick="changeImage(this)">
+                    <img src="../../assets/img/projects/termoform-kalibi/teknik-kesit.webp" alt="Thermoforming Mold Cross-Section Architecture and Lower Vacuum Manifold Schematic" class="thumb" onclick="changeImage(this)">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INTRODUCTION & PROJECT SUMMARY -->
+    <section class="kku-yaklasim-section bg-light">
+        <div class="kku-yaklasim-container gsap-reveal">
+            <h2 class="kku-section-title">Introduction</h2>
+            <p class="kku-list">Did you know that in high-volume production of plastic enclosures, tactical holsters, and industrial packaging, an uncompensated tenth-of-a-millimeter shrinkage error or an inadequately placed air evacuation channel can extend cycle times and cause hundreds of defective parts?</p>
+            <p class="kku-list">In this project, we examine the mechanical, thermal, and CNC-machining stages of a high-precision vacuum thermoforming mold engineered from the ground up in SolidWorks to meet serial manufacturing standards.</p>
+
+            <h3 class="kku-subsection-title">Engineering &amp; Learning Objectives</h3>
+            <ul class="kku-list">
+                <li>Accurately calculate material shrinkage and thermal expansion tolerances in thermoplastic vacuum forming processes.</li>
+                <li>Optimize micro air evacuation holes (Ø 0.8–1.2 mm) and lower vacuum manifold geometries to maximize suction efficiency.</li>
+                <li>Incorporate optimal draft angles and fillet transitions on vertical walls to minimize demolding forces and prevent surface scuffing.</li>
+                <li>Structure the mold core and base plate for 3-axis CNC machining in accordance with Design for Manufacturing (DFM) principles.</li>
+            </ul>
+
+            <h3 class="kku-subsection-title">Project Summary</h3>
+            <p class="kku-list">This project covers the complete design of an industrial vacuum thermoforming mold system engineered for rapid cycle times and high dimensional repeatability. To ensure that the heated thermoplastic sheet conforms tightly to the mold cavity, air evacuation channels, thermal shrinkage allowances, and machining tolerances were meticulously modeled in SolidWorks. The manufactured molds were subsequently tested and validated on the active production line.</p>
+
+            <div class="kku-tech-box">
+                <strong>Technologies &amp; Methods Used</strong>
+                <div class="kku-tech-pills">
+                    <span class="kku-tech-pill">SolidWorks 3D CAD</span>
+                    <span class="kku-tech-pill">Tooling &amp; Mold Design</span>
+                    <span class="kku-tech-pill">DFM (Design for Manufacturing)</span>
+                    <span class="kku-tech-pill">Thermal Shrinkage Compensation</span>
+                    <span class="kku-tech-pill">Vacuum Venting Architecture</span>
+                    <span class="kku-tech-pill">Al 7075 / 6082 CNC Machining</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROBLEM DEFINITION -->
+    <section class="kku-problem-section">
+        <div class="kku-problem-container gsap-reveal">
+            <h2 class="kku-section-title">Problem Definition</h2>
+            <p class="kku-list">The primary challenges in thermoform tooling stem from volumetric shrinkage during the heating-cooling cycle, surface defects caused by trapped air pockets, and part sticking during demolding:</p>
+            <ul class="kku-list">
+                <li><strong>Trapped Air Pockets &amp; Loss of Detail:</strong> As the heated thermoplastic sheet is drawn down under vacuum, any air trapped in deep pockets or sharp corners causes blistering, incomplete forming, and rounded corner defects.</li>
+                <li><strong>Volumetric Shrinkage Deviations:</strong> Thermoplastics (Kydex, ABS, PETG, HIPS, or PP) contract volumetrically as they cool to room temperature. Failing to scale the mold geometry by the material's thermal shrinkage coefficient results in out-of-tolerance parts.</li>
+                <li><strong>Demolding Resistance:</strong> Vertical walls with zero or insufficient draft angle cause the cooling plastic to grip the male mold core tightly, leading to surface scratches and production line stoppages.</li>
+            </ul>
+
+            <div class="kku-problem-image">
+                <img src="../../assets/img/projects/termoform-kalibi/teknik-kesit.webp" alt="Thermoforming Mold Cross-Section Architecture, Draft Angle, and Vacuum Venting Principle" loading="lazy">
+                <p class="kku-img-caption">Figure 1: Aluminum mold core cross-section architecture, 2°–3° draft angles, and lower vacuum manifold suction principle (Click image to enlarge).</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- APPROACH & DESIGN PROCESS -->
+    <section class="kku-yaklasim-section bg-light">
+        <div class="kku-yaklasim-container gsap-reveal">
+            <h2 class="kku-section-title">Approach &amp; Design Process</h2>
+            <p class="kku-list">Parametric 3D modeling and manufacturing calculations were executed across four core stages:</p>
+
+            <ol class="kku-list">
+                <li><strong>3D Parametric Modeling:</strong> The mold core and cavity geometry were modeled parametrically in SolidWorks using smart reference planes so that geometric revisions propagate instantaneously across the entire tooling assembly.</li>
+                <li><strong>Micro Vacuum Hole Optimization:</strong> Non-marking micro evacuation holes (<strong>Ø 0.8 – 1.2 mm</strong>) were strategically positioned at the deepest pockets and sharpest contour transitions. Main suction channels integrated into the base plate ensure uniform vacuum distribution.</li>
+                <li><strong>Thermal Shrinkage &amp; Tolerance Scaling:</strong> Positive scaling factors (ranging from 0.4% to 1.8% depending on the thermoplastic grade) were applied directly to the mold cavity so cooled parts meet exact nominal dimensions.</li>
+                <li><strong>Draft Angle &amp; Fillet Optimization:</strong> All vertical walls were assigned a minimum <strong>2° – 3° draft angle</strong>, and internal/external corners were blended with optimal radii to prevent sheet thinning (webbing) and stress concentration.</li>
+            </ol>
+        </div>
+    </section>
+
+    <!-- INTERACTIVE MIND MAP -->
+    <section class="kku-yaklasim-section" style="padding-bottom: 0; padding-top: 40px;">
+        <div class="kku-yaklasim-container">
+            <h2 class="kku-section-title gsap-reveal" style="text-align: center; border: none; margin-bottom: 0;">Thermoforming Mold Design Criteria</h2>
+        </div>
+    </section>
+
+    <section class="kku-interactive-mindmap gsap-reveal">
+        <div class="kku-mindmap-wrapper">
+            <div class="kku-node-group">
+                <div class="kku-node root open" onclick="toggleMindmap(this)">
+                    <span>Thermoforming Mold Design Criteria (Click Branches to Expand)</span>
+                    <span class="kku-toggle-icon">▶</span>
+                </div>
+
+                <div class="kku-children visible">
+                    <!-- BRANCH 1 -->
+                    <div class="kku-node-group">
+                        <div class="kku-node" onclick="toggleMindmap(this)">
+                            Geometry &amp; Draft Management
+                            <span class="kku-toggle-icon">▶</span>
+                        </div>
+                        <div class="kku-children">
+                            <div class="kku-node-group">
+                                <div class="kku-node" onclick="toggleMindmap(this)">Draft Angles <span class="kku-toggle-icon">▶</span></div>
+                                <div class="kku-children">
+                                    <div class="kku-node-group"><div class="kku-node leaf">Minimum 2°–3° Draft on Vertical Walls</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">Elimination of Demolding Friction &amp; Scuffing</div></div>
+                                </div>
+                            </div>
+                            <div class="kku-node-group">
+                                <div class="kku-node" onclick="toggleMindmap(this)">Corner Radii <span class="kku-toggle-icon">▶</span></div>
+                                <div class="kku-children">
+                                    <div class="kku-node-group"><div class="kku-node leaf">Stress-Relieving Fillet Transitions</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">Prevention of Thermoplastic Sheet Thinning</div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- BRANCH 2 -->
+                    <div class="kku-node-group">
+                        <div class="kku-node" onclick="toggleMindmap(this)">
+                            Vacuum &amp; Venting Architecture
+                            <span class="kku-toggle-icon">▶</span>
+                        </div>
+                        <div class="kku-children">
+                            <div class="kku-node-group">
+                                <div class="kku-node" onclick="toggleMindmap(this)">Micro Vacuum Holes <span class="kku-toggle-icon">▶</span></div>
+                                <div class="kku-children">
+                                    <div class="kku-node-group"><div class="kku-node leaf">Ø 0.8 – 1.2 mm Channels in Deep Corners</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">Zero Surface Witness Marks or Burrs</div></div>
+                                </div>
+                            </div>
+                            <div class="kku-node-group">
+                                <div class="kku-node" onclick="toggleMindmap(this)">Lower Evacuation Manifold <span class="kku-toggle-icon">▶</span></div>
+                                <div class="kku-children">
+                                    <div class="kku-node-group"><div class="kku-node leaf">Homogeneous Suction Pressure Distribution</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">Rapid Air Evacuation &amp; Reduced Cycle Time</div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- BRANCH 3 -->
+                    <div class="kku-node-group">
+                        <div class="kku-node" onclick="toggleMindmap(this)">
+                            Thermal &amp; Material Behavior
+                            <span class="kku-toggle-icon">▶</span>
+                        </div>
+                        <div class="kku-children">
+                            <div class="kku-node-group">
+                                <div class="kku-node" onclick="toggleMindmap(this)">Volumetric Shrinkage Compensation <span class="kku-toggle-icon">▶</span></div>
+                                <div class="kku-children">
+                                    <div class="kku-node-group"><div class="kku-node leaf">Material-Specific Contraction Scaling</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">Positive Cavity Offset Integration</div></div>
+                                </div>
+                            </div>
+                            <div class="kku-node-group">
+                                <div class="kku-node" onclick="toggleMindmap(this)">Mold Alloy Selection <span class="kku-toggle-icon">▶</span></div>
+                                <div class="kku-children">
+                                    <div class="kku-node-group"><div class="kku-node leaf">Aluminum Tooling Alloy (Al 7075 / 6082)</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">High Thermal Conductivity &amp; CNC Machinability</div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- BRANCH 4 -->
+                    <div class="kku-node-group">
+                        <div class="kku-node" onclick="toggleMindmap(this)">
+                            Manufacturing &amp; Assembly (DFM)
+                            <span class="kku-toggle-icon">▶</span>
+                        </div>
+                        <div class="kku-children">
+                            <div class="kku-node-group">
+                                <div class="kku-node" onclick="toggleMindmap(this)">3-Axis CNC Machinability <span class="kku-toggle-icon">▶</span></div>
+                                <div class="kku-children">
+                                    <div class="kku-node-group"><div class="kku-node leaf">Pockets Tailored to Standard End-Mill Toolpaths</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">Undercut-Free Core Geometry</div></div>
+                                </div>
+                            </div>
+                            <div class="kku-node-group">
+                                <div class="kku-node" onclick="toggleMindmap(this)">Rapid Tooling Changeover <span class="kku-toggle-icon">▶</span></div>
+                                <div class="kku-children">
+                                    <div class="kku-node-group"><div class="kku-node leaf">Precision Alignment Pins &amp; Base Clamping</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">Validated via Production Line Forming Trials</div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RESULTS & OUTPUTS -->
+    <section class="kku-yaklasim-section bg-light">
+        <div class="kku-yaklasim-container gsap-reveal">
+            <h2 class="kku-section-title">Results &amp; Outputs</h2>
+            <p class="kku-list">Key outcomes achieved through parametric modeling, CNC fabrication tracking, and production line forming trials:</p>
+
+            <ul class="kku-list">
+                <li><strong>High Dimensional Accuracy:</strong> Shrinkage compensation ensured that finished thermoplastic parts cooled to room temperature within strict ISO assembly tolerances.</li>
+                <li><strong>Reduced Cycle Time:</strong> Optimized vacuum evacuation channels accelerated sheet drawdown, noticeably reducing forming time per unit.</li>
+                <li><strong>Superior Surface Finish:</strong> Micro-hole sizing and smooth fillet transitions prevented surface witness marks, air blisters, and wall thickness uneveness.</li>
+                <li><strong>CNC Manufacturing Ease:</strong> By eliminating undercuts and inaccessible deep narrow slots, the mold core was machined cleanly on 3-axis CNC vertical machining centers using standard tooling.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- SUMMARY -->
+    <section class="kku-yaklasim-section">
+        <div class="kku-yaklasim-container gsap-reveal">
+            <h2 class="kku-section-title">Summary</h2>
+            <p class="kku-list">In this project, the 3D CAD modeling, vacuum venting architecture, technical drawing preparation, and production validation stages of an industrial thermoforming mold were successfully completed.</p>
+
+            <h3 class="kku-subsection-title">Key Takeaways</h3>
+            <ul class="kku-list">
+                <li><strong>DFM-Centered Approach:</strong> Tooling geometry was engineered not only around the final product contour but also around CNC milling constraints and vacuum table mounting ergonomics.</li>
+                <li><strong>Precision Thermal Management:</strong> Polymer contraction behavior was directly compensated inside the 3D cavity geometry.</li>
+                <li><strong>Field Validation:</strong> Manufactured molds were physically tested on the production line to verify crisp part definition and effortless demolding.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- PROJECT PAGINATION -->
+    <div class="project-pagination">
+        <div class="project-pagination-container">
+            <a href="overhead-crane-fea.html" class="proj-nav-btn prev">
+                <span class="nav-dir">← Previous Project</span>
+                <span class="nav-title">Overhead Crane FEA Optimization</span>
+            </a>
+            <a href="../index.html#projects" class="proj-nav-all">Back to All Projects</a>
+            <a href="lubritens-chain-maintenance.html" class="proj-nav-btn next">
+                <span class="nav-dir">Next Project →</span>
+                <span class="nav-title">LubriTens Chain Maintenance System</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer-section">
+        <div class="footer-content">
+            <h3>Halil Öz</h3>
+            <p>Mechanical Engineer | Mechanical Design &amp; FEA</p>
+            <div class="footer-links">
+                <a href="https://www.linkedin.com/in/halil-öz" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a href="../../assets/docs/Halil_Oz-CV.pdf" download>Download CV</a>
+                <a href="mailto:halilo.hz42@gmail.com">halilo.hz42@gmail.com</a>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2026 Halil Öz. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
