@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zemin Oturmasına Karşı Kot Düzenleyici Sismik İzolatör | Halil Öz</title>
+    <meta name="description" content="Makine, İnşaat ve Bilgisayar Mühendisliği disiplinlerini birleştiren, zemin oturmasına karşı 250 bar hidrolik silindirli ve CAN Bus kontrollü kot düzenleyici sismik izolatör sistemi.">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Zemin Oturmasına Karşı Kot Düzenleyici Sismik İzolatör | Halil Öz">
+    <meta property="og:description" content="ANSYS FEA, Festo FluidSIM, ProtaStructure ve CAN Bus entegrasyonuyla geliştirilen adaptif temel dengeleme sistemi.">
+    <meta property="og:image" content="https://halilozengineer.github.io/assets/img/projects/sismik-izolator/patlamis.webp">
+
+    <link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg">
+    <link rel="icon" type="image/png" sizes="64x64" href="../assets/img/favicon.png">
+    <link rel="apple-touch-icon" href="../assets/img/favicon.png">
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/project-detail.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.34/dist/lenis.min.js" defer></script>
+    <script src="../assets/js/app.js" defer></script>
+</head>
+<body>
+
+    <!-- YÜZEN KAPSÜL NAVİGASYON -->
+    <nav class="floating-nav" aria-label="Ana Navigasyon">
+        <ul>
+            <li><a href="../index.html#hero">Ana Sayfa</a></li>
+            <li><a href="../index.html#vizyon-ekrani">Vizyon</a></li>
+            <li><a href="../index.html#armco-projesi">Kabin Tasarımı</a></li>
+            <li><a href="../index.html#deneyim">Deneyim</a></li>
+            <li><a href="../index.html#projeler" class="nav-active">Projeler</a></li>
+            <li><a href="../hakkimda.html">Hakkımda</a></li>
+            <li><a href="../index.html#referanslar">Referanslar</a></li>
+            <li><a href="../index.html#iletisim">İletişim</a></li>
+
+            <li class="lang-switch">
+                <a href="#" class="active">TR</a>
+                <span class="divider">|</span>
+                <a href="../en/projects/seismic-isolator.html" class="inactive">EN</a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- ÜST KISIM: HERO & İNTERAKTİF GALERİ -->
+    <section class="kku-hero-section">
+        <div class="kku-hero-container">
+            <div class="kku-content gsap-reveal">
+                <h1 class="kku-title">Zemin Oturmasına Karşı<br>Kot Düzenleyici Sismik<br>İzolatör Sistemi</h1>
+
+                <div class="kku-cards-grid">
+                    <div class="kku-card">
+                        <div class="kku-label">PROJE EKİBİ &amp; DİSİPLİNLER</div>
+                        <div class="kku-value">
+                            Halil Öz (Makine Müh.)<br>
+                            Uhud Emre Doğan (İnşaat Müh.)<br>
+                            İclal İnal (Bilgisayar Müh.)<br>
+                            Yusuf Batuhan Akpınar (Bilgisayar Müh.)
+                        </div>
+                    </div>
+                    <div class="kku-card">
+                        <div class="kku-label">PROJE TÜRÜ &amp; KODU</div>
+                        <div class="kku-value">Çok Disiplinli Takım Çalışması<br>MAK 6207 / INS 840 / 99600008</div>
+                    </div>
+                    <div class="kku-card full-width">
+                        <div class="kku-label">KURUM &amp; FAKÜLTE</div>
+                        <div class="kku-value">KTO Karatay Üniversitesi, Mühendislik ve Doğa Bilimleri Fakültesi</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="kku-gallery gsap-reveal">
+                <div class="kku-main-img-box">
+                    <img id="mainGalleryImage" src="../assets/img/projects/sismik-izolator/patlamis.webp" alt="Çift Tesirli Hidrolik Silindir ve Sismik İzolatör Patlatılmış CAD Montajı">
+                    <span class="kku-zoom-hint">🔍 Büyütmek için tıklayın</span>
+                </div>
+                <div class="kku-thumbnails">
+                    <img src="../assets/img/projects/sismik-izolator/patlamis.webp" alt="Çift Tesirli Hidrolik Silindir ve Sismik İzolatör Patlatılmış CAD Montajı" class="thumb active" onclick="changeImage(this)">
+                    <img src="../assets/img/projects/sismik-izolator/cad.webp" alt="Hidrolik Silindir Sızdırmazlık Paketi (SKF LPV) ve Montaj Görünümü" class="thumb" onclick="changeImage(this)">
+                    <img src="../assets/img/projects/sismik-izolator/kovan-analiz.webp" alt="ANSYS FEA: Silindir Kovanı İç Yüzeyi Von-Mises Eşdeğer Gerilme Analizi (13,438 MPa Max)" class="thumb" onclick="changeImage(this)">
+                    <img src="../assets/img/projects/sismik-izolator/mil-analiz.webp" alt="ANSYS FEA: Strok Mili Basma Gerilmesi Analizi (-55,922 MPa Max — CK-45 Çeliği)" class="thumb" onclick="changeImage(this)">
+                    <img src="../assets/img/projects/sismik-izolator/kesit-analiz.webp" alt="ANSYS FEA: Silindir Kesiti Eşdeğer Gerilme Dağılımı (44,682 MPa Max)" class="thumb" onclick="changeImage(this)">
+                    <img src="../assets/img/projects/sismik-izolator/hidrolik-devre.webp" alt="Festo FluidSIM 4 Kolonlu Çift Tesirli Hidrolik Kontrol Devresi Şeması" class="thumb" onclick="changeImage(this)">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GİRİŞ VE PROJE ÖZETİ -->
+    <section class="kku-yaklasim-section bg-light">
+        <div class="kku-yaklasim-container gsap-reveal">
+            <h2 class="kku-section-title">Giriş</h2>
+            <p class="kku-list">Geleneksel sismik izolatör sistemleri, deprem anında yapının sadece yatay salınımlarını sönümlemek üzere tasarlanır. Ancak deprem sonrası zemin sıvılaşması, yeraltı suyu çekilmesi veya heterojen zemin oturması durumunda yapının kolonları arasında oluşan düşey kot farkları taşıyıcı çerçevede yıkıcı kesme gerilmelerine ve yapısal hasara neden olur.</p>
+            <p class="kku-list">Bu disiplinler arası çalışmada; İnşaat, Makine ve Bilgisayar Mühendisliği disiplinleri tek potada eritilerek, zemin oturması durumunda bina kolonlarındaki kot farkını algılayan ve kapalı çevrim haberleşmeyle hidrolik silindirleri devreye sokarak yapıyı milimetre hassasiyetinde tekrar aynı düzleme getiren adaptif bir sismik izolatör sistemi geliştirilmiştir.</p>
+
+            <h3 class="kku-subsection-title">Mühendislik ve Öğrenme Hedefleri</h3>
+            <ul class="kku-list">
+                <li>TBDY-2018 ve TS-500 standartlarına uygun olarak 5 katlı prototip hastane yapısının ProtaStructure ortamında statik ve eşdeğer deprem yükü analizlerini tamamlamak.</li>
+                <li>Maksimum 19.065 tonluk dinamik bina yükünü karşılayacak 25 MPa (250 bar) çalışma basıncına sahip çift tesirli hidrolik silindirleri boyutlandırmak.</li>
+                <li>ANSYS Workbench ortamında hidrolik piston kovanı ve strok millerinin statik yapısal (FEA) gerilme analizlerini gerçekleştirmek ve malzeme seçimini (CK-45) doğrulamak.</li>
+                <li>CAN Bus ve UART endüstriyel haberleşme protokolleri ile ultrasonik (HC-SR04), LVDT ve MPU6050 ivmeölçer verilerini merkezi karar ünitesine aktararak otomasyon döngüsünü kurmak.</li>
+            </ul>
+
+            <h3 class="kku-subsection-title">Proje Özeti</h3>
+            <p class="kku-list">Proje; kritik altyapı tesisleri (hastane, veri merkezi, okul vb.) için tasarlanmış akıllı bir temel dengeleme mekanizmasıdır. Zemin çökmesi durumunda düşen kolonu referans alan sistem, diğer kolonların altında konumlanan <strong>2.060 kN kapasiteli hidrolik pistonları</strong> kademeli olarak kontrol ederek binayı üniform oturma düzlemine çeker. Festo FluidSIM üzerinde hidrolik devre mimarisi doğrulanmış, Arduino &amp; CAN Bus tabanlı kontrol devresi fiziksel olarak test edilerek uygulanabilirliği kanıtlanmıştır.</p>
+
+            <div class="kku-tech-box">
+                <strong>Disiplinler Arası Teknoloji ve Analiz Yığını</strong>
+                <div class="kku-tech-pills">
+                    <span class="kku-tech-pill">SolidWorks 3D CAD</span>
+                    <span class="kku-tech-pill">ANSYS Workbench FEA</span>
+                    <span class="kku-tech-pill">Festo FluidSIM Hidrolik</span>
+                    <span class="kku-tech-pill">ProtaStructure Statik</span>
+                    <span class="kku-tech-pill">CAN Bus &amp; UART Protokolü</span>
+                    <span class="kku-tech-pill">TBDY-2018 &amp; TS-500</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROBLEM TANIMI -->
+    <section class="kku-problem-section">
+        <div class="kku-problem-container gsap-reveal">
+            <h2 class="kku-section-title">Problem Tanımı</h2>
+            <p class="kku-list">Bina oturması; zemin sıvılaşması, hatalı temel tasarımı ve yeraltı su seviyesindeki değişimler sonucu temelin düşey yönde hareket etmesidir. Özellikle rijit olmayan heterojen (farklı) çökme durumlarında yapı ciddi tehlikeye girer:</p>
+            <ul class="kku-list">
+                <li><strong>Farklı (Diferansiyel) Oturma Hasarları:</strong> Üniform oturmalarda bina dengeli şekilde inse de, farklı kolonların farklı seviyelerde çökmesi taşıyıcı kolon-kiriş birleşimlerinde kontrolsüz kesme kuvvetleri ve geniş çaplı yapısal çatlaklar meydana getirir.</li>
+                <li><strong>Geleneksel İzolatörlerin Yetersizliği:</strong> Mevcut kauçuk (HDRB) ve sürtünmeli sarkaç sismik izolatörler yalnızca yatay deprem ivmesini sönümler; düşey eksendeki kalıcı zemin çökmelerine müdahale edemez.</li>
+                <li><strong>Müdahale Güçlüğü:</strong> İnşaat sonrası oluşan çökmelerde temele sonradan jet-grouting veya enjeksiyon yapmak yüksek maliyetli ve yapısal güvenliği tam garanti etmeyen çözümler sunar.</li>
+            </ul>
+
+            <div class="kku-problem-image">
+                <img src="../assets/img/projects/sismik-izolator/oturma-karsilastirma.webp" alt="Üniform Oturma, Rijit Dönme ve Farklı Oturma Davranışlarının Karşılaştırması" loading="lazy">
+                <p class="kku-img-caption">Şekil 1: Üniform oturma, rijit dönme ve yapısal çatlaklara yol açan farklı (diferansiyel) oturma mekanizmaları (Büyütmek için tıklayın).</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- YAKLAŞIM VE TASARIM SÜRECİ -->
+    <section class="kku-yaklasim-section bg-light">
+        <div class="kku-yaklasim-container gsap-reveal">
+            <h2 class="kku-section-title">Yaklaşım ve Tasarım Süreci</h2>
+            <p class="kku-list">Çok disiplinli iş birliği çerçevesinde problem üç ana mühendislik ekseninde ele alınmış ve çözüme kavuşturulmuştur:</p>
+
+            <ol class="kku-list">
+                <li><strong>İnşaat Mühendisliği (Statik Modelleme):</strong> C30 beton ve S420B donatı sınıfında 5 katlı prototip hastane yapısı ProtaStructure üzerinde modellendi. ZC zemin sınıfı ve AFAD deprem tehlike haritası DD-2 yer hareket düzeyi parametreleri (\( S_s=0.297, S_1=0.070 \)) tanımlanarak eşdeğer deprem yükü analizleri yapıldı. Taşıyıcı elemanlar %40–50 kapasite sınırında tutularak dengeleme anı için %60–70 enerji yutma payı bırakıldı.</li>
+                <li><strong>Makine Mühendisliği (Mekanik ve Hidrolik Tasarım):</strong> 19.065 tonluk toplam dinamik yapı yükü 91 kolona paylaştırıldığında kolon başına ~210 ton (<strong>2.060 kN</strong>) düşey yük hesaplandı. 25 MPa (250 bar) çalışma basıncına göre piston yüzey alanı \( A = 0.0824\text{ m}^2 \) ve silindir çapı <strong>Ø 324 mm</strong> olarak boyutlandırıldı. SolidWorks ile modellenen flanşlı çift tesirli silindir ve 250 mm stroklu milin ANSYS FEA analizinde; kovan iç yüzeyinde <strong>13,44 MPa</strong>, strok milinde ise maksimum <strong>55,92 MPa</strong> basma gerilmesi tespit edildi ve akma mukavemeti 450–600 MPa olan <strong>CK-45 çeliği</strong> güvenle seçildi. Festo FluidSIM üzerinde 4/2 yön kontrol valfleri ve kilitleme vanalarıyla hidrolik hat doğrulandı.</li>
+                <li><strong>Bilgisayar Mühendisliği (Algılama ve Otomasyon):</strong> HC-SR04 ultrasonik sensörler, MPU6050 jiroskop/ivmeölçerler ve LVDT yer değiştirme sensörlerinden alınan veriler yerel Arduino Mega düğümlerinde toplandı. Çoklu veri akışının güvenliği için MCP2515 modülleriyle CAN Bus haberleşme hattı kuruldu ve merkez karar algoritmasıyla piston yön kontrol valfleri otonom olarak tetiklendi.</li>
+            </ol>
+        </div>
+    </section>
+
+    <!-- İNTERAKTİF ZİHİN HARİTASI -->
+    <section class="kku-yaklasim-section" style="padding-bottom: 0; padding-top: 40px;">
+        <div class="kku-yaklasim-container">
+            <h2 class="kku-section-title gsap-reveal" style="text-align: center; border: none; margin-bottom: 0;">Çok Disiplinli Sistem Mimarisi</h2>
+        </div>
+    </section>
+
+    <section class="kku-interactive-mindmap gsap-reveal">
+        <div class="kku-mindmap-wrapper">
+            <div class="kku-node-group">
+                <div class="kku-node root open" onclick="toggleMindmap(this)">
+                    <span>Kot Düzenleyici Sismik İzolatör Mimarisi (Dalları Açmak İçin Tıklayın)</span>
+                    <span class="kku-toggle-icon">▶</span>
+                </div>
+
+                <div class="kku-children visible">
+                    <!-- DİSİPLİN 1 -->
+                    <div class="kku-node-group">
+                        <div class="kku-node" onclick="toggleMindmap(this)">
+                            Makine Mühendisliği (Mekanik &amp; Akışkan Gücü)
+                            <span class="kku-toggle-icon">▶</span>
+                        </div>
+                        <div class="kku-children">
+                            <div class="kku-node-group">
+                                <div class="kku-node" onclick="toggleMindmap(this)">Hidrolik Silindir Boyutlandırma <span class="kku-toggle-icon">▶</span></div>
+                                <div class="kku-children">
+                                    <div class="kku-node-group"><div class="kku-node leaf">250 bar (25 MPa) Sistem Çalışma Basıncı</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">2.060 kN Kolon Başı Yük / Ø 324 mm Çap</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">250 mm Dengeleme Strok Mesafesi</div></div>
+                                </div>
+                            </div>
+                            <div class="kku-node-group">
+                                <div class="kku-node" onclick="toggleMindmap(this)">Sonlu Elemanlar Analizi (ANSYS FEA) <span class="kku-toggle-icon">▶</span></div>
+                                <div class="kku-children">
+                                    <div class="kku-node-group"><div class="kku-node leaf">Kovan Gövdesinde 13,44 MPa Von-Mises Gerilmesi</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">Strok Milinde 55,92 MPa Basma Gerilmesi (CK-45 Seçimi)</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">SKF LPV 25 MPa Yüksek Basınç Sızdırmazlık Paketi</div></div>
+                                </div>
+                            </div>
+                            <div class="kku-node-group">
+                                <div class="kku-node" onclick="toggleMindmap(this)">Akışkan Devresi (Festo FluidSIM) <span class="kku-toggle-icon">▶</span></div>
+                                <div class="kku-children">
+                                    <div class="kku-node-group"><div class="kku-node leaf">4/2 Yön Kontrol Valfleri ile Çift Tesirli Yönetim</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">Hidrolik Kapatma Vanaları ile Pozisyon Sabitleme</div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- DİSİPLİN 2 -->
+                    <div class="kku-node-group">
+                        <div class="kku-node" onclick="toggleMindmap(this)">
+                            İnşaat Mühendisliği (Yapı Statiği ve Zemin)
+                            <span class="kku-toggle-icon">▶</span>
+                        </div>
+                        <div class="kku-children">
+                            <div class="kku-node-group">
+                                <div class="kku-node" onclick="toggleMindmap(this)">Bina Tasarımı (ProtaStructure) <span class="kku-toggle-icon">▶</span></div>
+                                <div class="kku-children">
+                                    <div class="kku-node-group"><div class="kku-node leaf">5 Katlı Hastane Modeli / C30 Beton &amp; S420B Donatı</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">60x60 Kolon, 30x70 Kiriş, 20 cm Döşeme Kesitleri</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">Kritik S39 Kolonu Yük ve Donatı Optimizasyonu</div></div>
+                                </div>
+                            </div>
+                            <div class="kku-node-group">
+                                <div class="kku-node" onclick="toggleMindmap(this)">Zemin ve Deprem Analizleri <span class="kku-toggle-icon">▶</span></div>
+                                <div class="kku-children">
+                                    <div class="kku-node-group"><div class="kku-node leaf">TBDY-2018 ZC Zemin Sınıfı Kriterleri</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">AFAD DD-2 Deprem İvme Spektrumu Entegrasyonu</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">Üniform ve Diferansiyel Oturma Analizleri</div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- DİSİPLİN 3 -->
+                    <div class="kku-node-group">
+                        <div class="kku-node" onclick="toggleMindmap(this)">
+                            Bilgisayar Mühendisliği (Sensör ve Ağ Mimarisi)
+                            <span class="kku-toggle-icon">▶</span>
+                        </div>
+                        <div class="kku-children">
+                            <div class="kku-node-group">
+                                <div class="kku-node" onclick="toggleMindmap(this)">Sensör Ağı Entegrasyonu <span class="kku-toggle-icon">▶</span></div>
+                                <div class="kku-children">
+                                    <div class="kku-node-group"><div class="kku-node leaf">HC-SR04 Düşey Kot Ölçümü (2 mm Hassasiyet)</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">MPU6050 İvme &amp; Eğim Verisi (Dinamik Sarsıntı)</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">LVDT Doğrusal Deplasman Entegrasyonu</div></div>
+                                </div>
+                            </div>
+                            <div class="kku-node-group">
+                                <div class="kku-node" onclick="toggleMindmap(this)">Haberleşme &amp; Karar Mekanizması <span class="kku-toggle-icon">▶</span></div>
+                                <div class="kku-children">
+                                    <div class="kku-node-group"><div class="kku-node leaf">MCP2515 CAN Bus Çoklu Düğüm Haberleşmesi</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">UART Protokolüyle Merkezi MCU Veri Aktarımı</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">Otonom Piston Aktivasyonu ve Röle Kontrol Algoritması</div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SONUÇLAR VE ÇIKTILAR -->
+    <section class="kku-yaklasim-section bg-light">
+        <div class="kku-yaklasim-container gsap-reveal">
+            <h2 class="kku-section-title">Sonuçlar ve Çıktılar</h2>
+            <p class="kku-list">Üç mühendislik disiplininin eş zamanlı yürüttüğü analiz, tasarım ve prototip testleri şu kritik sonuçları ortaya koymuştur:</p>
+
+            <ul class="kku-list">
+                <li><strong>Tam Yapısal Emniyet:</strong> 25 MPa nominal basınçta çalışan hidrolik silindir gövdesinde oluşan gerilmelerin (13,44 MPa) ve strok mili basma gerilmesinin (55,92 MPa), CK-45 çeliği akma sınırının (450–600 MPa) oldukça altında kaldığı ve 8 katın üzerinde güvenlik faktörü sağladığı ispatlanmıştır.</li>
+                <li><strong>Düşey Kot Eşitleme Başarısı:</strong> Kurulan donanım devresinde ultrasonik ve ivmeölçer sensörlerinden gelen oturma verileri CAN Bus üzerinden hatasız okunmuş; referans çöken kolona göre diğer hidrolik hatlar tetiklenerek üniform düzlem yakalanmıştır.</li>
+                <li><strong>Deprem Kapasitesinin Korunması:</strong> TBDY-2018 standartlarına göre donatı kullanım oranı %40–50 bandında tutulmuş; kot düzeltme hareketi sonrasında binanın taşıyıcı çerçevesinde deprem yüklerini karşılayacak %60–70 enerji yutma rezervi korunmuştur.</li>
+                <li><strong>Prototip Doğrulaması:</strong> 4 kolonlu simetrik yapı modeli geliştirilmiş, Festo FluidSIM ve Arduino IDE üzerinde sistem tepki kararlılığı eksiksiz doğrulanmıştır.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- ÖZET -->
+    <section class="kku-yaklasim-section">
+        <div class="kku-yaklasim-container gsap-reveal">
+            <h2 class="kku-section-title">Özet</h2>
+            <p class="kku-list">Bu proje; deprem mühendisliğinde bugüne kadar çoğunlukla yatay eksende sınırlandırılmış olan sismik izolasyon teknolojisini, düşey doğrultudaki aktif kot eşitleme hidroliği ve akıllı sensör ağıyla birleştiren çok disiplinli bir Ar-Ge çalışmasıdır.</p>
+
+            <h3 class="kku-subsection-title">Temel Kazanımlar</h3>
+            <ul class="kku-list">
+                <li><strong>Çok Disiplinli Sinerji:</strong> İnşaat statiği, mekanik/akışkan tasarımı ve gömülü yazılım disiplinleri entegre bir ürün geliştirme sürecinde birleştirilmiştir.</li>
+                <li><strong>Mukavemet ve Akışkan Bütünlüğü:</strong> Çift tesirli hidrolik silindirler, ANSYS FEA ve Festo FluidSIM analizleriyle en zorlu dinamik bina yüklerine karşı doğrulanmıştır.</li>
+                <li><strong>Stratejik Altyapı Güvenliği:</strong> Hastane, veri merkezi ve kamu binaları gibi afet anında kesintisiz çalışması gereken yapılara adaptif bir koruma mekanizması sunulmuştur.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- PROJELER ARASI GEÇİŞ NAVİGASYONU -->
+    <div class="project-pagination">
+        <div class="project-pagination-container">
+            <a href="lubritens-zincir-bakim.html" class="proj-nav-btn prev">
+                <span class="nav-dir">← Önceki Proje</span>
+                <span class="nav-title">LubriTens Zincir Bakım Sistemi</span>
+            </a>
+            <a href="../index.html#projeler" class="proj-nav-all">Tüm Projelere Dön</a>
+            <a href="etil-asetat-geri-kazanim.html" class="proj-nav-btn next">
+                <span class="nav-dir">Sonraki Proje →</span>
+                <span class="nav-title">Etil Asetat Geri Kazanım Sistemi</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer-section">
+        <div class="footer-content">
+            <h3>Halil Öz</h3>
+            <p>Mechanical Engineer | Mechanical Design &amp; FEA</p>
+            <div class="footer-links">
+                <a href="https://www.linkedin.com/in/halil-öz" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a href="../assets/docs/Halil_Oz-CV.pdf" download>CV İndir</a>
+                <a href="mailto:halilo.hz42@gmail.com">halilo.hz42@gmail.com</a>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2026 Halil Öz. Tüm hakları saklıdır.
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

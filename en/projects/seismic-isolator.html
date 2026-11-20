@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Level-Regulating Seismic Isolator Against Soil Settlement | Halil Öz</title>
+    <meta name="description" content="Multidisciplinary R&D uniting Mechanical, Civil, and Computer Engineering: a 250-bar hydraulic cylinder and CAN Bus controlled level-regulating seismic isolator system against differential soil settlement.">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Level-Regulating Seismic Isolator Against Soil Settlement | Halil Öz">
+    <meta property="og:description" content="Adaptive foundation leveling system developed with ANSYS FEA, Festo FluidSIM, ProtaStructure, and CAN Bus automation.">
+    <meta property="og:image" content="https://halilozengineer.github.io/assets/img/projects/sismik-izolator/patlamis.webp">
+
+    <link rel="icon" type="image/svg+xml" href="../../assets/img/favicon.svg">
+    <link rel="icon" type="image/png" sizes="64x64" href="../../assets/img/favicon.png">
+    <link rel="apple-touch-icon" href="../../assets/img/favicon.png">
+    <link rel="stylesheet" href="../../assets/css/main.css">
+    <link rel="stylesheet" href="../../assets/css/project-detail.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.34/dist/lenis.min.js" defer></script>
+    <script src="../../assets/js/app.js" defer></script>
+</head>
+<body>
+
+    <!-- FLOATING CAPSULE NAVIGATION -->
+    <nav class="floating-nav" aria-label="Main Navigation">
+        <ul>
+            <li><a href="../index.html#hero">Home</a></li>
+            <li><a href="../index.html#vision-screen">Vision</a></li>
+            <li><a href="../index.html#armco-project">Cabinet Design</a></li>
+            <li><a href="../index.html#experience">Experience</a></li>
+            <li><a href="../index.html#projects" class="nav-active">Projects</a></li>
+            <li><a href="../about.html">About Me</a></li>
+            <li><a href="../index.html#references">References</a></li>
+            <li><a href="../index.html#contact">Contact</a></li>
+
+            <li class="lang-switch">
+                <a href="../../projeler/sismik-izolator.html" class="inactive">TR</a>
+                <span class="divider">|</span>
+                <a href="seismic-isolator.html" class="active">EN</a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- HERO & INTERACTIVE GALLERY -->
+    <section class="kku-hero-section">
+        <div class="kku-hero-container">
+            <div class="kku-content gsap-reveal">
+                <h1 class="kku-title">Level-Regulating Seismic<br>Isolator System Against<br>Soil Settlement</h1>
+
+                <div class="kku-cards-grid">
+                    <div class="kku-card">
+                        <div class="kku-label">PROJECT TEAM &amp; DISCIPLINES</div>
+                        <div class="kku-value">
+                            Halil Öz (Mechanical Eng.)<br>
+                            Uhud Emre Doğan (Civil Eng.)<br>
+                            İclal İnal (Computer Eng.)<br>
+                            Yusuf Batuhan Akpınar (Computer Eng.)
+                        </div>
+                    </div>
+                    <div class="kku-card">
+                        <div class="kku-label">PROJECT TYPE &amp; CODE</div>
+                        <div class="kku-value">Multidisciplinary Capstone<br>MAK 6207 / INS 840 / 99600008</div>
+                    </div>
+                    <div class="kku-card full-width">
+                        <div class="kku-label">INSTITUTION &amp; FACULTY</div>
+                        <div class="kku-value">KTO Karatay University, Faculty of Engineering and Natural Sciences</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="kku-gallery gsap-reveal">
+                <div class="kku-main-img-box">
+                    <img id="mainGalleryImage" src="../../assets/img/projects/sismik-izolator/patlamis.webp" alt="Double-Acting Hydraulic Cylinder and Seismic Isolator Exploded CAD Assembly">
+                    <span class="kku-zoom-hint">🔍 Click to enlarge</span>
+                </div>
+                <div class="kku-thumbnails">
+                    <img src="../../assets/img/projects/sismik-izolator/patlamis.webp" alt="Double-Acting Hydraulic Cylinder and Seismic Isolator Exploded CAD Assembly" class="thumb active" onclick="changeImage(this)">
+                    <img src="../../assets/img/projects/sismik-izolator/cad.webp" alt="Hydraulic Cylinder Sealing Package (SKF LPV) and Assembly View" class="thumb" onclick="changeImage(this)">
+                    <img src="../../assets/img/projects/sismik-izolator/kovan-analiz.webp" alt="ANSYS FEA: Cylinder Barrel Inner Wall Von-Mises Equivalent Stress (13.438 MPa Max)" class="thumb" onclick="changeImage(this)">
+                    <img src="../../assets/img/projects/sismik-izolator/mil-analiz.webp" alt="ANSYS FEA: Piston Stroke Rod Compressive Stress Analysis (-55.922 MPa Max — CK-45 Steel)" class="thumb" onclick="changeImage(this)">
+                    <img src="../../assets/img/projects/sismik-izolator/kesit-analiz.webp" alt="ANSYS FEA: Cylinder Cross-Section Equivalent Stress Distribution (44.682 MPa Max)" class="thumb" onclick="changeImage(this)">
+                    <img src="../../assets/img/projects/sismik-izolator/hidrolik-devre.webp" alt="Festo FluidSIM 4-Column Double-Acting Hydraulic Control Circuit Schematic" class="thumb" onclick="changeImage(this)">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INTRODUCTION & PROJECT SUMMARY -->
+    <section class="kku-yaklasim-section bg-light">
+        <div class="kku-yaklasim-container gsap-reveal">
+            <h2 class="kku-section-title">Introduction</h2>
+            <p class="kku-list">Conventional seismic isolators are designed solely to damp horizontal ground accelerations during an earthquake. However, post-earthquake soil liquefaction, groundwater depletion, or heterogeneous soil consolidation creates vertical elevation discrepancies (differential settlement) between building columns—inducing catastrophic shear stresses in the structural frame.</p>
+            <p class="kku-list">In this multidisciplinary study uniting Civil, Mechanical, and Computer Engineering, an adaptive seismic isolator system was developed to detect vertical column settlement in real time and actuate high-pressure hydraulic cylinders via closed-loop CAN Bus communication to re-level the building within millimeter precision.</p>
+
+            <h3 class="kku-subsection-title">Engineering &amp; Learning Objectives</h3>
+            <ul class="kku-list">
+                <li>Complete static and equivalent seismic load analyses of a 5-story prototype hospital building in ProtaStructure according to TBDY-2018 and TS-500 codes.</li>
+                <li>Size double-acting hydraulic cylinders operating at 25 MPa (250 bar) to support a maximum dynamic building load of 19,065 tons across 91 columns.</li>
+                <li>Perform static structural FEA stress analyses of the hydraulic cylinder barrel and piston rod in ANSYS Workbench and validate material selection (CK-45 steel).</li>
+                <li>Establish an autonomous leveling loop using CAN Bus and UART industrial protocols aggregating ultrasonic (HC-SR04), LVDT, and MPU6050 IMU sensor data.</li>
+            </ul>
+
+            <h3 class="kku-subsection-title">Project Summary</h3>
+            <p class="kku-list">Designed for critical infrastructure facilities (hospitals, data centers, schools), the system uses the lowest settling column as a reference plane and gradually actuates <strong>2,060 kN capacity hydraulic cylinders</strong> beneath the remaining columns to bring the entire structure back to a uniform horizontal plane. The hydraulic circuit was verified in Festo FluidSIM and the Arduino &amp; CAN Bus control hardware was physically prototyped and tested.</p>
+
+            <div class="kku-tech-box">
+                <strong>Multidisciplinary Technology &amp; Analysis Stack</strong>
+                <div class="kku-tech-pills">
+                    <span class="kku-tech-pill">SolidWorks 3D CAD</span>
+                    <span class="kku-tech-pill">ANSYS Workbench FEA</span>
+                    <span class="kku-tech-pill">Festo FluidSIM Hydraulics</span>
+                    <span class="kku-tech-pill">ProtaStructure Structural</span>
+                    <span class="kku-tech-pill">CAN Bus &amp; UART Protocol</span>
+                    <span class="kku-tech-pill">TBDY-2018 &amp; TS-500</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROBLEM DEFINITION -->
+    <section class="kku-problem-section">
+        <div class="kku-problem-container gsap-reveal">
+            <h2 class="kku-section-title">Problem Definition</h2>
+            <p class="kku-list">Foundation settlement occurs when soil beneath a structure displaces vertically due to liquefaction, consolidation, or water-table shifts. Heterogeneous (differential) settlement poses severe structural danger:</p>
+            <ul class="kku-list">
+                <li><strong>Differential Settlement Failures:</strong> While uniform settlement lowers a building evenly without internal cracking, differential settlement across adjacent columns generates uncontrolled shear forces and severe structural fractures at beam-column joints.</li>
+                <li><strong>Limitations of Conventional Isolators:</strong> High-damping rubber bearings (HDRB) and friction pendulum isolators only attenuate horizontal seismic waves and cannot compensate for permanent vertical ground subsidence.</li>
+                <li><strong>Post-Construction Remediation Difficulty:</strong> Retroactive sub-foundation jet-grouting or chemical injection after settlement occurs is costly and cannot guarantee full structural re-leveling.</li>
+            </ul>
+
+            <div class="kku-problem-image">
+                <img src="../../assets/img/projects/sismik-izolator/oturma-karsilastirma.webp" alt="Comparison of Uniform Settlement, Rigid Tilting, and Differential Settlement" loading="lazy">
+                <p class="kku-img-caption">Figure 1: Uniform settlement, rigid rotation, and structural cracking caused by differential settlement (Click image to enlarge).</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- APPROACH & DESIGN PROCESS -->
+    <section class="kku-yaklasim-section bg-light">
+        <div class="kku-yaklasim-container gsap-reveal">
+            <h2 class="kku-section-title">Approach &amp; Design Process</h2>
+            <p class="kku-list">Through multidisciplinary collaboration, the problem was solved across three coordinated engineering thrusts:</p>
+
+            <ol class="kku-list">
+                <li><strong>Civil Engineering (Structural Modeling):</strong> A 5-story prototype hospital building using C30 concrete and S420B reinforcement steel was modeled in ProtaStructure for Soil Class ZC and AFAD DD-2 ground motion parameters (\( S_s=0.297, S_1=0.070 \)). Structural members were designed at 40%–50% capacity utilization, preserving a 60%–70% energy absorption reserve during active leveling.</li>
+                <li><strong>Mechanical Engineering (Mechanical &amp; Hydraulic Design):</strong> Distributing the 19,065-ton total dynamic building weight across 91 columns yielded ~210 tons (<strong>2,060 kN</strong>) of vertical load per column. Based on a 25 MPa (250 bar) working pressure, the piston bore area was calculated at \( A = 0.0824\text{ m}^2 \) with a cylinder bore diameter of <strong>Ø 324 mm</strong> and a 250 mm stroke. ANSYS FEA of the SolidWorks assembly showed a maximum Von-Mises stress of <strong>13.44 MPa</strong> on the barrel wall and <strong>55.92 MPa</strong> compressive stress on the stroke rod—safely validated with <strong>CK-45 steel</strong> (450–600 MPa yield strength). Double-acting control with 4/2 directional valves and check/lock valves was simulated in Festo FluidSIM.</li>
+                <li><strong>Computer Engineering (Sensing &amp; Automation):</strong> Data from HC-SR04 ultrasonic sensors, MPU6050 IMU inclinometers, and LVDT displacement sensors are collected at local Arduino Mega nodes and transmitted over an MCP2515 CAN Bus network to trigger hydraulic directional valves autonomously.</li>
+            </ol>
+        </div>
+    </section>
+
+    <!-- INTERACTIVE MIND MAP -->
+    <section class="kku-yaklasim-section" style="padding-bottom: 0; padding-top: 40px;">
+        <div class="kku-yaklasim-container">
+            <h2 class="kku-section-title gsap-reveal" style="text-align: center; border: none; margin-bottom: 0;">Multidisciplinary System Architecture</h2>
+        </div>
+    </section>
+
+    <section class="kku-interactive-mindmap gsap-reveal">
+        <div class="kku-mindmap-wrapper">
+            <div class="kku-node-group">
+                <div class="kku-node root open" onclick="toggleMindmap(this)">
+                    <span>Level-Regulating Seismic Isolator Architecture (Click Branches to Expand)</span>
+                    <span class="kku-toggle-icon">▶</span>
+                </div>
+
+                <div class="kku-children visible">
+                    <!-- DISCIPLINE 1 -->
+                    <div class="kku-node-group">
+                        <div class="kku-node" onclick="toggleMindmap(this)">
+                            Mechanical Engineering (Mechanics &amp; Fluid Power)
+                            <span class="kku-toggle-icon">▶</span>
+                        </div>
+                        <div class="kku-children">
+                            <div class="kku-node-group">
+                                <div class="kku-node" onclick="toggleMindmap(this)">Hydraulic Cylinder Sizing <span class="kku-toggle-icon">▶</span></div>
+                                <div class="kku-children">
+                                    <div class="kku-node-group"><div class="kku-node leaf">250 bar (25 MPa) System Operating Pressure</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">2,060 kN Load per Column / Ø 324 mm Bore</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">250 mm Vertical Leveling Stroke</div></div>
+                                </div>
+                            </div>
+                            <div class="kku-node-group">
+                                <div class="kku-node" onclick="toggleMindmap(this)">Finite Element Analysis (ANSYS FEA) <span class="kku-toggle-icon">▶</span></div>
+                                <div class="kku-children">
+                                    <div class="kku-node-group"><div class="kku-node leaf">13.44 MPa Von-Mises Stress on Cylinder Barrel</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">55.92 MPa Compressive Stress on Rod (CK-45 Steel)</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">SKF LPV 25 MPa High-Pressure Sealing Package</div></div>
+                                </div>
+                            </div>
+                            <div class="kku-node-group">
+                                <div class="kku-node" onclick="toggleMindmap(this)">Fluid Power Circuit (Festo FluidSIM) <span class="kku-toggle-icon">▶</span></div>
+                                <div class="kku-children">
+                                    <div class="kku-node-group"><div class="kku-node leaf">Double-Acting Control via 4/2 Directional Valves</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">Hydraulic Shut-Off Valves for Position Locking</div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- DISCIPLINE 2 -->
+                    <div class="kku-node-group">
+                        <div class="kku-node" onclick="toggleMindmap(this)">
+                            Civil Engineering (Structural Statics &amp; Geotechnics)
+                            <span class="kku-toggle-icon">▶</span>
+                        </div>
+                        <div class="kku-children">
+                            <div class="kku-node-group">
+                                <div class="kku-node" onclick="toggleMindmap(this)">Building Design (ProtaStructure) <span class="kku-toggle-icon">▶</span></div>
+                                <div class="kku-children">
+                                    <div class="kku-node-group"><div class="kku-node leaf">5-Story Hospital Model / C30 Concrete &amp; S420B Rebar</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">60x60 cm Columns, 30x70 cm Beams, 20 cm Slabs</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">Critical Column S39 Load &amp; Rebar Optimization</div></div>
+                                </div>
+                            </div>
+                            <div class="kku-node-group">
+                                <div class="kku-node" onclick="toggleMindmap(this)">Soil &amp; Seismic Analyses <span class="kku-toggle-icon">▶</span></div>
+                                <div class="kku-children">
+                                    <div class="kku-node-group"><div class="kku-node leaf">TBDY-2018 Soil Class ZC Parameters</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">AFAD DD-2 Earthquake Spectrum Integration</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">Uniform vs. Differential Settlement Modeling</div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- DISCIPLINE 3 -->
+                    <div class="kku-node-group">
+                        <div class="kku-node" onclick="toggleMindmap(this)">
+                            Computer Engineering (Sensor &amp; Network Architecture)
+                            <span class="kku-toggle-icon">▶</span>
+                        </div>
+                        <div class="kku-children">
+                            <div class="kku-node-group">
+                                <div class="kku-node" onclick="toggleMindmap(this)">Sensor Fusion Network <span class="kku-toggle-icon">▶</span></div>
+                                <div class="kku-children">
+                                    <div class="kku-node-group"><div class="kku-node leaf">HC-SR04 Vertical Elevation Sensing (2 mm Precision)</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">MPU6050 Acceleration &amp; Tilt Monitoring</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">LVDT Linear Displacement Feedback</div></div>
+                                </div>
+                            </div>
+                            <div class="kku-node-group">
+                                <div class="kku-node" onclick="toggleMindmap(this)">Communication &amp; Decision Loop <span class="kku-toggle-icon">▶</span></div>
+                                <div class="kku-children">
+                                    <div class="kku-node-group"><div class="kku-node leaf">MCP2515 CAN Bus Multi-Node Bus</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">UART Central MCU Data Aggregation</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">Autonomous Valve Relay Actuation Algorithm</div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RESULTS & OUTPUTS -->
+    <section class="kku-yaklasim-section bg-light">
+        <div class="kku-yaklasim-container gsap-reveal">
+            <h2 class="kku-section-title">Results &amp; Outputs</h2>
+            <p class="kku-list">Concurrent simulations, structural modeling, and hardware prototyping across the three engineering disciplines demonstrated the following results:</p>
+
+            <ul class="kku-list">
+                <li><strong>Full Structural Safety:</strong> Operating at 25 MPa nominal pressure, the hydraulic cylinder barrel stress (13.44 MPa) and piston rod compressive stress (55.92 MPa) remain far below the yield strength of CK-45 steel (450–600 MPa), achieving a Factor of Safety above 8.</li>
+                <li><strong>Successful Vertical Leveling:</strong> In physical hardware tests, elevation discrepancies read via ultrasonic and IMU sensors over CAN Bus triggered the corresponding hydraulic lines accurately to restore a uniform plane.</li>
+                <li><strong>Preservation of Seismic Capacity:</strong> Keeping reinforcement utilization at 40%–50% under TBDY-2018 preserved a 60%–70% energy dissipation reserve in the structural frame after leveling.</li>
+                <li><strong>Prototype Verification:</strong> A 4-column symmetric structural test model was built and validated across both Festo FluidSIM and Arduino IDE control loops.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- SUMMARY -->
+    <section class="kku-yaklasim-section">
+        <div class="kku-yaklasim-container gsap-reveal">
+            <h2 class="kku-section-title">Summary</h2>
+            <p class="kku-list">This project expands seismic isolation technology—traditionally confined to horizontal ground motion—by integrating active vertical hydraulic leveling and a distributed CAN Bus sensor network.</p>
+
+            <h3 class="kku-subsection-title">Key Takeaways</h3>
+            <ul class="kku-list">
+                <li><strong>Multidisciplinary Synergy:</strong> Structural statics, high-pressure mechanical/hydraulic design, and embedded systems were united in an end-to-end R&amp;D workflow.</li>
+                <li><strong>Structural &amp; Fluid Integrity:</strong> Double-acting 2,060 kN hydraulic cylinders were rigorously verified against dynamic building loads via ANSYS FEA and Festo FluidSIM.</li>
+                <li><strong>Resilient Critical Infrastructure:</strong> Provides an adaptive safeguard for hospitals, data centers, and public buildings that must remain operational after severe earthquakes.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- PROJECT PAGINATION -->
+    <div class="project-pagination">
+        <div class="project-pagination-container">
+            <a href="lubritens-chain-maintenance.html" class="proj-nav-btn prev">
+                <span class="nav-dir">← Previous Project</span>
+                <span class="nav-title">LubriTens Chain Maintenance System</span>
+            </a>
+            <a href="../index.html#projects" class="proj-nav-all">Back to All Projects</a>
+            <a href="ethyl-acetate-recovery.html" class="proj-nav-btn next">
+                <span class="nav-dir">Next Project →</span>
+                <span class="nav-title">Ethyl Acetate Recovery System</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer-section">
+        <div class="footer-content">
+            <h3>Halil Öz</h3>
+            <p>Mechanical Engineer | Mechanical Design &amp; FEA</p>
+            <div class="footer-links">
+                <a href="https://www.linkedin.com/in/halil-öz" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a href="../../assets/docs/Halil_Oz-CV.pdf" download>Download CV</a>
+                <a href="mailto:halilo.hz42@gmail.com">halilo.hz42@gmail.com</a>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2026 Halil Öz. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

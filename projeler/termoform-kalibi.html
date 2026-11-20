@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Endüstriyel Termoform Kalıbı Tasarımı ve Üretim Optimizasyonu | Halil Öz</title>
+    <meta name="description" content="SolidWorks ortamında seri üretim plastik vakum şekillendirme süreçleri için geliştirilen termoform kalıbı tasarımı, termal çekme payı, çıkma açısı (draft) ve vakum kanalı optimizasyonu.">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Endüstriyel Termoform Kalıbı Tasarımı | Halil Öz">
+    <meta property="og:description" content="SolidWorks 3D CAD, DFM üretilebilirlik analizi, 2°–3° draft açıları ve mikro vakum tahliye mimarisi.">
+    <meta property="og:image" content="https://halilozengineer.github.io/assets/img/projects/termoform-kalibi/cover.webp">
+
+    <link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg">
+    <link rel="icon" type="image/png" sizes="64x64" href="../assets/img/favicon.png">
+    <link rel="apple-touch-icon" href="../assets/img/favicon.png">
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/project-detail.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.34/dist/lenis.min.js" defer></script>
+    <script src="../assets/js/app.js" defer></script>
+</head>
+<body>
+
+    <!-- YÜZEN KAPSÜL NAVİGASYON -->
+    <nav class="floating-nav" aria-label="Ana Navigasyon">
+        <ul>
+            <li><a href="../index.html#hero">Ana Sayfa</a></li>
+            <li><a href="../index.html#vizyon-ekrani">Vizyon</a></li>
+            <li><a href="../index.html#armco-projesi">Kabin Tasarımı</a></li>
+            <li><a href="../index.html#deneyim">Deneyim</a></li>
+            <li><a href="../index.html#projeler" class="nav-active">Projeler</a></li>
+            <li><a href="../hakkimda.html">Hakkımda</a></li>
+            <li><a href="../index.html#referanslar">Referanslar</a></li>
+            <li><a href="../index.html#iletisim">İletişim</a></li>
+
+            <li class="lang-switch">
+                <a href="#" class="active">TR</a>
+                <span class="divider">|</span>
+                <a href="../en/projects/thermoforming-mold.html" class="inactive">EN</a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- ÜST KISIM: HERO & İNTERAKTİF GALERİ -->
+    <section class="kku-hero-section">
+        <div class="kku-hero-container">
+            <div class="kku-content gsap-reveal">
+                <h1 class="kku-title">Endüstriyel Termoform<br>Kalıbı Tasarımı ve<br>Üretim Optimizasyonu</h1>
+
+                <div class="kku-cards-grid">
+                    <div class="kku-card">
+                        <div class="kku-label">PROJE YÜRÜTÜCÜSÜ</div>
+                        <div class="kku-value">Halil Öz</div>
+                    </div>
+                    <div class="kku-card">
+                        <div class="kku-label">YAZILIM &amp; YÖNTEM</div>
+                        <div class="kku-value">SolidWorks 3D CAD<br>DFM &amp; Vakum Modelleme</div>
+                    </div>
+                    <div class="kku-card full-width">
+                        <div class="kku-label">ENDÜSTRİYEL UYGULAMA &amp; UZMANLIK</div>
+                        <div class="kku-value">SNN Tactical — Kalıp &amp; Model Tasarımı, Plastik Vakum Şekillendirme Teknolojileri</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="kku-gallery gsap-reveal">
+                <div class="kku-main-img-box">
+                    <img id="mainGalleryImage" src="../assets/img/projects/termoform-kalibi/cad.webp" alt="Endüstriyel Termoform Kalıbı 3D SolidWorks CAD Modeli">
+                    <span class="kku-zoom-hint">🔍 Büyütmek için tıklayın</span>
+                </div>
+                <div class="kku-thumbnails">
+                    <img src="../assets/img/projects/termoform-kalibi/cad.webp" alt="Endüstriyel Termoform Kalıbı 3D SolidWorks CAD Modeli" class="thumb active" onclick="changeImage(this)">
+                    <img src="../assets/img/projects/termoform-kalibi/vakum-delikleri.webp" alt="Kritik Köşe ve Derin Cep Mikro Vakum Tahliye Delikleri (Ø 0.8 – 1.2 mm)" class="thumb" onclick="changeImage(this)">
+                    <img src="../assets/img/projects/termoform-kalibi/draft-analizi.webp" alt="Termoplastik Çekme Payı (Shrinkage) ve Draft Açısı Optimizasyon Analizi" class="thumb" onclick="changeImage(this)">
+                    <img src="../assets/img/projects/termoform-kalibi/teknik-kesit.webp" alt="Termoform Kalıbı Kesit Mimarisi ve Alt Vakum Manifoldu Şeması" class="thumb" onclick="changeImage(this)">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GİRİŞ VE PROJE ÖZETİ -->
+    <section class="kku-yaklasim-section bg-light">
+        <div class="kku-yaklasim-container gsap-reveal">
+            <h2 class="kku-section-title">Giriş</h2>
+            <p class="kku-list">Yüksek hacimli plastik muhafaza, taktik ekipman kılıfı ve endüstriyel ambalaj üretiminde, milimetrenin onda biri mertebesindeki hatalı bir çekme payının veya yetersiz bir hava tahliye kanalının kalıp döngü süresini (cycle time) uzatıp yüzlerce hatalı baskıya sebep olabileceğini biliyor muydunuz?</p>
+            <p class="kku-list">Bu projede, endüstriyel seri üretim standartlarına tam uyumlu plastik termoform vakum şekillendirme süreçleri için SolidWorks ortamında geliştirilen yüksek hassasiyetli kalıp tasarımının mekanik, termal ve imalat (CNC) odaklı aşamalarını inceleyeceğiz.</p>
+
+            <h3 class="kku-subsection-title">Mühendislik ve Öğrenme Hedefleri</h3>
+            <ul class="kku-list">
+                <li>Termoform plastik şekillendirme prosesinde malzeme çekme (shrinkage) ve termal genleşme toleranslarını doğru hesaplamak.</li>
+                <li>Vakum transfer verimini maksimize eden mikro hava tahliye delikleri (Ø 0.8–1.2 mm) ve alt vakum kanalı geometrilerini optimize etmek.</li>
+                <li>Kalıptan parça çıkarma (demolding) kuvvetlerini minimize etmek için form yüzeylerine uygun çıkma (draft) açıları ve radyüs geçişleri kazandırmak.</li>
+                <li>3 eksenli CNC işleme ve DFM (Design for Manufacturing) ilkeleri doğrultusunda kalıp çekirdeği ve gövde parçalarını yapılandırmak.</li>
+            </ul>
+
+            <h3 class="kku-subsection-title">Proje Özeti</h3>
+            <p class="kku-list">Bu proje; seri üretim hatlarında yüksek çevrim hızına ve boyutsal kararlılığa sahip termoplastik ürünlerin vakumla şekillendirilmesi amacıyla tasarlanmış bir termoform kalıp sistemidir. Isıl işlem görmüş plastik levhanın kalıp yüzeyine tam oturmasını sağlamak adına hava tahliye kanalları, termal genleşme payları ve üretim toleransları SolidWorks üzerinde detaylandırılmış; üretilen kalıpların saha testleri ve baskı doğrulamaları başarıyla gerçekleştirilmiştir.</p>
+
+            <div class="kku-tech-box">
+                <strong>Kullanılan Teknolojiler ve Yöntemler</strong>
+                <div class="kku-tech-pills">
+                    <span class="kku-tech-pill">SolidWorks 3D CAD</span>
+                    <span class="kku-tech-pill">Model &amp; Kalıp Tasarımı</span>
+                    <span class="kku-tech-pill">DFM (Üretilebilirlik Analizi)</span>
+                    <span class="kku-tech-pill">Termal Genleşme &amp; Çekme Telafisi</span>
+                    <span class="kku-tech-pill">Vakum Tahliye Mimarisi</span>
+                    <span class="kku-tech-pill">Al 7075 / 6082 CNC İşleme</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROBLEM TANIMI -->
+    <section class="kku-problem-section">
+        <div class="kku-problem-container gsap-reveal">
+            <h2 class="kku-section-title">Problem Tanımı</h2>
+            <p class="kku-list">Termoform kalıpçılığında en sık karşılaşılan zorluklar; plastik malzemenin ısıtma-soğutma evresindeki boyutsal çekmesi, kalıp içerisinde sıkışan havanın oluşturduğu yüzey deformasyonları ve parçanın kalıptan ayrılırken zorlanmasıdır:</p>
+            <ul class="kku-list">
+                <li><strong>Hava Cepleri ve Detay Kaybı:</strong> Isıtılmış termoplastik levha vakum altında çekilirken, kalıp köşelerinde sıkışan hava tahliye edilemezse parça yüzeyinde kabarcıklar, eksik basılma ve köşe radyüslerinde form bozuklukları oluşur.</li>
+                <li><strong>Çekme Payı (Shrinkage) Yanılgıları:</strong> Plastik malzeme (Kydex, ABS, PETG, PS veya PP) soğurken hacimsel olarak daralır. Kalıp geometrisine malzemenin termal çekme katsayısı entegre edilmediğinde nihai parça montaj toleransı dışında kalır.</li>
+                <li><strong>Kalıptan Çıkarma Zorluğu (Demolding):</strong> Düşük ya da sıfır derece draft açısına sahip dikey duvarlar, soğuyan plastiğin erkek kalıbı sıkarak yüzey çizilmelerine ve üretim hattında duruşlara yol açmasına neden olur.</li>
+            </ul>
+
+            <div class="kku-problem-image">
+                <img src="../assets/img/projects/termoform-kalibi/teknik-kesit.webp" alt="Termoform Kalıbı Kesit Mimarisi, Çıkma Açısı (Draft) ve Vakum Tahliye Prensibi" loading="lazy">
+                <p class="kku-img-caption">Şekil 1: Alüminyum kalıp çekirdeği kesit mimarisi, 2°–3° draft açıları ve alt vakum manifoldu emiş prensibi (Büyütmek için görsele tıklayın).</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- YAKLAŞIM VE TASARIM SÜRECİ -->
+    <section class="kku-yaklasim-section bg-light">
+        <div class="kku-yaklasim-container gsap-reveal">
+            <h2 class="kku-section-title">Yaklaşım ve Tasarım Süreci</h2>
+            <p class="kku-list">Endüstriyel seri üretime tam uyumluluk sağlamak amacıyla parametrik modelleme ve mühendislik hesaplamaları şu aşamalarla yönetilmiştir:</p>
+
+            <ol class="kku-list">
+                <li><strong>3D Parametrik Modelleme:</strong> SolidWorks ortamında ürünün hedef formuna göre kalıp çekirdeği parametrik olarak tasarlandı. Geometrik revizyonların tüm kalıp montajına anında yansımasını sağlayan referans düzlemleri kuruldu.</li>
+                <li><strong>Hava Tahliye (Vakum) Deliklerinin Optimizasyonu:</strong> Plastik levhada çapak veya iz bırakmayacak mikro çaplı (<strong>Ø 0.8 – 1.2 mm</strong>) vakum delikleri, parçanın en derin ceplerine ve keskin köşe dönüşlerine stratejik olarak konumlandırıldı. Taban plakasına entegre edilen ana emiş kanallarıyla homojen vakum dağılımı sağlandı.</li>
+                <li><strong>Termal Çekme ve Tolerans Hesapları:</strong> Kullanılacak termoplastik malzemenin ısıl büzülme katsayısına göre (%0.4 ile %1.8 arası) çekme payları kalıp geometrisine pozitif ölçekleme ile eklenerek nihai ürünün tam nominal ölçülerde çıkması garanti altına alındı.</li>
+                <li><strong>Çıkma Açısı (Draft) ve Radyüs Optimizasyonu:</strong> Tüm dikey yüzeylere minimum <strong>2° – 3°</strong> aralığında çıkma açıları verildi; iç ve dış köşeler malzeme incelmesini (webbing/thinning) önleyecek optimum radyüslerle yumuşatıldı.</li>
+            </ol>
+        </div>
+    </section>
+
+    <!-- İNTERAKTİF ZİHİN HARİTASI -->
+    <section class="kku-yaklasim-section" style="padding-bottom: 0; padding-top: 40px;">
+        <div class="kku-yaklasim-container">
+            <h2 class="kku-section-title gsap-reveal" style="text-align: center; border: none; margin-bottom: 0;">Termoform Kalıp Tasarım Kriterleri</h2>
+        </div>
+    </section>
+
+    <section class="kku-interactive-mindmap gsap-reveal">
+        <div class="kku-mindmap-wrapper">
+            <div class="kku-node-group">
+                <div class="kku-node root open" onclick="toggleMindmap(this)">
+                    <span>Termoform Kalıp Tasarım Kriterleri (Dalları Açmak İçin Tıklayın)</span>
+                    <span class="kku-toggle-icon">▶</span>
+                </div>
+
+                <div class="kku-children visible">
+                    <!-- ANA DAL 1 -->
+                    <div class="kku-node-group">
+                        <div class="kku-node" onclick="toggleMindmap(this)">
+                            Geometri ve Draft Yönetimi
+                            <span class="kku-toggle-icon">▶</span>
+                        </div>
+                        <div class="kku-children">
+                            <div class="kku-node-group">
+                                <div class="kku-node" onclick="toggleMindmap(this)">Çıkma Açıları (Draft) <span class="kku-toggle-icon">▶</span></div>
+                                <div class="kku-children">
+                                    <div class="kku-node-group"><div class="kku-node leaf">Dikey Duvarlarda Minimum 2°–3° Açı</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">Sürtünme ve Parça Çizilmesini Önleme</div></div>
+                                </div>
+                            </div>
+                            <div class="kku-node-group">
+                                <div class="kku-node" onclick="toggleMindmap(this)">Köşe Radyüsleri <span class="kku-toggle-icon">▶</span></div>
+                                <div class="kku-children">
+                                    <div class="kku-node-group"><div class="kku-node leaf">Gerilme Yığılmalarını Önleyici Geçişler</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">Termoplastik Levha İncelmesini Engelleme</div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ANA DAL 2 -->
+                    <div class="kku-node-group">
+                        <div class="kku-node" onclick="toggleMindmap(this)">
+                            Vakum ve Tahliye Mimarisi
+                            <span class="kku-toggle-icon">▶</span>
+                        </div>
+                        <div class="kku-children">
+                            <div class="kku-node-group">
+                                <div class="kku-node" onclick="toggleMindmap(this)">Mikro Vakum Delikleri <span class="kku-toggle-icon">▶</span></div>
+                                <div class="kku-children">
+                                    <div class="kku-node-group"><div class="kku-node leaf">Kritik Köşelerde Ø 0.8 – 1.2 mm Delikler</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">Yüzeyde Çapak/İz Oluşumunun Engellenmesi</div></div>
+                                </div>
+                            </div>
+                            <div class="kku-node-group">
+                                <div class="kku-node" onclick="toggleMindmap(this)">Alt Tahliye Manifoldu <span class="kku-toggle-icon">▶</span></div>
+                                <div class="kku-children">
+                                    <div class="kku-node-group"><div class="kku-node leaf">Homojen Emiş Basıncı Dağılımı</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">Hızlı Çevrim ve Hava Boşaltma Performansı</div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ANA DAL 3 -->
+                    <div class="kku-node-group">
+                        <div class="kku-node" onclick="toggleMindmap(this)">
+                            Termal ve Malzeme Davranışı
+                            <span class="kku-toggle-icon">▶</span>
+                        </div>
+                        <div class="kku-children">
+                            <div class="kku-node-group">
+                                <div class="kku-node" onclick="toggleMindmap(this)">Hacimsel Çekme Payı (Shrinkage) <span class="kku-toggle-icon">▶</span></div>
+                                <div class="kku-children">
+                                    <div class="kku-node-group"><div class="kku-node leaf">Malzeme Bazlı Genleşme/Büzülme Oranları</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">Kalıp Boşluğuna Pozitif Ölçeklendirme</div></div>
+                                </div>
+                            </div>
+                            <div class="kku-node-group">
+                                <div class="kku-node" onclick="toggleMindmap(this)">Kalıp Malzemesi Seçimi <span class="kku-toggle-icon">▶</span></div>
+                                <div class="kku-children">
+                                    <div class="kku-node-group"><div class="kku-node leaf">Alüminyum Alaşımı (Al 7075 / 6082)</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">Yüksek Isı İletimi ve Kolay CNC İşlenebilirlik</div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ANA DAL 4 -->
+                    <div class="kku-node-group">
+                        <div class="kku-node" onclick="toggleMindmap(this)">
+                            İmalat ve Montaj (DFM)
+                            <span class="kku-toggle-icon">▶</span>
+                        </div>
+                        <div class="kku-children">
+                            <div class="kku-node-group">
+                                <div class="kku-node" onclick="toggleMindmap(this)">CNC İşlenebilirlik <span class="kku-toggle-icon">▶</span></div>
+                                <div class="kku-children">
+                                    <div class="kku-node-group"><div class="kku-node leaf">Standart Parmak Freze Takım Yollarına Uygun Cepler</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">Ters Açı (Undercut) İçermeyen Geometri</div></div>
+                                </div>
+                            </div>
+                            <div class="kku-node-group">
+                                <div class="kku-node" onclick="toggleMindmap(this)">Hızlı Kalıp Değişimi <span class="kku-toggle-icon">▶</span></div>
+                                <div class="kku-children">
+                                    <div class="kku-node-group"><div class="kku-node leaf">Hassas Merkezleme ve Taban Bağlantısı</div></div>
+                                    <div class="kku-node-group"><div class="kku-node leaf">Saha Baskı Testleriyle Doğrulanmış Form</div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SONUÇLAR VE ÇIKTILAR -->
+    <section class="kku-yaklasim-section bg-light">
+        <div class="kku-yaklasim-container gsap-reveal">
+            <h2 class="kku-section-title">Sonuçlar ve Çıktılar</h2>
+            <p class="kku-list">Yapılan hassas modelleme, üretim takibi ve saha baskı testleri sonucunda elde edilen kazanımlar:</p>
+
+            <ul class="kku-list">
+                <li><strong>Yüksek Boyutsal Doğruluk:</strong> Uygulanan çekme payı optimizasyonu ile termoplastik levhanın oda sıcaklığına soğuduktan sonraki nihai ölçüleri hedeflenen montaj toleranslarında korunmuştur.</li>
+                <li><strong>Düşük Çevrim Süresi (Cycle Time):</strong> Optimize edilen hava tahliye kanalları sayesinde vakum tutuş hızı artırılmış, parça başına harcanan şekillendirme süresi düşürülmüştür.</li>
+                <li><strong>Yüksek Yüzey Kalitesi:</strong> Mikro delik çapları ve yumuşatılmış geçiş hatları sayesinde ürün yüzeyinde hava kabarcığı veya et kalınlığı dengesizliği oluşumu engellenmiştir.</li>
+                <li><strong>CNC ve Üretim Kolaylığı:</strong> Kalıp formunda ters açılardan ve erişilemez dar ceplerden kaçınılarak 3 eksenli CNC dik işleme merkezlerinde standart takımlarla işlenebilir bir tasarım elde edilmiştir.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- ÖZET -->
+    <section class="kku-yaklasim-section">
+        <div class="kku-yaklasim-container gsap-reveal">
+            <h2 class="kku-section-title">Özet</h2>
+            <p class="kku-list">Bu projede, endüstriyel seri üretim hedeflerine yönelik termoform kalıbının CAD modelleme, vakum akış kanalları, teknik resim ve üretim doğrulama aşamaları tamamlanmıştır.</p>
+
+            <h3 class="kku-subsection-title">Temel Kazanımlar</h3>
+            <ul class="kku-list">
+                <li><strong>Üretilebilirlik Odaklı Yaklaşım (DFM):</strong> Kalıp tasarımı yalnızca ürün geometrisine göre değil, CNC işleme yöntemleri ve vakum tezgahı bağlama kolaylıkları dikkate alınarak geliştirilmiştir.</li>
+                <li><strong>Detaylı Termal Yönetim:</strong> Plastik malzeme büzülme karakteristikleri hesaba katılarak hassas toleranslar kalıp çekirdeğine entegre edilmiştir.</li>
+                <li><strong>Saha Doğrulaması:</strong> Tasarımı yapılan kalıpların imalat süreci ve gerçek üretim baskıları bizzat test edilerek doğrulanmıştır.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- PROJELER ARASI GEÇİŞ NAVİGASYONU -->
+    <div class="project-pagination">
+        <div class="project-pagination-container">
+            <a href="tavan-vinci-fea.html" class="proj-nav-btn prev">
+                <span class="nav-dir">← Önceki Proje</span>
+                <span class="nav-title">Tavan Vinci FEA Optimizasyonu</span>
+            </a>
+            <a href="../index.html#projeler" class="proj-nav-all">Tüm Projelere Dön</a>
+            <a href="lubritens-zincir-bakim.html" class="proj-nav-btn next">
+                <span class="nav-dir">Sonraki Proje →</span>
+                <span class="nav-title">LubriTens Zincir Bakım Sistemi</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer-section">
+        <div class="footer-content">
+            <h3>Halil Öz</h3>
+            <p>Mechanical Engineer | Mechanical Design &amp; FEA</p>
+            <div class="footer-links">
+                <a href="https://www.linkedin.com/in/halil-öz" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a href="../assets/docs/Halil_Oz-CV.pdf" download>CV İndir</a>
+                <a href="mailto:halilo.hz42@gmail.com">halilo.hz42@gmail.com</a>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2026 Halil Öz. Tüm hakları saklıdır.
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

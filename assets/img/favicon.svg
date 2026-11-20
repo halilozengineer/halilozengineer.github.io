@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Yüksek kontrastlı, tam boy (full-bleed) mekanik dişli gövdesi -->
+  <polygon points="26.98,9.55 27.87,1.28 36.13,1.28 37.02,9.55 44.32,12.58 50.81,7.36 56.64,13.19 51.42,19.68 54.45,26.98 62.72,27.87 62.72,36.13 54.45,37.02 51.42,44.32 56.64,50.81 50.81,56.64 44.32,51.42 37.02,54.45 36.13,62.72 27.87,62.72 26.98,54.45 19.68,51.42 13.19,56.64 7.36,50.81 12.58,44.32 9.55,37.02 1.28,36.13 1.28,27.87 9.55,26.98 12.58,19.68 7.36,13.19 13.19,7.36 19.68,12.58" fill="#ff5e5e" stroke="#ffffff" stroke-width="2" stroke-linejoin="round"/>
+  <!-- Koyu iç göbek -->
+  <circle cx="32" cy="32" r="16.5" fill="#1a1e24" stroke="#ffffff" stroke-width="2.5"/>
+  <!-- Net ve kalın merkez H harfi (16x16 pikselde bile cam gibi okunur) -->
+  <path d="M24.5 22.5 H28.8 V29.8 H35.2 V22.5 H39.5 V41.5 H35.2 V33.8 H28.8 V41.5 H24.5 Z" fill="#ffffff"/>
+</svg>
